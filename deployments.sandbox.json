@@ -1,0 +1,198 @@
+{
+  "network": "testnet",
+  "admin": "GA3CCWBBEZJA635NH25LSJUAFI3FKJFDCB4I2MKSYFVVD722YUPJL7WQ",
+  "inputs": {
+    "recipe": "stellar contract build — never cargo (see contracts/AGENTS.md)",
+    "stellar_cli": "stellar 28.0.0 (300aaf69ab100536678bdb641428b06f06b318ea)",
+    "soroban_sdk": "28.0.0",
+    "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "target": "wasm32v1-none",
+    "upload": "--optimize=false, so the ledger hash is the sha256 of the file"
+  },
+  "contracts": {
+    "breaker_attribution_qa": {
+      "kind": "deterministic QA fixture; not the canonical Vault incident",
+      "wasm_hash": "9b31d5745dd1fb2a63a98ec681f4989e290cc1e543432ab2c1c432436b0c2ac0",
+      "id": "CBI44L2V7DVBMQMQGFGCJIVES55UPF4PFTUDEYD363OYK6JBE5IJ6KA5",
+      "verified_on": "2026-11-03",
+      "deployment_tx": "0989a051ec0e2fb40d9c3418aff562cff2e42f51df0b97425cd9101b64f8b1d2"
+    },
+    "breaker_core": {
+      "wasm_hash": "5089d84bd2837fc8ecbde0d94ffa0544622f2d7602ead749b1772cbae917c5b0",
+      "id": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X"
+    },
+    "breaker_level_00_counter": {
+      "wasm_hash": "54acff157bb938d4a0bda019fe50cdd335116d55d9798a27c8d73a6db14daab3"
+    },
+    "breaker_level_00_validator": {
+      "wasm_hash": "d03b4a927b0af66db620d2418c68fe7d3f38222fad0beb5516a521784d69f3ef",
+      "id": "CCTWJRWGDLZRD2MO7L4PQEUTDUJI5ENXFHM5TIQSN5ZBP7GBUSJPTIOS"
+    },
+    "breaker_level_01_noentry": {
+      "wasm_hash": "0c1ef55bacc8411e0f7f149ba68b0a5d65aab2662d8e89f8b50dfb9688da3ef2"
+    },
+    "breaker_level_01_validator": {
+      "wasm_hash": "0a1bfb14db92aa80e773925c7b4f58064c6ebdf57b50018f64c2e080f2ae14c0",
+      "id": "CBRKCT25DGPBCQ2R3CUDPI6ON6OOL4PP3WBZ42FSHSHYM5LUBTPL5PU6"
+    },
+    "breaker_level_02_deadman": {
+      "wasm_hash": "c450c2f0617dfc4a5a93d7bde6cd4e809ac8aaa9cda7f8621fbfb7773691e316"
+    },
+    "breaker_level_02_validator": {
+      "wasm_hash": "4e38b85b22ef440134646b030a471489167771aec16ac911c9e04880b5ff8974",
+      "id": "CBJNO66Z4TAYF7XY7W6MS6RDTI2NC3NFCTC2CPQNSV7BCGJ4SJJV4YHE"
+    },
+    "breaker_level_03_warehouse": {
+      "wasm_hash": "b1f0391ef353fc50b5ebcec396b40ff009d0840ed709b94f485200aa1f1f2c27"
+    },
+    "breaker_level_03_validator": {
+      "wasm_hash": "628e12648c154fd59e478e8c338991ad4177c0da06c962a911de7518d81bbaf9",
+      "id": "CAESFPVDYVSYSX7IBDVOJS3XSQXOTCQRFGYER33DLEC2OQ5JU7EI2P6I"
+    },
+    "breaker_level_04_forgotten": {
+      "wasm_hash": "c25c85f49d9af6c3a24d5cbaf3263a4a450e3b308ecc061b42e8db42afb1be2a"
+    },
+    "breaker_level_04_validator": {
+      "wasm_hash": "198bc8666486b16bf44304a07a1c1171600e830f988f6d2b8f35c3fdda19f2f9",
+      "id": "CDPQLBBXGBZWXGDZEBF6CI6CTTMMHMZVQEAMZE6YQXC53YFGRFG6PKBM"
+    },
+    "breaker_level_05_custodian": {
+      "wasm_hash": "b7ca8c5352957374696a2d6de4e97f855978dc8eaff26534be7acf2e0152100b"
+    },
+    "breaker_level_05_validator": {
+      "wasm_hash": "8a54ecf789da25dcab27e026505590ccf6588d35c1850fe8a391cc2ba6fbb51c",
+      "id": "CATLJOP2YU53DFUPFYTCR5MSOTAS4RCGYLEJEYN6MNUP62W4M4TN2GJZ"
+    },
+    "breaker_level_06_investigator": {
+      "wasm_hash": "8cadd09b0c4c41a93c9969ea451af0da0677f44028dca271c8b049d8abe97627"
+    },
+    "breaker_level_06_validator": {
+      "wasm_hash": "e40cd9263d48c810ce4ac44b92f6b2940edd4ffafdf1f62a9e2a2a421b865446",
+      "id": "CAIUYN23BLGB7PVSM4UTXQ7WJBVGOI24YMAQPO2PPVO43DWAVNHAQAXO"
+    },
+    "breaker_level_06_decoder": {
+      "wasm_hash": "cc06d3bff9bd231ca7443e54f26eaf1e21388b66c60b64b281740d52fe883efc",
+      "id": "CCSICNOYRRPCKMKGQXVNUKOETHYVC5YES6USO3NSZBAMQCNUAPOPKO36"
+    },
+    "breaker_level_07_impossible": {
+      "wasm_hash": "6f056e5edff980c09612d5523be74412f89431003586d8d98b08b3df5e51e69b"
+    },
+    "breaker_level_07_validator": {
+      "wasm_hash": "f83f1ea1d9b67c93b82ce4ec688f483ee25462281e6d61b5de0b2700a7b74912",
+      "id": "CBK4WTLBBYSIJFAVRBODN4E26SWN4KUPEX5TRJFHO23B5LO647HWTQTA"
+    },
+    "breaker_level_08_sector": {
+      "wasm_hash": "fb81024d3dff535a39000b342d0beb260efbe3d23630a98c2f6c521050b24185"
+    },
+    "breaker_level_08_validator": {
+      "wasm_hash": "644dce4d96644ad53636d1f7fbb0bdf416699aa6c65db2c0f859f265cc17fd44",
+      "id": "CCHT5IJJS7NOQ5NN42LXOAJKQW6TEDSXHUS5ZXHWS6ZM2HUJSAD7QVV6"
+    },
+    "breaker_level_09_oracle": {
+      "wasm_hash": "17660f9c31c348d48de6ccae938500e698bf00fd384ea1a6e83af1b23fa5c87c"
+    },
+    "breaker_level_09_validator": {
+      "wasm_hash": "743086f6356a2f68879e312a57e9610adae8ce45a7eb309447e51a67594082b5",
+      "id": "CC7OMSK7ATU5X7FCQ3OZHAKCELUWGSHQW2VMXJPLUTOYG2YT64BTG3DV"
+    },
+    "breaker_level_10_steal": {
+      "wasm_hash": "f0046ed2e4e5afb117c62bb99c01eff9ec159c958f51b23611eb7a23dbc0a852"
+    },
+    "breaker_level_10_validator": {
+      "wasm_hash": "568758105378afc5229e5117c2908a78837c2e81ffd3be67f7e48050d510b077",
+      "id": "CD74PZIYLCDVH4YGEHATCMMRHDHJE3MFFA52LFQWE53FR5JGXK5NMXUT"
+    },
+    "breaker_level_11_rewrite": {
+      "wasm_hash": "d5b5c1a649bff761620ed8bf49a72eb4738095820392ab404d3be843bacaeb49"
+    },
+    "breaker_level_11_validator": {
+      "wasm_hash": "575c6edc4206d007bc267daa07206ddbef73effb08bf7c96ae86b59289b6c1c2",
+      "id": "CDISPLUZQSSEFN3O4BLZMXKOEXIVRD7YPYDKHYLV3OTU5RMXAU4MLVCU"
+    },
+    "breaker_level_11_decoder": {
+      "wasm_hash": "73cc1ba1ed0ebb43d0c27e41037ca8edc9f8c58f578fe113bdc0b4c61e550b89",
+      "id": "CAIMGWWLSAOER2OFQULGAEODDZADIXFBIS5QIGJX76JN4TT7ZPPZ56B6"
+    },
+    "breaker_level_12_architect": {
+      "wasm_hash": "da570e0120f1dc0f9d15b02455f64b348c0822f701acfb251068be071b1c08b5"
+    },
+    "breaker_level_12_validator": {
+      "wasm_hash": "d80f556c85faed7f24761d6598fbc2499b546c2dcf150312770e40fa3edb02e4",
+      "id": "CAND7NHFZGPBG7KL3CAN4X4TP2DPYXEY56MHASI2D4JSSRF4SVZ5ZQKV"
+    },
+    "breaker_season": {
+      "wasm_hash": "f8acb0497b6db0379253040c97321ea7366895d31020737090999342cb5b88b8",
+      "id": "CDU7UX4AH3RZMFNJXSLYJWYBJL735D467GE6H7MCN4PPCZWPERHV7VOF"
+    }
+  },
+  "levels": {
+    "0": {
+      "registered": "true",
+      "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X"
+    },
+    "1": {
+      "registered": "true",
+      "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X"
+    },
+    "2": {
+      "registered": "true",
+      "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
+      "forced_at": "2026-11-03T23:33:40Z",
+      "previous_wasm_hash": "d835688df93e2db73edf6c30f6be268a2a44cf3c25df66726af832343c583da1"
+    },
+    "3": {
+      "registered": "true",
+      "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X"
+    },
+    "4": {
+      "registered": "true",
+      "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
+      "forced_at": "2026-11-03T23:34:07Z",
+      "previous_wasm_hash": "c3efe904c946c11ecb76e44e70b48ba94697fb9becb07df4691c4ce0113f906a"
+    },
+    "5": {
+      "registered": "true",
+      "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X"
+    },
+    "6": {
+      "registered": "true",
+      "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X"
+    },
+    "7": {
+      "registered": "true",
+      "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
+      "forced_at": "2026-11-03T23:34:31Z",
+      "previous_wasm_hash": "53fba6e566475382cd517927207e35d8ed918bff0c0828642f637ca68436d67e"
+    },
+    "8": {
+      "registered": "true",
+      "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
+      "forced_at": "2026-11-03T23:35:06Z",
+      "previous_wasm_hash": "b2b51c7abd817a2ea6195a6191bf98382ba1387200c251ad8135cd4b069442f6"
+    },
+    "9": {
+      "registered": "true",
+      "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
+      "forced_at": "2026-11-03T23:35:38Z",
+      "previous_wasm_hash": "d3610c24bc4d1e2728b1f215ff3ed94bada526a72a749318a9b07b8bd0be47e6"
+    },
+    "10": {
+      "registered": "true",
+      "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
+      "forced_at": "2026-11-04T13:07:07Z",
+      "previous_wasm_hash": "6ae5506f52c215b75148cd06d99c8164f904eb14b0aed4da8a5a4a950f145463"
+    },
+    "11": {
+      "registered": "true",
+      "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
+      "forced_at": "2026-11-04T13:29:47Z",
+      "previous_wasm_hash": "01857e09df97efa32cc5097c6a6093c180d2c7ef5a4306f79a6116fb6eb75355"
+    },
+    "12": {
+      "registered": "true",
+      "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
+      "forced_at": "2026-11-03T23:36:33Z",
+      "previous_wasm_hash": "bfe24a2025e2edf0518c35af5ddba992b644c8705f6efa74a685e2c78884338c"
+    }
+  }
+}
