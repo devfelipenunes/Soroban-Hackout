@@ -5,7 +5,7 @@
     "recipe": "stellar contract build — never cargo (see contracts/AGENTS.md)",
     "stellar_cli": "stellar 28.0.0 (300aaf69ab100536678bdb641428b06f06b318ea)",
     "soroban_sdk": "28.0.0",
-    "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "rustc": "rustc 1.98.1 (48a229cea)",
     "target": "wasm32v1-none",
     "upload": "--optimize=false, so the ledger hash is the sha256 of the file"
   },
@@ -14,7 +14,6 @@
       "kind": "deterministic QA fixture; not the canonical Vault incident",
       "wasm_hash": "9b31d5745dd1fb2a63a98ec681f4989e290cc1e543432ab2c1c432436b0c2ac0",
       "id": "CBI44L2V7DVBMQMQGFGCJIVES55UPF4PFTUDEYD363OYK6JBE5IJ6KA5",
-      "verified_on": "2026-11-03",
       "deployment_tx": "0989a051ec0e2fb40d9c3418aff562cff2e42f51df0b97425cd9101b64f8b1d2"
     },
     "breaker_core": {
@@ -137,7 +136,6 @@
     "2": {
       "registered": "true",
       "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
-      "forced_at": "2026-11-03T23:33:40Z",
       "previous_wasm_hash": "d835688df93e2db73edf6c30f6be268a2a44cf3c25df66726af832343c583da1"
     },
     "3": {
@@ -147,7 +145,6 @@
     "4": {
       "registered": "true",
       "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
-      "forced_at": "2026-11-03T23:34:07Z",
       "previous_wasm_hash": "c3efe904c946c11ecb76e44e70b48ba94697fb9becb07df4691c4ce0113f906a"
     },
     "5": {
@@ -161,37 +158,31 @@
     "7": {
       "registered": "true",
       "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
-      "forced_at": "2026-11-03T23:34:31Z",
       "previous_wasm_hash": "53fba6e566475382cd517927207e35d8ed918bff0c0828642f637ca68436d67e"
     },
     "8": {
       "registered": "true",
       "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
-      "forced_at": "2026-11-03T23:35:06Z",
       "previous_wasm_hash": "b2b51c7abd817a2ea6195a6191bf98382ba1387200c251ad8135cd4b069442f6"
     },
     "9": {
       "registered": "true",
       "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
-      "forced_at": "2026-11-03T23:35:38Z",
       "previous_wasm_hash": "d3610c24bc4d1e2728b1f215ff3ed94bada526a72a749318a9b07b8bd0be47e6"
     },
     "10": {
       "registered": "true",
       "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
-      "forced_at": "2026-11-04T13:07:07Z",
       "previous_wasm_hash": "6ae5506f52c215b75148cd06d99c8164f904eb14b0aed4da8a5a4a950f145463"
     },
     "11": {
       "registered": "true",
       "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
-      "forced_at": "2026-11-04T13:29:47Z",
       "previous_wasm_hash": "01857e09df97efa32cc5097c6a6093c180d2c7ef5a4306f79a6116fb6eb75355"
     },
     "12": {
       "registered": "true",
       "core": "CDWHNWW6AYHVB3V2FL5Q35FLWASQI33LRYKKUPM4YHERWVKELHAIDH5X",
-      "forced_at": "2026-11-03T23:36:33Z",
       "previous_wasm_hash": "bfe24a2025e2edf0518c35af5ddba992b644c8705f6efa74a685e2c78884338c"
     }
   }

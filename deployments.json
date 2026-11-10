@@ -5,7 +5,7 @@
     "recipe": "./contracts/build.sh (stellar contract build)",
     "stellar_cli": "stellar 28.0.0 (300aaf69ab100536678bdb641428b06f06b318ea)",
     "soroban_sdk": "28.0.0",
-    "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "rustc": "rustc 1.98.1 (48a229cea)",
     "target": "wasm32v1-none",
     "upload": "--optimize=false, so the ledger hash is the sha256 of the file"
   },
@@ -130,7 +130,6 @@
     "2": {
       "registered": "true",
       "core": "CDUVH22ULSPXJQVEOF7XDIAI57YDZJJ2DVWQ5V5VT4TSLCV6X7CR466A",
-      "forced_at": "2026-11-03T22:35:07Z",
       "previous_wasm_hash": "d835688df93e2db73edf6c30f6be268a2a44cf3c25df66726af832343c583da1"
     },
     "3": {
@@ -140,7 +139,6 @@
     "4": {
       "registered": "true",
       "core": "CDUVH22ULSPXJQVEOF7XDIAI57YDZJJ2DVWQ5V5VT4TSLCV6X7CR466A",
-      "forced_at": "2026-11-03T22:35:40Z",
       "previous_wasm_hash": "c3efe904c946c11ecb76e44e70b48ba94697fb9becb07df4691c4ce0113f906a"
     },
     "5": {
@@ -154,37 +152,31 @@
     "7": {
       "registered": "true",
       "core": "CDUVH22ULSPXJQVEOF7XDIAI57YDZJJ2DVWQ5V5VT4TSLCV6X7CR466A",
-      "forced_at": "2026-11-03T23:31:41Z",
       "previous_wasm_hash": "44313751ba2e26f20c2b64450c82703f775541c3f13830792de8217141515fe0"
     },
     "8": {
       "registered": "true",
       "core": "CDUVH22ULSPXJQVEOF7XDIAI57YDZJJ2DVWQ5V5VT4TSLCV6X7CR466A",
-      "forced_at": "2026-11-03T22:37:17Z",
       "previous_wasm_hash": "b2b51c7abd817a2ea6195a6191bf98382ba1387200c251ad8135cd4b069442f6"
     },
     "9": {
       "registered": "true",
       "core": "CDUVH22ULSPXJQVEOF7XDIAI57YDZJJ2DVWQ5V5VT4TSLCV6X7CR466A",
-      "forced_at": "2026-11-03T23:32:16Z",
       "previous_wasm_hash": "d3610c24bc4d1e2728b1f215ff3ed94bada526a72a749318a9b07b8bd0be47e6"
     },
     "10": {
       "registered": "true",
       "core": "CDUVH22ULSPXJQVEOF7XDIAI57YDZJJ2DVWQ5V5VT4TSLCV6X7CR466A",
-      "forced_at": "2026-11-04T13:04:42Z",
       "previous_wasm_hash": "6ae5506f52c215b75148cd06d99c8164f904eb14b0aed4da8a5a4a950f145463"
     },
     "11": {
       "registered": "true",
       "core": "CDUVH22ULSPXJQVEOF7XDIAI57YDZJJ2DVWQ5V5VT4TSLCV6X7CR466A",
-      "forced_at": "2026-11-04T13:29:08Z",
       "previous_wasm_hash": "01857e09df97efa32cc5097c6a6093c180d2c7ef5a4306f79a6116fb6eb75355"
     },
     "12": {
       "registered": "true",
       "core": "CDUVH22ULSPXJQVEOF7XDIAI57YDZJJ2DVWQ5V5VT4TSLCV6X7CR466A",
-      "forced_at": "2026-11-03T22:38:11Z",
       "previous_wasm_hash": "bfe24a2025e2edf0518c35af5ddba992b644c8705f6efa74a685e2c78884338c"
     }
   }

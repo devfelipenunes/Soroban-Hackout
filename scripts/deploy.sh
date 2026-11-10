@@ -384,7 +384,6 @@ while IFS=$'\t' read -r id slug label aux prerequisites; do
 
         store ".levels.\"$id\".registered" 'true'
         store ".levels.\"$id\".core"       "$CORE"
-        store ".levels.\"$id\".forced_at"  "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
         store ".levels.\"$id\".previous_wasm_hash" "$OLD_INSTANCE_HASH"
     fi
     apply_prerequisites "$id" "$prerequisites"
@@ -432,7 +431,7 @@ if ! jq -n \
   --arg admin "$ADMIN" \
   --arg cli "$(stellar --version 2>&1 | head -1)" \
   --arg sdk "$(grep -A1 '^name = "soroban-sdk"' contracts/Cargo.lock | grep '^version' | head -1 | cut -d'"' -f2)" \
-  --arg rustc "$(cd contracts && rustc --version 2>/dev/null || echo '?')" \
+  --arg rustc "$(cd contracts && rustc --version 2>/dev/null | sed -E 's/ [0-9]{4}-[0-9]{2}-[0-9]{2}//' || echo '?')" \
   --slurpfile current "$RECORD" \
   '{
      network: $network,
