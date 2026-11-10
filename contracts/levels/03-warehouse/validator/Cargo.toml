@@ -1,0 +1,17 @@
+[package]
+name = "breaker-level-03-validator"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Validador do nível 3 — ⚠️ esqueleto: hoje recusa sempre."
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+soroban-sdk.workspace = true
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }

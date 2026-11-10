@@ -1,0 +1,17 @@
+[package]
+name = "breaker-level-03-warehouse"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Nível 3 — Armazém 17."
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+soroban-sdk.workspace = true
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
