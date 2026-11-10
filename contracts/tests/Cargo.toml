@@ -1,0 +1,17 @@
+[package]
+name = "breaker-tests"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Os testes da regra 4 — contra o WASM, não contra o fonte."
+
+[lib]
+crate-type = ["rlib"]
+
+[dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+
+[dev-dependencies]
+breaker-level-04-forgotten = { path = "../levels/04-forgotten/instance" }

@@ -1,0 +1,15 @@
+[package]
+name = "breaker-fixture-overflow"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Fixture da regra 4 — o mesmo fonte que se comporta diferente conforme overflow-checks."
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+soroban-sdk.workspace = true
