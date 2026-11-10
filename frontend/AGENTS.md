@@ -1,16 +1,16 @@
 # Frontend
 
-> **Estado:** instruções locais de desenvolvimento e validação.
+> **State:** local development and validation instructions.
 
-- Leia `package.json` para comandos e dependências; `src/App.tsx` para rotas.
-- Use a versão de Node em `.node-version`. Instalação reproduzível: `npm ci`.
-- Desenvolvimento: `npm run dev`. Verificação: `npm test` e `npm run build`, neste diretório.
-- TypeScript estrito, sem `any`; preserve os tipos existentes e o conteúdo PT-BR/EN/espanhol neutro latino-americano.
-- `src/contracts/` contém bindings gerados. Corrija a origem e regenere pelo fluxo de deploy autorizado, em vez de editar o resultado manualmente.
-- `src/levels/manifest.test.ts` verifica consistência entre catálogo, contratos e conteúdo.
-- `src/styles/base.css` mantém a ordem dos imports de estilo. Edite o arquivo temático correspondente, não o agregador.
-- `LevelHero.tsx` renderiza os slides e controla carregamento, navegação e gestos do carrossel.
-- `BreakerDevice.tsx` mantém o shell, o estado e os apps do dispositivo.
-- `src/levels/story/` e `src/levels/book/` são conteúdo ativo do jogo; não confunda com pastas de referência na raiz.
-- Login mockado não é autenticação. `localStorage` não prova conclusão de caso.
-- Para alterações de interface, confira estados de carregamento, erro e ausência de carteira, teclado, mobile e movimento reduzido. Só declare conferência visual se tiver aberto o app.
+- Read `package.json` for commands and dependencies; `src/App.tsx` for routes.
+- Use the Node version in `.node-version`. Reproducible install: `npm ci`.
+- Development: `npm run dev`. Verification: `npm test` and `npm run build`, in this directory.
+- Strict TypeScript, no `any`; preserve existing types and the PT-BR/EN/neutral Latin American Spanish content.
+- `src/contracts/` contains generated bindings. Fix the source and regenerate through the authorized deploy flow; do not edit the result by hand.
+- `src/levels/manifest.test.ts` verifies consistency between catalog, contracts and content.
+- `src/styles/base.css` keeps the style import order. Edit the matching theme file, not the aggregator.
+- `LevelHero.tsx` renders the slides and controls loading, navigation and carousel gestures.
+- `BreakerDevice.tsx` keeps the device shell, state and apps.
+- `src/levels/story/` and `src/levels/book/` are active game content; do not confuse them with reference folders in the root.
+- A mocked login is not authentication. `localStorage` does not prove case completion.
+- For UI changes, check loading, error and no-wallet states, keyboard, mobile and reduced motion. Only claim a visual check if you opened the app.

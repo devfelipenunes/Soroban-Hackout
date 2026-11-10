@@ -35,7 +35,7 @@ build_variant() {
             --quiet
 
     local artifact="${target_dir}/${TARGET}/release/breaker_fixture_overflow.wasm"
-    [ -f "$artifact" ] || { echo "✗ não encontrei $artifact" >&2; exit 1; }
+    [ -f "$artifact" ] || { echo "✗ could not find $artifact" >&2; exit 1; }
 
     mkdir -p "$DESTINATION"
     cp "$artifact" "$DESTINATION/$output"

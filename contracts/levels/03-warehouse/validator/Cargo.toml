@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Validador do nível 3 — ⚠️ esqueleto: hoje recusa sempre."
+description = "Validator for level 3."
 
 [lib]
 crate-type = ["cdylib", "rlib"]

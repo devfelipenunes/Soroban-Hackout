@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Decoder stateless do Rewrite."
+description = "Stateless decoder for Rewrite."
 
 [lib]
 crate-type = ["cdylib", "rlib"]

@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Nível 9 — O Oráculo."
+description = "Level 9 — The Oracle."
 
 [lib]
 crate-type = ["cdylib", "rlib"]

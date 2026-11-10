@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Nível 6 — O investigador desaparecido."
+description = "Level 6 — The Missing Investigator."
 
 [lib]
 crate-type = ["cdylib", "rlib"]

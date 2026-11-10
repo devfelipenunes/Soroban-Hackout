@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Nível 7 — A conta impossível."
+description = "Level 7 — The Impossible Account."
 
 [lib]
 crate-type = ["cdylib", "rlib"]

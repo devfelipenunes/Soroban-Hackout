@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Nível 3 — Armazém 17."
+description = "Level 3 — Warehouse 17."
 
 [lib]
 crate-type = ["cdylib", "rlib"]

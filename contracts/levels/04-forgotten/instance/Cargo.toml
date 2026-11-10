@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Nível 4 — O andar esquecido."
+description = "Level 4 — The Forgotten Floor."
 
 [lib]
 crate-type = ["cdylib", "rlib"]

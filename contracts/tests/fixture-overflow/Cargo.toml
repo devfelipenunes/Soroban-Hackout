@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Fixture da regra 4 — o mesmo fonte que se comporta diferente conforme overflow-checks."
+description = "Rule 4 fixture — the same source that behaves differently depending on overflow-checks."
 publish = false
 
 [lib]

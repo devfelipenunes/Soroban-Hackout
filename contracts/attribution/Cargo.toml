@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Fixture de QA auditável para a atribuição histórica de Voss."
+description = "Auditable QA fixture for Voss's historical attribution."
 
 [lib]
 crate-type = ["cdylib", "rlib"]

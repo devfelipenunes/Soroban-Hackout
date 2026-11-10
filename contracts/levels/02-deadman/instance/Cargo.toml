@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Nível 2 — A carteira do morto."
+description = "Level 2 — The Dead Man's Wallet."
 
 [lib]
 crate-type = ["cdylib", "rlib"]

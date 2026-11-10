@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Nível 5 — O Custódio."
+description = "Level 5 — The Custodian."
 
 [lib]
 crate-type = ["cdylib", "rlib"]

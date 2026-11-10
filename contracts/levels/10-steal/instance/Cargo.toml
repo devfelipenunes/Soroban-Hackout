@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Nível 10 — Roube a chave."
+description = "Level 10 — Steal the Key."
 
 [lib]
 crate-type = ["cdylib", "rlib"]

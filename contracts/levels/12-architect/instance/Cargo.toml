@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Nível 12 — O Arquiteto."
+description = "Level 12 — The Architect."
 
 [lib]
 crate-type = ["cdylib", "rlib"]

@@ -5,7 +5,7 @@ edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Nível 11 — Rewrite."
+description = "Level 11 — Rewrite."
 
 [lib]
 crate-type = ["cdylib", "rlib"]

@@ -161,21 +161,21 @@ describe("carteira testnet do dispositivo", () => {
     signAuthEntry: vi.fn(async () => "unused"),
   });
 
-  it("preserva stroops sem arredondamento, inclusive com vírgula decimal", () => {
+  it("preserves stroops without rounding, including a decimal comma", () => {
     expect(amountToStroops("0.0000001")).toBe(1n);
     expect(amountToStroops("1,2500000")).toBe(12_500_000n);
     expect(stroopsToAmount(12_500_001n)).toBe("1.2500001");
     expect(stroopsToAmount(0n)).toBe("0");
     for (const value of ["1e3", "-1", "+1", "1.00000001", "NaN", "Infinity", "1,2,3", "922337203686"]) expect(() => amountToStroops(value)).toThrow();
   });
-  it("desconta reserva, patrocínio e selling liabilities do saldo disponível", () => {
+  it("deducts reserve, sponsorship and selling liabilities from the available balance", () => {
     const account = walletAccount(source.publicKey(), [nativeBalance("10.0000000", "1.0000000"), creditBalance()]);
     const sponsored = { ...account, accountId: () => source.publicKey(), sequenceNumber: () => "1", incrementSequenceNumber: () => {}, subentry_count: 2, num_sponsoring: 1, num_sponsored: 1 };
     const portfolio = portfolioFromAccount(sponsored, 5_000_000n);
     expect(portfolio.reserve).toBe("2");
     expect(portfolio.assets.map((asset) => asset.available)).toEqual(["7", "18"]);
   });
-  it("prepara um pagamento testnet exato com destinatário, memo e taxa revisáveis", async () => {
+  it("prepares an exact testnet payment with a reviewable destination, memo and fee", async () => {
     const network = gateway();
     const prepared = await prepareTokenTransfer({ ...input(), memo: { type: "id", value: "42" } }, network);
     const transaction = TransactionBuilder.fromXDR(prepared.xdr, PASSPHRASE);
@@ -188,7 +188,7 @@ describe("carteira testnet do dispositivo", () => {
     expect(network.checkMemo).toHaveBeenCalledOnce();
     expect(network.submit).not.toHaveBeenCalled();
   });
-  it("recusa zero, endereço inválido, autotransferência e memo multibyte longo antes de consultar a rede", async () => {
+  it("rejects zero, an invalid address, a self-transfer and an overlong multibyte memo before querying the network", async () => {
     const network = gateway();
     await expect(prepareTokenTransfer({ ...input(), amount: "0" }, network)).rejects.toMatchObject({ code: "amount" });
     await expect(prepareTokenTransfer({ ...input(), destination: "not-an-address" }, network)).rejects.toMatchObject({ code: "address" });
@@ -196,13 +196,13 @@ describe("carteira testnet do dispositivo", () => {
     await expect(prepareTokenTransfer({ ...input(), memo: { type: "text", value: "á".repeat(15) } }, network)).rejects.toMatchObject({ code: "memo" });
     expect(network.account).not.toHaveBeenCalled();
   });
-  it("não permite gastar a reserva mínima nem a taxa", async () => {
+  it("does not allow spending the minimum reserve or the fee", async () => {
     const network = gateway();
     await expect(prepareTokenTransfer({ ...input(), amount: "9" }, network)).rejects.toMatchObject({ code: "reserve" });
     await expect(prepareTokenTransfer({ ...input(), amount: "8.99999" }, network)).resolves.toMatchObject({ amount: "8.99999" });
     expect(network.submit).not.toHaveBeenCalled();
   });
-  it("exige trustline autorizada no destino e preserva o limite de recebimento", async () => {
+  it("requires an authorized trustline at the destination and preserves the receiving limit", async () => {
     const network = gateway();
     network.account = vi.fn(async (address) => walletAccount(address, address === source.publicKey() ? [nativeBalance(), creditBalance()] : [nativeBalance()]));
     await expect(prepareTokenTransfer({ ...input(), assetId: `USD:${issuer.publicKey()}` }, network)).rejects.toMatchObject({ code: "trustline" });
@@ -210,7 +210,7 @@ describe("carteira testnet do dispositivo", () => {
     await expect(prepareTokenTransfer({ ...input(), assetId: `USD:${issuer.publicKey()}` }, network)).rejects.toMatchObject({ code: "trustlineLimit" });
     expect(network.submit).not.toHaveBeenCalled();
   });
-  it("assina e submete somente o envelope que foi revisado", async () => {
+  it("signs and submits only the envelope that was reviewed", async () => {
     const network = gateway(); const wallet = signer();
     const prepared = await prepareTokenTransfer(input(), network);
     await expect(signAndSubmitTokenTransfer(prepared, wallet, () => true, network)).resolves.toBe(prepared.hash);
@@ -219,21 +219,21 @@ describe("carteira testnet do dispositivo", () => {
     const transaction = vi.mocked(network.submit).mock.calls[0]?.[0];
     expect(transaction?.signatures).toHaveLength(1);
   });
-  it("não envia se a carteira mudar durante a assinatura", async () => {
+  it("does not send if the wallet changes during signing", async () => {
     const network = gateway(); const wallet = signer(); const prepared = await prepareTokenTransfer(input(), network);
     let current = true; const sign = wallet.signTransaction;
     wallet.signTransaction = vi.fn(async (xdr) => { const signed = await sign(xdr); current = false; return signed; });
     await expect(signAndSubmitTokenTransfer(prepared, wallet, () => current, network)).rejects.toMatchObject({ code: "accountChanged" });
     expect(network.submit).not.toHaveBeenCalled();
   });
-  it("recusa um envelope alterado pela integração de assinatura", async () => {
+  it("rejects an envelope changed by the signing integration", async () => {
     const network = gateway(); const prepared = await prepareTokenTransfer(input(), network);
     const changed = new TransactionBuilder(new Account(source.publicKey(), "1"), { fee: "100", networkPassphrase: PASSPHRASE }).addOperation(Operation.payment({ destination: destination.publicKey(), asset: Asset.native(), amount: "2" })).setTimeout(180).build();
     const wallet = { signTransaction: vi.fn(async () => changed.toXDR()), signAuthEntry: vi.fn(async () => "unused") };
     await expect(signAndSubmitTokenTransfer(prepared, wallet, () => true, network)).rejects.toMatchObject({ code: "changedTransaction" });
     expect(network.submit).not.toHaveBeenCalled();
   });
-  it("preserva o hash quando o envio fica sem confirmação e não tenta novamente sozinho", async () => {
+  it("preserves the hash when a submission is unconfirmed and does not retry on its own", async () => {
     const network = gateway(); const prepared = await prepareTokenTransfer(input(), network);
     network.submit = vi.fn(async () => { throw new Error("network timeout"); });
     const failure = await signAndSubmitTokenTransfer(prepared, signer(), () => true, network).catch((error: unknown) => error);
