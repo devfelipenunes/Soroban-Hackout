@@ -1,0 +1,240 @@
+{
+  "levels": [
+    {
+      "id": 0,
+      "prerequisites": [],
+      "slug": "counter",
+      "difficulty": 0,
+      "author": "zolvency",
+      "revealCode": false,
+      "name": {
+        "pt-BR": "Prólogo — O roubo impossível",
+        "en": "Prologue — The Impossible Theft",
+        "es": "Prólogo — El robo imposible"
+      },
+      "summary": {
+        "pt-BR": "Um dos Vaults mais seguros de Meridian é esvaziado. Nenhuma chave roubada. Apenas uma transação impossível.",
+        "en": "One of Meridian's safest Vaults is emptied. No key stolen. Only an impossible transaction.",
+        "es": "Uno de los Vaults más seguros de Meridian queda vacío. Ninguna llave robada. Solo una transacción imposible."
+      }
+    },
+    {
+      "id": 1,
+      "prerequisites": [0],
+      "slug": "noentry",
+      "difficulty": 1,
+      "author": "zolvency",
+      "revealCode": true,
+      "name": {
+        "pt-BR": "Sem arrombamento",
+        "en": "No Forced Entry",
+        "es": "Sin entrada forzada"
+      },
+      "summary": {
+        "pt-BR": "O Vault parece impenetrável. Nenhuma chave foi roubada. A porta continua intacta.",
+        "en": "The Vault looks impenetrable. No key was stolen. The door is still intact.",
+        "es": "El Vault parece impenetrable. No se robó ninguna llave. La puerta sigue intacta."
+      }
+    },
+    {
+      "id": 2,
+      "prerequisites": [1],
+      "slug": "deadman",
+      "difficulty": 1,
+      "author": "zolvency",
+      "revealCode": true,
+      "name": {
+        "pt-BR": "A carteira do morto",
+        "en": "The Dead Man's Wallet",
+        "es": "La cartera del muerto"
+      },
+      "summary": {
+        "pt-BR": "Uma identidade morta continua ativa. Ninguém sabe por quê.",
+        "en": "A dead identity is still active. No one knows why.",
+        "es": "Una identidad muerta sigue activa. Nadie sabe por qué."
+      }
+    },
+    {
+      "id": 3,
+      "prerequisites": [2],
+      "slug": "warehouse",
+      "difficulty": 2,
+      "author": "zolvency",
+      "revealCode": true,
+      "name": {
+        "pt-BR": "Armazém 17",
+        "en": "Warehouse 17",
+        "es": "Almacén 17"
+      },
+      "summary": {
+        "pt-BR": "Um depósito que não deveria existir. Milhares de objetos. Todos “legítimos”.",
+        "en": "A depot that should not exist. Thousands of objects. All “legitimate”.",
+        "es": "Un depósito que no debería existir. Miles de objetos. Todos «legítimos»."
+      }
+    },
+    {
+      "id": 4,
+      "prerequisites": [3],
+      "slug": "forgotten",
+      "difficulty": 2,
+      "author": "zolvency",
+      "revealCode": true,
+      "name": {
+        "pt-BR": "O andar esquecido",
+        "en": "The Forgotten Floor",
+        "es": "El piso olvidado"
+      },
+      "summary": {
+        "pt-BR": "Um andar que não aparece em mapa. A cidade esqueceu; os contratos ainda lembram.",
+        "en": "A floor on no map. The city forgot; the contracts still remember.",
+        "es": "Un piso que no aparece en ningún mapa. La ciudad lo olvidó; los contratos aún lo recuerdan."
+      }
+    },
+    {
+      "id": 5,
+      "prerequisites": [4],
+      "slug": "custodian",
+      "difficulty": 3,
+      "author": "zolvency",
+      "revealCode": true,
+      "name": {
+        "pt-BR": "O Custódio",
+        "en": "The Custodian",
+        "es": "El Custodio"
+      },
+      "summary": {
+        "pt-BR": "Um sistema antigo que ainda protege a First Layer. Ele verifica se você pertence a ela.",
+        "en": "An old system still guarding the First Layer. It checks whether you belong.",
+        "es": "Un sistema antiguo que aún protege la Primera Capa. Comprueba si perteneces a ella."
+      }
+    },
+    {
+      "id": 6,
+      "prerequisites": [5],
+      "slug": "investigator",
+      "difficulty": 3,
+      "author": "zolvency",
+      "revealCode": true,
+      "aux": "decoder",
+      "name": {
+        "pt-BR": "O investigador desaparecido",
+        "en": "The Missing Investigator",
+        "es": "El investigador desaparecido"
+      },
+      "summary": {
+        "pt-BR": "Aren Voss passou por aqui antes de você. O terminal guarda pistas, gravações e uma verdade incômoda.",
+        "en": "Aren Voss came through here before you. The terminal holds clues, recordings, and an uncomfortable truth.",
+        "es": "Aren Voss pasó por aquí antes que tú. El terminal guarda pistas, grabaciones y una verdad incómoda."
+      }
+    },
+    {
+      "id": 7,
+      "prerequisites": [6],
+      "slug": "impossible",
+      "difficulty": 3,
+      "author": "zolvency",
+      "revealCode": true,
+      "name": {
+        "pt-BR": "A conta impossível",
+        "en": "The Impossible Account",
+        "es": "La cuenta imposible"
+      },
+      "summary": {
+        "pt-BR": "Uma conta energética apresenta um saldo impossível. Seus registros podem revelar uma conexão esquecida.",
+        "en": "An energy account shows an impossible balance. Its records may reveal a forgotten connection.",
+        "es": "Una cuenta energética muestra un saldo imposible. Sus registros pueden revelar una conexión olvidada."
+      }
+    },
+    {
+      "id": 8,
+      "prerequisites": [7],
+      "slug": "sector",
+      "difficulty": 3,
+      "author": "zolvency",
+      "revealCode": true,
+      "name": {
+        "pt-BR": "Setor 13",
+        "en": "Sector 13",
+        "es": "Sector 13"
+      },
+      "summary": {
+        "pt-BR": "Um cemitério de dados que continua recebendo registros. A infraestrutura está próxima do limite.",
+        "en": "A data graveyard still receiving records. The infrastructure is approaching its limit.",
+        "es": "Un cementerio de datos que sigue recibiendo registros. La infraestructura se acerca a su límite."
+      }
+    },
+    {
+      "id": 9,
+      "prerequisites": [8],
+      "slug": "oracle",
+      "difficulty": 4,
+      "author": "zolvency",
+      "revealCode": true,
+      "name": {
+        "pt-BR": "O Oráculo",
+        "en": "The Oracle",
+        "es": "El Oráculo"
+      },
+      "summary": {
+        "pt-BR": "Um sistema que prevê o futuro. Ele nunca erra — ou nunca admite que erra.",
+        "en": "A system that predicts the future. It is never wrong — or never admits it is.",
+        "es": "Un sistema que predice el futuro. Nunca se equivoca, o nunca admite que se equivoca."
+      }
+    },
+    {
+      "id": 10,
+      "prerequisites": [9],
+      "slug": "steal",
+      "difficulty": 4,
+      "author": "zolvency",
+      "revealCode": true,
+      "name": {
+        "pt-BR": "Roube a chave",
+        "en": "Steal the Key",
+        "es": "Roba la llave"
+      },
+      "summary": {
+        "pt-BR": "Uma autorização legítima. Algo nela não significa o que deveria.",
+        "en": "A legitimate authorization. Something in it doesn't mean what it should.",
+        "es": "Una autorización legítima. Algo en ella no significa lo que debería."
+      }
+    },
+    {
+      "id": 11,
+      "prerequisites": [10],
+      "slug": "rewrite",
+      "difficulty": 5,
+      "aux": "decoder",
+      "author": "zolvency",
+      "revealCode": true,
+      "name": {
+        "pt-BR": "Rewrite",
+        "en": "Rewrite",
+        "es": "Reescritura"
+      },
+      "summary": {
+        "pt-BR": "Um manifesto assinado por Voss sobrevive ao autor. O rodapé é familiar; o contexto, não.",
+        "en": "A manifest signed by Voss outlives its author. The footer is familiar; the context is not.",
+        "es": "Un manifiesto firmado por Voss sobrevive a su autor. El pie es familiar; el contexto no."
+      }
+    },
+    {
+      "id": 12,
+      "prerequisites": [11],
+      "slug": "architect",
+      "difficulty": 5,
+      "author": "zolvency",
+      "revealCode": true,
+      "name": {
+        "pt-BR": "O Arquiteto",
+        "en": "The Architect",
+        "es": "El Arquitecto"
+      },
+      "summary": {
+        "pt-BR": "A fila ainda espera. A intenção aprovada e o payload executado já não são a mesma coisa.",
+        "en": "The queue is still waiting. The approved intent and the executed payload are no longer the same.",
+        "es": "La cola sigue esperando. La intención aprobada y el payload ejecutado ya no son lo mismo."
+      }
+    }
+  ]
+}
