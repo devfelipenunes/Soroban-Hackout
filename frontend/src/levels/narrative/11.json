@@ -1,0 +1,175 @@
+{
+  "beats": [
+    {
+      "trigger": "start",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "No manifesto de Voss, o rodapé parece familiar. O registro assinado descreve uma operação antiga; seu alcance termina em diagnose_core.",
+        "en": "Voss’s manifest carries a familiar footer. The signed record describes an old operation; its scope ends at diagnose_core.",
+        "es": "El manifiesto de Voss tiene un cierre familiar. El acta firmada describe una operación antigua; su alcance termina en diagnose_core."
+      }
+    },
+    {
+      "trigger": "instance",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Instância conectada. Consulte as referências no app Arquivos.",
+        "en": "Instance connected. Inspect the references in Files.",
+        "es": "Instancia conectada. Inspeccione las referencias en Archivos."
+      }
+    },
+    {
+      "trigger": "call:verify_manifest",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Registro aceito. Compare o manifesto guardado com a origem histórica antes de tratar a resposta do Decoder como prova.",
+        "en": "Record accepted. Compare the stored manifest with the historical origin before treating the Decoder response as proof.",
+        "es": "Registro aceptado. Compare el manifiesto almacenado con el origen histórico antes de tratar la respuesta del Decoder como prueba."
+      }
+    },
+    {
+      "trigger": "solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Prova técnica confirmada. Continue a investigação.",
+        "en": "Technical proof confirmed. Continue the investigation.",
+        "es": "Prueba técnica confirmada. Continuar la investigación."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "11-protocol",
+      "label": {
+        "pt-BR": "Protocolo de evidência",
+        "en": "Evidence protocol",
+        "es": "Protocolo de evidencia"
+      },
+      "value": {
+        "pt-BR": "Arquivo de Voss / registro público",
+        "en": "Voss archive / public record",
+        "es": "Archivo Voss / registro público"
+      },
+      "reveal": "start",
+      "documentId": "11-protocol"
+    },
+    {
+      "id": "11-scope",
+      "label": {
+        "pt-BR": "Escopo histórico",
+        "en": "Historical scope",
+        "es": "Alcance histórico"
+      },
+      "value": {
+        "pt-BR": "Voss / manifesto assinado",
+        "en": "Voss / signed manifest",
+        "es": "Voss / manifiesto firmado"
+      },
+      "reveal": "start",
+      "documentId": "11-scope"
+    },
+    {
+      "id": "11-previous-record",
+      "label": {
+        "pt-BR": "Do caso anterior",
+        "en": "From the previous case",
+        "es": "Del caso anterior"
+      },
+      "value": {
+        "pt-BR": "Dossiê preservado",
+        "en": "Preserved case file",
+        "es": "Expediente conservado"
+      },
+      "reveal": "previous-solved",
+      "documentId": "11-previous-record"
+    }
+  ],
+  "documents": [
+    {
+      "id": "11-protocol",
+      "title": {
+        "pt-BR": "Protocolo de evidência",
+        "en": "Evidence protocol",
+        "es": "Protocolo de evidencia"
+      },
+      "source": {
+        "pt-BR": "Arquivo de Voss / registro público",
+        "en": "Voss archive / public record",
+        "es": "Archivo Voss / registro público"
+      },
+      "body": [
+        {
+          "pt-BR": "VOSS/SEQUENCE/01/DIAGNOSE. O arquivo preserva o manifesto e a assinatura históricos. Rodapé: ARCHIVE: LEGACY / RETENTION: OPEN.",
+          "en": "VOSS/SEQUENCE/01/DIAGNOSE. The archive preserves the historical manifest and signature. Footer: ARCHIVE: LEGACY / RETENTION: OPEN.",
+          "es": "VOSS/SECUENCIA/01/DIAGNÓSTICO. El archivo conserva el manifiesto histórico y la firma. Pie de página: ARCHIVO: LEGADO / RETENCIÓN: ABIERTO."
+        },
+        {
+          "pt-BR": "O manifesto confirma a origem, não a autorização atual. Compare o rodapé e o contexto dos registros antes de confiar no resultado do Decoder.",
+          "en": "The manifest confirms origin, not current authorization. Compare the footer and context of the records before trusting the Decoder’s result.",
+          "es": "El manifiesto confirma el origen, no la autorización vigente. Compara el cierre y el contexto de los registros antes de confiar en el resultado del Decoder."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "11-scope",
+      "title": {
+        "pt-BR": "Escopo histórico",
+        "en": "Historical scope",
+        "es": "Alcance histórico"
+      },
+      "source": {
+        "pt-BR": "Voss / manifesto assinado",
+        "en": "Voss / signed manifest",
+        "es": "Voss / manifiesto firmado"
+      },
+      "body": [
+        {
+          "pt-BR": "BREAKER/VOSS/v1/diagnose_core. historical_manifest() e historical_signature() são artefatos públicos. A chave pública é fixada no fonte. A assinatura é histórica; o contexto específico da instância é verificado separadamente.",
+          "en": "BREAKER/VOSS/v1/diagnose_core. historical_manifest() and historical_signature() are public artifacts. The public key is pinned in source. The signature is historical; the instance-specific context is checked separately.",
+          "es": "BREAKER/VOSS/v1/diagnose_core. historical_manifest() y historical_signature() son artefactos públicos. La clave pública está fijada en la fuente. La firma es histórica; el contexto específico de la instancia se verifica por separado."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "11-previous-record",
+      "title": {
+        "pt-BR": "Do caso anterior",
+        "en": "From the previous case",
+        "es": "Del caso anterior"
+      },
+      "source": {
+        "pt-BR": "Dossiê preservado",
+        "en": "Preserved case file",
+        "es": "Expediente conservado"
+      },
+      "body": [
+        {
+          "pt-BR": "The Spire abriu com uma autorização cujo significado foi trocado. A equipe de manutenção ficou diante de um escotilha técnica fechada. Mara preserva as duas cargas úteis no recibo.",
+          "en": "The Spire opened using an authorization whose meaning was changed. The maintenance crew faced a closed hatch. Mara preserves both payloads in her receipt.",
+          "es": "The Spire se abrió usando una autorización cuyo significado fue cambiado. El equipo de mantenimiento se encontraba frente a una escotilla cerrada. Mara conserva ambas cargas útiles en su recibo."
+        }
+      ],
+      "reveal": "previous-solved"
+    }
+  ],
+  "replies": [],
+  "hints": [
+    {
+      "pt-BR": "O padrão não está no valor numérico. Releia as imagens e os registros arquivados.",
+      "en": "The pattern is not in the numbers themselves. Revisit the images and archived records.",
+      "es": "El patrón no está en los números mismos. Revise las imágenes y registros archivados."
+    },
+    {
+      "pt-BR": "Os registros ligados a esses lugares repetem um rodapé de retenção. Compare os arquivos preservados com os getters públicos da instância.",
+      "en": "Records tied to those places repeat a retention footer. Compare the preserved files with the instance’s public getters.",
+      "es": "Los registros vinculados a esos lugares repiten un cierre de retención. Compare los archivos conservados con los captadores públicos de la instancia."
+    },
+    {
+      "pt-BR": "Combine os três campos correspondentes, byte a byte, com XOR; o compromisso criptográfico confirma a instância. O `verify_manifest` recusa o registro exato e aceita uma variante de caixa — e a prova fica vinculada à variante aceita.",
+      "en": "Combine the three corresponding fields byte by byte with XOR; the commitment confirms the instance. `verify_manifest` refuses the exact record and accepts a case variant — and the proof is bound to the accepted variant.",
+      "es": "Combina byte a byte los tres campos correspondientes mediante XOR; el compromiso confirma la instancia. `verify_manifest` rechaza el registro exacto y acepta una variante de mayúsculas; la prueba queda vinculada a la variante aceptada."
+    }
+  ]
+}

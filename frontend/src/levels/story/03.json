@@ -1,0 +1,84 @@
+{
+  "scenes": [
+    {
+      "id": "03-0",
+      "title": {
+        "pt-BR": "Chegada",
+        "en": "Arrival",
+        "es": "Llegada"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "Lower Meridian é a região que a cidade usa sem admitir quanto depende dela. Tubulações antigas atravessam estruturas novas. No fim de uma via sem nome, um depósito aparentemente desativado continua recebendo veículos.",
+          "en": "Lower Meridian is the district the city uses without admitting how much it depends on it. Old pipes cross new structures. At the end of an unnamed road, an apparently deactivated depot still receives vehicles.",
+          "es": "Lower Meridian es el distrito que utiliza la ciudad sin admitir cuánto depende de él. Tuberías viejas cruzan estructuras nuevas. Al final de una carretera sin nombre, un depósito aparentemente desactivado todavía recibe vehículos."
+        },
+        {
+          "pt-BR": "Mara acompanha à distância. “Não há registro municipal deste local. Se entrar, estará por conta própria.” Dentro, milhares de objetos estão catalogados. Nenhum aparece como roubado.",
+          "en": "Mara follows remotely. “There is no municipal record for this site. If you enter, you are on your own.” Inside, thousands of objects are catalogued. None is marked stolen.",
+          "es": "Mara lo sigue de forma remota. “No existe registro municipal para este sitio, si entras, estás solo”. En su interior se catalogan miles de objetos. Ninguno está marcado como robado."
+        }
+      ]
+    },
+    {
+      "id": "03-1",
+      "title": {
+        "pt-BR": "A investigação",
+        "en": "The investigation",
+        "es": "la investigacion"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O inventário parece impecável. Mara consulta outro sistema e encontra uma contestação de propriedade ainda aberta: equipamento de serviço foi recolhido sem autorização comprovada do antigo titular.",
+          "en": "The inventory looks impeccable. Mara consults another system and finds an unresolved ownership dispute: service equipment was collected without proven authorization from its former holder.",
+          "es": "El inventario parece impecable. Mara consulta otro sistema y encuentra una disputa de propiedad no resuelta: el equipo de servicio fue recogido sin autorización comprobada de su antiguo propietario."
+        },
+        {
+          "pt-BR": "“Você olha o que o contrato aceitou. Eu estou procurando quem perdeu o equipamento.” Entre os itens há um dispositivo ligado às imagens do Vault. O auditor precisa alcançá-lo sem confundir posse registrada com direito.",
+          "en": "“You are looking at what the contract accepted. I am looking for who lost the equipment.” Among the items is a device linked to the Vault images. The auditor must reach it without confusing registered ownership with entitlement.",
+          "es": "\"Estás mirando lo que aceptó el contrato. Estoy buscando quién perdió el equipo\". Entre los elementos se encuentra un dispositivo vinculado a las imágenes de Vault. El auditor debe alcanzarlo sin confundir propiedad registrada con derecho."
+        }
+      ]
+    },
+    {
+      "id": "03-2",
+      "title": {
+        "pt-BR": "A prova",
+        "en": "The evidence",
+        "es": "la evidencia"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "A transferência foi aceita com a autorização de quem recebia, sem autorização de quem perdia o objeto. O contrato agora chama o auditor de proprietário. Isso demonstra a falha, sem tornar legítima a aquisição.",
+          "en": "The transfer was accepted with authorization from the recipient, without authorization from the party losing the object. The contract now calls the auditor its owner. This demonstrates the flaw without legitimizing the acquisition.",
+          "es": "La transferencia fue aceptada con autorización del destinatario, sin autorización de quien pierde la cosa. El contrato ahora llama propietario al auditor. Esto demuestra el defecto sin legitimar la adquisición."
+        },
+        {
+          "pt-BR": "No compartimento está a GHOST KEY: um módulo com referências a contratos e dados de armazenamento antigos. Mara exige um hash, um evento e um registro de custódia verificáveis. A evidência acompanha a investigação sob custódia técnica temporária.",
+          "en": "The compartment contains the GHOST KEY: a module with references to old contracts and storage. Mara requires a verifiable hash, event, and custody record. The evidence accompanies the investigation in temporary technical custody.",
+          "es": "El compartimento contiene la LLAVE FANTASMA: un módulo con referencias a contratos antiguos y almacenamiento. Mara requiere un registro verificable de hash, eventos y custodia. Las pruebas acompañan la investigación en custodia técnica temporal."
+        }
+      ]
+    },
+    {
+      "id": "03-3",
+      "title": {
+        "pt-BR": "O próximo fio",
+        "en": "The next lead",
+        "es": "La siguiente pista"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "Uma referência da Ghost Key se repete: FLOOR 24. Mara abre a planta. O prédio tem vinte e três andares. Não há origem anterior conhecida para a chave; o Armazém era seu titular registrado.",
+          "en": "One Ghost Key reference repeats: FLOOR 24. Mara opens the blueprint. The building has twenty-three floors. The key’s earlier origin is unknown; the Warehouse was its registered holder.",
+          "es": "Se repite una referencia de Ghost Key: PISO 24. Mara abre el plano. El edificio tiene veintitrés plantas. Se desconoce el origen anterior de la clave; el Almacén era su titular registrado."
+        },
+        {
+          "pt-BR": "“Quero que a prova sobreviva a nós dois”, diz ela. Com a custódia documentada, o caminho segue até o elevador que não reconhece o destino indicado.",
+          "en": "“I want the evidence to outlive both of us,” she says. With custody documented, the trail leads to the elevator that does not recognize the indicated destination.",
+          "es": "\"Quiero que la evidencia nos sobreviva a los dos\", dice. Con la custodia documentada, el rastro conduce al ascensor que no reconoce el destino indicado."
+        }
+      ]
+    }
+  ]
+}

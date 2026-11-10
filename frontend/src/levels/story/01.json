@@ -1,0 +1,84 @@
+{
+  "scenes": [
+    {
+      "id": "01-0",
+      "title": {
+        "pt-BR": "Chegada",
+        "en": "Arrival",
+        "es": "Llegada"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O auditor permanece no local do crime. O vidro não foi quebrado, as travas não foram forçadas e o endereço do proprietário coincide com o cadastro oficial. Nada disso explica a operação aceita naquela madrugada.",
+          "en": "The auditor remains at the crime scene. The glass is unbroken, the locks show no forced entry, and the owner address matches the official record. None of it explains the operation accepted that night.",
+          "es": "El auditor permanece en la escena del crimen. El cristal está intacto, las cerraduras no muestran entrada forzada y la dirección del propietario coincide con el registro oficial. Nada de ello explica la operación aceptada esa noche."
+        },
+        {
+          "pt-BR": "“A segurança física não encontrou nada”, diz Mara. “Se quiser contestar o relatório, comece pelo contrato de acesso.”",
+          "en": "“Physical security found nothing,” Mara says. “If you want to challenge the report, start with the access contract.”",
+          "es": "\"La seguridad física no encontró nada\", dice Mara. \"Si quiere impugnar el informe, comience con el contrato de acceso\"."
+        }
+      ]
+    },
+    {
+      "id": "01-1",
+      "title": {
+        "pt-BR": "A investigação",
+        "en": "The investigation",
+        "es": "la investigacion"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O terminal oferece o código, o proprietário declarado e o identificador da porta. O relatório institucional resume tudo em uma expressão: TRANSACTION ACCEPTED.",
+          "en": "The terminal provides the code, the declared owner, and the door identifier. The institutional report sums everything up in one expression: TRANSACTION ACCEPTED.",
+          "es": "El terminal proporciona el código, el propietario declarado y el identificador de la puerta. El informe institucional lo resume todo en una sola expresión: TRANSACTION ACCEPTED."
+        },
+        {
+          "pt-BR": "O objetivo é entrar sem possuir a chave. Quem quiser reconstruir o caso encontra no celular o relatório original e os eventos de serviço; a resposta precisa vir da investigação do contrato.",
+          "en": "The objective is to enter without the key. Anyone wishing to reconstruct the case can find the original report and service events on the phone; the answer must come from investigating the contract.",
+          "es": "El objetivo es entrar sin la llave. Cualquiera que desee reconstruir el caso puede encontrar el informe original y los eventos del servicio en el teléfono; la respuesta debe venir de la investigación del contrato."
+        }
+      ]
+    },
+    {
+      "id": "01-2",
+      "title": {
+        "pt-BR": "A prova",
+        "en": "The evidence",
+        "es": "la evidencia"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "A porta abriu sem a autorização do proprietário. Nenhuma assinatura foi falsificada. O contrato aceitou a identidade declarada como se isso bastasse para provar quem agia.",
+          "en": "The door opened without the owner’s authorization. No signature was forged. The contract accepted a declared identity as though that proved who was acting.",
+          "es": "La puerta se abrió sin autorización del dueño. No se falsificó ninguna firma. El contrato aceptaba una identidad declarada como si probara quién actuaba."
+        },
+        {
+          "pt-BR": "Mara olha para a abertura. O relatório continua correto sobre a execução. Já não sustenta a conclusão de que aquela execução era legítima.",
+          "en": "Mara looks at the opening. The report is still correct about execution. It no longer supports the conclusion that this execution was legitimate.",
+          "es": "Mara mira la apertura. El informe sigue siendo correcto en cuanto a la ejecución. Ya no respalda la conclusión de que esta ejecución fuera legítima."
+        }
+      ]
+    },
+    {
+      "id": "01-3",
+      "title": {
+        "pt-BR": "O próximo fio",
+        "en": "The next lead",
+        "es": "La siguiente pista"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "No registro legado há um marcador: I. A trilha de serviço também cita uma identidade de operador. Mara cruza o identificador com o registro civil: o titular morreu há seis meses.",
+          "en": "A legacy record contains a marker: I. The service trail also cites an operator identity. Mara checks it against the civil registry: its holder died six months ago.",
+          "es": "Un registro heredado contiene un marcador: I. El registro de servicio también cita la identidad del operador. Mara lo coteja con el registro civil: su titular falleció hace seis meses."
+        },
+        {
+          "pt-BR": "“Operador não é destinatário”, ela ressalta. A identidade de Elias Var aparece na telemetria; isso não prova que sua carteira recebeu o dinheiro. O próximo fio é descobrir por que seu perfil técnico ainda responde.",
+          "en": "“Operator is not recipient,” she stresses. Elias Var’s identity appears in telemetry; that does not prove his wallet received the money. The next lead is why his technical profile still responds.",
+          "es": "“El operador no es el destinatario”, subraya. La identidad de Elías Var aparece en telemetría; Eso no prueba que su billetera haya recibido el dinero. La siguiente pista es por qué su perfil técnico aún responde."
+        }
+      ]
+    }
+  ]
+}

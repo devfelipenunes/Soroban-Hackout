@@ -1,0 +1,194 @@
+{
+  "beats": [
+    {
+      "trigger": "previous-solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "“Qual dos dois você quebrou?”, pergunta Mara. Uma palavra ocupa o painel: ARCHITECT. Abaixo aparecem as coordenadas da Spire e a confirmação do caminho do participante.",
+        "en": "“Which one did you break?” Mara asks. One word fills the panel: ARCHITECT. Below it appear the Spire coordinates and confirmation of the subject’s path.",
+        "es": "«¿Cuál de los dos rompiste?», pregunta Mara. Una palabra ocupa el panel: ARCHITECT. Debajo aparecen las coordenadas de The Spire y la confirmación de la ruta del sujeto."
+      }
+    },
+    {
+      "trigger": "start",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "Uma manutenção foi legitimamente agendada por um operador. O auditor não tem sua chave. Precisa investigar como a Spire identifica aquilo que foi autorizado e mantém esse significado até a execução.",
+        "en": "Maintenance was legitimately scheduled by an operator. The auditor does not have their key. He must investigate how the Spire identifies what was authorized and preserves that meaning until execution.",
+        "es": "El mantenimiento fue programado legítimamente por un operador. El auditor no tiene su clave. Debe investigar cómo The Spire identifica lo que fue autorizado y preserva ese significado hasta la ejecución."
+      }
+    },
+    {
+      "trigger": "instance",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Alvo conectado. O terminal registra chamadas reais; os documentos do caso estão em Arquivos.",
+        "en": "Target connected. The terminal records real calls; case documents are in Files.",
+        "es": "Objetivo conectado. El terminal graba llamadas reales; los documentos del caso están en Archivos."
+      }
+    },
+    {
+      "trigger": "first-call",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "Minha assinatura preserva a prova. Não devolve o mandato que a Authority revogou.",
+        "en": "My signature preserves the evidence. It does not restore the mandate the Authority revoked.",
+        "es": "Mi firma preserva la evidencia. No restablece el mandato que la Autoridad revocó."
+      }
+    },
+    {
+      "trigger": "solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Prova técnica confirmada. A história continua na abertura seguinte.",
+        "en": "Technical proof confirmed. The story continues in the next opening.",
+        "es": "Prueba técnica confirmada. La historia continúa en la siguiente apertura."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "10-document-0",
+      "label": {
+        "pt-BR": "Encerramento oficial",
+        "en": "Official closure",
+        "es": "Cierre oficial"
+      },
+      "value": {
+        "pt-BR": "Meridian Authority",
+        "en": "Meridian Authority",
+        "es": "Meridian Authority"
+      },
+      "reveal": "start",
+      "documentId": "10-document-0"
+    },
+    {
+      "id": "10-document-1",
+      "label": {
+        "pt-BR": "Recibo de preservação",
+        "en": "Preservation receipt",
+        "es": "Recibo de conservación"
+      },
+      "value": {
+        "pt-BR": "Mara Vale / recibo narrativo",
+        "en": "Mara Vale / narrative receipt",
+        "es": "Mara Vale / recibo narrativo"
+      },
+      "reveal": "start",
+      "documentId": "10-document-1"
+    },
+    {
+      "id": "10-previous-record",
+      "label": {
+        "pt-BR": "Como chegamos aqui",
+        "en": "How we got here",
+        "es": "¿Cómo llegamos aquí?"
+      },
+      "value": {
+        "pt-BR": "Registro do caso anterior confirmado. Abrir a cadeia de evidências.",
+        "en": "Previous case record confirmed. Open the evidence chain.",
+        "es": "Se confirma registro de caso anterior. Abra la cadena de evidencia."
+      },
+      "reveal": "previous-solved",
+      "documentId": "10-previous-record"
+    }
+  ],
+  "hints": [
+    {
+      "pt-BR": "A assinatura é legítima; o significado da operação não.",
+      "en": "The signature is legitimate; the operation's meaning is not.",
+      "es": "La firma es legítima; el significado de la operación no lo es."
+    },
+    {
+      "pt-BR": "Leia `original({ op_id })`, `payload({ op_id })` e `predecessor({ op_id })`; a manutenção é uma sequência.",
+      "en": "Read `original({ op_id })`, `payload({ op_id })` and `predecessor({ op_id })`; the maintenance is a sequence.",
+      "es": "Consulta `original({ op_id })`, `payload({ op_id })` y `predecessor({ op_id })`: el mantenimiento sigue una secuencia."
+    },
+    {
+      "pt-BR": "A falha está no bloqueio temporal: a carga útil não está vinculado ao ID da operação.",
+      "en": "The flaw is timelock rewrite: the payload isn't bound to the operation ID.",
+      "es": "El fallo está en la reescritura del timelock: la carga útil no queda vinculado al ID de la operación."
+    }
+  ],
+  "replies": [],
+  "documents": [
+    {
+      "id": "10-document-0",
+      "title": {
+        "pt-BR": "Encerramento oficial",
+        "en": "Official closure",
+        "es": "Cierre oficial"
+      },
+      "source": {
+        "pt-BR": "Meridian Authority",
+        "en": "Meridian Authority",
+        "es": "Meridian Authority"
+      },
+      "body": [
+        {
+          "pt-BR": "CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. O auditor já não possui o mandato recebido no Vault. The Spire permanece operacional.",
+          "en": "CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. The auditor no longer holds the mandate received at the Vault. The Spire remains operational.",
+          "es": "CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. El auditor ya no ejerce el mandato recibido en el Vault. The Spire sigue en funcionamiento."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "10-document-1",
+      "title": {
+        "pt-BR": "Recibo de preservação",
+        "en": "Preservation receipt",
+        "es": "Recibo de conservación"
+      },
+      "source": {
+        "pt-BR": "Mara Vale / recibo narrativo",
+        "en": "Mara Vale / narrative receipt",
+        "es": "Mara Vale / recibo narrativo"
+      },
+      "body": [
+        {
+          "pt-BR": "EVIDENCE_RECEIPT: SIGNED / SIGNER: MARA VALE / CASE STATUS: TERMINATED. Mara assinou depois da ordem de encerramento. Esse registro auditável poderá responsabilizá-la; o canal privado não concede autoridade irrestrita.",
+          "en": "EVIDENCE_RECEIPT: SIGNED / SIGNER: MARA VALE / CASE STATUS: TERMINATED. Mara signed after the closure order. This auditable record may hold her accountable; the private channel grants no unrestricted authority.",
+          "es": "EVIDENCE_RECEIPT: SIGNED / SIGNER: MARA VALE / CASE STATUS: TERMINATED. Mara firmó tras la orden de cierre. Este registro auditable puede hacerla responsable; el canal privado no otorga ninguna autoridad ilimitada."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "10-previous-record",
+      "title": {
+        "pt-BR": "Do caso anterior",
+        "en": "From the previous case",
+        "es": "Del caso anterior"
+      },
+      "source": {
+        "pt-BR": "Dossiê preservado / continuação",
+        "en": "Preserved case file / continuation",
+        "es": "Expediente conservado / continuación"
+      },
+      "body": [
+        {
+          "pt-BR": "Três respostas foram antecipadas. Os resultados supostamente imprevisíveis dependiam de contexto público do ledger. O futuro anunciado pelo Prophecy Engine era cálculo.",
+          "en": "Three answers were predicted. The supposedly unpredictable results depended on public ledger context. The future announced by the Prophecy Engine was calculation.",
+          "es": "Se predijeron tres respuestas. Los resultados supuestamente impredecibles dependían del contexto del libro público. El futuro anunciado por Prophecy Engine fue un cálculo."
+        },
+        {
+          "pt-BR": "Os hologramas param. PROPHECY_ENGINE: FAILED. Uma origem diferente continua ativa: SUBJECT_CLASSIFIER: OBSERVING. O segundo módulo não precisava prever o futuro para acompanhar quem desmontava o primeiro.",
+          "en": "The holograms stop. PROPHECY_ENGINE: FAILED. A different source remains active: SUBJECT_CLASSIFIER: OBSERVING. The second module did not need to predict the future to track whoever dismantled the first.",
+          "es": "Los hologramas se detienen. PROPHECY_ENGINE: FAILED. Una fuente diferente permanece activa: SUBJECT_CLASSIFIER: OBSERVING. El segundo módulo no necesitaba predecir el futuro para rastrear a quien desmanteló el primero."
+        },
+        {
+          "pt-BR": "“Qual dos dois você quebrou?”, pergunta Mara. Uma palavra ocupa o painel: ARCHITECT. Abaixo aparecem as coordenadas da Spire e a confirmação do caminho do participante.",
+          "en": "“Which one did you break?” Mara asks. One word fills the panel: ARCHITECT. Below it appear the Spire coordinates and confirmation of the subject’s path.",
+          "es": "«¿Cuál de los dos rompiste?», pregunta Mara. Una palabra ocupa el panel: ARCHITECT. Debajo aparecen las coordenadas de The Spire y la confirmación de la ruta del sujeto."
+        },
+        {
+          "pt-BR": "The Spire continua oficialmente operacional. Existem operadores reais e rotinas em andamento. A próxima etapa já não é entrar em uma ruína esquecida.",
+          "en": "The Spire remains officially operational. Real operators work there and routines are running. The next step is no longer entering a forgotten ruin.",
+          "es": "The Spire sigue oficialmente operativo. Allí trabajan operadores reales y se ejecutan rutinas. El siguiente paso ya no es adentrarse en una ruina olvidada."
+        }
+      ],
+      "reveal": "previous-solved"
+    }
+  ]
+}

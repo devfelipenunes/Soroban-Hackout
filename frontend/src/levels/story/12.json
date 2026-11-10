@@ -1,0 +1,69 @@
+{
+  "scenes": [
+    {
+      "id": "12-0",
+      "title": {
+        "pt-BR": "Chegada",
+        "en": "Arrival",
+        "es": "Llegada"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O canal de Mara terminou. O Breaker encontra um controle de diagnóstico ligado ao arquivo de Voss. A instrução é curta: ENCONTRE-ME.",
+          "en": "Mara’s channel has ended. The Breaker finds a diagnostic controller linked to Voss’s archive. The instruction is short: FIND ME.",
+          "es": "El canal de Mara terminó. Breaker encuentra un controlador de diagnóstico vinculado al archivo de Voss. La instrucción es breve: FIND ME."
+        }
+      ]
+    },
+    {
+      "id": "12-1",
+      "title": {
+        "pt-BR": "Evidência",
+        "en": "Evidence",
+        "es": "Evidencia"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O rodapé arquivístico reaparece, mas os bytes pertencem a esta instância. A assinatura histórica atesta apenas o antigo comando de diagnóstico.",
+          "en": "The archival footer returns, but the bytes belong to this instance. The historical signature attests only to the old diagnostic command.",
+          "es": "Se devuelve el cierre del Archive, pero los bytes pertenecen a esta instancia. La firma histórica da fe únicamente del antiguo comando de diagnóstico."
+        }
+      ]
+    },
+    {
+      "id": "12-2",
+      "title": {
+        "pt-BR": "Prova",
+        "en": "Proof",
+        "es": "Prueba"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O prazo foi respeitado. A carga útil executada pediu uma sessão para outro dono; a chamada interna falhou, mas deixou Executing armado. O Breaker abriu a própria sessão depois, e o validador independente conferiu a evidência e o estado da instância.",
+          "en": "The delay was respected. The executed payload requested a session for another owner; the internal call failed but left Executing armed. The Breaker then opened its own session, and the independent validator checked the evidence and instance state.",
+          "es": "Se respetó el retraso. La carga útil ejecutada solicitó una sesión para otro propietario; la llamada interna falló pero salió armada en Ejecución. Luego, el Breaker abrió su propia sesión y el validador independiente verificó la evidencia y el estado de la instancia."
+        }
+      ]
+    },
+    {
+      "id": "12-3",
+      "title": {
+        "pt-BR": "A verdade do Vault",
+        "en": "The Vault truth",
+        "es": "La verdad de la bóveda"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "A sessão separa a abertura da rota 17 da recuperação: AccessGate → RecoveryController; Vault → Meridian Recovery Escrow: 2.400.000. O dossiê só libera ATTRIBUTION VERIFIED se assinatura, vínculo institucional temporal, causalidade e política de saque do Escrow forem conferidos juntos.",
+          "en": "The session separates route 17 opening from recovery: AccessGate → RecoveryController; Vault → Meridian Recovery Escrow: 2,400,000. The dossier releases ATTRIBUTION VERIFIED only if signature, temporal institutional linkage, causality, and the Escrow withdrawal policy are verified together.",
+          "es": "La sesión separa la apertura de la ruta 17 de la recuperación: AccessGate → RecoveryController; Vault → Fideicomiso de recuperación de Meridian: 2.400.000. El expediente publica ATRIBUCIÓN VERIFICADA solo si la firma, el vínculo institucional temporal, la causalidad y la política de retiro del depósito en garantía se verifican juntos."
+        },
+        {
+          "pt-BR": "SOURCE: SEQUENCE OBSERVER. SUBJECT: QUALIFIED. STATUS: PROVISIONAL. A prova de capacidade não apaga os custos da quarentena. O recibo que Mara preservou retorna como sua suspensão; depois dos créditos, uma voz em Lumen diz: “Então ele encontrou outro.”",
+          "en": "SOURCE: SEQUENCE OBSERVER. SUBJECT: QUALIFIED. STATUS: PROVISIONAL. Proof of capability does not erase the quarantine’s costs. The receipt Mara preserved returns as her suspension; after the credits, a voice in Lumen says: “So he found another.”",
+          "es": "SOURCE: SEQUENCE OBSERVER. SUBJECT: QUALIFIED. STATUS: PROVISIONAL. La prueba de capacidad no borra los costos de la cuarentena. El recibo que Mara conservó regresa como su suspensión; después de los créditos, una voz en Lumen dice: “Entonces encontró otro”."
+        }
+      ]
+    }
+  ]
+}

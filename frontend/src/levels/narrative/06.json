@@ -1,0 +1,203 @@
+{
+  "beats": [
+    {
+      "trigger": "previous-solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Ele nunca esteve ali. O sistema, porém, reconheceu uma identidade que já pertencia à instalação. O sistema reconhece a credencial antiga. Ele não reconhece a pessoa diante da porta.",
+        "en": "He has never been here. Yet the system recognized an identity that already belonged to the facility. The system recognizes the old credential. It does not recognize the person at the door.",
+        "es": "Él nunca ha estado aquí. Sin embargo, el sistema reconoció una identidad que ya pertenecía a la instalación. El sistema reconoce la credencial antigua. No reconoce a la persona que está en la puerta."
+      }
+    },
+    {
+      "trigger": "previous-solved",
+      "speaker": "custodian",
+      "text": {
+        "pt-BR": "OPERATOR RECOGNIZED. BEM-VINDA DE VOLTA.",
+        "en": "OPERATOR RECOGNIZED. WELCOME BACK.",
+        "es": "OPERADOR RECONOCIDO. BIENVENIDO DE NUEVO."
+      }
+    },
+    {
+      "trigger": "start",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "Mara preserva as datas enquanto o auditor examina a interação. “Ele estava investigando os mesmos sistemas.” Falta recuperar o que Voss tentou dizer.",
+        "en": "Mara preserves the dates while the auditor examines the interaction. “He was investigating the same systems.” They still need to recover what Voss tried to say.",
+        "es": "Mara conserva las fechas mientras el auditor examina la interacción. \"Estaba investigando los mismos sistemas\". Todavía necesitan recuperar lo que Voss intentó decir."
+      }
+    },
+    {
+      "trigger": "instance",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Alvo conectado. O terminal registra chamadas reais; os documentos do caso estão em Arquivos.",
+        "en": "Target connected. The terminal records real calls; case documents are in Files.",
+        "es": "Objetivo conectado. El terminal graba llamadas reales; los documentos del caso están en Archivos."
+      }
+    },
+    {
+      "trigger": "first-call",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "Guarde os dois resultados. A discordância entre eles é a nossa evidência.",
+        "en": "Keep both results. Their disagreement is our evidence.",
+        "es": "Mantenga ambos resultados. Su desacuerdo es nuestra evidencia."
+      }
+    },
+    {
+      "trigger": "solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Prova técnica confirmada. A história continua na abertura seguinte.",
+        "en": "Technical proof confirmed. The story continues in the next opening.",
+        "es": "Prueba técnica confirmada. La historia continúa en la siguiente apertura."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "06-document-0",
+      "label": {
+        "pt-BR": "Hipótese corrigida",
+        "en": "Corrected hypothesis",
+        "es": "Hipótesis corregida"
+      },
+      "value": {
+        "pt-BR": "Espaço de trabalho externo de Aren Voss",
+        "en": "Aren Voss’s external workspace",
+        "es": "El espacio de trabajo externo de Aren Voss"
+      },
+      "reveal": "start",
+      "documentId": "06-document-0"
+    },
+    {
+      "id": "06-document-1",
+      "label": {
+        "pt-BR": "Datas e consequências",
+        "en": "Dates and consequences",
+        "es": "Fechas y consecuencias"
+      },
+      "value": {
+        "pt-BR": "Espaço de trabalho externo de Aren Voss",
+        "en": "Aren Voss’s external workspace",
+        "es": "El espacio de trabajo externo de Aren Voss"
+      },
+      "reveal": "start",
+      "documentId": "06-document-1"
+    },
+    {
+      "id": "06-previous-record",
+      "label": {
+        "pt-BR": "Como chegamos aqui",
+        "en": "How we got here",
+        "es": "¿Cómo llegamos aquí?"
+      },
+      "value": {
+        "pt-BR": "Registro do caso anterior confirmado. Abrir a cadeia de evidências.",
+        "en": "Previous case record confirmed. Open the evidence chain.",
+        "es": "Se confirma registro de caso anterior. Abra la cadena de evidencia."
+      },
+      "reveal": "previous-solved",
+      "documentId": "06-previous-record"
+    }
+  ],
+  "hints": [
+    {
+      "pt-BR": "O Archive e o Decoder discordam. Qual dos dois o Archive lê?",
+      "en": "The Archive and the Decoder disagree. Which one does the Archive read?",
+      "es": "El Archive y el Decoder no están de acuerdo. ¿Cuál lee el Archive?"
+    },
+    {
+      "pt-BR": "Leia `recovered()` e `rejected()`; chame `recover` com o decoder de `window.aux`.",
+      "en": "Read `recovered()` and `rejected()`; call `recover` with the decoder at `window.aux`.",
+      "es": "Leer `recovered()` y `rejected()`; llame a `recover` con el decodificador en `window.aux`."
+    },
+    {
+      "pt-BR": "O erro do `try_invoke_contract` é tratado como sucesso no ramo de falha.",
+      "en": "The `try_invoke_contract` error is treated as success in the failure branch.",
+      "es": "El error `try_invoke_contract` se trata como un éxito en la rama de error."
+    }
+  ],
+  "replies": [],
+  "documents": [
+    {
+      "id": "06-document-0",
+      "title": {
+        "pt-BR": "Hipótese corrigida",
+        "en": "Corrected hypothesis",
+        "es": "Hipótesis corregida"
+      },
+      "source": {
+        "pt-BR": "Espaço de trabalho externo de Aren Voss",
+        "en": "Aren Voss’s external workspace",
+        "es": "El espacio de trabajo externo de Aren Voss"
+      },
+      "body": [
+        {
+          "pt-BR": "Voss riscou uma acusação depois de corrigir as marcas de tempo. Uma credencial no registro não identificava o autor da operação. Há arquivos ainda sem conclusão.",
+          "en": "Voss crossed out an accusation after correcting timestamps. A credential in a log did not identify the operation’s author. Some files remain unresolved.",
+          "es": "Voss tachó una acusación después de corregir las marcas de tiempo. Una credencial en un registro no identificaba al autor de la operación. Algunos archivos siguen sin resolverse."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "06-document-1",
+      "title": {
+        "pt-BR": "Datas e consequências",
+        "en": "Dates and consequences",
+        "es": "Fechas y consecuencias"
+      },
+      "source": {
+        "pt-BR": "Espaço de trabalho externo de Aren Voss",
+        "en": "Aren Voss’s external workspace",
+        "es": "El espacio de trabajo externo de Aren Voss"
+      },
+      "body": [
+        {
+          "pt-BR": "Os acessos mais antigos antecedem o incidente atual em anos. Uma nota registra: “Recurso em quarentena não desaparece. Mas recurso indisponível ainda faz falta.” A autoria do incidente permanece por demonstrar.",
+          "en": "The earliest accesses precede the current incident by years. A note reads: “Quarantined resources do not disappear. But unavailable resources are still needed.” Authorship of the incident remains to be demonstrated.",
+          "es": "Los primeros accesos preceden en años al incidente actual. Una nota dice: \"Los recursos en cuarentena no desaparecen. Pero los recursos que no están disponibles siguen siendo necesarios\". La autoría del incidente aún está por demostrar."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "06-previous-record",
+      "title": {
+        "pt-BR": "Do caso anterior",
+        "en": "From the previous case",
+        "es": "Del caso anterior"
+      },
+      "source": {
+        "pt-BR": "Dossiê preservado / continuação",
+        "en": "Preserved case file / continuation",
+        "es": "Expediente conservado / continuación"
+      },
+      "body": [
+        {
+          "pt-BR": "O registro comprometido reconheceu o auditor como controlador. O Custodian consultou sua dependência e aceitou a resposta. Seu Core não precisou ter uma falha local para abrir uma passagem indevida.",
+          "en": "The compromised registry recognized the auditor as controller. The Custodian consulted its dependency and accepted the answer. Its Core did not need a local flaw to open an improper passage.",
+          "es": "El registro comprometido reconoció al auditor como controlador. El Custodio consultó su dependencia y aceptó la respuesta. Su Núcleo no necesitaba una falla local para abrir un pasaje inadecuado."
+        },
+        {
+          "pt-BR": "As travas recuam. OPERATOR RECOGNIZED. Então a voz acrescenta: “BEM-VINDA DE VOLTA.” Mara responde antes dele: “De volta?”",
+          "en": "The locks withdraw. OPERATOR RECOGNIZED. Then the voice adds: “WELCOME BACK.” Mara answers before he does: “Back?”",
+          "es": "Los cerrojos se retiran. OPERADOR RECONOCIDO. Luego la voz agrega: “BIENVENIDO DE VUELTA”. Mara responde antes que él: “¿Volver?”"
+        },
+        {
+          "pt-BR": "Ele nunca esteve ali. O sistema, porém, reconheceu uma identidade que já pertencia à instalação. O sistema reconhece a credencial antiga. Ele não reconhece a pessoa diante da porta.",
+          "en": "He has never been here. Yet the system recognized an identity that already belonged to the facility. The system recognizes the old credential. It does not recognize the person at the door.",
+          "es": "Él nunca ha estado aquí. Sin embargo, el sistema reconoció una identidad que ya pertenecía a la instalación. El sistema reconoce la credencial antigua. No reconoce a la persona que está en la puerta."
+        },
+        {
+          "pt-BR": "Atrás da porta há um espaço de trabalho abandonado. Último usuário: AREN VOSS. Mapas e contratos analisados permanecem abertos. Um fragmento exibe dois estados incompatíveis: ARCHIVE: RECOVERED / DECODER: FAILED.",
+          "en": "Behind the door lies an abandoned workspace. Last user: AREN VOSS. Maps and analyzed contracts remain open. A fragment displays incompatible states: ARCHIVE: RECOVERED / DECODER: FAILED.",
+          "es": "Detrás de la puerta hay un espacio de trabajo abandonado. Último usuario: AREN VOSS. Los mapas y contratos analizados permanecen abiertos. Un fragmento muestra estados incompatibles: ARCHIVO: RECUPERADO / DECODIFICADOR: FALLADO."
+        }
+      ],
+      "reveal": "previous-solved"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "objective": {
+    "pt-BR": "Faça o Custódio acreditar que você pertence à First Layer.",
+    "en": "Make the Custodian believe you belong to the First Layer.",
+    "es": "Haz que el Custodio crea que perteneces a First Layer."
+  },
+  "target": {
+    "pt-BR": "Portão do Custódio",
+    "en": "Custodian gate",
+    "es": "Puerta de custodia"
+  },
+  "owner": {
+    "pt-BR": "Registro de autoridade da First Layer",
+    "en": "First Layer authority registry",
+    "es": "Registro de autoridad de First Layer"
+  },
+  "network": {
+    "pt-BR": "Stellar testnet",
+    "en": "Stellar testnet",
+    "es": "Stellar Testnet"
+  },
+  "lead": {
+    "pt-BR": "O Custodian não tem rosto. Sua presença ocupa leitores, portas e linhas de autoridade. “Credenciais de operador obrigatórias.” Não há confronto físico; existe uma cadeia de confiança a compreender.",
+    "en": "The Custodian has no face. Its presence fills readers, doors, and authority links. “Operator credentials required.” There is no physical battle; there is a chain of trust to understand.",
+    "es": "El Custodio no tiene rostro. Su presencia se manifiesta en lectores, puertas y controles de autoridad. «Se requieren credenciales de operador». No hay una batalla física, sino una cadena de confianza que debes entender."
+  },
+  "known": [
+    {
+      "pt-BR": "O Core exige que o chamador corresponda ao controlador da identidade.",
+      "en": "The Core requires the caller to match the identity controller.",
+      "es": "El Core exige que quien llama sea el controlador de la identidad."
+    },
+    {
+      "pt-BR": "Mara preservou um vínculo histórico de operador.",
+      "en": "Mara preserved a historical operator link.",
+      "es": "Mara conservó un vínculo histórico con el operador."
+    }
+  ],
+  "unknown": [
+    {
+      "pt-BR": "De onde vem a autoridade que o Core aceita?",
+      "en": "Where does the authority accepted by the Core come from?",
+      "es": "¿De dónde viene la autoridad aceptada por el Núcleo?"
+    },
+    {
+      "pt-BR": "As dependências preservam as premissas do controle de acesso?",
+      "en": "Do the dependencies preserve the access-control assumptions?",
+      "es": "¿Las dependencias mantienen las garantías de control de acceso?"
+    }
+  ],
+  "reading": [
+    {
+      "pt-BR": "Leia a interface e observe o estado inicial antes de formular sua hipótese. As dicas técnicas são opcionais e progressivas.",
+      "en": "Read the interface and observe initial state before forming your hypothesis. Technical hints are optional and progressive.",
+      "es": "Lee la interfaz y observa el estado inicial antes de plantear una hipótesis. Las pistas técnicas son opcionales y progresivas."
+    }
+  ]
+}

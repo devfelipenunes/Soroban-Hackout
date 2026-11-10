@@ -1,0 +1,58 @@
+{
+  "objective": {
+    "pt-BR": "Faça o contador chegar a um.",
+    "en": "Make the counter reach one.",
+    "es": "Haz que el contador llegue a uno."
+  },
+  "target": {
+    "pt-BR": "Contador de treino",
+    "en": "Training counter",
+    "es": "Contador de entrenamiento"
+  },
+  "owner": {
+    "pt-BR": "Sua instância",
+    "en": "Your instance",
+    "es": "Tu instancia"
+  },
+  "network": {
+    "pt-BR": "Stellar testnet",
+    "en": "Stellar testnet",
+    "es": "Stellar Testnet"
+  },
+  "lead": {
+    "pt-BR": "Meridian acorda sobre certezas. Portas reconhecem proprietários, trens obedecem às credenciais e os mercados liquidam operações sem que ninguém precise ver o código. Tudo é governado por um Contrato.",
+    "en": "Meridian wakes upon certainties. Doors recognize owners, trains obey credentials, and markets settle trades without anyone having to see the code. Everything is governed by a Contract.",
+    "es": "Meridian despierta sobre certezas. Las puertas reconocen propietarios, los trenes obedecen credenciales y los mercados liquidan operaciones sin que nadie tenga que ver el código. Todo se rige por un Contrato."
+  },
+  "known": [
+    {
+      "pt-BR": "O terminal de treino começa em zero.",
+      "en": "The training terminal starts at zero.",
+      "es": "El terminal de entrenamiento comienza en cero."
+    },
+    {
+      "pt-BR": "O objetivo é demonstrar uma mudança de estado e submetê-la ao núcleo.",
+      "en": "The objective is to demonstrate a state change and submit it to the core.",
+      "es": "El objetivo es demostrar un cambio de estado y enviarlo al núcleo."
+    }
+  ],
+  "unknown": [
+    {
+      "pt-BR": "Como distinguir uma consulta de uma escrita?",
+      "en": "How do you distinguish a query from a write?",
+      "es": "¿Cómo distingues una consulta de una escritura?"
+    },
+    {
+      "pt-BR": "Que estado deve ser confirmado pelo núcleo?",
+      "en": "What state must the core confirm?",
+      "es": "¿Qué estado debe confirmar el núcleo?"
+    }
+  ],
+  "reading": [
+    {
+      "pt-BR": "Leia a interface e observe o estado inicial antes de formular sua hipótese. As dicas técnicas são opcionais e progressivas.",
+      "en": "Read the interface and observe initial state before forming your hypothesis. Technical hints are optional and progressive.",
+      "es": "Lee la interfaz y observa el estado inicial antes de formular tu hipótesis. Las pistas técnicas son opcionales y progresivas."
+    }
+  ]
+}

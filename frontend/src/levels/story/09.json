@@ -1,0 +1,84 @@
+{
+  "scenes": [
+    {
+      "id": "09-0",
+      "title": {
+        "pt-BR": "Chegada",
+        "en": "Arrival",
+        "es": "Llegada"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O Oracle não fica escondido. Empresas e setores da Authority consultam suas previsões. A câmara monumental parece oferecer uma certeza que a investigação já aprendeu a desconfiar.",
+          "en": "The Oracle is not hidden. Companies and Authority departments consult its predictions. Its monumental chamber seems to offer a certainty the investigation has learned to distrust.",
+          "es": "El Oráculo no está oculto. Empresas y departamentos de la Autoridad consultan sus predicciones. Su monumental cámara parece ofrecer una certeza de la que la investigación ha aprendido a desconfiar."
+        },
+        {
+          "pt-BR": "Três previsões estão bloqueadas. O sistema propõe que o auditor registre suas respostas antes de cada execução. A primeira pode parecer sorte. A repetição precisa provar um padrão.",
+          "en": "Three predictions are locked. The system asks the auditor to register answers before each execution. The first may look like luck. Repetition must prove a pattern.",
+          "es": "Tres predicciones están bloqueadas. El sistema solicita al auditor que registre las respuestas antes de cada ejecución. Lo primero puede parecer suerte. La repetición debe demostrar un patrón."
+        }
+      ]
+    },
+    {
+      "id": "09-1",
+      "title": {
+        "pt-BR": "A investigação",
+        "en": "The investigation",
+        "es": "la investigacion"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "As assinaturas de origem incluem PROPHECY_ENGINE e SUBJECT_CLASSIFIER. Os nomes não explicam como os módulos se relacionam. Código e contexto do ledger estão disponíveis para investigação.",
+          "en": "Source signatures include PROPHECY_ENGINE and SUBJECT_CLASSIFIER. The names do not explain how the modules relate. Code and ledger context are available for investigation.",
+          "es": "Las firmas de origen incluyen PROPHECY_ENGINE y SUBJECT_CLASSIFIER. Los nombres no explican cómo se relacionan los módulos. El código y el contexto del ledger están disponibles para su investigación."
+        },
+        {
+          "pt-BR": "Mara retoma o Setor 13: “Você parou de aumentar a carga. Isso não apaga o custo de provocar a falha.” O Oracle observa a chegada dos dois.",
+          "en": "Mara returns to Sector 13: “You stopped increasing the load. That does not erase the cost of causing the failure.” The Oracle observes their arrival.",
+          "es": "Mara regresa al Sector 13: \"Dejaste de aumentar la carga. Eso no borra el costo de causar la falla\". El Oráculo observa su llegada."
+        }
+      ]
+    },
+    {
+      "id": "09-2",
+      "title": {
+        "pt-BR": "A prova",
+        "en": "The evidence",
+        "es": "la evidencia"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "Três respostas foram antecipadas. Os resultados supostamente imprevisíveis dependiam de contexto público do ledger. O futuro anunciado pelo Prophecy Engine era cálculo.",
+          "en": "Three answers were predicted. The supposedly unpredictable results depended on public ledger context. The future announced by the Prophecy Engine was calculation.",
+          "es": "Se predijeron tres respuestas. Los resultados supuestamente impredecibles dependían del contexto del libro público. El futuro anunciado por Prophecy Engine fue un cálculo."
+        },
+        {
+          "pt-BR": "Os hologramas param. PROPHECY_ENGINE: FAILED. Uma origem diferente continua ativa: SUBJECT_CLASSIFIER: OBSERVING. O segundo módulo não precisava prever o futuro para acompanhar quem desmontava o primeiro.",
+          "en": "The holograms stop. PROPHECY_ENGINE: FAILED. A different source remains active: SUBJECT_CLASSIFIER: OBSERVING. The second module did not need to predict the future to track whoever dismantled the first.",
+          "es": "Los hologramas se detienen. PROPHECY_ENGINE: FAILED. Una fuente diferente permanece activa: SUBJECT_CLASSIFIER: OBSERVING. El segundo módulo no necesitaba predecir el futuro para rastrear a quien desmanteló el primero."
+        }
+      ]
+    },
+    {
+      "id": "09-3",
+      "title": {
+        "pt-BR": "O próximo fio",
+        "en": "The next lead",
+        "es": "La siguiente pista"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "“Qual dos dois você quebrou?”, pergunta Mara. Uma palavra ocupa o painel: ARCHITECT. Abaixo aparecem as coordenadas da Spire e a confirmação do caminho do participante.",
+          "en": "“Which one did you break?” Mara asks. One word fills the panel: ARCHITECT. Below it appear the Spire coordinates and confirmation of the subject’s path.",
+          "es": "«¿Cuál de los dos rompiste?», pregunta Mara. Una palabra ocupa el panel: ARCHITECT. Debajo aparecen las coordenadas de The Spire y la confirmación de la ruta del sujeto."
+        },
+        {
+          "pt-BR": "The Spire continua oficialmente operacional. Existem operadores reais e rotinas em andamento. A próxima etapa já não é entrar em uma ruína esquecida.",
+          "en": "The Spire remains officially operational. Real operators work there and routines are running. The next step is no longer entering a forgotten ruin.",
+          "es": "The Spire sigue oficialmente operativo. Allí trabajan operadores reales y se ejecutan rutinas. El siguiente paso ya no es adentrarse en una ruina olvidada."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "title": {
+    "pt-BR": "Capítulo 2 — A carteira do morto",
+    "en": "Chapter 2 — The Dead Man's Wallet",
+    "es": "Capítulo 2 — La cartera del muerto"
+  },
+  "openingCount": 6,
+  "pages": [
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "A carteira pertencera a Elias Var, antigo técnico de infraestrutura de Meridian.",
+          "en": "The wallet had belonged to Elias Var, a former infrastructure technician for Meridian.",
+          "es": "La billetera había pertenecido a Elias Var, ex técnico de infraestructura de Meridian."
+        },
+        {
+          "pt-BR": "A fotografia do registro mostrava um homem magro, com cabelos grisalhos e a expressão cansada de quem passara a vida trabalhando em lugares onde ninguém mais queria entrar. Sua certidão de morte estava assinada, confirmada e replicada em múltiplos sistemas. A identidade civil havia sido encerrada. A credencial profissional, revogada.",
+          "en": "The registry photograph showed a thin man with gray hair and the tired expression of someone who had spent his life working in places no one else wanted to enter. His death certificate was signed, confirmed and replicated across multiple systems. The civil identity had been closed. The professional credential, revoked.",
+          "es": "La fotografía del registro mostraba a un hombre delgado, de pelo gris y la expresión cansada de quien se había pasado la vida trabajando en lugares a los que nadie más quería entrar. Su certificado de defunción fue firmado, confirmado y replicado en múltiples sistemas. La identidad civil había sido cerrada. La credencial profesional, revocada."
+        },
+        {
+          "pt-BR": "A carteira, no entanto, respondera naquela semana.",
+          "en": "The wallet, however, had responded that week.",
+          "es": "La billetera, sin embargo, había respondido esa semana."
+        },
+        {
+          "pt-BR": "Mara exibiu os dois registros lado a lado.",
+          "en": "Mara displayed the two records side by side.",
+          "es": "Mara mostró los dos registros uno al lado del otro."
+        },
+        {
+          "pt-BR": "`CIVIL STATUS: DECEASED`",
+          "en": "`CIVIL STATUS: DECEASED`",
+          "es": "`CIVIL STATUS: DECEASED`"
+        },
+        {
+          "pt-BR": "`WALLET STATUS: LEGACY`",
+          "en": "`WALLET STATUS: LEGACY`",
+          "es": "`WALLET STATUS: LEGACY`"
+        },
+        {
+          "pt-BR": "— Essa carteira foi desativada há seis meses.",
+          "en": "— That wallet was deactivated six months ago.",
+          "es": "— Esa billetera fue desactivada hace seis meses."
+        },
+        {
+          "pt-BR": "O Breaker ampliou a segunda linha.",
+          "en": "The Breaker enlarged the second line.",
+          "es": "El Breaker amplió la segunda línea."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Elias Var era técnico de infraestrutura. A certidão confirma sua morte; a credencial profissional foi revogada. Seu registro legado, porém, continua atendendo solicitações.",
+          "en": "Elias Var was an infrastructure technician. His death certificate is confirmed; his professional credential was revoked. Yet his legacy registry continues answering requests.",
+          "es": "Elías Var era técnico de infraestructuras. Se confirma su certificado de defunción; su credencial profesional fue revocada. Sin embargo, su registro heredado continúa respondiendo solicitudes."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Mara coloca dois registros lado a lado: CIVIL STATUS: DECEASED. TECHNICAL PROFILE: LEGACY. “A chave deveria ser inútil.” O auditor observa a divergência entre a pessoa e o estado do sistema.",
+          "en": "Mara places two records side by side: CIVIL STATUS: DECEASED. TECHNICAL PROFILE: LEGACY. “The key should be useless.” The auditor studies the difference between a person and the system’s state.",
+          "es": "Mara coloca dos registros uno al lado del otro: CIVIL STATUS: DECEASED. TECHNICAL PROFILE: LEGACY. \"La clave debería ser inútil\". El auditor estudia la diferencia entre una persona y el estado del sistema."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O ledger mostra um controlador e uma referência opaca a um documento. O documento pertence a um arquivo de manutenção externo, que decide o acesso consultando aquele controlador.",
+          "en": "The ledger shows a controller and an opaque document reference. The document belongs to an external maintenance archive, which decides access by consulting that controller.",
+          "es": "El ledger muestra un controlador y una referencia de documento opaco. El documento pertenece a un archivo de mantenimiento externo, que decide el acceso consultando a dicho responsable."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "É preciso alcançar o registro necessário à investigação. Mara impõe um limite: preservar a procedência da prova não concede direito de assumir permanentemente a identidade de Elias.",
+          "en": "The investigation needs that record. Mara sets a limit: preserving evidence does not grant the right to permanently assume Elias’s identity.",
+          "es": "La investigación necesita ese registro. Mara pone un límite: preservar la evidencia no otorga el derecho a asumir permanentemente la identidad de Elías."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Morte confirmada há seis meses. A identidade de operador citada na trilha é metadado legado. Não há prova de que a carteira de Elias tenha custodiado os fundos do Vault.",
+          "en": "Death confirmed six months ago. The operator identity cited in the trail is legacy metadata. There is no proof that Elias’s wallet held the Vault funds.",
+          "es": "Muerte confirmada hace seis meses. La identidad del operador citada en el rastro son metadatos heredados. No hay pruebas de que la billetera de Elias contuviera los fondos de el Vault."
+        },
+        {
+          "pt-BR": "O documento não está em claro no ledger. O serviço externo exige uma solicitação autenticada e consulta o controlador atual do registro. A referência e o digest são públicos.",
+          "en": "The document is not plaintext on the ledger. The external service requires an authenticated request and checks the registry’s current controller. The reference and digest are public.",
+          "es": "El documento no es texto plano en el ledger. El servicio externo requiere una solicitud autenticada y verifica el controlador actual del registro. La referencia y el resumen son públicos."
+        }
+      ]
+    }
+  ],
+  "continuation": {
+    "paragraphs": [
+      {
+        "pt-BR": "O registro passou a reconhecer o auditor como controlador. O arquivo externo confiou nesse estado e liberou um documento: WAREHOUSE 17 / LOWER MERIDIAN / DO NOT USE CITY ROUTING.",
+        "en": "The registry recognized the auditor as controller. The external archive trusted that state and released a document: WAREHOUSE 17 / LOWER MERIDIAN / DO NOT USE CITY ROUTING.",
+        "es": "El registro reconoció al auditor como controlador. El archivo externo confió en ese estado y publicó un documento: WAREHOUSE 17 / LOWER MERIDIAN / DO NOT USE CITY ROUTING."
+      },
+      {
+        "pt-BR": "A pista foi preservada. O Breaker libera explicitamente o controle irregular. A tomada de identidade continua no histórico; encerrar uma janela não apagaria estado persistente.",
+        "en": "The lead was preserved. The Breaker explicitly releases the improper control. The takeover remains in history; closing a window would not erase persistent state.",
+        "es": "La pista quedó preservada. El Breaker libera explícitamente el control indebido. La adquisición queda en la historia; cerrar una ventana no borraría el estado persistente."
+      },
+      {
+        "pt-BR": "Mara registra a prova e a revogação. “O Armazém 17 não existe.” Os mapas modernos não retornam resultado, mas uma malha antiga de manutenção conserva uma rota em Lower Meridian.",
+        "en": "Mara records the evidence and the release. “Warehouse 17 does not exist.” Modern maps return no result, but an old maintenance network retains a route in Lower Meridian.",
+        "es": "Mara registra la evidencia y la liberación. \"El almacén 17 no existe\". Los mapas modernos no arrojan resultados, pero una antigua red de mantenimiento conserva una ruta en Lower Meridian."
+      },
+      {
+        "pt-BR": "A investigação deixa o Vault. Uma identidade que deveria estar encerrada acaba de apontar para um lugar que a cidade afirma não possuir.",
+        "en": "The investigation leaves the Vault. An identity that should be closed has pointed to a place the city claims it does not have.",
+        "es": "La investigación sale de el Vault. Una identidad que debería cerrarse ha señalado un lugar que la ciudad dice no tener."
+      }
+    ]
+  }
+}

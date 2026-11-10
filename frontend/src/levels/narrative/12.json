@@ -1,0 +1,211 @@
+{
+  "beats": [
+    {
+      "trigger": "start",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "O rodapé arquivístico reaparece, mas os bytes pertencem a esta instância. A assinatura histórica atesta apenas o antigo comando de diagnóstico.",
+        "en": "The archival footer returns, but the bytes belong to this instance. The historical signature attests only to the old diagnostic command.",
+        "es": "Se devuelve el cierre del Archive, pero los bytes pertenecen a esta instancia. La firma histórica da fe únicamente del antiguo comando de diagnóstico."
+      }
+    },
+    {
+      "trigger": "instance",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Instância conectada. Consulte as referências no app Arquivos.",
+        "en": "Instance connected. Inspect the references in Files.",
+        "es": "Instancia conectada. Inspeccione las referencias en Archivos."
+      }
+    },
+    {
+      "trigger": "call:verify_evidence",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Evidência vinculada à instância. O arquivo histórico explica a origem; a operação ainda precisa preservar sua intenção.",
+        "en": "Evidence bound to this instance. The historical archive explains origin; the operation must still preserve its intent.",
+        "es": "Pruebas vinculadas a esta instancia. El archivo histórico explica el origen; la operación aún debe preservar su intención."
+      }
+    },
+    {
+      "trigger": "call:rewrite_payload",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Divergência registrada entre intenção aprovada e carga útil pendente. Aguarde a janela de execução.",
+        "en": "Divergence recorded between approved intent and pending payload. Wait for the execution window.",
+        "es": "Divergencia registrada entre la intención aprobada y la carga útil pendiente. Espera a que se abra la ventana de ejecución."
+      }
+    },
+    {
+      "trigger": "ledger-ready",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Janela de execução aberta. O ledger-alvo chegou; a próxima operação deixará um registro observável.",
+        "en": "Execution window open. The target ledger has arrived; the next operation will leave an observable record.",
+        "es": "Ventana de ejecución abierta. El libro de destino ha llegado; la siguiente operación dejará un registro observable."
+      }
+    },
+    {
+      "trigger": "call:execute",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Operação consumida. Compare a carga útil executada, o resultado interno e o estado que permaneceu armado.",
+        "en": "Operation consumed. Compare the executed payload, internal result, and the state left armed.",
+        "es": "Operación consumida. Compara la carga útil ejecutada, el resultado interno y el estado que quedó armado."
+      }
+    },
+    {
+      "trigger": "call:open_forensic_session",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Tentativa de sessão registrada. Confirme a titularidade e o caminho que a autorizou.",
+        "en": "Session attempt recorded. Confirm its ownership and the path that authorized it.",
+        "es": "Intento de sesión registrado. Confirma su titularidad y la ruta que lo autorizó."
+      }
+    },
+    {
+      "trigger": "solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Prova técnica confirmada. Continue a investigação.",
+        "en": "Technical proof confirmed. Continue the investigation.",
+        "es": "Prueba técnica confirmada. Continuar la investigación."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "12-protocol",
+      "label": {
+        "pt-BR": "Protocolo de evidência",
+        "en": "Evidence protocol",
+        "es": "Protocolo de evidencia"
+      },
+      "value": {
+        "pt-BR": "Arquivo de Voss / registro público",
+        "en": "Voss archive / public record",
+        "es": "Archivo Voss / registro público"
+      },
+      "reveal": "start",
+      "documentId": "12-protocol"
+    },
+    {
+      "id": "12-scope",
+      "label": {
+        "pt-BR": "Escopo histórico",
+        "en": "Historical scope",
+        "es": "Alcance histórico"
+      },
+      "value": {
+        "pt-BR": "Voss / manifesto assinado",
+        "en": "Voss / signed manifest",
+        "es": "Voss / manifiesto firmado"
+      },
+      "reveal": "start",
+      "documentId": "12-scope"
+    },
+    {
+      "id": "12-previous-record",
+      "label": {
+        "pt-BR": "Do caso anterior",
+        "en": "From the previous case",
+        "es": "Del caso anterior"
+      },
+      "value": {
+        "pt-BR": "Dossiê preservado",
+        "en": "Preserved case file",
+        "es": "Expediente conservado"
+      },
+      "reveal": "previous-solved",
+      "documentId": "12-previous-record"
+    }
+  ],
+  "documents": [
+    {
+      "id": "12-protocol",
+      "title": {
+        "pt-BR": "Protocolo de evidência",
+        "en": "Evidence protocol",
+        "es": "Protocolo de evidencia"
+      },
+      "source": {
+        "pt-BR": "Arquivo de Voss / registro público",
+        "en": "Voss archive / public record",
+        "es": "Archivo Voss / registro público"
+      },
+      "body": [
+        {
+          "pt-BR": "Uma operação aguarda o ledger indicado por eta(). original() conserva a intenção aprovada. payload() descreve o que será executado. A sessão forense permanece fechada.",
+          "en": "An operation awaits the ledger reported by eta(). original() preserves approved intent. payload() describes what will execute. The forensic session remains closed.",
+          "es": "Una operación espera al ledger indicado por `eta()`. `original()` conserva la intención aprobada. `payload()` describe lo que se ejecutará. La sesión forense sigue cerrada."
+        },
+        {
+          "pt-BR": "BREAKER/VOSS/v1/diagnose_core. ARCHIVE: LEGACY / RETENTION: OPEN. A assinatura valida o registro histórico; a autorização de hoje precisa ser conferida no contexto desta instância.",
+          "en": "BREAKER/VOSS/v1/diagnose_core. ARCHIVE: LEGACY / RETENTION: OPEN. The signature validates the historical record; today’s authorization must be checked in this instance’s context.",
+          "es": "BREAKER/VOSS/v1/diagnose_core. ARCHIVO: LEGADO / RETENCIÓN: ABIERTO. La firma valida el registro histórico; la autorización de hoy debe comprobarse en el contexto de este caso."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "12-scope",
+      "title": {
+        "pt-BR": "Escopo histórico",
+        "en": "Historical scope",
+        "es": "Alcance histórico"
+      },
+      "source": {
+        "pt-BR": "Voss / manifesto assinado",
+        "en": "Voss / signed manifest",
+        "es": "Voss / manifiesto firmado"
+      },
+      "body": [
+        {
+          "pt-BR": "BREAKER/VOSS/v1/diagnose_core. historical_manifest() e historical_signature() são artefatos públicos. A chave pública é fixada no fonte. A assinatura é histórica; o contexto específico da instância é verificado separadamente.",
+          "en": "BREAKER/VOSS/v1/diagnose_core. historical_manifest() and historical_signature() are public artifacts. The public key is pinned in source. The signature is historical; the instance-specific context is checked separately.",
+          "es": "BREAKER/VOSS/v1/diagnose_core. historical_manifest() y historical_signature() son artefactos públicos. La clave pública está fijada en la fuente. La firma es histórica; el contexto específico de la instancia se verifica por separado."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "12-previous-record",
+      "title": {
+        "pt-BR": "Do caso anterior",
+        "en": "From the previous case",
+        "es": "Del caso anterior"
+      },
+      "source": {
+        "pt-BR": "Dossiê preservado",
+        "en": "Preserved case file",
+        "es": "Expediente conservado"
+      },
+      "body": [
+        {
+          "pt-BR": "O canal de Mara terminou. O Breaker encontra um controle de diagnóstico ligado ao arquivo de Voss. A instrução é curta: ENCONTRE-ME.",
+          "en": "Mara’s channel has ended. The Breaker finds a diagnostic controller linked to Voss’s archive. The instruction is short: FIND ME.",
+          "es": "El canal de Mara terminó. Breaker encuentra un controlador de diagnóstico vinculado al archivo de Voss. La instrucción es breve: FIND ME."
+        }
+      ],
+      "reveal": "previous-solved"
+    }
+  ],
+  "replies": [],
+  "hints": [
+    {
+      "pt-BR": "O rodapé aponta para uma origem antiga; os dados desta instância são novos. Confira o compromisso criptográfico (commitment) antes de confiar na assinatura. Aqui, a comparação é exata: a variante do caso anterior não vale.",
+      "en": "The footer points to an old origin; this instance’s data is new. Check the commitment before trusting the signature. The comparison here is exact: the previous case’s variant does not carry over.",
+      "es": "El cierre apunta a un origen antiguo; los datos de esta instancia son nuevos. Comprueba el compromiso antes de confiar en la firma. La comparación aquí es exacta: la variante del caso anterior no se mantiene."
+    },
+    {
+      "pt-BR": "Compare original(), payload() e eta(). O que continua igual quando o significado muda?",
+      "en": "Compare original(), payload() and eta(). What stays the same when meaning changes?",
+      "es": "Compara `original()`, `payload()` y `eta()`. ¿Qué permanece igual cuando cambia el significado?"
+    },
+    {
+      "pt-BR": "O `execute` engole o erro da sessão para outro dono e deixa `Executing` armado; depois, abra a sessão para você com `open_forensic_session`.",
+      "en": "`execute` swallows the error from the session for another owner and leaves `Executing` armed; then open the session for yourself with `open_forensic_session`.",
+      "es": "`execute` absorbe el error al intentar abrir la sesión de otro propietario y deja el estado `Executing`; luego abre tu propia sesión con `open_forensic_session`."
+    }
+  ]
+}

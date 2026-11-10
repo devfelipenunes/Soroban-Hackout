@@ -1,0 +1,194 @@
+{
+  "beats": [
+    {
+      "trigger": "previous-solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "O elevador desce além do mapa conhecido. As portas abrem para corredores muito mais antigos que os acabamentos da cidade. Na parede: I // FIRST LAYER.",
+        "en": "The elevator descends beyond the known map. Its doors open onto corridors much older than the city’s finishes. On the wall: I // FIRST LAYER.",
+        "es": "El ascensor desciende más allá del mapa conocido. Sus puertas se abren a pasillos mucho más antiguos que los acabados de la ciudad. En la pared: I // PRIMERA CAPA."
+      }
+    },
+    {
+      "trigger": "start",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "“Estou lhe dando uma evidência, não uma autorização.” Cabe ao auditor descobrir como os sistemas decidem quem pertence à First Layer.",
+        "en": "“I am giving you evidence, not authorization.” The auditor must discover how these systems decide who belongs to the First Layer.",
+        "es": "\"Les estoy dando pruebas, no autorización\". El auditor debe descubrir cómo estos sistemas deciden quién pertenece a la Primera Capa."
+      }
+    },
+    {
+      "trigger": "instance",
+      "speaker": "custodian",
+      "text": {
+        "pt-BR": "IDENTITY UNKNOWN / OPERATOR CREDENTIALS REQUIRED",
+        "en": "IDENTITY UNKNOWN / OPERATOR CREDENTIALS REQUIRED",
+        "es": "IDENTIDAD DESCONOCIDA / CREDENCIALES DE OPERADOR REQUERIDAS"
+      }
+    },
+    {
+      "trigger": "first-call",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "O Core confere o controlador. Precisamos entender de onde vem essa informação.",
+        "en": "The Core checks the controller. We need to understand where that information comes from.",
+        "es": "El Core comprueba el controlador. Necesitamos entender de dónde viene esa información."
+      }
+    },
+    {
+      "trigger": "solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Prova técnica confirmada. A história continua na abertura seguinte.",
+        "en": "Technical proof confirmed. The story continues in the next opening.",
+        "es": "Prueba técnica confirmada. La historia continúa en la siguiente apertura."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "05-document-0",
+      "label": {
+        "pt-BR": "Política do Custodian",
+        "en": "Custodian policy",
+        "es": "Política de custodia"
+      },
+      "value": {
+        "pt-BR": "Core Gate / documentação disponível",
+        "en": "Core Gate / available documentation",
+        "es": "Core Gate / documentación disponible"
+      },
+      "reveal": "start",
+      "documentId": "05-document-0"
+    },
+    {
+      "id": "05-document-1",
+      "label": {
+        "pt-BR": "Vínculo histórico",
+        "en": "Historical link",
+        "es": "Enlace histórico"
+      },
+      "value": {
+        "pt-BR": "Mara Vale / arquivo administrativo",
+        "en": "Mara Vale / administrative archive",
+        "es": "Mara Vale / archivo administrativo"
+      },
+      "reveal": "start",
+      "documentId": "05-document-1"
+    },
+    {
+      "id": "05-previous-record",
+      "label": {
+        "pt-BR": "Como chegamos aqui",
+        "en": "How we got here",
+        "es": "¿Cómo llegamos aquí?"
+      },
+      "value": {
+        "pt-BR": "Registro do caso anterior confirmado. Abrir a cadeia de evidências.",
+        "en": "Previous case record confirmed. Open the evidence chain.",
+        "es": "Se confirma registro de caso anterior. Abra la cadena de evidencia."
+      },
+      "reveal": "previous-solved",
+      "documentId": "05-previous-record"
+    }
+  ],
+  "hints": [
+    {
+      "pt-BR": "O Custódio não está quebrado. Ele confia em alguém.",
+      "en": "The Custodian isn't broken. It trusts someone.",
+      "es": "El Custodio no está roto. Confía en alguien."
+    },
+    {
+      "pt-BR": "Leia `controller({ identity: 1 })` e `claim_identity`; depois chame `enter` com `identity: 1` e você como `caller`.",
+      "en": "Read `controller({ identity: 1 })` and `claim_identity`; then call `enter` with `identity: 1` and you as `caller`.",
+      "es": "Consulta `controller({ identity: 1 })` y `identity_claim`; luego llama a `enter` con `identity: 1` y tu dirección como `caller`."
+    },
+    {
+      "pt-BR": "O auth é do novo controlador; o contrato confia no controlador antigo.",
+      "en": "The auth is the new controller's; the contract trusts the old controller.",
+      "es": "La autenticación es del nuevo controlador; el contrato confía en el antiguo controlador."
+    }
+  ],
+  "replies": [],
+  "documents": [
+    {
+      "id": "05-document-0",
+      "title": {
+        "pt-BR": "Política do Custodian",
+        "en": "Custodian policy",
+        "es": "Política de custodia"
+      },
+      "source": {
+        "pt-BR": "Core Gate / documentação disponível",
+        "en": "Core Gate / available documentation",
+        "es": "Core Gate / documentación disponible"
+      },
+      "body": [
+        {
+          "pt-BR": "O Core exige que a identidade apresentada seja de operador e que seu controlador corresponda ao chamador. A investigação deve examinar as dependências dessa afirmação.",
+          "en": "The Core requires an operator identity whose controller matches the caller. Investigation must examine the dependencies behind that assertion.",
+          "es": "El Core requiere una identidad de operador cuyo controlador coincida con la persona que llama. La investigación debe examinar las dependencias detrás de esa afirmación."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "05-document-1",
+      "title": {
+        "pt-BR": "Vínculo histórico",
+        "en": "Historical link",
+        "es": "Enlace histórico"
+      },
+      "source": {
+        "pt-BR": "Mara Vale / arquivo administrativo",
+        "en": "Mara Vale / administrative archive",
+        "es": "Mara Vale / archivo administrativo"
+      },
+      "body": [
+        {
+          "pt-BR": "O protocolo antigo associa a referência indicada pela Ghost Key a um operador histórico. Mara preservou sua procedência. Trata-se de evidência; não de autorização atual para tomar a identidade.",
+          "en": "An old record links the Ghost Key reference to a historical operator. Mara preserved its provenance. This is evidence, not current authorization to take the identity.",
+          "es": "Un registro antiguo vincula la referencia de Ghost Key a un operador histórico. Mara conservó su procedencia. Esto es evidencia, no autorización vigente para tomar la identidad."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "05-previous-record",
+      "title": {
+        "pt-BR": "Do caso anterior",
+        "en": "From the previous case",
+        "es": "Del caso anterior"
+      },
+      "source": {
+        "pt-BR": "Dossiê preservado / continuação",
+        "en": "Preserved case file / continuation",
+        "es": "Expediente conservado / continuación"
+      },
+      "body": [
+        {
+          "pt-BR": "O registro voltou a ser reconhecido e sua vida útil foi renovada. A recuperação torna a rota novamente disponível ao elevador. O painel apaga por um instante e retorna com um botão novo: 24.",
+          "en": "The record was recognized again and its lifetime renewed. Recovery makes the route available to the elevator again. The panel briefly goes dark, then returns with a new button: 24.",
+          "es": "El disco fue reconocido nuevamente y su vida renovada. La recuperación vuelve a poner la ruta a disposición del ascensor. El panel se oscurece brevemente y luego regresa con un nuevo botón: 24."
+        },
+        {
+          "pt-BR": "A cidade não demoliu o andar. Deixou de manter sua referência na camada ativa. Estado arquivado e infraestrutura destruída eram hipóteses diferentes.",
+          "en": "The city did not demolish the floor. It stopped maintaining its reference in the active layer. Archived state and destroyed infrastructure were different hypotheses.",
+          "es": "La ciudad no demolió el piso. Dejó de mantener su referencia en la capa activa. El estado archivado y la infraestructura destruida eran hipótesis diferentes."
+        },
+        {
+          "pt-BR": "O elevador desce além do mapa conhecido. As portas abrem para corredores muito mais antigos que os acabamentos da cidade. Na parede: I // FIRST LAYER.",
+          "en": "The elevator descends beyond the known map. Its doors open onto corridors much older than the city’s finishes. On the wall: I // FIRST LAYER.",
+          "es": "El ascensor desciende más allá del mapa conocido. Sus puertas se abren a pasillos mucho más antiguos que los acabados de la ciudad. En la pared: I // PRIMERA CAPA."
+        },
+        {
+          "pt-BR": "O registro FLOOR 24 aponta para um andar, não para toda a infraestrutura. Ao fundo, um sistema desperta: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED.",
+          "en": "Floor 24 is an entrance, not the entire infrastructure. Ahead, a system awakens: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED.",
+          "es": "El piso 24 es una entrada, no toda la infraestructura. Más adelante, se despierta un sistema: CUSTODIO EN LÍNEA / IDENTIDAD DESCONOCIDA / ACCESO DENEGADO."
+        }
+      ],
+      "reveal": "previous-solved"
+    }
+  ]
+}

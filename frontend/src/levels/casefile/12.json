@@ -1,0 +1,48 @@
+{
+  "objective": {
+    "pt-BR": "Abra uma sessão forense e prove a cadeia ao observador independente.",
+    "en": "Open a forensic session and prove the chain to the independent observer.",
+    "es": "Abra una sesión forense y demuestre la cadena al observador independiente."
+  },
+  "target": {
+    "pt-BR": "O Arquiteto",
+    "en": "The Architect",
+    "es": "el arquitecto"
+  },
+  "owner": {
+    "pt-BR": "Controle legado de diagnóstico",
+    "en": "Legacy diagnostic controller",
+    "es": "Controlador de diagnóstico heredado"
+  },
+  "network": {
+    "pt-BR": "Stellar testnet",
+    "en": "Stellar testnet",
+    "es": "Stellar Testnet"
+  },
+  "lead": {
+    "pt-BR": "A fila preserva a intenção original e aguarda o prazo. Diferente de Rewrite, o contexto desta instância é conferido exatamente; a pergunta agora é se a operação executada ainda corresponde ao que foi aprovado.",
+    "en": "The queue preserves its original intent and waits for the delay. Unlike Rewrite, this instance’s context is checked exactly; the question now is whether the executed operation still matches what was approved.",
+    "es": "La cola conserva su intención original y espera el retraso. A diferencia de Rewrite, el contexto de esta instancia se verifica exactamente; la pregunta ahora es si la operación ejecutada aún coincide con lo aprobado."
+  },
+  "known": [
+    {
+      "pt-BR": "Uma operação aguarda o ledger indicado por eta(). original() conserva a intenção aprovada. payload() descreve o que será executado. A sessão forense permanece fechada.",
+      "en": "An operation awaits the ledger reported by eta(). original() preserves approved intent. payload() describes what will execute. The forensic session remains closed.",
+      "es": "Una operación espera al ledger indicado por `eta()`. `original()` conserva la intención aprobada. `payload()` describe lo que se ejecutará. La sesión forense sigue cerrada."
+    }
+  ],
+  "unknown": [
+    {
+      "pt-BR": "O que vincula a carga útil executada à intenção aprovada?",
+      "en": "What binds the executed payload to the approved intent?",
+      "es": "¿Qué vincula la carga útil ejecutada con la intención aprobada?"
+    }
+  ],
+  "reading": [
+    {
+      "pt-BR": "Revalide a cadeia de evidência e acompanhe a intenção, a carga útil, a execução e sessão nessa ordem. As dicas são opcionais.",
+      "en": "Revalidate the evidence chain, then follow intent, payload, execution, and session in that order. Hints are optional.",
+      "es": "Vuelve a validar la cadena de evidencia y sigue, en orden, la intención, la carga útil, la ejecución y la sesión. Las pistas son opcionales."
+    }
+  ]
+}

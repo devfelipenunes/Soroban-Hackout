@@ -1,0 +1,58 @@
+{
+  "objective": {
+    "pt-BR": "Faça o sistema lembrar do que ele foi projetado para esquecer.",
+    "en": "Make the system remember what it was designed to forget.",
+    "es": "Haga que el sistema recuerde lo que fue diseñado para olvidar."
+  },
+  "target": {
+    "pt-BR": "Elevador e registro de andares",
+    "en": "Elevator and floor registry",
+    "es": "Registro de ascensores y pisos."
+  },
+  "owner": {
+    "pt-BR": "Infraestrutura antiga da First Layer",
+    "en": "Old First Layer infrastructure",
+    "es": "Infraestructura antigua de First Layer"
+  },
+  "network": {
+    "pt-BR": "Stellar testnet",
+    "en": "Stellar testnet",
+    "es": "Stellar Testnet"
+  },
+  "lead": {
+    "pt-BR": "O elevador apresenta vinte e três botões. A planta e o cadastro municipal concordam com ele. A Ghost Key documentada no Armazém aponta para o vigésimo quarto.",
+    "en": "The elevator has twenty-three buttons. The blueprint and municipal register agree. The Ghost Key documented at the Warehouse points to a twenty-fourth.",
+    "es": "El ascensor tiene veintitrés botones. El plano coincide con el registro municipal. La Ghost Key hallada en el almacén apunta al piso 24."
+  },
+  "known": [
+    {
+      "pt-BR": "O índice do elevador reconhece 23 andares.",
+      "en": "The elevator index recognizes 23 floors.",
+      "es": "El índice del ascensor registra 23 pisos."
+    },
+    {
+      "pt-BR": "A referência legada aponta para o 24, e Mara não encontrou ordem de demolição.",
+      "en": "The legacy reference points to 24, and Mara found no demolition order.",
+      "es": "La referencia del legado apunta a 24, y Mara no encontró orden de demolición."
+    }
+  ],
+  "unknown": [
+    {
+      "pt-BR": "Por que os registros discordam sobre o destino?",
+      "en": "Why do records disagree about the destination?",
+      "es": "¿Por qué los registros no coinciden sobre el destino?"
+    },
+    {
+      "pt-BR": "O que mantém a referência disponível ao elevador?",
+      "en": "What keeps the reference available to the elevator?",
+      "es": "¿Qué mantiene la referencia disponible para el ascensor?"
+    }
+  ],
+  "reading": [
+    {
+      "pt-BR": "Leia a interface e observe o estado inicial antes de formular sua hipótese. As dicas técnicas são opcionais e progressivas.",
+      "en": "Read the interface and observe initial state before forming your hypothesis. Technical hints are optional and progressive.",
+      "es": "Lee la interfaz y observa el estado inicial antes de plantear una hipótesis. Las pistas técnicas son opcionales y progresivas."
+    }
+  ]
+}

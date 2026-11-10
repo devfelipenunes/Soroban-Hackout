@@ -1,0 +1,194 @@
+{
+  "beats": [
+    {
+      "trigger": "previous-solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Uma referência da Ghost Key se repete: FLOOR 24. Mara abre a planta. O prédio tem vinte e três andares. Não há origem anterior conhecida para a chave; o Armazém era seu titular registrado.",
+        "en": "One Ghost Key reference repeats: FLOOR 24. Mara opens the blueprint. The building has twenty-three floors. The key’s earlier origin is unknown; the Warehouse was its registered holder.",
+        "es": "Se repite una referencia de Ghost Key: PISO 24. Mara abre el plano. El edificio tiene veintitrés plantas. Se desconoce el origen anterior de la clave; el Almacén era su titular registrado."
+      }
+    },
+    {
+      "trigger": "start",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "“O protocolo da chave prova de onde ela veio para nós”, lembra Mara. “Não transforma a transferência em autorização.” A investigação continua com esse limite.",
+        "en": "“The key’s custody record proves how it reached us,” Mara reminds him. “It does not turn the transfer into authorization.” The investigation continues within that limit.",
+        "es": "“El registro de custodia de la llave demuestra cómo llegó hasta nosotros”, le recuerda Mara. \"No convierte la transferencia en autorización\". La investigación continúa dentro de ese límite."
+      }
+    },
+    {
+      "trigger": "instance",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Alvo conectado. O terminal registra chamadas reais; os documentos do caso estão em Arquivos.",
+        "en": "Target connected. The terminal records real calls; case documents are in Files.",
+        "es": "Objetivo conectado. El terminal graba llamadas reales; los documentos del caso están en Archivos."
+      }
+    },
+    {
+      "trigger": "first-call",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "Procurei uma demolição e não encontrei. Uma referência ausente ainda precisa de explicação.",
+        "en": "I searched for a demolition and found none. A missing reference still needs an explanation.",
+        "es": "Busqué una demolición y no encontré ninguna. Una referencia faltante aún necesita una explicación."
+      }
+    },
+    {
+      "trigger": "solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Prova técnica confirmada. A história continua na abertura seguinte.",
+        "en": "Technical proof confirmed. The story continues in the next opening.",
+        "es": "Prueba técnica confirmada. La historia continúa en la siguiente apertura."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "04-document-0",
+      "label": {
+        "pt-BR": "Planta da instalação",
+        "en": "Facility blueprint",
+        "es": "plano de la instalación"
+      },
+      "value": {
+        "pt-BR": "Arquivo municipal",
+        "en": "Municipal archive",
+        "es": "archivo municipal"
+      },
+      "reveal": "start",
+      "documentId": "04-document-0"
+    },
+    {
+      "id": "04-document-1",
+      "label": {
+        "pt-BR": "Pesquisa de demolição",
+        "en": "Demolition search",
+        "es": "Búsqueda de demolición"
+      },
+      "value": {
+        "pt-BR": "Mara Vale / Authority",
+        "en": "Mara Vale / Authority",
+        "es": "Mara Vale / Autoridad"
+      },
+      "reveal": "start",
+      "documentId": "04-document-1"
+    },
+    {
+      "id": "04-previous-record",
+      "label": {
+        "pt-BR": "Como chegamos aqui",
+        "en": "How we got here",
+        "es": "¿Cómo llegamos aquí?"
+      },
+      "value": {
+        "pt-BR": "Registro do caso anterior confirmado. Abrir a cadeia de evidências.",
+        "en": "Previous case record confirmed. Open the evidence chain.",
+        "es": "Se confirma registro de caso anterior. Abra la cadena de evidencia."
+      },
+      "reveal": "previous-solved",
+      "documentId": "04-previous-record"
+    }
+  ],
+  "hints": [
+    {
+      "pt-BR": "O andar não foi demolido; foi esquecido no TTL mínimo.",
+      "en": "The floor was not demolished; it was forgotten at minimum TTL.",
+      "es": "El piso no fue demolido; se olvidó al mínimo TTL."
+    },
+    {
+      "pt-BR": "Leia `floors()` e `floor({ floor_id: 24 })`. O índice termina em 23; `renew_floor({ floor_id: id })` renova o andar `id + 1`.",
+      "en": "Read `floors()` and `floor({ floor_id: 24 })`. The index ends at 23; `renew_floor({ floor_id: id })` renews floor `id + 1`.",
+      "es": "Consulta `floors()` y `floor({ floor_id: 24 })`. El índice termina en 23; `renew_floor({ floor_id: id })` renueva el piso `id + 1`."
+    },
+    {
+      "pt-BR": "O validador lê `renewed({ floor_id: 24 })`. O caminho certo é `renew_floor({ floor_id: 23 })`; o TTL real de 24 é provado no teste.",
+      "en": "The validator reads `renewed({ floor_id: 24 })`. The correct path is `renew_floor({ floor_id: 23 })`; the real TTL of 24 is proven in the test.",
+      "es": "El validador lee `renewed({ floor_id: 24 })`. La ruta correcta es `renew_floor({ floor_id: 23 })`; en la prueba se demuestra el TTL real de 24."
+    }
+  ],
+  "replies": [],
+  "documents": [
+    {
+      "id": "04-document-0",
+      "title": {
+        "pt-BR": "Planta da instalação",
+        "en": "Facility blueprint",
+        "es": "plano de la instalación"
+      },
+      "source": {
+        "pt-BR": "Arquivo municipal",
+        "en": "Municipal archive",
+        "es": "archivo municipal"
+      },
+      "body": [
+        {
+          "pt-BR": "Andares reconhecidos: 01–23. A referência externa ao 24 contradiz o índice moderno. O mapa não prova demolição.",
+          "en": "Recognized floors: 01–23. An external reference to 24 contradicts the modern index. The map does not prove demolition.",
+          "es": "Pisos reconocidos: 01–23. Una referencia externa al 24 contradice el índice moderno. El mapa no prueba la demolición."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "04-document-1",
+      "title": {
+        "pt-BR": "Pesquisa de demolição",
+        "en": "Demolition search",
+        "es": "Búsqueda de demolición"
+      },
+      "source": {
+        "pt-BR": "Mara Vale / Authority",
+        "en": "Mara Vale / Authority",
+        "es": "Mara Vale / Autoridad"
+      },
+      "body": [
+        {
+          "pt-BR": "Nenhuma ordem de remoção ou demolição encontrada para o local indicado. O arquivo histórico deve ser comparado com o estado ativo, sem confundir Persistent arquivado com Temporary excluído. Rodapé do arquivo: ARCHIVE: LEGACY / RETENTION: OPEN.",
+          "en": "No removal or demolition order found for the indicated location. Historical records must be compared with active state, without confusing archived Persistent data with deleted Temporary data. File footer: ARCHIVE: LEGACY / RETENTION: OPEN.",
+          "es": "No se encontró orden de remoción o demolición para el lugar indicado. Los registros históricos deben compararse con el estado activo, sin confundir los datos persistentes archivados con los datos temporales eliminados. Pie de archivo: ARCHIVO: LEGADO / RETENCIÓN: ABIERTO."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "04-previous-record",
+      "title": {
+        "pt-BR": "Do caso anterior",
+        "en": "From the previous case",
+        "es": "Del caso anterior"
+      },
+      "source": {
+        "pt-BR": "Dossiê preservado / continuação",
+        "en": "Preserved case file / continuation",
+        "es": "Expediente conservado / continuación"
+      },
+      "body": [
+        {
+          "pt-BR": "A transferência foi aceita com a autorização de quem recebia, sem autorização de quem perdia o objeto. O contrato agora chama o auditor de proprietário. Isso demonstra a falha, sem tornar legítima a aquisição.",
+          "en": "The transfer was accepted with authorization from the recipient, without authorization from the party losing the object. The contract now calls the auditor its owner. This demonstrates the flaw without legitimizing the acquisition.",
+          "es": "La transferencia fue aceptada con autorización del destinatario, sin autorización de quien pierde la cosa. El contrato ahora llama propietario al auditor. Esto demuestra el defecto sin legitimar la adquisición."
+        },
+        {
+          "pt-BR": "No compartimento está a GHOST KEY: um módulo com referências a contratos e dados de armazenamento antigos. Mara exige um hash, um evento e um registro de custódia verificáveis. A evidência acompanha a investigação sob custódia técnica temporária.",
+          "en": "The compartment contains the GHOST KEY: a module with references to old contracts and storage. Mara requires a verifiable hash, event, and custody record. The evidence accompanies the investigation in temporary technical custody.",
+          "es": "El compartimento contiene la LLAVE FANTASMA: un módulo con referencias a contratos antiguos y almacenamiento. Mara requiere un registro verificable de hash, eventos y custodia. Las pruebas acompañan la investigación en custodia técnica temporal."
+        },
+        {
+          "pt-BR": "Uma referência da Ghost Key se repete: FLOOR 24. Mara abre a planta. O prédio tem vinte e três andares. Não há origem anterior conhecida para a chave; o Armazém era seu titular registrado.",
+          "en": "One Ghost Key reference repeats: FLOOR 24. Mara opens the blueprint. The building has twenty-three floors. The key’s earlier origin is unknown; the Warehouse was its registered holder.",
+          "es": "Se repite una referencia de Ghost Key: PISO 24. Mara abre el plano. El edificio tiene veintitrés plantas. Se desconoce el origen anterior de la clave; el Almacén era su titular registrado."
+        },
+        {
+          "pt-BR": "“Quero que a prova sobreviva a nós dois”, diz ela. Com a custódia documentada, o caminho segue até o elevador que não reconhece o destino indicado.",
+          "en": "“I want the evidence to outlive both of us,” she says. With custody documented, the trail leads to the elevator that does not recognize the indicated destination.",
+          "es": "\"Quiero que la evidencia nos sobreviva a los dos\", dice. Con la custodia documentada, el rastro conduce al ascensor que no reconoce el destino indicado."
+        }
+      ],
+      "reveal": "previous-solved"
+    }
+  ]
+}

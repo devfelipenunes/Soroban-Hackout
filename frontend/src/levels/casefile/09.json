@@ -1,0 +1,58 @@
+{
+  "objective": {
+    "pt-BR": "Preveja o Oracle antes que ele preveja você.",
+    "en": "Predict the Oracle before it predicts you.",
+    "es": "Predice al Oráculo antes de que él te prediga a ti."
+  },
+  "target": {
+    "pt-BR": "Oracle",
+    "en": "Oracle",
+    "es": "Oráculo"
+  },
+  "owner": {
+    "pt-BR": "Sistema de previsão do Oracle",
+    "en": "Oracle prediction system",
+    "es": "Sistema de predicción de Oracle"
+  },
+  "network": {
+    "pt-BR": "Stellar testnet",
+    "en": "Stellar testnet",
+    "es": "Stellar Testnet"
+  },
+  "lead": {
+    "pt-BR": "O Oracle não fica escondido. Empresas e setores da Authority consultam suas previsões. A câmara monumental parece oferecer uma certeza que a investigação já aprendeu a desconfiar.",
+    "en": "The Oracle is not hidden. Companies and Authority departments consult its predictions. Its monumental chamber seems to offer a certainty the investigation has learned to distrust.",
+    "es": "El Oráculo no está oculto. Empresas y departamentos de la Autoridad consultan sus predicciones. Su monumental cámara parece ofrecer una certeza de la que la investigación ha aprendido a desconfiar."
+  },
+  "known": [
+    {
+      "pt-BR": "O Oracle exige três previsões registradas antes de cada execução.",
+      "en": "The Oracle requires three predictions registered before each execution.",
+      "es": "El Oráculo requiere tres predicciones registradas antes de cada ejecución."
+    },
+    {
+      "pt-BR": "Os registros possuem assinaturas de origem distintas.",
+      "en": "Records carry different source signatures.",
+      "es": "Los registros llevan firmas de diferentes fuentes."
+    }
+  ],
+  "unknown": [
+    {
+      "pt-BR": "O comportamento anunciado pode ser reproduzido com informações acessíveis?",
+      "en": "Can the announced behavior be reproduced with accessible information?",
+      "es": "¿Se puede reproducir el comportamiento anunciado con información accesible?"
+    },
+    {
+      "pt-BR": "O que cada origem de telemetria observa?",
+      "en": "What does each telemetry source observe?",
+      "es": "¿Qué observa cada fuente de telemetría?"
+    }
+  ],
+  "reading": [
+    {
+      "pt-BR": "Leia a interface e observe o estado inicial antes de formular sua hipótese. As dicas técnicas são opcionais e progressivas.",
+      "en": "Read the interface and observe initial state before forming your hypothesis. Technical hints are optional and progressive.",
+      "es": "Lee la interfaz y observa el estado inicial antes de formular una hipótesis. Las pistas técnicas son opcionales y progresivas."
+    }
+  ]
+}

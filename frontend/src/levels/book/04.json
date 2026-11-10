@@ -1,0 +1,128 @@
+{
+  "title": {
+    "pt-BR": "Capítulo 4 — O andar esquecido",
+    "en": "Chapter 4 — The Forgotten Floor",
+    "es": "Capítulo 4 — El piso olvidado"
+  },
+  "openingCount": 6,
+  "pages": [
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O elevador mostrava vinte e três botões.",
+          "en": "The elevator showed twenty-three buttons.",
+          "es": "El ascensor mostraba veintitrés botones."
+        },
+        {
+          "pt-BR": "Os blueprints mostravam vinte e três andares.",
+          "en": "The blueprints showed twenty-three floors.",
+          "es": "Los planos mostraban veintitrés pisos."
+        },
+        {
+          "pt-BR": "Os registros de construção, inspeção e manutenção mostravam vinte e três andares.",
+          "en": "The construction, inspection, and maintenance records showed twenty-three floors.",
+          "es": "Los registros de construcción, inspección y mantenimiento mostraban veintitrés pisos."
+        },
+        {
+          "pt-BR": "A Ghost Key insistia em vinte e quatro.",
+          "en": "The Ghost Key insisted on twenty-four.",
+          "es": "La Llave Fantasma insistió en veinticuatro."
+        },
+        {
+          "pt-BR": "O Breaker ficou sozinho diante do painel enquanto Mara consultava arquivos da Authority. O prédio era antigo, mas ainda utilizado. Empresas ocupavam os andares superiores; os inferiores haviam sido convertidos em infraestrutura pública décadas antes.",
+          "en": "The Breaker stood alone before the panel while Mara checked Authority files. The building was old but still in use. Companies occupied the upper floors; the lower ones had been converted into public infrastructure decades earlier.",
+          "es": "El Breaker se quedó solo ante el panel mientras Mara revisaba los archivos de la Autoridad. El edificio era antiguo pero todavía estaba en uso. Las empresas ocuparon los pisos superiores; los inferiores se habían convertido en infraestructura pública décadas antes."
+        },
+        {
+          "pt-BR": "Não havia demolição registrada.",
+          "en": "There was no demolition on record.",
+          "es": "No se registró ninguna demolición."
+        },
+        {
+          "pt-BR": "Não havia reforma capaz de explicar um andar desaparecido.",
+          "en": "There was no renovation that could explain a missing floor.",
+          "es": "No hubo ninguna renovación que pudiera explicar la falta de un piso."
+        },
+        {
+          "pt-BR": "— As plantas confirmam vinte e três andares — disse Mara.",
+          "en": "— Blueprints confirm twenty-three floors — Mara said.",
+          "es": "— Los planos confirman veintitrés pisos — dijo Mara."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O elevador apresenta vinte e três botões. A planta e o cadastro municipal concordam com ele. A Ghost Key documentada no Armazém aponta para o vigésimo quarto.",
+          "en": "The elevator has twenty-three buttons. The blueprint and municipal register agree. The Ghost Key documented at the Warehouse points to a twenty-fourth.",
+          "es": "El ascensor tiene veintitrés botones. El plano y el padrón municipal coinciden. La Llave Fantasma documentada en el Almacén apunta a una número veinticuatro."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Mara procura uma ordem de demolição. Não encontra. A ausência no índice moderno não basta para concluir que um andar foi destruído.",
+          "en": "Mara searches for a demolition order. She finds none. Absence from the modern index is insufficient to conclude that a floor was destroyed.",
+          "es": "Mara busca una orden de demolición. Ella no encuentra ninguno. La ausencia del índice moderno es insuficiente para concluir que un piso fue destruido."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "As referências antigas ainda existem. Parte do estado não aparece no conjunto ativo consultado pela interface do elevador. É necessário entender o que a infraestrutura preservou e o que deixou de manter disponível.",
+          "en": "The old references still exist. Some state is absent from the active set consulted by the elevator interface. The task is to understand what the infrastructure preserved and what it stopped keeping available.",
+          "es": "Las viejas referencias todavía existen. Algún estado está ausente del conjunto activo consultado por la interfaz del ascensor. La tarea es comprender qué conservó la infraestructura y qué dejó de mantener disponible."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "“O protocolo da chave prova de onde ela veio para nós”, lembra Mara. “Não transforma a transferência em autorização.” A investigação continua com esse limite.",
+          "en": "“The key’s custody record proves how it reached us,” Mara reminds him. “It does not turn the transfer into authorization.” The investigation continues within that limit.",
+          "es": "“El registro de custodia de la llave demuestra cómo llegó hasta nosotros”, le recuerda Mara. \"No convierte la transferencia en autorización\". La investigación continúa dentro de ese límite."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Andares reconhecidos: 01–23. A referência externa ao 24 contradiz o índice moderno. O mapa não prova demolição.",
+          "en": "Recognized floors: 01–23. An external reference to 24 contradicts the modern index. The map does not prove demolition.",
+          "es": "Pisos reconocidos: 01–23. Una referencia externa al 24 contradice el índice moderno. El mapa no prueba la demolición."
+        },
+        {
+          "pt-BR": "Nenhuma ordem de remoção ou demolição encontrada para o local indicado. O arquivo histórico deve ser comparado com o estado ativo, sem confundir Persistent arquivado com Temporary excluído.",
+          "en": "No removal or demolition order found for the indicated location. Historical records must be compared with active state, without confusing archived Persistent data with deleted Temporary data.",
+          "es": "No se encontró orden de remoción o demolición para el lugar indicado. Los registros históricos deben compararse con el estado activo, sin confundir los datos persistentes archivados con los datos temporales eliminados."
+        }
+      ]
+    }
+  ],
+  "continuation": {
+    "paragraphs": [
+      {
+        "pt-BR": "O registro voltou a ser reconhecido e sua vida útil foi renovada. A recuperação torna a rota novamente disponível ao elevador. O painel apaga por um instante e retorna com um botão novo: 24.",
+        "en": "The record was recognized again and its lifetime renewed. Recovery makes the route available to the elevator again. The panel briefly goes dark, then returns with a new button: 24.",
+        "es": "El disco fue reconocido nuevamente y su vida renovada. La recuperación vuelve a poner la ruta a disposición del ascensor. El panel se oscurece brevemente y luego regresa con un nuevo botón: 24."
+      },
+      {
+        "pt-BR": "A cidade não demoliu o andar. Deixou de manter sua referência na camada ativa. Estado arquivado e infraestrutura destruída eram hipóteses diferentes.",
+        "en": "The city did not demolish the floor. It stopped maintaining its reference in the active layer. Archived state and destroyed infrastructure were different hypotheses.",
+        "es": "La ciudad no demolió el piso. Dejó de mantener su referencia en la capa activa. El estado archivado y la infraestructura destruida eran hipótesis diferentes."
+      },
+      {
+        "pt-BR": "O elevador desce além do mapa conhecido. As portas abrem para corredores muito mais antigos que os acabamentos da cidade. Na parede: I // FIRST LAYER.",
+        "en": "The elevator descends beyond the known map. Its doors open onto corridors much older than the city’s finishes. On the wall: I // FIRST LAYER.",
+        "es": "El ascensor desciende más allá del mapa conocido. Sus puertas se abren a pasillos mucho más antiguos que los acabados de la ciudad. En la pared: I // PRIMERA CAPA."
+      },
+      {
+        "pt-BR": "O registro FLOOR 24 aponta para um andar, não para a infraestrutura inteira. Ao fundo, um sistema desperta: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED.",
+        "en": "Floor 24 is an entrance, not the entire infrastructure. Ahead, a system awakens: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED.",
+        "es": "El piso 24 es una entrada, no toda la infraestructura. Más adelante, se despierta un sistema: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED."
+      }
+    ]
+  }
+}

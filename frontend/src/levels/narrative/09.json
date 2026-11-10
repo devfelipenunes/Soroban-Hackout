@@ -1,0 +1,194 @@
+{
+  "beats": [
+    {
+      "trigger": "previous-solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "O instantâneo apresenta o BREAKER REGISTRY. Entradas mascaradas: MISSING, ACCEPTED, DECEASED. Um nome permanece legível: AREN VOSS — REFUSED. Logo abaixo está o próprio auditor: ACTIVE.",
+        "en": "The snapshot reveals the BREAKER REGISTRY. Masked entries: MISSING, ACCEPTED, DECEASED. One name remains readable: AREN VOSS — REFUSED. Below it is the auditor himself: ACTIVE.",
+        "es": "La instantánea revela el BREAKER REGISTRY. Entradas enmascaradas: MISSING, ACCEPTED, DECEASED. Queda legible un nombre: AREN VOSS — REFUSED. Debajo está el propio auditor: ACTIVE."
+      }
+    },
+    {
+      "trigger": "start",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "Mara retoma o Setor 13: “Você parou de aumentar a carga. Isso não apaga o custo de provocar a falha.” O Oracle observa a chegada dos dois.",
+        "en": "Mara returns to Sector 13: “You stopped increasing the load. That does not erase the cost of causing the failure.” The Oracle observes their arrival.",
+        "es": "Mara regresa al Sector 13: \"Dejaste de aumentar la carga. Eso no borra el costo de causar la falla\". El Oráculo observa su llegada."
+      }
+    },
+    {
+      "trigger": "instance",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Alvo conectado. O terminal registra chamadas reais; os documentos do caso estão em Arquivos.",
+        "en": "Target connected. The terminal records real calls; case documents are in Files.",
+        "es": "Objetivo conectado. El terminal graba llamadas reales; los documentos del caso están en Archivos."
+      }
+    },
+    {
+      "trigger": "first-call",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "Registre cada previsão antes de executar. Precisamos de padrão, não de coincidência.",
+        "en": "Record every prediction before executing. We need a pattern, not coincidence.",
+        "es": "Registra cada predicción antes de ejecutarla. Necesitamos un patrón, no una coincidencia."
+      }
+    },
+    {
+      "trigger": "solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Prova técnica confirmada. A história continua na abertura seguinte.",
+        "en": "Technical proof confirmed. The story continues in the next opening.",
+        "es": "Prueba técnica confirmada. La historia continúa en la siguiente apertura."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "09-document-0",
+      "label": {
+        "pt-BR": "Origens de telemetria",
+        "en": "Telemetry sources",
+        "es": "Fuentes de telemetría"
+      },
+      "value": {
+        "pt-BR": "Oracle / metadados públicos",
+        "en": "Oracle / public metadata",
+        "es": "Oracle/metadatos públicos"
+      },
+      "reveal": "start",
+      "documentId": "09-document-0"
+    },
+    {
+      "id": "09-document-1",
+      "label": {
+        "pt-BR": "Protocolo das previsões",
+        "en": "Prediction protocol",
+        "es": "Protocolo de predicción"
+      },
+      "value": {
+        "pt-BR": "Oracle / instrução de operação",
+        "en": "Oracle / operation instructions",
+        "es": "Oráculo/instrucciones de operación"
+      },
+      "reveal": "start",
+      "documentId": "09-document-1"
+    },
+    {
+      "id": "09-previous-record",
+      "label": {
+        "pt-BR": "Como chegamos aqui",
+        "en": "How we got here",
+        "es": "¿Cómo llegamos aquí?"
+      },
+      "value": {
+        "pt-BR": "Registro do caso anterior confirmado. Abrir a cadeia de evidências.",
+        "en": "Previous case record confirmed. Open the evidence chain.",
+        "es": "Se confirma registro de caso anterior. Abra la cadena de evidencia."
+      },
+      "reveal": "previous-solved",
+      "documentId": "09-previous-record"
+    }
+  ],
+  "hints": [
+    {
+      "pt-BR": "O futuro do Oracle é público. O próximo ledger não é secreto.",
+      "en": "The Oracle's future is public. The next ledger isn't secret.",
+      "es": "El futuro del Oráculo es público. El siguiente ledger no es secreto."
+    },
+    {
+      "pt-BR": "Leia `current_sequence()`; registre `predict` para uma rodada de três alvos (três, quatro e cinco ledgers à frente) e chame `reveal` uma vez depois do último.",
+      "en": "Read `current_sequence()`; register `predict` for a round of three targets (three, four, and five ledgers ahead) and call `reveal` once after the last.",
+      "es": "Lee `current_sequence()`; registra `predict` para una ronda de tres objetivos (a tres, cuatro y cinco ledgers) y llama a `reveal` una vez después del último."
+    },
+    {
+      "pt-BR": "As escolhas são `target % choices`; a falha é aleatoriedade previsível. Uma rodada de três alvos, um reveal.",
+      "en": "The choices are `target % choices`; the flaw is predictable randomness. One round of three targets, one reveal.",
+      "es": "Las opciones son \"% de opciones objetivo\"; el defecto es la aleatoriedad predecible. Una ronda de tres objetivos, una revelación."
+    }
+  ],
+  "replies": [],
+  "documents": [
+    {
+      "id": "09-document-0",
+      "title": {
+        "pt-BR": "Origens de telemetria",
+        "en": "Telemetry sources",
+        "es": "Fuentes de telemetría"
+      },
+      "source": {
+        "pt-BR": "Oracle / metadados públicos",
+        "en": "Oracle / public metadata",
+        "es": "Oracle/metadatos públicos"
+      },
+      "body": [
+        {
+          "pt-BR": "PROPHECY_ENGINE e SUBJECT_CLASSIFIER assinam registros diferentes. Correlacionar horários e origens antes de concluir que uma falha em um módulo compromete o outro.",
+          "en": "PROPHECY_ENGINE and SUBJECT_CLASSIFIER sign different records. Compare times and origins before concluding that a failure in one module compromises the other.",
+          "es": "PROPHECY_ENGINE y SUBJECT_CLASSIFIER firman registros diferentes. Compara tiempos y orígenes antes de concluir que una falla en un módulo compromete al otro."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "09-document-1",
+      "title": {
+        "pt-BR": "Protocolo das previsões",
+        "en": "Prediction protocol",
+        "es": "Protocolo de predicción"
+      },
+      "source": {
+        "pt-BR": "Oracle / instrução de operação",
+        "en": "Oracle / operation instructions",
+        "es": "Oráculo/instrucciones de operación"
+      },
+      "body": [
+        {
+          "pt-BR": "Registrar a resposta antes da execução correspondente. Três acertos consecutivos são exigidos para demonstrar padrão. Os detalhes do contexto do ledger estão disponíveis no contrato.",
+          "en": "Register the answer before the corresponding execution. Three consecutive hits are required to demonstrate a pattern. Ledger context details are available in the contract.",
+          "es": "Registra cada respuesta antes de su ejecución. Necesitas tres aciertos consecutivos para demostrar el patrón. El contrato permite consultar el contexto del ledger."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "09-previous-record",
+      "title": {
+        "pt-BR": "Do caso anterior",
+        "en": "From the previous case",
+        "es": "Del caso anterior"
+      },
+      "source": {
+        "pt-BR": "Dossiê preservado / continuação",
+        "en": "Preserved case file / continuation",
+        "es": "Expediente conservado / continuación"
+      },
+      "body": [
+        {
+          "pt-BR": "O limite foi demonstrado. O indexador de continuidade detecta a falha na reconstrução e passa a servir sua cópia externa do estado. O escopo de leitura legado é amplo demais. Nenhum segredo foi extraído de um suposto armazenamento privado do ledger.",
+          "en": "The limit was demonstrated. The continuity indexer detects the failed rebuild and serves its external snapshot. The legacy read scope is too broad. No secret was extracted from supposedly private ledger storage.",
+          "es": "El límite quedó demostrado. El indexador de continuidad detecta la reconstrucción fallida y entrega su instantánea externa. El alcance de lectura heredado es demasiado amplio. No se extrajo ningún secreto del almacenamiento del ledger supuestamente privado."
+        },
+        {
+          "pt-BR": "O Breaker interrompe novas inserções. A carga deixa de crescer, mas a indisponibilidade já teve custo. Mara não permite chamar isso de recuperação sem consequências.",
+          "en": "The Breaker stops new insertions. The load stops growing, but the outage has already had a cost. Mara does not let him call this recovery without consequences.",
+          "es": "Breaker detiene las nuevas inserciones. El volumen deja de crecer, pero la interrupción ya tuvo un costo. Mara no permite que esta recuperación quede sin consecuencias."
+        },
+        {
+          "pt-BR": "O instantâneo apresenta o REGISTRO BREAKER. Entradas mascaradas: AUSENTE, ACEITO, FALECIDO. Um nome permanece legível: AREN VOSS — RECUSADO. Logo abaixo está o próprio auditor: ATIVO.",
+          "en": "The snapshot reveals the BREAKER REGISTRY. Masked entries: MISSING, ACCEPTED, DECEASED. One name remains readable: AREN VOSS — REFUSED. Below it is the auditor himself: ACTIVE.",
+          "es": "La instantánea revela el REGISTRO DEL SISTEMA. Entradas enmascaradas: DESAPARECIDO, ACEPTADO, FALLECIDO. Queda legible un nombre: AREN VOSS – RECHAZADO. Debajo está el propio auditor: ACTIVO."
+        },
+        {
+          "pt-BR": "A marca de tempo é posterior à abertura do caso. Ele estava seguindo Voss; alguém também acompanha seus passos. A próxima referência se chama ORACLE. Pela primeira vez, a pista vem do observador.",
+          "en": "The timestamp is later than the case opening. He was following Voss; someone is also following his steps. The next reference is ORACLE. For the first time, the lead comes from the observer.",
+          "es": "La marca de tiempo es posterior a la apertura del caso. Estaba siguiendo a Voss; alguien también está siguiendo sus pasos. La siguiente referencia es ORACLE. Por primera vez, el liderazgo proviene del observador."
+        }
+      ],
+      "reveal": "previous-solved"
+    }
+  ]
+}

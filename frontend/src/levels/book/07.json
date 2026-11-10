@@ -1,0 +1,113 @@
+{
+  "title": {
+    "pt-BR": "Capítulo 7 — A conta impossível",
+    "en": "Chapter 7 — The Impossible Account",
+    "es": "Capítulo 7 — La cuenta imposible"
+  },
+  "openingCount": 6,
+  "pages": [
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O saldo impossível pertencia a um nó de energia que Meridian deixara de usar oficialmente anos antes.",
+          "en": "The impossible balance belonged to an energy node Meridian had officially stopped using years before.",
+          "es": "El equilibrio imposible pertenecía a un nodo de energía que Meridian había dejado de usar oficialmente años antes."
+        },
+        {
+          "pt-BR": "A interface moderna exibia apenas um aviso.",
+          "en": "The modern interface showed only a warning.",
+          "es": "La interfaz moderna sólo mostraba una advertencia."
+        },
+        {
+          "pt-BR": "`VALUE OUTSIDE EXPECTED RANGE`",
+          "en": "`VALUE OUTSIDE EXPECTED RANGE`",
+          "es": "`VALUE OUTSIDE EXPECTED RANGE`"
+        },
+        {
+          "pt-BR": "O contrato, porém, continuava executando.",
+          "en": "The contract, however, kept executing.",
+          "es": "El contrato, sin embargo, siguió ejecutándose."
+        },
+        {
+          "pt-BR": "Havia uma operação aritmética antiga, criada em uma época em que os limites daquele sistema eram diferentes e as validações eram mais frágeis. O Breaker analisou os valores históricos, comparou os estados e reproduziu o comportamento em um ambiente controlado.",
+          "en": "There was an old arithmetic operation, created at a time when the limits of that system were different and the validations were more fragile. The Breaker analyzed the historical values, compared the states and reproduced the behavior in a controlled environment.",
+          "es": "Había una vieja operación aritmética, creada en una época en la que los límites de ese sistema eran otros y las validaciones más frágiles. El Breaker analizó los valores históricos, comparó los estados y reprodujo el comportamiento en un entorno controlado."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O módulo energético continua respondendo, embora tenha desaparecido dos painéis modernos. Um saldo histórico foi marcado por Voss como impossível. Não é preciso roubá-lo; é preciso reproduzir a contradição.",
+          "en": "The energy module still responds, though it has vanished from modern dashboards. Voss marked a historical balance as impossible. The task is not to steal it, but to reproduce the contradiction.",
+          "es": "El módulo de energía todavía responde, aunque ha desaparecido de los tableros de instrumentos modernos. Voss marcó como imposible un equilibrio histórico. La tarea no es robarlo, sino reproducir la contradicción."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "“Esse número não pode existir sob essas regras”, diz Mara. O auditor conserva o estado inicial antes de testar a hipótese.",
+          "en": "“That number cannot exist under these rules,” Mara says. The auditor preserves the initial state before testing the hypothesis.",
+          "es": "\"Ese número no puede existir bajo estas reglas\", dice Mara. El auditor preserva el estado inicial antes de probar la hipótesis."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "A interface apresenta operações, valores e limites declarados. A origem do saldo pode revelar como um sistema aparentemente abandonado ainda participa da infraestrutura.",
+          "en": "The interface presents operations, values, and declared limits. The balance’s origin may reveal how an apparently abandoned system still participates in the infrastructure.",
+          "es": "La interfaz presenta operaciones, valores y límites declarados. El origen del saldo puede revelar cómo un sistema aparentemente abandonado aún participa de la infraestructura."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Uma nota de Voss rejeita a hipótese simples de furto de energia: o comportamento precisa ser demonstrado antes de atribuir intenção.",
+          "en": "A note from Voss rejects the simple energy-theft hypothesis: the behavior must be demonstrated before attributing intent.",
+          "es": "Una nota de Voss rechaza la simple hipótesis del robo de energía: el comportamiento debe demostrarse antes de atribuirle intención."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Uma operação produziu saldo fora do domínio econômico declarado. A hipótese de furto não está demonstrada. Reproduzir a anomalia é necessário para investigar sua origem.",
+          "en": "An operation produced a balance outside the declared economic domain. Theft has not been established. Reproducing the anomaly is necessary to investigate its origin.",
+          "es": "Una operación produjo un equilibrio fuera del ámbito económico declarado. No se ha establecido el robo. Reproducir la anomalía es necesario para investigar su origen."
+        },
+        {
+          "pt-BR": "O módulo de energia conserva referências de infraestrutura ausentes do painel moderno. A investigação procura uma relação causal entre o saldo e o roteamento, não um código secreto escondido em números.",
+          "en": "The energy module retains infrastructure references absent from the modern dashboard. Investigation seeks a causal link between balance and routing, not a secret code hidden in numbers.",
+          "es": "El módulo de energía conserva referencias de infraestructura ausentes en el tablero moderno. La investigación busca un vínculo causal entre el saldo y el enrutamiento, no un código secreto escondido en números."
+        }
+      ]
+    }
+  ],
+  "continuation": {
+    "paragraphs": [
+      {
+        "pt-BR": "O estado impossível foi reproduzido. O módulo de manutenção compara a anomalia com seu histórico e apresenta uma tabela legada de roteamento. A pista vem de uma relação de infraestrutura, não de uma charada numérica.",
+        "en": "The impossible state was reproduced. The maintenance module compares the anomaly with its history and presents a legacy routing table. The lead comes from infrastructure, not a numerical riddle.",
+        "es": "Se reprodujo el estado imposible. El módulo de mantenimiento compara la anomalía con su historial y presenta una tabla de enrutamiento heredada. La ventaja proviene de la infraestructura, no de un acertijo numérico."
+      },
+      {
+        "pt-BR": "ENERGY ROUTING TABLE — LEGACY / GRID NODE: 13 / ARCHIVE DESTINATION: SECTOR 13 / STATUS: UNMAPPED.",
+        "en": "ENERGY ROUTING TABLE — LEGACY / GRID NODE: 13 / ARCHIVE DESTINATION: SECTOR 13 / STATUS: UNMAPPED.",
+        "es": "ENERGY ROUTING TABLE — LEGACY / GRID NODE: 13 / ARCHIVE DESTINATION: SECTOR 13 / STATUS: UNMAPPED."
+      },
+      {
+        "pt-BR": "Mara consulta o mapa: NO SUCH SECTOR. A energia, porém, continua chegando a esse destino. Ausência no cadastro não desliga uma dependência real.",
+        "en": "Mara checks the map: NO SUCH SECTOR. Yet energy continues reaching that destination. Absence from a register does not switch off a real dependency.",
+        "es": "Mara consulta el mapa: NO SUCH SECTOR. Sin embargo, la energía continúa llegando a ese destino. La ausencia de un registro no elimina una dependencia real."
+      },
+      {
+        "pt-BR": "Uma segunda consulta retorna classificação interna. “Você sabia?”, pergunta o auditor. “Não. Alguém dentro da Authority sabe.” O caminho segue até o Setor 13.",
+        "en": "A second query returns an internal classification. “Did you know?” the auditor asks. “No. Someone inside the Authority does.” The trail continues to Sector 13.",
+        "es": "Una segunda consulta devuelve una clasificación interna. \"¿Sabías?\" pregunta el auditor. \"No. Alguien dentro de la Autoridad lo hace\". El sendero continúa hasta el Sector 13."
+      }
+    ]
+  }
+}

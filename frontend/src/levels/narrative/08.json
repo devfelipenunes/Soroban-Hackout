@@ -1,0 +1,194 @@
+{
+  "beats": [
+    {
+      "trigger": "previous-solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Mara consulta o mapa: NO SUCH SECTOR. A energia, porém, continua chegando a esse destino. Ausência no cadastro não desliga uma dependência real.",
+        "en": "Mara checks the map: NO SUCH SECTOR. Yet energy continues reaching that destination. Absence from a register does not switch off a real dependency.",
+        "es": "Mara consulta el mapa: NO SUCH SECTOR. Sin embargo, la energía continúa llegando a ese destino. La ausencia de un registro no elimina una dependencia real."
+      }
+    },
+    {
+      "trigger": "start",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "A cada operação, o terminal registra o que realmente foi aceito. O objetivo exige demonstrar o limite do Archive, sem confundir a prova com uma licença para continuar aumentando o dano.",
+        "en": "For each operation, the terminal records what was actually accepted. The objective requires demonstrating the Archive’s limit, without treating proof as permission to keep increasing the damage.",
+        "es": "Para cada operación, el terminal registra lo que realmente se aceptó. El objetivo pasa por demostrar el límite del Archive, sin tratar la prueba como un permiso para seguir aumentando el daño."
+      }
+    },
+    {
+      "trigger": "instance",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Alvo conectado. O terminal registra chamadas reais; os documentos do caso estão em Arquivos.",
+        "en": "Target connected. The terminal records real calls; case documents are in Files.",
+        "es": "Objetivo conectado. El terminal graba llamadas reales; los documentos del caso están en Archivos."
+      }
+    },
+    {
+      "trigger": "first-call",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "Outros operadores usam esse Archive. Uma prova não elimina o custo do que você fizer.",
+        "en": "Other operators use this Archive. Evidence does not erase the cost of what you do.",
+        "es": "Otros operadores utilizan este Archivo. La evidencia no borra el costo de lo que haces."
+      }
+    },
+    {
+      "trigger": "solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Prova técnica confirmada. A história continua na abertura seguinte.",
+        "en": "Technical proof confirmed. The story continues in the next opening.",
+        "es": "Prueba técnica confirmada. La historia continúa en la siguiente apertura."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "08-document-0",
+      "label": {
+        "pt-BR": "Continuidade do Archive",
+        "en": "Archive continuity",
+        "es": "Continuidad del Archive"
+      },
+      "value": {
+        "pt-BR": "Configuração do indexador externo",
+        "en": "External indexer configuration",
+        "es": "Configuración del indexador externo"
+      },
+      "reveal": "start",
+      "documentId": "08-document-0"
+    },
+    {
+      "id": "08-document-1",
+      "label": {
+        "pt-BR": "Histórico de carga",
+        "en": "Load history",
+        "es": "Historial de carga"
+      },
+      "value": {
+        "pt-BR": "Telemetria operacional",
+        "en": "Operational telemetry",
+        "es": "Telemetría operativa"
+      },
+      "reveal": "start",
+      "documentId": "08-document-1"
+    },
+    {
+      "id": "08-previous-record",
+      "label": {
+        "pt-BR": "Como chegamos aqui",
+        "en": "How we got here",
+        "es": "¿Cómo llegamos aquí?"
+      },
+      "value": {
+        "pt-BR": "Registro do caso anterior confirmado. Abrir a cadeia de evidências.",
+        "en": "Previous case record confirmed. Open the evidence chain.",
+        "es": "Se confirma registro de caso anterior. Abra la cadena de evidencia."
+      },
+      "reveal": "previous-solved",
+      "documentId": "08-previous-record"
+    }
+  ],
+  "hints": [
+    {
+      "pt-BR": "O instantâneo só responde quando o contador do arquivo atinge o limite.",
+      "en": "The snapshot only answers when the archive counter reaches the limit.",
+      "es": "La instantánea solo responde cuando el contador de archivos alcanza el límite."
+    },
+    {
+      "pt-BR": "Leia `threshold()`, `count()` e `stored()`; o contador soma cada entrada, mas o archive guarda só a primeira de cada registro.",
+      "en": "Read `threshold()`, `count()`, and `stored()`; the counter adds every entry, but the archive stores only the first of each record.",
+      "es": "Consulta `threshold()`, `count()` y `stored()`: el contador suma todas las entradas, pero el archivo solo conserva la primera de cada registro."
+    },
+    {
+      "pt-BR": "A falha é integridade: o contador mede volume, não registros únicos; o validador exige `stored()` abaixo do limite.",
+      "en": "The flaw is integrity: the counter measures volume, not unique records; the validator requires `stored()` below the limit.",
+      "es": "El defecto es la integridad: el contador mide el volumen, no los registros únicos; el validador requiere `stored()` por debajo del límite."
+    }
+  ],
+  "replies": [],
+  "documents": [
+    {
+      "id": "08-document-0",
+      "title": {
+        "pt-BR": "Continuidade do Archive",
+        "en": "Archive continuity",
+        "es": "Continuidad del Archive"
+      },
+      "source": {
+        "pt-BR": "Configuração do indexador externo",
+        "en": "External indexer configuration",
+        "es": "Configuración del indexador externo"
+      },
+      "body": [
+        {
+          "pt-BR": "RECOVERY_MODE: LEGACY / SNAPSHOT_READ_SCOPE: EXTENDED. O serviço externo observa os resultados da reconstrução. Sua cópia operacional não é o armazenamento privado do Soroban. O conteúdo da cópia de estado ainda não foi recuperado. Rodapé do arquivo: ARCHIVE: LEGACY / RETENTION: OPEN.",
+          "en": "RECOVERY_MODE: LEGACY / SNAPSHOT_READ_SCOPE: EXTENDED. The external service observes rebuild results. Its operational copy is not private Soroban storage. The snapshot content has not yet been recovered. File footer: ARCHIVE: LEGACY / RETENTION: OPEN.",
+          "es": "RECOVERY_MODE: LEGADO / SNAPSHOT_READ_SCOPE: EXTENDIDO. El servicio externo observa los resultados de la reconstrucción. Su copia operativa no es un almacenamiento privado de Soroban. El contenido de la instantánea aún no se ha recuperado. Pie de archivo: ARCHIVO: LEGADO / RETENCIÓN: ABIERTO."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "08-document-1",
+      "title": {
+        "pt-BR": "Histórico de carga",
+        "en": "Load history",
+        "es": "Historial de carga"
+      },
+      "source": {
+        "pt-BR": "Telemetria operacional",
+        "en": "Operational telemetry",
+        "es": "Telemetría operativa"
+      },
+      "body": [
+        {
+          "pt-BR": "As inserções aumentam a carga do processamento global. Outros operadores dependem do Archive. Demonstrar a falha não elimina o custo da indisponibilidade nem autoriza manter a pressão depois da prova.",
+          "en": "Insertions increase global processing load. Other operators depend on the Archive. Demonstrating the flaw does not erase the cost of downtime or authorize continued pressure after proof.",
+          "es": "Las inserciones aumentan la carga de procesamiento global. Otros operadores dependen del Archive. Demostrar la falla no borra el costo del tiempo de inactividad ni autoriza una presión continua después de la prueba."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "08-previous-record",
+      "title": {
+        "pt-BR": "Do caso anterior",
+        "en": "From the previous case",
+        "es": "Del caso anterior"
+      },
+      "source": {
+        "pt-BR": "Dossiê preservado / continuação",
+        "en": "Preserved case file / continuation",
+        "es": "Expediente conservado / continuación"
+      },
+      "body": [
+        {
+          "pt-BR": "O estado impossível foi reproduzido. O módulo de manutenção compara a anomalia com seu histórico e apresenta uma tabela legada de roteamento. A pista vem de uma relação de infraestrutura, não de uma charada numérica.",
+          "en": "The impossible state was reproduced. The maintenance module compares the anomaly with its history and presents a legacy routing table. The lead comes from infrastructure, not a numerical riddle.",
+          "es": "Se reprodujo el estado imposible. El módulo de mantenimiento compara la anomalía con su historial y presenta una tabla de enrutamiento heredada. La ventaja proviene de la infraestructura, no de un acertijo numérico."
+        },
+        {
+          "pt-BR": "ENERGY ROUTING TABLE — LEGACY / GRID NODE: 13 / ARCHIVE DESTINATION: SECTOR 13 / STATUS: UNMAPPED.",
+          "en": "ENERGY ROUTING TABLE — LEGACY / GRID NODE: 13 / ARCHIVE DESTINATION: SECTOR 13 / STATUS: UNMAPPED.",
+          "es": "ENERGY ROUTING TABLE — LEGACY / GRID NODE: 13 / ARCHIVE DESTINATION: SECTOR 13 / STATUS: UNMAPPED."
+        },
+        {
+          "pt-BR": "Mara consulta o mapa: NO SUCH SECTOR. A energia, porém, continua chegando a esse destino. Ausência no cadastro não desliga uma dependência real.",
+          "en": "Mara checks the map: NO SUCH SECTOR. Yet energy continues reaching that destination. Absence from a register does not switch off a real dependency.",
+          "es": "Mara consulta el mapa: NO SUCH SECTOR. Sin embargo, la energía continúa llegando a ese destino. La ausencia de un registro no elimina una dependencia real."
+        },
+        {
+          "pt-BR": "Uma segunda consulta retorna classificação interna. “Você sabia?”, pergunta o auditor. “Não. Alguém dentro da Authority sabe.” O caminho segue até o Setor 13.",
+          "en": "A second query returns an internal classification. “Did you know?” the auditor asks. “No. Someone inside the Authority does.” The trail continues to Sector 13.",
+          "es": "Una segunda consulta devuelve una clasificación interna. \"¿Sabías?\" pregunta el auditor. \"No. Alguien dentro de la Autoridad lo hace\". El sendero continúa hasta el Sector 13."
+        }
+      ],
+      "reveal": "previous-solved"
+    }
+  ]
+}

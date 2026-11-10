@@ -1,0 +1,65 @@
+{
+  "title": {
+    "pt-BR": "O Arquiteto",
+    "en": "The Architect",
+    "es": "El Arquitecto"
+  },
+  "openingCount": 4,
+  "pages": [
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O canal de Mara terminou. O Breaker encontra um controle de diagnóstico ligado ao arquivo de Voss. A instrução é curta: ENCONTRE-ME.",
+          "en": "Mara’s channel has ended. The Breaker finds a diagnostic controller linked to Voss’s archive. The instruction is short: FIND ME.",
+          "es": "El canal de Mara terminó. Breaker encuentra un controlador de diagnóstico vinculado al archivo de Voss. La instrucción es breve: FIND ME."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O rodapé arquivístico reaparece, mas os bytes pertencem a esta instância. A assinatura histórica atesta apenas o antigo comando de diagnóstico.",
+          "en": "The archival footer returns, but the bytes belong to this instance. The historical signature attests only to the old diagnostic command.",
+          "es": "Vuelve el cierre del registro histórico, pero los bytes pertenecen a esta instancia. La firma solo da fe del antiguo comando de diagnóstico."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Uma operação aguarda o ledger indicado por eta(). original() conserva a intenção aprovada. payload() descreve o que será executado. A sessão forense permanece fechada.",
+          "en": "An operation awaits the ledger reported by eta(). original() preserves approved intent. payload() describes what will execute. The forensic session remains closed.",
+          "es": "Una operación espera el ledger que indica `eta()`. `original()` conserva la intención aprobada y `payload()` describe lo que se ejecutará. La sesión forense sigue cerrada."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O código e o armazenamento que determinam a conclusão permanecem imutáveis. Sua tarefa é mostrar como o controlador legado transforma uma intenção limitada em um acesso que não estava autorizado.",
+          "en": "The code and storage judging completion remain immutable. Your task is to demonstrate how the legacy controller turns limited intent into access it never granted.",
+          "es": "El código y el almacenamiento que determinan la finalización permanecen inmutables. Tu tarea es demostrar cómo el controlador heredado convierte una intención limitada en un acceso que nunca concedió."
+        }
+      ]
+    }
+  ],
+  "continuation": {
+    "paragraphs": [
+      {
+        "pt-BR": "O prazo foi respeitado. A carga útil executada abriu uma sessão forense para o Breaker em vez do diagnóstico original. O validador independente conferiu a evidência e o estado da instância.",
+        "en": "The delay was respected. The executed payload opened a forensic session for the Breaker instead of the original diagnosis. The independent validator checked evidence and instance state.",
+        "es": "Se cumplió el plazo. La carga útil ejecutada abrió una sesión forense para el Breaker en vez de realizar el diagnóstico original. El validador independiente comprobó las pruebas y el estado de la instancia."
+      },
+      {
+        "pt-BR": "A sessão separa a abertura da rota 17 da recuperação: AccessGate → RecoveryController; Vault → Meridian Recovery Escrow: 2.400.000. O dossiê só pode atribuir a operação a Voss se assinatura, vínculo institucional temporal, causalidade e política de saque do Escrow forem conferidos juntos.",
+        "en": "The session separates route 17 opening from recovery: AccessGate → RecoveryController; Vault → Meridian Recovery Escrow: 2,400,000. The dossier may attribute the operation to Voss only if signature, temporal institutional linkage, causality, and the Escrow withdrawal policy are verified together.",
+        "es": "La sesión distingue la apertura de la ruta 17 de la recuperación: AccessGate → RecoveryController; Vault → Meridian Recovery Escrow: 2.400.000. El expediente solo podrá atribuir la operación a Voss si se verifican en conjunto la firma, el vínculo institucional temporal, la causalidad y la política de retiro del Escrow."
+      },
+      {
+        "pt-BR": "SOURCE: SEQUENCE OBSERVER. SUBJECT: QUALIFIED. STATUS: PROVISIONAL. A capacidade foi registrada, não uma absolvição. O recibo que Mara preservou retorna como sua suspensão; depois dos créditos, uma voz em Lumen diz: “Então ele encontrou outro.”",
+        "en": "SOURCE: SEQUENCE OBSERVER. SUBJECT: QUALIFIED. STATUS: PROVISIONAL. Capability is recorded, not absolution. The receipt Mara preserved returns as her suspension; after the credits, a voice in Lumen says: “So he found another.”",
+        "es": "SOURCE: SEQUENCE OBSERVER. SUBJECT: QUALIFIED. STATUS: PROVISIONAL. Se registra la capacidad, no una absolución. El recibo que Mara conservó ahora es la notificación de su suspensión. Después de los créditos, una voz en Lumen dice: «Entonces encontró a alguien más»."
+      }
+    ]
+  }
+}

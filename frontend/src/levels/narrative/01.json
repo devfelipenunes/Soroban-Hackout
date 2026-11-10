@@ -1,0 +1,199 @@
+{
+  "beats": [
+    {
+      "trigger": "previous-solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Do lado de fora, as pessoas continuam apresentando credenciais a portas que sempre se abrem. Aqui, uma porta fechada protege uma explicação que ninguém conseguiu encontrar.",
+        "en": "Outside, people keep presenting credentials to doors that always open. Here, a closed door guards an explanation no one has found.",
+        "es": "Afuera, la gente sigue presentando credenciales ante puertas que siempre se abren. Aquí, una puerta cerrada guarda una explicación que nadie ha encontrado."
+      }
+    },
+    {
+      "trigger": "start",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "O objetivo é entrar sem possuir a chave. Quem quiser reconstruir o caso encontra no celular o relatório original e os eventos de serviço; a resposta precisa vir da investigação do contrato.",
+        "en": "The objective is to enter without the key. Anyone wishing to reconstruct the case can find the original report and service events on the phone; the answer must come from investigating the contract.",
+        "es": "El objetivo es entrar sin la llave. Cualquiera que desee reconstruir el caso puede encontrar el informe original y los eventos del servicio en el teléfono; la respuesta debe venir de la investigación del contrato."
+      }
+    },
+    {
+      "trigger": "instance",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Alvo conectado. O terminal registra chamadas reais; os documentos do caso estão em Arquivos.",
+        "en": "Target connected. The terminal records real calls; case documents are in Files.",
+        "es": "Objetivo conectado. El terminal graba llamadas reales; los documentos del caso están en Archivos."
+      }
+    },
+    {
+      "trigger": "first-call",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "Compare o que o relatório afirma com aquilo que a operação efetivamente verifica.",
+        "en": "Compare the report’s claim with what the operation actually verifies.",
+        "es": "Compara lo que afirma el informe con lo que realmente verifica la operación."
+      }
+    },
+    {
+      "trigger": "solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Prova técnica confirmada. A história continua na abertura seguinte.",
+        "en": "Technical proof confirmed. The story continues in the next opening.",
+        "es": "Prueba técnica confirmada. La historia continúa en la siguiente apertura."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "01-document-0",
+      "label": {
+        "pt-BR": "Inspeção física",
+        "en": "Physical inspection",
+        "es": "Inspección física"
+      },
+      "value": {
+        "pt-BR": "Meridian Authority",
+        "en": "Meridian Authority",
+        "es": "Meridian Authority"
+      },
+      "reveal": "start",
+      "documentId": "01-document-0"
+    },
+    {
+      "id": "01-document-1",
+      "label": {
+        "pt-BR": "Trilha de serviço",
+        "en": "Service trail",
+        "es": "Ruta de servicio"
+      },
+      "value": {
+        "pt-BR": "Telemetria legada / instantâneo do caso",
+        "en": "Legacy telemetry / case snapshot",
+        "es": "Telemetría heredada/instantánea del caso"
+      },
+      "reveal": "start",
+      "documentId": "01-document-1"
+    },
+    {
+      "id": "01-previous-record",
+      "label": {
+        "pt-BR": "Como chegamos aqui",
+        "en": "How we got here",
+        "es": "¿Cómo llegamos aquí?"
+      },
+      "value": {
+        "pt-BR": "Registro do caso anterior confirmado. Abrir a cadeia de evidências.",
+        "en": "Previous case record confirmed. Open the evidence chain.",
+        "es": "Se confirma registro de caso anterior. Abra la cadena de evidencia."
+      },
+      "reveal": "previous-solved",
+      "documentId": "01-previous-record"
+    }
+  ],
+  "hints": [
+    {
+      "pt-BR": "A porta aceitou a chamada. Pergunte ao contrato quem ele acha que é o dono.",
+      "en": "The door accepted the call. Ask the contract who it thinks the owner is.",
+      "es": "La puerta aceptó la llamada. Pregunte al contrato quién cree que es el propietario."
+    },
+    {
+      "pt-BR": "Leia `owner_of({ door_id: 17 })` e passe esse endereço como `owner` em `open`.",
+      "en": "Read `owner_of({ door_id: 17 })` and pass that address as `owner` to `open`.",
+      "es": "Consulta `owner_of({ door_id: 17 })` y pasa esa dirección como `owner` a `open`."
+    },
+    {
+      "pt-BR": "A falha é autorização ausente: `open` não exige `owner.require_auth()`.",
+      "en": "The flaw is missing authorization: `open` never calls `owner.require_auth()`.",
+      "es": "A la falla le falta autorización: `open` nunca llama a `owner.require_auth()`."
+    }
+  ],
+  "replies": [],
+  "documents": [
+    {
+      "id": "01-document-0",
+      "title": {
+        "pt-BR": "Inspeção física",
+        "en": "Physical inspection",
+        "es": "Inspección física"
+      },
+      "source": {
+        "pt-BR": "Meridian Authority",
+        "en": "Meridian Authority",
+        "es": "Meridian Authority"
+      },
+      "body": [
+        {
+          "pt-BR": "Porta intacta. Nenhuma chave reportada como comprometida. A inspeção física não encontrou causa para a operação aceita. O relatório não demonstra quem autorizou o acesso.",
+          "en": "Door intact. No key reported compromised. Physical inspection found no cause for the accepted operation. The report does not establish who authorized access.",
+          "es": "Puerta intacta. Ninguna clave reportada está comprometida. La inspección física no encontró causa para la operación aceptada. El informe no establece quién autorizó el acceso."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "01-document-1",
+      "title": {
+        "pt-BR": "Trilha de serviço",
+        "en": "Service trail",
+        "es": "Ruta de servicio"
+      },
+      "source": {
+        "pt-BR": "Telemetria legada / instantâneo do caso",
+        "en": "Legacy telemetry / case snapshot",
+        "es": "Telemetría heredada/instantánea del caso"
+      },
+      "body": [
+        {
+          "pt-BR": "Na telemetria preservada da noite do roubo, consta: SERVICE_GATE_OPEN → RECOVERY_ROUTED. Os identificadores devem ser cruzados com os registros financeiros públicos. A rota de serviço daquele incidente e o destino financeiro são perguntas distintas.",
+          "en": "The telemetry preserved from the night of the theft reads: SERVICE_GATE_OPEN → RECOVERY_ROUTED. The identifiers must be compared with public financial records. That incident's service route and financial destination are separate questions.",
+          "es": "La telemetría conservada de la noche del robo dice: SERVICE_GATE_OPEN → RECOVERY_ROUTED. Los identificadores deben compararse con los registros financieros públicos. La ruta de servicio de ese incidente y el destino financiero son cuestiones separadas."
+        },
+        {
+          "pt-BR": "A captura em XDR preserva a estrutura da consulta e os eventos de serviço para auditoria posterior. Ela não altera a operação registrada.",
+          "en": "The XDR capture preserves the query structure and service events for later audit. It does not alter the recorded operation.",
+          "es": "La captura XDR conserva la estructura de la consulta y los eventos del servicio para una auditoría posterior. No altera la operación registrada."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "01-previous-record",
+      "title": {
+        "pt-BR": "Do caso anterior",
+        "en": "From the previous case",
+        "es": "Del caso anterior"
+      },
+      "source": {
+        "pt-BR": "Dossiê preservado / continuação",
+        "en": "Preserved case file / continuation",
+        "es": "Expediente conservado / continuación"
+      },
+      "body": [
+        {
+          "pt-BR": "A primeira submissão foi confirmada. O terminal reconhece a operação, mas isso ainda não explica o Vault. Mara conserva o recibo e libera o contrato da porta de serviço.",
+          "en": "The first submission was confirmed. The terminal recognizes the operation, but it does not explain the Vault yet. Mara preserves the receipt and releases the service-door contract.",
+          "es": "La primera presentación fue confirmada. El terminal reconoce la operación, pero aún no explica el Vault. Mara conserva el recibo y libera el contrato de puerta de servicio."
+        },
+        {
+          "pt-BR": "“Agora temos um registro do que você fez”, diz ela. “No Vault, temos um registro do que aconteceu. Falta entender a diferença.”",
+          "en": "“Now we have a record of what you did,” she says. “At the Vault, we have a record of what happened. We still need to understand the difference.”",
+          "es": "\"Ahora tenemos un registro de lo que hiciste\", dice. \"En el Vault tenemos un registro de lo que sucedió. Aún necesitamos entender la diferencia\"."
+        },
+        {
+          "pt-BR": "Do lado de fora, as pessoas continuam apresentando credenciais a portas que sempre se abrem. Aqui, uma porta fechada protege uma explicação que ninguém conseguiu encontrar.",
+          "en": "Outside, people keep presenting credentials to doors that always open. Here, a closed door guards an explanation no one has found.",
+          "es": "Afuera, la gente sigue presentando credenciales ante puertas que siempre se abren. Aquí, una puerta cerrada guarda una explicación que nadie ha encontrado."
+        },
+        {
+          "pt-BR": "Mara mantém o escopo: investigar o Access Gate, preservar os registros originais e descobrir como entraram sem possuir a chave.",
+          "en": "Mara keeps the scope precise: investigate the Access Gate, preserve the original records, and discover how someone entered without the key.",
+          "es": "Mara mantiene el alcance preciso: investiga la puerta de acceso, preserva los registros originales y descubre cómo alguien entró sin la llave."
+        }
+      ],
+      "reveal": "previous-solved"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "title": {
+    "pt-BR": "Capítulo 5 — O Custódio",
+    "en": "Chapter 5 — The Custodian",
+    "es": "Capítulo 5 — El custodio"
+  },
+  "openingCount": 6,
+  "pages": [
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O Custodian não tinha rosto.",
+          "en": "The Custodian had no face.",
+          "es": "El Custodio no tenía rostro."
+        },
+        {
+          "pt-BR": "Não precisava.",
+          "en": "It didn't need one.",
+          "es": "No necesitaba uno."
+        },
+        {
+          "pt-BR": "Sua presença existia na arquitetura inteira da sala: no modo como as portas permaneciam fechadas, nos leitores de identidade, nos terminais suspensos e nas linhas de autoridade que conectavam sistemas antigos entre si.",
+          "en": "Its presence existed in the entire architecture of the room: in the way the doors stayed closed, in the identity readers, in the suspended terminals, and in the lines of authority that connected old systems to one another.",
+          "es": "Su presencia existía en toda la arquitectura de la sala: en la forma en que las puertas permanecían cerradas, en los lectores de identidad, en las terminales suspendidas y en las líneas de autoridad que conectaban los sistemas antiguos entre sí."
+        },
+        {
+          "pt-BR": "O Breaker encontrou três componentes acessíveis.",
+          "en": "The Breaker found three accessible components.",
+          "es": "Breaker encontró tres componentes accesibles."
+        },
+        {
+          "pt-BR": "Legacy Identity.",
+          "en": "Legacy Identity.",
+          "es": "Identidad heredada."
+        },
+        {
+          "pt-BR": "Authority Registry.",
+          "en": "Authority Registry.",
+          "es": "Registro de Autoridad."
+        },
+        {
+          "pt-BR": "Custodian Core.",
+          "en": "Custodian Core.",
+          "es": "Núcleo de custodia."
+        },
+        {
+          "pt-BR": "O Core parecia correto.",
+          "en": "The Core looked correct.",
+          "es": "El Núcleo parecía correcto."
+        },
+        {
+          "pt-BR": "Verificava se a identidade apresentada era reconhecida como operador. Conferia se o controller da identidade correspondia ao caller. Exigia consistência entre os sistemas. Não havia linha óbvia sem autenticação. Nenhum parâmetro evidentemente errado.",
+          "en": "It checked whether the presented identity was recognized as an operator. It verified whether the identity's controller matched the caller. It demanded consistency across the systems. There was no obvious line without authentication. No evidently wrong parameter.",
+          "es": "Comprobó si la identidad presentada era reconocida como operador. Verificó si el controlador de identidad coincidía con la persona que llama. Exigía coherencia entre todos los sistemas. No había ninguna línea obvia sin autenticación. Ningún parámetro evidentemente incorrecto."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O Custodian não tem rosto. Sua presença ocupa leitores, portas e linhas de autoridade. “Credenciais de operador obrigatórias.” Não há confronto físico; existe uma cadeia de confiança a compreender.",
+          "en": "The Custodian has no face. Its presence fills readers, doors, and authority links. “Operator credentials required.” There is no physical battle; there is a chain of trust to understand.",
+          "es": "El Custodio no tiene rostro. Su presencia llena lectores, puertas y vínculos de autoridad. \"Se requieren credenciales de operador\". No hay batalla física; hay una cadena de confianza que entender."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Legacy Identity, Authority Registry e Core Gate continuam ativos. O Core parece cumprir sua política. Mara lê o mesmo trecho: “Esse não parece quebrado.”",
+          "en": "Legacy Identity, Authority Registry, and Core Gate remain active. The Core appears to follow its policy. Mara reads the same passage: “This one does not look broken.”",
+          "es": "La identidad heredada, el registro de autoridad y la puerta central permanecen activos. El Núcleo parece seguir su política. Mara lee el mismo pasaje: “Éste no parece roto”."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "A Ghost Key aponta para um perfil antigo, mas a investigação precisa de seu vínculo histórico. Mara o encontra num arquivo administrativo fora do contrato que o auditor examina.",
+          "en": "The Ghost Key points to an old profile, but the investigation needs its historical link. Mara finds it in an administrative archive outside the contract the auditor is examining.",
+          "es": "La Ghost Key apunta a un perfil antiguo, pero la investigación necesita su vínculo histórico. Mara lo encuentra en un archivo administrativo fuera del contrato que el auditor está examinando."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "“Estou lhe dando uma evidência, não uma autorização.” Cabe ao auditor descobrir como os sistemas decidem quem pertence à First Layer.",
+          "en": "“I am giving you evidence, not authorization.” The auditor must discover how these systems decide who belongs to the First Layer.",
+          "es": "\"Les estoy dando pruebas, no autorización\". El auditor debe descubrir cómo estos sistemas deciden quién pertenece a la Primera Capa."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O Core exige que a identidade apresentada seja de operador e que seu controlador corresponda ao chamador. A investigação deve examinar as dependências dessa afirmação.",
+          "en": "The Core requires an operator identity whose controller matches the caller. Investigation must examine the dependencies behind that assertion.",
+          "es": "El Core requiere una identidad de operador cuyo controlador coincida con la persona que llama. La investigación debe examinar las dependencias detrás de esa afirmación."
+        },
+        {
+          "pt-BR": "O protocolo antigo associa a referência indicada pela Ghost Key a um operador histórico. Mara preservou sua procedência. Trata-se de evidência; não de autorização atual para tomar a identidade.",
+          "en": "An old record links the Ghost Key reference to a historical operator. Mara preserved its provenance. This is evidence, not current authorization to take the identity.",
+          "es": "Un registro antiguo vincula la referencia de Ghost Key a un operador histórico. Mara conservó su procedencia. Esto es evidencia, no autorización vigente para tomar la identidad."
+        }
+      ]
+    }
+  ],
+  "continuation": {
+    "paragraphs": [
+      {
+        "pt-BR": "O registro comprometido reconheceu o auditor como controlador. O Custodian consultou sua dependência e aceitou a resposta. Seu Core não precisou ter uma falha local para abrir uma passagem indevida.",
+        "en": "The compromised registry recognized the auditor as controller. The Custodian consulted its dependency and accepted the answer. Its Core did not need a local flaw to open an improper passage.",
+        "es": "El registro comprometido reconoció al auditor como controlador. El Custodio consultó su dependencia y aceptó la respuesta. Su Núcleo no necesitaba una falla local para abrir un pasaje inadecuado."
+      },
+      {
+        "pt-BR": "As travas recuam. OPERATOR RECOGNIZED. Então a voz acrescenta: “BEM-VINDA DE VOLTA.” Mara responde antes dele: “De volta?”",
+        "en": "The locks withdraw. OPERATOR RECOGNIZED. Then the voice adds: “WELCOME BACK.” Mara answers before he does: “Back?”",
+        "es": "Los cerrojos se retiran. OPERADOR RECONOCIDO. Luego la voz agrega: “BIENVENIDO DE VUELTA”. Mara responde antes que él: “¿Volver?”"
+      },
+      {
+        "pt-BR": "Ele nunca esteve ali. O sistema, porém, reconheceu uma identidade que já pertencia à instalação. O sistema reconhece a credencial antiga. Ele não reconhece a pessoa diante da porta.",
+        "en": "He has never been here. Yet the system recognized an identity that already belonged to the facility. The system recognizes the old credential. It does not recognize the person at the door.",
+        "es": "Él nunca ha estado aquí. Sin embargo, el sistema reconoció una identidad que ya pertenecía a la instalación. El sistema reconoce la credencial antigua. No reconoce a la persona que está en la puerta."
+      },
+      {
+        "pt-BR": "Atrás da porta há um espaço de trabalho abandonado. Último usuário: AREN VOSS. Mapas e contratos analisados permanecem abertos. Um fragmento exibe dois estados incompatíveis: ARCHIVE: RECOVERED / DECODER: FAILED.",
+        "en": "Behind the door lies an abandoned workspace. Last user: AREN VOSS. Maps and analyzed contracts remain open. A fragment displays incompatible states: ARCHIVE: RECOVERED / DECODER: FAILED.",
+        "es": "Detrás de la puerta hay un espacio de trabajo abandonado. Último usuario: AREN VOSS. Los mapas y contratos analizados permanecen abiertos. Un fragmento muestra estados incompatibles: ARCHIVE: RECOVERED / DECODER: FAILED."
+      }
+    ]
+  }
+}

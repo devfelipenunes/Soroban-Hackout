@@ -1,0 +1,58 @@
+{
+  "objective": {
+    "pt-BR": "Roube o acesso sem roubar a chave.",
+    "en": "Steal access without stealing the key.",
+    "es": "Robar acceso sin robar la clave."
+  },
+  "target": {
+    "pt-BR": "Bloqueio temporal da Spire",
+    "en": "Spire timelock",
+    "es": "Bloqueo de tiempo de aguja"
+  },
+  "owner": {
+    "pt-BR": "Operador legítimo da Spire",
+    "en": "Legitimate Spire operator",
+    "es": "Operador legítimo de Spire"
+  },
+  "network": {
+    "pt-BR": "Stellar testnet",
+    "en": "Stellar testnet",
+    "es": "Stellar Testnet"
+  },
+  "lead": {
+    "pt-BR": "A torre conhecida como The Spire fica acima de Meridian. Antes da primeira consulta, a Meridian Authority interrompe o canal: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. O mandato concedido no Vault acabou.",
+    "en": "The Spire rises above Meridian. Before the first query, the Authority interrupts the channel: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. The mandate granted at the Vault has ended.",
+    "es": "La torre The Spire se eleva sobre Meridian. Ante la primera consulta, la Autoridad interrumpe el canal: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. El mandato otorgado en el Vault ha finalizado."
+  },
+  "known": [
+    {
+      "pt-BR": "Duas operações legítimas estão agendadas para a mesma janela.",
+      "en": "Two legitimate operations are scheduled for the same window.",
+      "es": "Se programan dos operaciones legítimas para la misma ventana."
+    },
+    {
+      "pt-BR": "O mandato do auditor foi revogado; o canal de Mara é pessoal e limitado.",
+      "en": "The auditor’s mandate was revoked; Mara’s channel is personal and limited.",
+      "es": "Se revocó el mandato del auditor; el canal de Mara es personal y limitado."
+    }
+  ],
+  "unknown": [
+    {
+      "pt-BR": "Como a autorização continua vinculada à operação executada?",
+      "en": "How does authorization remain bound to the executed operation?",
+      "es": "¿Cómo queda vinculada la autorización a la operación ejecutada?"
+    },
+    {
+      "pt-BR": "Que prova pode ser obtida sem a chave do operador?",
+      "en": "What evidence can be obtained without the operator’s key?",
+      "es": "¿Qué pruebas se pueden obtener sin la llave del operador?"
+    }
+  ],
+  "reading": [
+    {
+      "pt-BR": "Leia a interface e observe o estado inicial antes de formular sua hipótese. As dicas técnicas são opcionais e progressivas.",
+      "en": "Read the interface and observe initial state before forming your hypothesis. Technical hints are optional and progressive.",
+      "es": "Lee la interfaz y observa el estado inicial antes de formular una hipótesis. Las pistas técnicas son opcionales y progresivas."
+    }
+  ]
+}

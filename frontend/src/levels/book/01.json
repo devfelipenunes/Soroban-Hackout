@@ -1,0 +1,133 @@
+{
+  "title": {
+    "pt-BR": "Capítulo 1 — Sem arrombamento",
+    "en": "Chapter 1 — No Forced Entry",
+    "es": "Capítulo 1 — Sin entrada forzada"
+  },
+  "openingCount": 6,
+  "pages": [
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O Access Gate parecia simples demais para ser responsável por um roubo daquele tamanho.",
+          "en": "The Access Gate looked too simple to be responsible for a theft of that size.",
+          "es": "La Puerta de Acceso parecía demasiado simple para ser responsable de un robo de esa magnitud."
+        },
+        {
+          "pt-BR": "Era essa simplicidade que o tornava perigoso.",
+          "en": "It was that simplicity that made it dangerous.",
+          "es": "Fue esa simplicidad lo que lo hizo peligroso."
+        },
+        {
+          "pt-BR": "O contrato conhecia um proprietário. Recebia um endereço. Mantinha o estado da porta. Registrava quem deveria ter acesso. Não havia criptografia exótica, oráculos, bloqueios temporais ou dependências profundas. Era o tipo de contrato que um auditor poderia examinar e descartar em minutos.",
+          "en": "The contract knew an owner. It received an address. It kept the door's state. It recorded who should have access. There was no exotic cryptography, no oracles, no timelocks, no deep dependencies. The kind of contract an auditor could look at and dismiss in minutes.",
+          "es": "El contrato conocía un dueño. Recibió una dirección. Mantuvo el estado de la puerta. Registró quién debería tener acceso. No había criptografía exótica, ni oráculos, ni bloqueos de tiempo, ni dependencias profundas. El tipo de contrato que un auditor podría revisar y descartar en minutos."
+        },
+        {
+          "pt-BR": "Mara acompanhava do outro lado do vidro.",
+          "en": "Mara watched from the other side of the glass.",
+          "es": "Mara miró desde el otro lado del cristal."
+        },
+        {
+          "pt-BR": "— A segurança física não encontrou nada. Se quiser contestar o relatório, comece pelo contrato de acesso.",
+          "en": "— Physical security found nothing. If you want to challenge the report, start with the access contract.",
+          "es": "— Seguridad física no encontró nada. Si desea impugnar el informe, comience con el contrato de acceso."
+        },
+        {
+          "pt-BR": "O Breaker não respondeu. Estava olhando para uma função pequena.",
+          "en": "The Breaker did not answer. He was looking at a small function.",
+          "es": "Breaker no respondió. Estaba mirando una función pequeña."
+        },
+        {
+          "pt-BR": "A interface mostrava o proprietário registrado. O endereço batia com os registros oficiais. A função recebia aquele endereço como argumento e, se ele correspondesse ao proprietário, alterava o estado da porta.",
+          "en": "The interface showed the registered owner. The address matched the official records. The function received that address as an argument and, if it matched the owner, changed the door's state.",
+          "es": "La interfaz mostró al propietario registrado. La dirección coincidía con los registros oficiales. La función recibió esa dirección como argumento y, si coincidía con el propietario, cambiaba el estado de la puerta."
+        },
+        {
+          "pt-BR": "Tudo parecia coerente.",
+          "en": "Everything seemed coherent.",
+          "es": "Todo parecía coherente."
+        },
+        {
+          "pt-BR": "Até que ele fez a pergunta errada de propósito.",
+          "en": "Until he asked the wrong question on purpose.",
+          "es": "Hasta que hizo la pregunta equivocada a propósito."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O auditor permanece no local do crime. O vidro não foi quebrado, as travas não foram forçadas e o endereço do proprietário coincide com o cadastro oficial. Nada disso explica a operação aceita naquela madrugada.",
+          "en": "The auditor remains at the crime scene. The glass is unbroken, the locks show no forced entry, and the owner address matches the official record. None of it explains the operation accepted that night.",
+          "es": "El auditor permanece en la escena del crimen. El cristal está intacto, las cerraduras no muestran entrada forzada y la dirección del propietario coincide con el registro oficial. Nada de ello explica la operación aceptada esa noche."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "“A segurança física não encontrou nada”, diz Mara. “Se quiser contestar o relatório, comece pelo contrato de acesso.”",
+          "en": "“Physical security found nothing,” Mara says. “If you want to challenge the report, start with the access contract.”",
+          "es": "\"La seguridad física no encontró nada\", dice Mara. \"Si quiere impugnar el informe, comience con el contrato de acceso\"."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O terminal oferece o código, o proprietário declarado e o identificador da porta. O relatório institucional resume tudo em uma expressão: TRANSACTION ACCEPTED.",
+          "en": "The terminal provides the code, the declared owner, and the door identifier. The institutional report sums everything up in one expression: TRANSACTION ACCEPTED.",
+          "es": "El terminal proporciona el código, el propietario declarado y el identificador de la puerta. El informe institucional lo resume todo en una sola expresión: TRANSACTION ACCEPTED."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O objetivo é entrar sem possuir a chave. Quem quiser reconstruir o caso encontra no celular o relatório original e os eventos de serviço; a resposta precisa vir da investigação do contrato.",
+          "en": "The objective is to enter without the key. Anyone wishing to reconstruct the case can find the original report and service events on the phone; the answer must come from investigating the contract.",
+          "es": "El objetivo es entrar sin la llave. Cualquiera que desee reconstruir el caso puede encontrar el informe original y los eventos del servicio en el teléfono; la respuesta debe venir de la investigación del contrato."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Porta intacta. Nenhuma chave reportada como comprometida. A inspeção física não encontrou causa para a operação aceita. O relatório não demonstra quem autorizou o acesso.",
+          "en": "Door intact. No key reported compromised. Physical inspection found no cause for the accepted operation. The report does not establish who authorized access.",
+          "es": "Puerta intacta. Ninguna clave reportada está comprometida. La inspección física no encontró causa para la operación aceptada. El informe no establece quién autorizó el acceso."
+        },
+        {
+          "pt-BR": "Na telemetria preservada da noite do roubo, consta: SERVICE_GATE_OPEN → RECOVERY_ROUTED. Os identificadores devem ser cruzados com os registros financeiros públicos. A rota de serviço daquele incidente e o destino financeiro são perguntas distintas.",
+          "en": "The telemetry preserved from the night of the theft reads: SERVICE_GATE_OPEN → RECOVERY_ROUTED. The identifiers must be compared with public financial records. That incident's service route and financial destination are separate questions.",
+          "es": "La telemetría conservada de la noche del robo dice: SERVICE_GATE_OPEN → RECOVERY_ROUTED. Los identificadores deben compararse con los registros financieros públicos. La ruta de servicio de ese incidente y el destino financiero son cuestiones separadas."
+        }
+      ]
+    }
+  ],
+  "continuation": {
+    "paragraphs": [
+      {
+        "pt-BR": "A porta abriu sem a autorização do proprietário. Nenhuma assinatura foi falsificada. O contrato aceitou a identidade declarada como se isso bastasse para provar quem agia.",
+        "en": "The door opened without the owner’s authorization. No signature was forged. The contract accepted a declared identity as though that proved who was acting.",
+        "es": "La puerta se abrió sin autorización del dueño. No se falsificó ninguna firma. El contrato aceptaba una identidad declarada como si probara quién actuaba."
+      },
+      {
+        "pt-BR": "Mara olha para a abertura. O relatório continua correto sobre a execução. Já não sustenta a conclusão de que aquela execução era legítima.",
+        "en": "Mara looks at the opening. The report is still correct about execution. It no longer supports the conclusion that this execution was legitimate.",
+        "es": "Mara mira la apertura. El informe sigue siendo correcto en cuanto a la ejecución. Ya no respalda la conclusión de que esta ejecución fuera legítima."
+      },
+      {
+        "pt-BR": "No registro legado há um marcador: I. A trilha de serviço também cita uma identidade de operador. Mara cruza o identificador com o registro civil: o titular morreu há seis meses.",
+        "en": "A legacy record contains a marker: I. The service trail also cites an operator identity. Mara checks it against the civil registry: its holder died six months ago.",
+        "es": "Un registro heredado contiene un marcador: I. El registro de servicio también cita la identidad del operador. Mara lo coteja con el registro civil: su titular falleció hace seis meses."
+      },
+      {
+        "pt-BR": "“Operador não é destinatário”, ela ressalta. A identidade de Elias Var aparece na telemetria; isso não prova que sua carteira recebeu o dinheiro. O próximo fio é descobrir por que seu perfil técnico ainda responde.",
+        "en": "“Operator is not recipient,” she stresses. Elias Var’s identity appears in telemetry; that does not prove his wallet received the money. The next lead is why his technical profile still responds.",
+        "es": "“El operador no es el destinatario”, subraya. La identidad de Elías Var aparece en telemetría; Eso no prueba que su billetera haya recibido el dinero. La siguiente pista es por qué su perfil técnico aún responde."
+      }
+    ]
+  }
+}

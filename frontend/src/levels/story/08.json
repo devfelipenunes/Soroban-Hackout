@@ -1,0 +1,84 @@
+{
+  "scenes": [
+    {
+      "id": "08-0",
+      "title": {
+        "pt-BR": "Chegada",
+        "en": "Arrival",
+        "es": "Llegada"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O Setor 13 parece um cemitério de dados que ainda recebe entregas. Registros repetidos, identidades descartáveis e referências incompletas se acumulam. O painel avisa: ARCHIVE LOAD: CRITICAL.",
+          "en": "Sector 13 looks like a data cemetery still accepting deliveries. Repeated records, disposable identities, and incomplete references accumulate. The panel warns: ARCHIVE LOAD: CRITICAL.",
+          "es": "El Sector 13 parece un cementerio de datos que aún recibe registros. Se acumulan entradas duplicadas, identidades descartables y referencias incompletas. El panel indica: ARCHIVE LOAD: CRITICAL."
+        },
+        {
+          "pt-BR": "Voss deixou uma instrução: “Quebre o Archive.” Mara pergunta se ele quer destruir a instalação. O auditor precisa entender o que significa fazê-la falhar e quem depende dela.",
+          "en": "Voss left an instruction: “Break the Archive.” Mara asks whether he wants the facility destroyed. The auditor must understand what making it fail means and who depends on it.",
+          "es": "Voss dejó una instrucción: \"Rompe el archivo\". Mara le pregunta si quiere que destruyan las instalaciones. El auditor debe comprender qué significa hacerlo fallar y quién depende de ello."
+        }
+      ]
+    },
+    {
+      "id": "08-1",
+      "title": {
+        "pt-BR": "A investigação",
+        "en": "The investigation",
+        "es": "la investigacion"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "A documentação de continuidade menciona uma cópia externa do estado e um escopo legado de leitura. Ainda não se sabe o que ela contém. O contrato é público; o arquivo operacional pertence a outro serviço.",
+          "en": "Continuity documentation mentions an external snapshot and a legacy read scope. Its contents are still unknown. The contract is public; the operational archive belongs to another service.",
+          "es": "La documentación de continuidad menciona una instantánea externa y un alcance de lectura heredado. Su contenido aún se desconoce. El contrato es público; el archivo operativo pertenece a otro servicio."
+        },
+        {
+          "pt-BR": "A cada operação, o terminal registra o que realmente foi aceito. O objetivo exige demonstrar o limite do Archive, sem confundir a prova com uma licença para continuar aumentando o dano.",
+          "en": "For each operation, the terminal records what was actually accepted. The objective requires demonstrating the Archive’s limit, without treating proof as permission to keep increasing the damage.",
+          "es": "Para cada operación, el terminal registra lo que realmente se aceptó. El objetivo pasa por demostrar el límite del Archive, sin tratar la prueba como un permiso para seguir aumentando el daño."
+        }
+      ]
+    },
+    {
+      "id": "08-2",
+      "title": {
+        "pt-BR": "A prova",
+        "en": "The evidence",
+        "es": "la evidencia"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O limite foi demonstrado. O indexador de continuidade detecta a falha na reconstrução e passa a servir sua cópia externa do estado. O escopo de leitura legado é amplo demais. Nenhum segredo foi extraído de um suposto armazenamento privado do ledger.",
+          "en": "The limit was demonstrated. The continuity indexer detects the failed rebuild and serves its external snapshot. The legacy read scope is too broad. No secret was extracted from supposedly private ledger storage.",
+          "es": "El límite quedó demostrado. El indexador de continuidad detecta la reconstrucción fallida y entrega su instantánea externa. El alcance de lectura heredado es demasiado amplio. No se extrajo ningún secreto del almacenamiento del ledger supuestamente privado."
+        },
+        {
+          "pt-BR": "O Breaker interrompe novas inserções. A carga deixa de crescer, mas a indisponibilidade já teve custo. Mara não permite chamar isso de recuperação sem consequências.",
+          "en": "The Breaker stops new insertions. The load stops growing, but the outage has already had a cost. Mara does not let him call this recovery without consequences.",
+          "es": "Breaker detiene las nuevas inserciones. El volumen deja de crecer, pero la interrupción ya tuvo un costo. Mara no permite que esta recuperación quede sin consecuencias."
+        }
+      ]
+    },
+    {
+      "id": "08-3",
+      "title": {
+        "pt-BR": "O próximo fio",
+        "en": "The next lead",
+        "es": "La siguiente pista"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O instantâneo apresenta o BREAKER REGISTRY. Entradas mascaradas: MISSING, ACCEPTED, DECEASED. Um nome permanece legível: AREN VOSS — REFUSED. Logo abaixo está o próprio auditor: ACTIVE.",
+          "en": "The snapshot reveals the BREAKER REGISTRY. Masked entries: MISSING, ACCEPTED, DECEASED. One name remains readable: AREN VOSS — REFUSED. Below it is the auditor himself: ACTIVE.",
+          "es": "La instantánea revela el BREAKER REGISTRY. Entradas enmascaradas: MISSING, ACCEPTED, DECEASED. Queda legible un nombre: AREN VOSS — REFUSED. Debajo está el propio auditor: ACTIVE."
+        },
+        {
+          "pt-BR": "A marca de tempo é posterior à abertura do caso. Ele estava seguindo Voss; alguém também acompanha seus passos. A próxima referência se chama ORACLE. Pela primeira vez, a pista vem do observador.",
+          "en": "The timestamp is later than the case opening. He was following Voss; someone is also following his steps. The next reference is ORACLE. For the first time, the lead comes from the observer.",
+          "es": "La marca de tiempo es posterior a la apertura del caso. Estaba siguiendo a Voss; alguien también está siguiendo sus pasos. La siguiente referencia es ORACLE. Por primera vez, el liderazgo proviene del observador."
+        }
+      ]
+    }
+  ]
+}

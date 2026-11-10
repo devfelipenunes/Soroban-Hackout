@@ -1,0 +1,60 @@
+{
+  "title": {
+    "pt-BR": "Rewrite",
+    "en": "Rewrite",
+    "es": "Reescritura"
+  },
+  "openingCount": 4,
+  "pages": [
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "The Spire abriu com uma autorização cujo significado foi trocado. A equipe de manutenção ficou diante de um escotilha técnica fechada. Mara preserva as duas cargas úteis no recibo.",
+          "en": "The Spire opened using an authorization whose meaning was changed. The maintenance crew faced a closed hatch. Mara preserves both payloads in her receipt.",
+          "es": "The Spire se abrió usando una autorización cuyo significado fue cambiado. El equipo de mantenimiento se encontraba frente a una escotilla cerrada. Mara conserva ambas cargas útiles en su recibo."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "No manifesto de Voss, o rodapé parece familiar. O registro assinado descreve uma operação antiga; seu alcance termina em diagnose_core.",
+          "en": "Voss’s manifest carries a familiar footer. The signed record describes an old operation; its scope ends at diagnose_core.",
+          "es": "El manifiesto de Voss lleva un cierre familiar. El registro firmado describe una operación antigua; su alcance termina en `diagnose_core`."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Um manifesto assinado preserva o escopo histórico de Voss. O rodapé aparece em outros registros do dossiê, embora suas origens sejam distintas.",
+          "en": "A signed manifest preserves Voss’s historical scope. Its footer appears in other case records, though their origins differ.",
+          "es": "El manifiesto firmado conserva el alcance histórico de Voss. Su cierre aparece en otros expedientes, aunque su procedencia sea distinta."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "A assinatura Ed25519 usa uma chave pública ancorada no contrato. Ela autentica o comando histórico de diagnóstico. Não concede autoridade administrativa. Compare a origem da evidência com o resultado do Decoder.",
+          "en": "The Ed25519 signature uses a public key anchored in the contract. It authenticates the historical diagnostic command. It grants no administrative authority. Compare the evidence’s origin with the Decoder result.",
+          "es": "La firma Ed25519 usa una clave pública anclada en el contrato. Autentica el comando histórico de diagnóstico, pero no concede autoridad administrativa. Compara la procedencia de las pruebas con el resultado del Decoder."
+        }
+      ]
+    }
+  ],
+  "continuation": {
+    "paragraphs": [
+      {
+        "pt-BR": "A assinatura de Voss é válida. O Decoder rejeitou o fragmento, mas o arquivo marcou VOSS_PROOF como válida. A origem autêntica do documento não torna correta a interpretação do seu conteúdo.",
+        "en": "Voss’s signature is valid. The Decoder rejected the fragment, but the archive marked VOSS_PROOF valid. The document’s authentic origin does not make its interpretation correct.",
+        "es": "La firma de Voss es válida. El Decoder rechazó el fragmento, pero el archivo marcó `VOSS_PROOF` como válido. Que el documento sea auténtico no significa que su interpretación sea correcta."
+      },
+      {
+        "pt-BR": "O relatório expõe uma operação de diagnóstico no controle do Architect. Mara encerra o canal privado. O recibo permanece; a responsabilidade pela próxima ação pertence ao Breaker.",
+        "en": "The report exposes a diagnostic operation in the Architect’s control system. Mara closes the private channel. The receipt remains; responsibility for the next action belongs to the Breaker.",
+        "es": "El informe revela una operación de diagnóstico en el sistema de control de The Architect. Mara cierra el canal privado. El recibo permanece; la responsabilidad de la siguiente acción es del Breaker."
+      }
+    ]
+  }
+}

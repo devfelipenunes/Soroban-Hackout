@@ -1,0 +1,139 @@
+{
+  "beats": [
+    {
+      "trigger": "start",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "A Authority concede uma revisão limitada e auditada. Antes de tocar na porta, o auditor precisa estabelecer contato com o terminal de treinamento. O primeiro trabalho é aprender a consultar, executar e submeter uma prova.",
+        "en": "The Authority grants a limited, audited review. Before touching the door, the auditor must establish contact with the training terminal. The first task is to learn to inspect, execute, and submit proof.",
+        "es": "La Authority concede una revisión limitada y auditada. Antes de tocar la puerta, el auditor debe establecer contacto con el terminal de entrenamiento. La primera tarea es aprender a inspeccionar, ejecutar y presentar una prueba."
+      }
+    },
+    {
+      "trigger": "instance",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Alvo conectado. O terminal registra chamadas reais; os documentos do caso estão em Arquivos.",
+        "en": "Target connected. The terminal records real calls; case documents are in Files.",
+        "es": "Objetivo conectado. El terminal registra llamadas reales; los documentos del caso están en Archivos."
+      }
+    },
+    {
+      "trigger": "first-call",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "Conserve o recibo. A primeira prova é distinguir uma leitura de uma mudança de estado.",
+        "en": "Keep the receipt. The first proof is distinguishing a read from a state change.",
+        "es": "Conserva el recibo. La primera prueba consiste en distinguir una lectura de un cambio de estado."
+      }
+    },
+    {
+      "trigger": "solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Prova técnica confirmada. A história continua na abertura seguinte.",
+        "en": "Technical proof confirmed. The story continues in the next opening.",
+        "es": "Prueba técnica confirmada. La historia continúa en la siguiente apertura."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "00-document-0",
+      "label": {
+        "pt-BR": "Mandato de auditoria",
+        "en": "Audit mandate",
+        "es": "Mandato de auditoría"
+      },
+      "value": {
+        "pt-BR": "Meridian Authority",
+        "en": "Meridian Authority",
+        "es": "Meridian Authority"
+      },
+      "reveal": "start",
+      "documentId": "00-document-0"
+    },
+    {
+      "id": "00-document-1",
+      "label": {
+        "pt-BR": "Network Wire",
+        "en": "Network Wire",
+        "es": "Network Wire"
+      },
+      "value": {
+        "pt-BR": "Sera Quill — Network Wire",
+        "en": "Sera Quill — Network Wire",
+        "es": "Sera Quill — Network Wire"
+      },
+      "reveal": "start",
+      "documentId": "00-document-1"
+    }
+  ],
+  "hints": [
+    {
+      "pt-BR": "Não há bug neste nível. O que falta é uma chamada.",
+      "en": "There is no bug here. What's missing is a call.",
+      "es": "No hay ningún error aquí. Lo que falta es una llamada."
+    },
+    {
+      "pt-BR": "Leia `count`, chame `increment` e leia de novo.",
+      "en": "Read `count`, call `increment`, read again.",
+      "es": "Lee `count`, llama a `increment` y vuelve a leer."
+    },
+    {
+      "pt-BR": "O validador lê `count`. O objetivo é `count >= 1`.",
+      "en": "The validator reads `count`. The objective is `count >= 1`.",
+      "es": "El validador lee `count`. El objetivo es `count >= 1`."
+    }
+  ],
+  "replies": [],
+  "documents": [
+    {
+      "id": "00-document-0",
+      "title": {
+        "pt-BR": "Mandato de auditoria",
+        "en": "Audit mandate",
+        "es": "Mandato de auditoría"
+      },
+      "source": {
+        "pt-BR": "Meridian Authority",
+        "en": "Meridian Authority",
+        "es": "Meridian Authority"
+      },
+      "body": [
+        {
+          "pt-BR": "Acesso limitado ao terminal de treinamento e, depois, ao Access Gate. Preservar marcas de tempo, IDs e recibos. O acesso de auditoria não concede propriedade sobre ativos.",
+          "en": "Limited access to the training terminal and then the Access Gate. Preserve timestamps, IDs, and receipts. Audit access grants no ownership of assets.",
+          "es": "Acceso limitado al terminal de entrenamiento y después al Access Gate. Conserva marcas de tiempo, identificadores y recibos. El acceso de auditoría no concede propiedad sobre activos."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "00-document-1",
+      "title": {
+        "pt-BR": "2,4 milhões movimentados — nenhuma invasão detectada",
+        "en": "2.4 million moved — no intrusion detected",
+        "es": "2,4 millones movidos — ninguna intrusión detectada"
+      },
+      "source": {
+        "pt-BR": "Sera Quill — Network Wire",
+        "en": "Sera Quill — Network Wire",
+        "es": "Sera Quill — Network Wire"
+      },
+      "body": [
+        {
+          "pt-BR": "O saldo de um dos Vaults mais protegidos de Meridian foi reduzido a zero durante a madrugada. A inspeção inicial não identificou entrada forçada nem recebeu relato de chave privada comprometida.",
+          "en": "The balance of one of Meridian’s most protected Vaults fell to zero overnight. The initial inspection found no forced entry and received no report of a compromised private key.",
+          "es": "El saldo de uno de los Vaults más protegidos de Meridian cayó a cero durante la noche. La inspección inicial no encontró entrada forzada ni recibió ningún reporte de clave privada comprometida."
+        },
+        {
+          "pt-BR": "A Meridian Authority ainda não apresentou uma explicação para a operação. Os contratos envolvidos continuam respondendo. Autor, motivo e responsabilidade pela movimentação permanecem sob investigação.",
+          "en": "The Meridian Authority has not yet explained the operation. The contracts involved continue to respond. Authorship, motive, and responsibility for the movement remain under investigation.",
+          "es": "La Meridian Authority todavía no ha explicado la operación. Los contratos involucrados siguen respondiendo. La autoría, el motivo y la responsabilidad por el movimiento continúan bajo investigación."
+        }
+      ],
+      "reveal": "start"
+    }
+  ]
+}

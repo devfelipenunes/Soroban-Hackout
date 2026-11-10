@@ -1,0 +1,58 @@
+{
+  "objective": {
+    "pt-BR": "Roube um objeto que o sistema acredita que você tem o direito de possuir.",
+    "en": "Steal an object the system believes you may own.",
+    "es": "Roba un objeto que el sistema cree que puedes poseer."
+  },
+  "target": {
+    "pt-BR": "Contrato de propriedade do Armazém 17",
+    "en": "Warehouse 17 property contract",
+    "es": "Contrato de propiedad del almacén 17"
+  },
+  "owner": {
+    "pt-BR": "Armazém 17",
+    "en": "Warehouse 17",
+    "es": "Almacén 17"
+  },
+  "network": {
+    "pt-BR": "Stellar testnet",
+    "en": "Stellar testnet",
+    "es": "Stellar Testnet"
+  },
+  "lead": {
+    "pt-BR": "Lower Meridian é a região que a cidade usa sem admitir quanto depende dela. Tubulações antigas atravessam estruturas novas. No fim de uma via sem nome, um depósito aparentemente desativado continua recebendo veículos.",
+    "en": "Lower Meridian is the district the city uses without admitting how much it depends on it. Old pipes cross new structures. At the end of an unnamed road, an apparently deactivated depot still receives vehicles.",
+    "es": "Lower Meridian es el distrito que la ciudad utiliza sin admitir cuánto depende de él. Tuberías antiguas cruzan estructuras nuevas. Al final de una carretera sin nombre, un depósito aparentemente desactivado todavía recibe vehículos."
+  },
+  "known": [
+    {
+      "pt-BR": "O depósito não tem registro municipal, mas recebe equipamentos.",
+      "en": "The depot has no municipal record but receives equipment.",
+      "es": "El depósito no figura en los registros municipales, pero sigue recibiendo equipos."
+    },
+    {
+      "pt-BR": "O inventário não sinaliza itens roubados; Mara encontrou uma contestação independente.",
+      "en": "The inventory flags no stolen items; Mara found an independent dispute.",
+      "es": "El inventario no detecta artículos robados; Mara encontró una disputa independiente."
+    }
+  ],
+  "unknown": [
+    {
+      "pt-BR": "Os direitos do proprietário são preservados durante uma transferência?",
+      "en": "Are the owner’s rights preserved during a transfer?",
+      "es": "¿Se preservan los derechos del propietario durante una transferencia?"
+    },
+    {
+      "pt-BR": "O dispositivo investigado pode explicar a rota legada?",
+      "en": "Can the investigated device explain the legacy route?",
+      "es": "¿Puede el dispositivo investigado explicar la ruta heredada?"
+    }
+  ],
+  "reading": [
+    {
+      "pt-BR": "Leia a interface e observe o estado inicial antes de formular sua hipótese. As dicas técnicas são opcionais e progressivas.",
+      "en": "Read the interface and observe initial state before forming your hypothesis. Technical hints are optional and progressive.",
+      "es": "Lee la interfaz y observa el estado inicial antes de plantear una hipótesis. Las pistas técnicas son opcionales y progresivas."
+    }
+  ]
+}

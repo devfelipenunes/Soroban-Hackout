@@ -1,0 +1,123 @@
+{
+  "title": {
+    "pt-BR": "Prólogo — O roubo impossível",
+    "en": "Prologue — The Impossible Theft",
+    "es": "Prólogo — El robo imposible"
+  },
+  "openingCount": 6,
+  "pages": [
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Meridian era uma cidade construída sobre certeza.",
+          "en": "Meridian was a city built on certainty.",
+          "es": "Meridian era una ciudad construida sobre la certeza."
+        },
+        {
+          "pt-BR": "Não a certeza filosófica dos homens que passavam noites discutindo o sentido de uma verdade, mas a certeza operacional das máquinas. Portas reconheciam seus proprietários. Credenciais diziam quem alguém era. Mercados sabiam quanto cada ativo valia. Sistemas de transporte sabiam quem podia passar, para onde e quando. Energia, identidade, propriedade, crédito, segurança: tudo dependia de contratos que a maioria das pessoas jamais tinha visto.",
+          "en": "Not the philosophical certainty of men who spent their nights arguing about the meaning of a truth, but the operational certainty of machines. Doors recognized their owners. Credentials said who someone was. Markets knew how much each asset was worth. Transport systems knew who could pass, where and when. Energy, identity, property, credit, security: everything depended on contracts that most people had never seen.",
+          "es": "No la certeza filosófica de los hombres que pasaban las noches discutiendo sobre el significado de una verdad, sino la certeza operativa de las máquinas. Las puertas reconocieron a sus dueños. Las credenciales decían quién era alguien. Los mercados sabían cuánto valía cada activo. Los sistemas de transporte sabían quién podía pasar, dónde y cuándo. Energía, identidad, propiedad, crédito, seguridad: todo dependía de contratos que la mayoría de la gente nunca había visto."
+        },
+        {
+          "pt-BR": "Para os habitantes de Meridian, contratos não eram programas.",
+          "en": "To the inhabitants of Meridian, contracts were not programs.",
+          "es": "Para los habitantes de Meridian, los contratos no eran programas."
+        },
+        {
+          "pt-BR": "Eram quase leis naturais.",
+          "en": "They were almost natural laws.",
+          "es": "Eran leyes casi naturales."
+        },
+        {
+          "pt-BR": "Uma porta não escolhia reconhecer alguém. Ela reconhecia. Uma propriedade não parecia pertencer a uma pessoa porque um conjunto de instruções havia chegado àquela conclusão. Ela simplesmente pertencia. O código desaparecera atrás do hábito. A infraestrutura tornara-se tão confiável que a população já não pensava em confiança.",
+          "en": "A door did not choose to recognize someone. It recognized. A property did not seem to belong to a person because a set of instructions had reached that conclusion. It simply belonged. The code had vanished behind habit. The infrastructure had become so reliable that the population no longer thought about trust.",
+          "es": "Una puerta no eligió reconocer a alguien. Lo reconoció. Una propiedad no parecía pertenecer a una persona porque un conjunto de instrucciones había llegado a esa conclusión. Simplemente pertenecía. El código se había desvanecido tras la costumbre. La infraestructura se había vuelto tan fiable que la población ya no pensaba en la confianza."
+        },
+        {
+          "pt-BR": "Naquela madrugada, uma dessas certezas foi quebrada.",
+          "en": "In the early hours of that morning, one of those certainties was broken.",
+          "es": "En las primeras horas de esa mañana, una de esas certezas se rompió."
+        },
+        {
+          "pt-BR": "O Vault Meridian-7 ficava abaixo de uma das torres administrativas de Coreward, protegido por camadas físicas e digitais que haviam sido auditadas tantas vezes que os relatórios de segurança ocupavam mais espaço do que o próprio contrato responsável por autorizar a entrada.",
+          "en": "The Meridian-7 Vault lay beneath one of Coreward's administrative towers, protected by physical and digital layers that had been audited so many times that the security reports took up more space than the contract responsible for authorizing entry.",
+          "es": "La bóveda Meridian-7 estaba bajo una de las torres administrativas de Coreward. La protegían tantas capas físicas y digitales, auditadas una y otra vez, que los informes de seguridad ocupaban más espacio que el contrato encargado de autorizar la entrada."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Meridian acorda sobre certezas. Portas reconhecem proprietários, trens obedecem às credenciais e os mercados liquidam operações sem que ninguém precise ver o código. Tudo é governado por um Contrato.",
+          "en": "Meridian wakes upon certainties. Doors recognize owners, trains obey credentials, and markets settle trades without anyone having to see the code. Everything is governed by a Contract.",
+          "es": "Meridian despierta con certezas. Las puertas reconocen a los propietarios, los trenes obedecen las credenciales y los mercados liquidan las transacciones sin que nadie tenga que ver el código. Todo se rige por un Contrato."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Na madrugada, o saldo do Meridian Vault passou de 2.400.000 a zero. A porta está intacta. Nenhuma chave foi reportada como comprometida. Os contratos continuam respondendo.",
+          "en": "Overnight, the Meridian Vault balance fell from 2,400,000 to zero. The door is intact. No key has been reported compromised. The contracts still respond.",
+          "es": "De la noche a la mañana, el saldo de Meridian Vault cayó de 2.400.000 a cero. La puerta está intacta. No se ha informado que ninguna clave esté comprometida. Los contratos todavía responden."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Mara Vale espera diante do relatório. “O sistema aceitou a transação. Isso significa que alguém estava autorizado.” O auditor responde: “Significa que o contrato acreditou que alguém estava autorizado.”",
+          "en": "Mara Vale waits beside the report. “The system accepted the transaction. That means someone was authorized.” The auditor replies: “It means the contract believed someone was authorized.”",
+          "es": "Mara Vale espera junto al informe. \"El sistema aceptó la transacción. Eso significa que alguien fue autorizado\". El auditor responde: \"Significa que el contrato creía que alguien estaba autorizado\"."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "A Authority concede uma revisão limitada e auditada. Antes de tocar na porta, o auditor precisa estabelecer contato com o terminal de treinamento. O primeiro trabalho é aprender a consultar, executar e submeter uma prova.",
+          "en": "The Authority grants a limited, audited review. Before touching the door, the auditor must establish contact with the training terminal. The first task is to learn to inspect, execute, and submit proof.",
+          "es": "La Autoridad concede una revisión auditada limitada. Antes de tocar la puerta, el auditor debe establecer contacto con el terminal de formación. La primera tarea es aprender a inspeccionar, ejecutar y presentar pruebas."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Acesso limitado ao terminal de treinamento e, depois, ao Access Gate. Preservar marcas de tempo, IDs e recibos. O acesso de auditoria não concede propriedade sobre ativos.",
+          "en": "Limited access to the training terminal and then the Access Gate. Preserve timestamps, IDs, and receipts. Audit access grants no ownership of assets.",
+          "es": "Acceso limitado a la terminal de entrenamiento y luego a la Puerta de Acceso. Conserve marcas de tiempo, identificaciones y recibos. El acceso a la auditoría no otorga propiedad sobre los activos."
+        },
+        {
+          "pt-BR": "2,4 MILHÕES MOVIMENTADOS — NENHUMA INVASÃO DETECTADA. A notícia descreve o incidente; não identifica autor, beneficiário ou causa.",
+          "en": "2.4 MILLION MOVED — NO INTRUSION DETECTED. The report describes the incident; it identifies no author, beneficiary, or cause.",
+          "es": "2,4 MILLONES MOVIDOS: NO SE DETECTÓ INTRUSIÓN. El informe describe el incidente; no identifica ningún autor, beneficiario o causa."
+        }
+      ]
+    }
+  ],
+  "continuation": {
+    "paragraphs": [
+      {
+        "pt-BR": "A primeira submissão foi confirmada. O terminal reconhece a operação, mas isso ainda não explica o Vault. Mara conserva o recibo e libera o contrato da porta de serviço.",
+        "en": "The first submission was confirmed. The terminal recognizes the operation, but it does not explain the Vault yet. Mara preserves the receipt and releases the service-door contract.",
+        "es": "La primera presentación fue confirmada. El terminal reconoce la operación, pero aún no explica el Vault. Mara conserva el recibo y libera el contrato de puerta de servicio."
+      },
+      {
+        "pt-BR": "“Agora temos um registro do que você fez”, diz ela. “No Vault, temos um registro do que aconteceu. Falta entender a diferença.”",
+        "en": "“Now we have a record of what you did,” she says. “At the Vault, we have a record of what happened. We still need to understand the difference.”",
+        "es": "\"Ahora tenemos un registro de lo que hiciste\", dice. \"En el Vault tenemos un registro de lo que sucedió. Aún necesitamos entender la diferencia\"."
+      },
+      {
+        "pt-BR": "Do lado de fora, as pessoas continuam apresentando credenciais a portas que sempre se abrem. Aqui, uma porta fechada protege uma explicação que ninguém conseguiu encontrar.",
+        "en": "Outside, people keep presenting credentials to doors that always open. Here, a closed door guards an explanation no one has found.",
+        "es": "Afuera, la gente sigue presentando credenciales ante puertas que siempre se abren. Aquí, una puerta cerrada guarda una explicación que nadie ha encontrado."
+      },
+      {
+        "pt-BR": "Mara mantém o escopo: investigar o Access Gate, preservar os registros originais e descobrir como entraram sem possuir a chave.",
+        "en": "Mara keeps the scope precise: investigate the Access Gate, preserve the original records, and discover how someone entered without the key.",
+        "es": "Mara mantiene el alcance preciso: investiga la puerta de acceso, preserva los registros originales y descubre cómo alguien entró sin la llave."
+      }
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "objective": {
+    "pt-BR": "Torne-se alguém que não deveria mais existir.",
+    "en": "Become someone who should no longer exist.",
+    "es": "Conviértete en alguien que ya no debería existir."
+  },
+  "target": {
+    "pt-BR": "Registro de identidade",
+    "en": "Identity registry",
+    "es": "Registro de identidad"
+  },
+  "owner": {
+    "pt-BR": "O próprio contrato é o administrador inicial",
+    "en": "The contract itself is the initial admin",
+    "es": "El contrato es su propio administrador inicial."
+  },
+  "network": {
+    "pt-BR": "Stellar testnet",
+    "en": "Stellar testnet",
+    "es": "Stellar Testnet"
+  },
+  "lead": {
+    "pt-BR": "Elias Var era técnico de infraestrutura. A certidão confirma sua morte; a credencial profissional foi revogada. Seu registro legado, porém, continua atendendo solicitações.",
+    "en": "Elias Var was an infrastructure technician. His death certificate is confirmed; his professional credential was revoked. Yet his legacy registry continues answering requests.",
+    "es": "Elías Var era técnico de infraestructuras. Se confirma su certificado de defunción; su credencial profesional fue revocada. Sin embargo, su registro heredado continúa respondiendo solicitudes."
+  },
+  "known": [
+    {
+      "pt-BR": "Elias Var morreu há seis meses; seu perfil técnico continua respondendo.",
+      "en": "Elias Var died six months ago; his technical profile still responds.",
+      "es": "Elías Var murió hace seis meses; su perfil técnico aún responde."
+    },
+    {
+      "pt-BR": "A trilha cita uma identidade de operador, não um destinatário financeiro.",
+      "en": "The trail cites an operator identity, not a financial recipient.",
+      "es": "La pista apunta a la identidad de un operador, no a un destinatario de fondos."
+    }
+  ],
+  "unknown": [
+    {
+      "pt-BR": "Por que uma identidade encerrada ainda exerce autoridade técnica?",
+      "en": "Why does a closed identity still hold technical authority?",
+      "es": "¿Por qué una identidad cerrada todavía tiene autoridad técnica?"
+    },
+    {
+      "pt-BR": "Que registro de manutenção pode explicar sua presença na trilha?",
+      "en": "What maintenance record could explain its presence in the trail?",
+      "es": "¿Qué registro de mantenimiento podría explicar su presencia en la pista?"
+    }
+  ],
+  "reading": [
+    {
+      "pt-BR": "Leia a interface e observe o estado inicial antes de formular sua hipótese. As dicas técnicas são opcionais e progressivas.",
+      "en": "Read the interface and observe initial state before forming your hypothesis. Technical hints are optional and progressive.",
+      "es": "Lee la interfaz y observa el estado inicial antes de plantear una hipótesis. Las pistas técnicas son opcionales y progresivas."
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "beats": [
+    {
+      "trigger": "previous-solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "No registro legado há um marcador: I. A trilha de serviço também cita uma identidade de operador. Mara cruza o identificador com o registro civil: o titular morreu há seis meses.",
+        "en": "A legacy record contains a marker: I. The service trail also cites an operator identity. Mara checks it against the civil registry: its holder died six months ago.",
+        "es": "Un registro heredado contiene un marcador: I. El registro de servicio también cita la identidad del operador. Mara lo coteja con el registro civil: su titular falleció hace seis meses."
+      }
+    },
+    {
+      "trigger": "start",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "É preciso alcançar o registro necessário à investigação. Mara impõe um limite: preservar a procedência da prova não concede direito de assumir permanentemente a identidade de Elias.",
+        "en": "The investigation needs that record. Mara sets a limit: preserving evidence does not grant the right to permanently assume Elias’s identity.",
+        "es": "La investigación necesita ese registro. Mara pone un límite: preservar la evidencia no otorga el derecho a asumir permanentemente la identidad de Elías."
+      }
+    },
+    {
+      "trigger": "instance",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Alvo conectado. O terminal registra chamadas reais; os documentos do caso estão em Arquivos.",
+        "en": "Target connected. The terminal records real calls; case documents are in Files.",
+        "es": "Objetivo conectado. El terminal graba llamadas reales; los documentos del caso están en Archivos."
+      }
+    },
+    {
+      "trigger": "first-call",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "Precisamos do registro de manutenção, não de uma nova identidade para você.",
+        "en": "We need the maintenance record, not a new identity for you.",
+        "es": "Necesitamos el registro de mantenimiento, no una nueva identidad para usted."
+      }
+    },
+    {
+      "trigger": "solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Prova técnica confirmada. A história continua na abertura seguinte.",
+        "en": "Technical proof confirmed. The story continues in the next opening.",
+        "es": "Prueba técnica confirmada. La historia continúa en la siguiente apertura."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "02-document-0",
+      "label": {
+        "pt-BR": "Registro de Elias Var",
+        "en": "Elias Var record",
+        "es": "Récord de Elías Var"
+      },
+      "value": {
+        "pt-BR": "Registro civil / Mara Vale",
+        "en": "Civil registry / Mara Vale",
+        "es": "Registro civil / Mara Vale"
+      },
+      "reveal": "start",
+      "documentId": "02-document-0"
+    },
+    {
+      "id": "02-document-1",
+      "label": {
+        "pt-BR": "Política do arquivo de manutenção",
+        "en": "Maintenance archive policy",
+        "es": "Política de archivo de mantenimiento"
+      },
+      "value": {
+        "pt-BR": "Arquivo externo de manutenção",
+        "en": "External maintenance archive",
+        "es": "Archivo de mantenimiento externo"
+      },
+      "reveal": "start",
+      "documentId": "02-document-1"
+    },
+    {
+      "id": "02-previous-record",
+      "label": {
+        "pt-BR": "Como chegamos aqui",
+        "en": "How we got here",
+        "es": "¿Cómo llegamos aquí?"
+      },
+      "value": {
+        "pt-BR": "Registro do caso anterior confirmado. Abrir a cadeia de evidências.",
+        "en": "Previous case record confirmed. Open the evidence chain.",
+        "es": "Se confirma registro de caso anterior. Abra la cadena de evidencia."
+      },
+      "reveal": "previous-solved",
+      "documentId": "02-previous-record"
+    }
+  ],
+  "hints": [
+    {
+      "pt-BR": "A identidade morreu, mas o contrato ainda responde. Quem ele diz que controla?",
+      "en": "The identity died, but the contract still answers. Who does it say controls it?",
+      "es": "La identidad murió, pero el contrato aún responde. ¿Quién dice que lo controla?"
+    },
+    {
+      "pt-BR": "Leia `admin()`, chame `initialize` com o seu endereço, leia o registro e chame `release` para mover o saldo.",
+      "en": "Read `admin()`, call `initialize` with your address, read the record, and call `release` to move the balance.",
+      "es": "Lee `admin()`, llama a `initialize` con tu dirección, consulta el registro y llama a `release` para mover el saldo."
+    },
+    {
+      "pt-BR": "A falha é a inicialização repetível: falta a verificação de \"já inicializado\"; o `release` usa o administrador que você acabou de definir.",
+      "en": "The flaw is repeatable initialization: there is no \"already initialized\" guard; `release` uses the admin you just set.",
+      "es": "El defecto es la inicialización repetible: no hay una protección \"ya inicializada\"; `release` usa el administrador que acabas de configurar."
+    }
+  ],
+  "replies": [],
+  "documents": [
+    {
+      "id": "02-document-0",
+      "title": {
+        "pt-BR": "Registro de Elias Var",
+        "en": "Elias Var record",
+        "es": "Récord de Elías Var"
+      },
+      "source": {
+        "pt-BR": "Registro civil / Mara Vale",
+        "en": "Civil registry / Mara Vale",
+        "es": "Registro civil / Mara Vale"
+      },
+      "body": [
+        {
+          "pt-BR": "Morte confirmada há seis meses. A identidade de operador citada na trilha é metadado legado. Não há prova de que a carteira de Elias tenha custodiado os fundos do Vault.",
+          "en": "Death confirmed six months ago. The operator identity cited in the trail is legacy metadata. There is no proof that Elias’s wallet held the Vault funds.",
+          "es": "Muerte confirmada hace seis meses. La identidad del operador citada en el rastro son metadatos heredados. No hay pruebas de que la billetera de Elias contuviera los fondos de el Vault."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "02-document-1",
+      "title": {
+        "pt-BR": "Política do arquivo de manutenção",
+        "en": "Maintenance archive policy",
+        "es": "Política de archivo de mantenimiento"
+      },
+      "source": {
+        "pt-BR": "Arquivo externo de manutenção",
+        "en": "External maintenance archive",
+        "es": "Archivo de mantenimiento externo"
+      },
+      "body": [
+        {
+          "pt-BR": "O documento não está em claro no ledger. O serviço externo exige uma solicitação autenticada e consulta o controlador atual do registro. A referência e o digest são públicos.",
+          "en": "The document is not plaintext on the ledger. The external service requires an authenticated request and checks the registry’s current controller. The reference and digest are public.",
+          "es": "El documento no es texto plano en el ledger. El servicio externo requiere una solicitud autenticada y verifica el controlador actual del registro. La referencia y el resumen son públicos."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "02-previous-record",
+      "title": {
+        "pt-BR": "Do caso anterior",
+        "en": "From the previous case",
+        "es": "Del caso anterior"
+      },
+      "source": {
+        "pt-BR": "Dossiê preservado / continuação",
+        "en": "Preserved case file / continuation",
+        "es": "Expediente conservado / continuación"
+      },
+      "body": [
+        {
+          "pt-BR": "A porta abriu sem a autorização do proprietário. Nenhuma assinatura foi falsificada. O contrato aceitou a identidade declarada como se isso bastasse para provar quem agia.",
+          "en": "The door opened without the owner’s authorization. No signature was forged. The contract accepted a declared identity as though that proved who was acting.",
+          "es": "La puerta se abrió sin autorización del dueño. No se falsificó ninguna firma. El contrato aceptaba una identidad declarada como si probara quién actuaba."
+        },
+        {
+          "pt-BR": "Mara olha para a abertura. O relatório continua correto sobre a execução. Já não sustenta a conclusão de que aquela execução era legítima.",
+          "en": "Mara looks at the opening. The report is still correct about execution. It no longer supports the conclusion that this execution was legitimate.",
+          "es": "Mara mira la apertura. El informe sigue siendo correcto en cuanto a la ejecución. Ya no respalda la conclusión de que esta ejecución fuera legítima."
+        },
+        {
+          "pt-BR": "No registro legado há um marcador: I. A trilha de serviço também cita uma identidade de operador. Mara cruza o identificador com o registro civil: o titular morreu há seis meses.",
+          "en": "A legacy record contains a marker: I. The service trail also cites an operator identity. Mara checks it against the civil registry: its holder died six months ago.",
+          "es": "Un registro heredado contiene un marcador: I. El registro de servicio también cita la identidad del operador. Mara lo coteja con el registro civil: su titular falleció hace seis meses."
+        },
+        {
+          "pt-BR": "“Operador não é destinatário”, ela ressalta. A identidade de Elias Var aparece na telemetria; isso não prova que sua carteira recebeu o dinheiro. O próximo fio é descobrir por que seu perfil técnico ainda responde.",
+          "en": "“Operator is not recipient,” she stresses. Elias Var’s identity appears in telemetry; that does not prove his wallet received the money. The next lead is why his technical profile still responds.",
+          "es": "“El operador no es el destinatario”, subraya. La identidad de Elías Var aparece en telemetría; Eso no prueba que su billetera haya recibido el dinero. La siguiente pista es por qué su perfil técnico aún responde."
+        }
+      ],
+      "reveal": "previous-solved"
+    }
+  ]
+}

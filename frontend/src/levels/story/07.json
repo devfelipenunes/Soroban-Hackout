@@ -1,0 +1,84 @@
+{
+  "scenes": [
+    {
+      "id": "07-0",
+      "title": {
+        "pt-BR": "Chegada",
+        "en": "Arrival",
+        "es": "Llegada"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O módulo energético continua respondendo, embora tenha desaparecido dos painéis modernos. Um saldo histórico foi marcado por Voss como impossível. Não é preciso roubá-lo; é preciso reproduzir a contradição.",
+          "en": "The energy module still responds, though it has vanished from modern dashboards. Voss marked a historical balance as impossible. The task is not to steal it, but to reproduce the contradiction.",
+          "es": "El módulo de energía todavía responde, aunque ha desaparecido de los tableros de instrumentos modernos. Voss marcó como imposible un equilibrio histórico. La tarea no es robarlo, sino reproducir la contradicción."
+        },
+        {
+          "pt-BR": "“Esse número não pode existir sob essas regras”, diz Mara. O auditor conserva o estado inicial antes de testar a hipótese.",
+          "en": "“That number cannot exist under these rules,” Mara says. The auditor preserves the initial state before testing the hypothesis.",
+          "es": "\"Ese número no puede existir bajo estas reglas\", dice Mara. El auditor preserva el estado inicial antes de probar la hipótesis."
+        }
+      ]
+    },
+    {
+      "id": "07-1",
+      "title": {
+        "pt-BR": "A investigação",
+        "en": "The investigation",
+        "es": "la investigacion"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "A interface apresenta operações, valores e limites declarados. A origem do saldo pode revelar como um sistema aparentemente abandonado ainda participa da infraestrutura.",
+          "en": "The interface presents operations, values, and declared limits. The balance’s origin may reveal how an apparently abandoned system still participates in the infrastructure.",
+          "es": "La interfaz presenta operaciones, valores y límites declarados. El origen del saldo puede revelar cómo un sistema aparentemente abandonado aún participa de la infraestructura."
+        },
+        {
+          "pt-BR": "Uma nota de Voss rejeita a hipótese simples de furto de energia: o comportamento precisa ser demonstrado antes de atribuir intenção.",
+          "en": "A note from Voss rejects the simple energy-theft hypothesis: the behavior must be demonstrated before attributing intent.",
+          "es": "Una nota de Voss rechaza la simple hipótesis del robo de energía: el comportamiento debe demostrarse antes de atribuirle intención."
+        }
+      ]
+    },
+    {
+      "id": "07-2",
+      "title": {
+        "pt-BR": "A prova",
+        "en": "The evidence",
+        "es": "la evidencia"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O estado impossível foi reproduzido. O módulo de manutenção compara a anomalia com seu histórico e apresenta uma tabela legada de roteamento. A pista vem de uma relação de infraestrutura, não de uma charada numérica.",
+          "en": "The impossible state was reproduced. The maintenance module compares the anomaly with its history and presents a legacy routing table. The lead comes from infrastructure, not a numerical riddle.",
+          "es": "Se reprodujo el estado imposible. El módulo de mantenimiento compara la anomalía con su historial y presenta una tabla de enrutamiento heredada. La ventaja proviene de la infraestructura, no de un acertijo numérico."
+        },
+        {
+          "pt-BR": "ENERGY ROUTING TABLE — LEGACY / GRID NODE: 13 / ARCHIVE DESTINATION: SECTOR 13 / STATUS: UNMAPPED.",
+          "en": "ENERGY ROUTING TABLE — LEGACY / GRID NODE: 13 / ARCHIVE DESTINATION: SECTOR 13 / STATUS: UNMAPPED.",
+          "es": "ENERGY ROUTING TABLE — LEGACY / GRID NODE: 13 / ARCHIVE DESTINATION: SECTOR 13 / STATUS: UNMAPPED."
+        }
+      ]
+    },
+    {
+      "id": "07-3",
+      "title": {
+        "pt-BR": "O próximo fio",
+        "en": "The next lead",
+        "es": "La siguiente pista"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "Mara consulta o mapa: NO SUCH SECTOR. A energia, porém, continua chegando a esse destino. Ausência no cadastro não desliga uma dependência real.",
+          "en": "Mara checks the map: NO SUCH SECTOR. Yet energy continues reaching that destination. Absence from a register does not switch off a real dependency.",
+          "es": "Mara consulta el mapa: NO SUCH SECTOR. Sin embargo, la energía continúa llegando a ese destino. La ausencia de un registro no elimina una dependencia real."
+        },
+        {
+          "pt-BR": "Uma segunda consulta retorna classificação interna. “Você sabia?”, pergunta o auditor. “Não. Alguém dentro da Authority sabe.” O caminho segue até o Setor 13.",
+          "en": "A second query returns an internal classification. “Did you know?” the auditor asks. “No. Someone inside the Authority does.” The trail continues to Sector 13.",
+          "es": "Una segunda consulta devuelve una clasificación interna. \"¿Sabías?\" pregunta el auditor. \"No. Alguien dentro de la Autoridad lo hace\". El sendero continúa hasta el Sector 13."
+        }
+      ]
+    }
+  ]
+}

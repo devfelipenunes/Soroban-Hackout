@@ -1,0 +1,84 @@
+{
+  "scenes": [
+    {
+      "id": "04-0",
+      "title": {
+        "pt-BR": "Chegada",
+        "en": "Arrival",
+        "es": "Llegada"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O elevador apresenta vinte e três botões. A planta e o cadastro municipal concordam com ele. A Ghost Key documentada no Armazém aponta para o vigésimo quarto.",
+          "en": "The elevator has twenty-three buttons. The blueprint and municipal register agree. The Ghost Key documented at the Warehouse points to a twenty-fourth.",
+          "es": "El ascensor tiene veintitrés botones. El plano y el padrón municipal coinciden. La Llave Fantasma documentada en el Almacén apunta a una número veinticuatro."
+        },
+        {
+          "pt-BR": "Mara procura uma ordem de demolição. Não encontra. A ausência no índice moderno não basta para concluir que um andar foi destruído.",
+          "en": "Mara searches for a demolition order. She finds none. Absence from the modern index is insufficient to conclude that a floor was destroyed.",
+          "es": "Mara busca una orden de demolición. Ella no encuentra ninguno. La ausencia del índice moderno es insuficiente para concluir que un piso fue destruido."
+        }
+      ]
+    },
+    {
+      "id": "04-1",
+      "title": {
+        "pt-BR": "A investigação",
+        "en": "The investigation",
+        "es": "la investigacion"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "As referências antigas ainda existem. Parte do estado não aparece no conjunto ativo consultado pela interface do elevador. É necessário entender o que a infraestrutura preservou e o que deixou de manter disponível.",
+          "en": "The old references still exist. Some state is absent from the active set consulted by the elevator interface. The task is to understand what the infrastructure preserved and what it stopped keeping available.",
+          "es": "Las viejas referencias todavía existen. Algún estado está ausente del conjunto activo consultado por la interfaz del ascensor. La tarea es comprender qué conservó la infraestructura y qué dejó de mantener disponible."
+        },
+        {
+          "pt-BR": "“O protocolo da chave prova de onde ela veio para nós”, lembra Mara. “Não transforma a transferência em autorização.” A investigação continua com esse limite.",
+          "en": "“The key’s custody record proves how it reached us,” Mara reminds him. “It does not turn the transfer into authorization.” The investigation continues within that limit.",
+          "es": "“El registro de custodia de la llave demuestra cómo llegó hasta nosotros”, le recuerda Mara. \"No convierte la transferencia en autorización\". La investigación continúa dentro de ese límite."
+        }
+      ]
+    },
+    {
+      "id": "04-2",
+      "title": {
+        "pt-BR": "A prova",
+        "en": "The evidence",
+        "es": "la evidencia"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O registro voltou a ser reconhecido e sua vida útil foi renovada. A recuperação torna a rota novamente disponível ao elevador. O painel apaga por um instante e retorna com um botão novo: 24.",
+          "en": "The record was recognized again and its lifetime renewed. Recovery makes the route available to the elevator again. The panel briefly goes dark, then returns with a new button: 24.",
+          "es": "El disco fue reconocido nuevamente y su vida renovada. La recuperación vuelve a poner la ruta a disposición del ascensor. El panel se oscurece brevemente y luego regresa con un nuevo botón: 24."
+        },
+        {
+          "pt-BR": "A cidade não demoliu o andar. Deixou de manter sua referência na camada ativa. Estado arquivado e infraestrutura destruída eram hipóteses diferentes.",
+          "en": "The city did not demolish the floor. It stopped maintaining its reference in the active layer. Archived state and destroyed infrastructure were different hypotheses.",
+          "es": "La ciudad no demolió el piso. Dejó de mantener su referencia en la capa activa. El estado archivado y la infraestructura destruida eran hipótesis diferentes."
+        }
+      ]
+    },
+    {
+      "id": "04-3",
+      "title": {
+        "pt-BR": "O próximo fio",
+        "en": "The next lead",
+        "es": "La siguiente pista"
+      },
+      "paragraphs": [
+        {
+          "pt-BR": "O elevador desce além do mapa conhecido. As portas abrem para corredores muito mais antigos que os acabamentos da cidade. Na parede: I // FIRST LAYER.",
+          "en": "The elevator descends beyond the known map. Its doors open onto corridors much older than the city’s finishes. On the wall: I // FIRST LAYER.",
+          "es": "El ascensor desciende más allá del mapa conocido. Sus puertas se abren a pasillos mucho más antiguos que los acabados de la ciudad. En la pared: I // PRIMERA CAPA."
+        },
+        {
+          "pt-BR": "O registro FLOOR 24 aponta para um andar, não para a infraestrutura inteira. Ao fundo, um sistema desperta: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED.",
+          "en": "Floor 24 is an entrance, not the entire infrastructure. Ahead, a system awakens: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED.",
+          "es": "El piso 24 es una entrada, no toda la infraestructura. Más adelante, se despierta un sistema: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED."
+        }
+      ]
+    }
+  ]
+}

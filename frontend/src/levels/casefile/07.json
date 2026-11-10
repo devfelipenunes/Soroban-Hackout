@@ -1,0 +1,58 @@
+{
+  "objective": {
+    "pt-BR": "Reproduza o saldo impossível.",
+    "en": "Reproduce the impossible balance.",
+    "es": "Reproduce el saldo imposible."
+  },
+  "target": {
+    "pt-BR": "Ledger de energia legado",
+    "en": "Legacy energy ledger",
+    "es": "Ledger de energía heredado"
+  },
+  "owner": {
+    "pt-BR": "Módulo de créditos energéticos",
+    "en": "Energy credit module",
+    "es": "Módulo de crédito de energía"
+  },
+  "network": {
+    "pt-BR": "Stellar testnet",
+    "en": "Stellar testnet",
+    "es": "Stellar Testnet"
+  },
+  "lead": {
+    "pt-BR": "O módulo energético continua respondendo, embora tenha desaparecido dos painéis modernos. Um saldo histórico foi marcado por Voss como impossível. Não é preciso roubá-lo; é preciso reproduzir a contradição.",
+    "en": "The energy module still responds, though it has vanished from modern dashboards. Voss marked a historical balance as impossible. The task is not to steal it, but to reproduce the contradiction.",
+    "es": "El módulo de energía todavía responde, aunque ha desaparecido de los tableros de instrumentos modernos. Voss marcó como imposible un equilibrio histórico. La tarea no es robarlo, sino reproducir la contradicción."
+  },
+  "known": [
+    {
+      "pt-BR": "O saldo histórico está fora do domínio esperado do módulo de energia.",
+      "en": "The historical balance is outside the energy module’s expected domain.",
+      "es": "El balance histórico está fuera del dominio esperado del módulo de energía."
+    },
+    {
+      "pt-BR": "Voss marcou a referência como IMPOSSIBLE.",
+      "en": "Voss marked the reference IMPOSSIBLE.",
+      "es": "Voss marcó la referencia IMPOSIBLE."
+    }
+  ],
+  "unknown": [
+    {
+      "pt-BR": "Como o estado histórico foi produzido?",
+      "en": "How was the historical state produced?",
+      "es": "¿Cómo se produjo el estado histórico?"
+    },
+    {
+      "pt-BR": "Que relação existe entre esse módulo e a infraestrutura legada?",
+      "en": "What relationship connects this module to legacy infrastructure?",
+      "es": "¿Qué relación conecta este módulo con la infraestructura heredada?"
+    }
+  ],
+  "reading": [
+    {
+      "pt-BR": "Leia a interface e observe o estado inicial antes de formular sua hipótese. As dicas técnicas são opcionais e progressivas.",
+      "en": "Read the interface and observe initial state before forming your hypothesis. Technical hints are optional and progressive.",
+      "es": "Lee la interfaz y observa el estado inicial antes de formular una hipótesis. Las pistas técnicas son opcionales y progresivas."
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "beats": [
+    {
+      "trigger": "previous-solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "A gravação muda a hipótese sem explicar tudo. Voss encontrou relações entre falhas anteriores a ele; seus arquivos contêm erros e dúvidas, não um plano infalível.",
+        "en": "The recording changes the hypothesis without explaining everything. Voss found relationships between flaws older than himself; his files contain mistakes and doubts, not an infallible plan.",
+        "es": "La grabación cambia la hipótesis sin explicarlo todo. Voss encontró relaciones entre defectos mayores que él; sus archivos contienen errores y dudas, no un plan infalible."
+      }
+    },
+    {
+      "trigger": "previous-solved",
+      "speaker": "voss",
+      "text": {
+        "pt-BR": "Alguém está mapeando os contratos quebrados. Eles não estão causando os erros. Estão esperando para ver quem os encontra.",
+        "en": "Someone is mapping the broken contracts. They are not causing the errors. They are waiting to see who finds them.",
+        "es": "Alguien está mapeando los contratos incumplidos. No están causando los errores. Están esperando a ver quién los encuentra."
+      }
+    },
+    {
+      "trigger": "start",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "Uma nota de Voss rejeita a hipótese simples de furto de energia: o comportamento precisa ser demonstrado antes de atribuir intenção.",
+        "en": "A note from Voss rejects the simple energy-theft hypothesis: the behavior must be demonstrated before attributing intent.",
+        "es": "Una nota de Voss rechaza la simple hipótesis del robo de energía: el comportamiento debe demostrarse antes de atribuirle intención."
+      }
+    },
+    {
+      "trigger": "instance",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Alvo conectado. O terminal registra chamadas reais; os documentos do caso estão em Arquivos.",
+        "en": "Target connected. The terminal records real calls; case documents are in Files.",
+        "es": "Objetivo conectado. El terminal graba llamadas reales; los documentos del caso están en Archivos."
+      }
+    },
+    {
+      "trigger": "first-call",
+      "speaker": "mara",
+      "text": {
+        "pt-BR": "Não atribua intenção ao número antes de demonstrar como ele aparece.",
+        "en": "Do not attribute intent to the number before demonstrating how it appears.",
+        "es": "No atribuya intención al número antes de demostrar cómo aparece."
+      }
+    },
+    {
+      "trigger": "solved",
+      "speaker": "system",
+      "text": {
+        "pt-BR": "Prova técnica confirmada. A história continua na abertura seguinte.",
+        "en": "Technical proof confirmed. The story continues in the next opening.",
+        "es": "Prueba técnica confirmada. La historia continúa en la siguiente apertura."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "07-document-0",
+      "label": {
+        "pt-BR": "Histórico energético",
+        "en": "Energy history",
+        "es": "Historia energética"
+      },
+      "value": {
+        "pt-BR": "Módulo de créditos / cópia preservada",
+        "en": "Credit module / preserved copy",
+        "es": "Módulo de créditos/copia conservada"
+      },
+      "reveal": "start",
+      "documentId": "07-document-0"
+    },
+    {
+      "id": "07-document-1",
+      "label": {
+        "pt-BR": "Referências de manutenção",
+        "en": "Maintenance references",
+        "es": "Referencias de mantenimiento"
+      },
+      "value": {
+        "pt-BR": "Documentação legada",
+        "en": "Legacy documentation",
+        "es": "Documentación heredada"
+      },
+      "reveal": "start",
+      "documentId": "07-document-1"
+    },
+    {
+      "id": "07-previous-record",
+      "label": {
+        "pt-BR": "Como chegamos aqui",
+        "en": "How we got here",
+        "es": "¿Cómo llegamos aquí?"
+      },
+      "value": {
+        "pt-BR": "Registro do caso anterior confirmado. Abrir a cadeia de evidências.",
+        "en": "Previous case record confirmed. Open the evidence chain.",
+        "es": "Se confirma registro de caso anterior. Abra la cadena de evidencia."
+      },
+      "reveal": "previous-solved",
+      "documentId": "07-previous-record"
+    }
+  ],
+  "hints": [
+    {
+      "pt-BR": "O módulo deixa sacar mais do que o saldo.",
+      "en": "The module lets you withdraw more than the balance.",
+      "es": "El módulo le permite retirar más que el saldo."
+    },
+    {
+      "pt-BR": "Leia `impossible()` e `credit({ player: window.player })`. O saldo começa em 0; `withdraw` subtrai sem checar; o resultado dá a volta em `u32`.",
+      "en": "Read `impossible()` and `credit({ player: window.player })`. The balance starts at 0; `withdraw` subtracts without checking; the result wraps in `u32`.",
+      "es": "Consulta `impossible()` y `credit({ player: window.player })`. El saldo empieza en 0; `withdraw` resta sin comprobar y el resultado se ajusta a `u32`."
+    },
+    {
+      "pt-BR": "Saque `2³² − impossible()` com `withdraw`, não `withdraw_checked`. O caminho do `accrue` também existe, mas o saque é uma subtração.",
+      "en": "Withdraw `2³² − impossible()` with `withdraw`, not `withdraw_checked`. The `accrue` path also exists, but the withdrawal is a subtraction.",
+      "es": "Retirar `2³² − imposible()` con `withdraw`, no con `withdraw_checked`. La ruta de \"acumulación\" también existe, pero el retiro es una resta."
+    }
+  ],
+  "replies": [],
+  "documents": [
+    {
+      "id": "07-document-0",
+      "title": {
+        "pt-BR": "Histórico energético",
+        "en": "Energy history",
+        "es": "Historia energética"
+      },
+      "source": {
+        "pt-BR": "Módulo de créditos / cópia preservada",
+        "en": "Credit module / preserved copy",
+        "es": "Módulo de créditos/copia conservada"
+      },
+      "body": [
+        {
+          "pt-BR": "Uma operação produziu saldo fora do domínio econômico declarado. A hipótese de furto não está demonstrada. Reproduzir a anomalia é necessário para investigar sua origem.",
+          "en": "An operation produced a balance outside the declared economic domain. Theft has not been established. Reproducing the anomaly is necessary to investigate its origin.",
+          "es": "Una operación produjo un equilibrio fuera del ámbito económico declarado. No se ha establecido el robo. Reproducir la anomalía es necesario para investigar su origen."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "07-document-1",
+      "title": {
+        "pt-BR": "Referências de manutenção",
+        "en": "Maintenance references",
+        "es": "Referencias de mantenimiento"
+      },
+      "source": {
+        "pt-BR": "Documentação legada",
+        "en": "Legacy documentation",
+        "es": "Documentación heredada"
+      },
+      "body": [
+        {
+          "pt-BR": "O módulo de energia conserva referências de infraestrutura ausentes do painel moderno. A investigação procura uma relação causal entre o saldo e o roteamento, não um código secreto escondido em números.",
+          "en": "The energy module retains infrastructure references absent from the modern dashboard. Investigation seeks a causal link between balance and routing, not a secret code hidden in numbers.",
+          "es": "El módulo de energía conserva referencias de infraestructura ausentes en el tablero moderno. La investigación busca un vínculo causal entre el saldo y el enrutamiento, no un código secreto escondido en números."
+        },
+        {
+          "pt-BR": "O índice de exportação preserva referências e eventos de serviço para consulta. Ele não arquiva arquivos privados nem demonstra autoria de uma operação.",
+          "en": "The export index preserves references and service events for inspection. It does not archive private files or establish authorship of an operation.",
+          "es": "El índice de exportación conserva referencias y eventos de servicio para su inspección. No archiva archivos privados ni establece la autoría de una operación."
+        }
+      ],
+      "reveal": "start"
+    },
+    {
+      "id": "07-previous-record",
+      "title": {
+        "pt-BR": "Do caso anterior",
+        "en": "From the previous case",
+        "es": "Del caso anterior"
+      },
+      "source": {
+        "pt-BR": "Dossiê preservado / continuação",
+        "en": "Preserved case file / continuation",
+        "es": "Expediente conservado / continuación"
+      },
+      "body": [
+        {
+          "pt-BR": "A falha do Decoder foi tratada como sucesso pelo Archive. A confirmação local não provava que a dependência concluíra seu trabalho. O caminho liberado permitiu recuperar a gravação preservada.",
+          "en": "The Decoder’s failure was treated as success by the Archive. Local confirmation did not prove the dependency had completed its work. The released path allowed recovery of the preserved recording.",
+          "es": "El fracaso del Decoder fue tratado como un éxito por el Archive. La confirmación local no demostró que la dependencia hubiera completado su trabajo. La ruta liberada permitió la recuperación de la grabación conservada."
+        },
+        {
+          "pt-BR": "A voz de Voss atravessa o ruído: “Alguém está mapeando os contratos quebrados. Eles não estão causando os erros. Estão esperando para ver quem os encontra.”",
+          "en": "Voss’s voice cuts through the noise: “Someone is mapping the broken contracts. They are not causing the errors. They are waiting to see who finds them.”",
+          "es": "La voz de Voss corta el ruido: \"Alguien está mapeando los contratos rotos. No están causando los errores. Están esperando a ver quién los encuentra\"."
+        },
+        {
+          "pt-BR": "A gravação muda a hipótese sem explicar tudo. Voss encontrou relações entre falhas anteriores a ele; seus arquivos contêm erros e dúvidas, não um plano infalível.",
+          "en": "The recording changes the hypothesis without explaining everything. Voss found relationships between flaws older than himself; his files contain mistakes and doubts, not an infallible plan.",
+          "es": "La grabación cambia la hipótesis sin explicarlo todo. Voss encontró relaciones entre defectos mayores que él; sus archivos contienen errores y dudas, no un plan infalible."
+        },
+        {
+          "pt-BR": "Uma nota chama atenção: IMPOSSIBLE. O Contract ID pertence a um módulo antigo de créditos de energia. Seu saldo contradiz os limites que o próprio sistema declara.",
+          "en": "One note stands out: IMPOSSIBLE. The Contract ID belongs to an old energy-credit module. Its balance contradicts the limits the system itself declares.",
+          "es": "Destaca una nota: IMPOSIBLE. El ID de contrato pertenece a un antiguo módulo de crédito de energía. Su equilibrio contradice los límites que el propio sistema declara."
+        }
+      ],
+      "reveal": "previous-solved"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "title": {
+    "pt-BR": "Capítulo 6 — O investigador desaparecido",
+    "en": "Chapter 6 — The Missing Investigator",
+    "es": "Capítulo 6: El investigador desaparecido"
+  },
+  "openingCount": 6,
+  "pages": [
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Aren Voss era uma ausência com muitos rastros.",
+          "en": "Aren Voss was an absence with many traces.",
+          "es": "Aren Voss fue una ausencia con muchas huellas."
+        },
+        {
+          "pt-BR": "Seu espaço de trabalho estava cheio de coisas incompletas: mapas que terminavam antes do destino, contratos anotados sem conclusão, comandos interrompidos e gravações corrompidas. Nada parecia organizado para outra pessoa ler.",
+          "en": "His workspace was full of unfinished things: maps that ended before the destination, annotated contracts without a conclusion, interrupted commands, corrupted recordings. Nothing looked arranged for anyone else to read.",
+          "es": "Su espacio de trabajo estaba lleno de cosas inacabadas: mapas que terminaban antes del destino, contratos anotados sin conclusión, comandos interrumpidos, grabaciones corruptas. Nada parecía preparado para que nadie más lo leyera."
+        },
+        {
+          "pt-BR": "E, ao mesmo tempo, algumas coisas pareciam cuidadosamente deixadas para serem encontradas.",
+          "en": "And at the same time, some things seemed carefully left to be found.",
+          "es": "Y al mismo tiempo, algunas cosas parecían cuidadosamente abandonadas para ser encontradas."
+        },
+        {
+          "pt-BR": "Mara percorreu as marcas de tempo.",
+          "en": "Mara went through the timestamps.",
+          "es": "Mara revisó las marcas de tiempo."
+        },
+        {
+          "pt-BR": "— Ele estava investigando os mesmos sistemas.",
+          "en": "— He was investigating the same systems.",
+          "es": "— Estaba investigando los mismos sistemas."
+        },
+        {
+          "pt-BR": "O Breaker aproximou duas datas.",
+          "en": "The Breaker brought two dates together.",
+          "es": "The Breaker reunió dos fechas."
+        },
+        {
+          "pt-BR": "Alguns dos acessos mais profundos de Voss à First Layer haviam acontecido anos antes do roubo do Vault.",
+          "en": "Some of Voss's deepest accesses to the First Layer had happened years before the Vault theft.",
+          "es": "Algunos de los accesos más profundos de Voss a la Primera Capa habían ocurrido años antes del robo de el Vault."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O espaço de trabalho de Aren Voss tem comandos interrompidos, mapas incompletos e tentativas que não chegaram a uma conclusão. As marcas de tempo de alguns acessos antecedem o incidente do Vault em anos.",
+          "en": "Aren Voss’s workspace holds interrupted commands, incomplete maps, and attempts that reached no conclusion. Some access timestamps precede the Vault incident by years.",
+          "es": "El espacio de trabajo de Aren Voss contiene comandos interrumpidos, mapas incompletos e intentos que no llegaron a ninguna conclusión. Algunas marcas de tiempo de acceso preceden en años al incidente de Vault."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Uma hipótese foi corrigida pelo próprio investigador. Ele confundira a presença de uma credencial com a autoria de uma operação. O auditor reconhece o erro que quase cometeu diante de Elias.",
+          "en": "One hypothesis was corrected by the investigator himself. He had confused the presence of a credential with authorship of an operation. The auditor recognizes the mistake he nearly made about Elias.",
+          "es": "Una hipótesis fue corregida por el propio investigador. Había confundido la presencia de una credencial con la autoría de una operación. El auditor reconoce el error que estuvo a punto de cometer con Elías."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Um fragmento de gravação permanece inacessível. O Archive afirma que a recuperação está pronta; o Decoder não confirma o processamento. Os dois contratos não concordam sobre o que aconteceu.",
+          "en": "A recording fragment remains inaccessible. The Archive says recovery is ready; the Decoder does not confirm processing. The two contracts disagree about what happened.",
+          "es": "Un fragmento de grabación permanece inaccesible. El Archive dice que la recuperación está lista; el Decoder no confirma el procesamiento. Los dos contratos no están de acuerdo sobre lo sucedido."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Mara preserva as datas enquanto o auditor examina a interação. “Ele estava investigando os mesmos sistemas.” Falta recuperar o que Voss tentou dizer.",
+          "en": "Mara preserves the dates while the auditor examines the interaction. “He was investigating the same systems.” They still need to recover what Voss tried to say.",
+          "es": "Mara conserva las fechas mientras el auditor examina la interacción. \"Estaba investigando los mismos sistemas\". Todavía necesitan recuperar lo que Voss intentó decir."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Voss riscou uma acusação depois de corrigir as marcas de tempo. Uma credencial no registro não identificava o autor da operação. Há arquivos ainda sem conclusão.",
+          "en": "Voss crossed out an accusation after correcting timestamps. A credential in a log did not identify the operation’s author. Some files remain unresolved.",
+          "es": "Voss tachó una acusación después de corregir las marcas de tiempo. Una credencial en un registro no identificaba al autor de la operación. Algunos archivos siguen sin resolverse."
+        },
+        {
+          "pt-BR": "Os acessos mais antigos antecedem o incidente atual em anos. Uma nota registra: “Recurso em quarentena não desaparece. Mas recurso indisponível ainda faz falta.” A autoria do incidente permanece por demonstrar.",
+          "en": "The earliest accesses precede the current incident by years. A note reads: “Quarantined resources do not disappear. But unavailable resources are still needed.” Authorship of the incident remains to be demonstrated.",
+          "es": "Los primeros accesos preceden en años al incidente actual. Una nota dice: \"Los recursos en cuarentena no desaparecen. Pero los recursos que no están disponibles siguen siendo necesarios\". La autoría del incidente aún está por demostrar."
+        }
+      ]
+    }
+  ],
+  "continuation": {
+    "paragraphs": [
+      {
+        "pt-BR": "A falha do Decoder foi tratada como sucesso pelo Archive. A confirmação local não provava que a dependência concluíra seu trabalho. O caminho liberado permitiu recuperar a gravação preservada.",
+        "en": "The Decoder’s failure was treated as success by the Archive. Local confirmation did not prove the dependency had completed its work. The released path allowed recovery of the preserved recording.",
+        "es": "El fracaso del Decoder fue tratado como un éxito por el Archive. La confirmación local no demostró que la dependencia hubiera completado su trabajo. La ruta liberada permitió la recuperación de la grabación conservada."
+      },
+      {
+        "pt-BR": "A voz de Voss atravessa o ruído: “Alguém está mapeando os contratos quebrados. Eles não estão causando os erros. Estão esperando para ver quem os encontra.”",
+        "en": "Voss’s voice cuts through the noise: “Someone is mapping the broken contracts. They are not causing the errors. They are waiting to see who finds them.”",
+        "es": "La voz de Voss corta el ruido: \"Alguien está mapeando los contratos rotos. No están causando los errores. Están esperando a ver quién los encuentra\"."
+      },
+      {
+        "pt-BR": "A gravação muda a hipótese sem explicar tudo. Voss encontrou relações entre falhas anteriores a ele; seus arquivos contêm erros e dúvidas, não um plano infalível.",
+        "en": "The recording changes the hypothesis without explaining everything. Voss found relationships between flaws older than himself; his files contain mistakes and doubts, not an infallible plan.",
+        "es": "La grabación cambia la hipótesis sin explicarlo todo. Voss encontró relaciones entre defectos mayores que él; sus archivos contienen errores y dudas, no un plan infalible."
+      },
+      {
+        "pt-BR": "Uma nota chama atenção: IMPOSSIBLE. O Contract ID pertence a um módulo antigo de créditos de energia. Seu saldo contradiz os limites que o próprio sistema declara.",
+        "en": "One note stands out: IMPOSSIBLE. The Contract ID belongs to an old energy-credit module. Its balance contradicts the limits the system itself declares.",
+        "es": "Destaca una nota: IMPOSIBLE. El ID de contrato pertenece a un antiguo módulo de crédito de energía. Su equilibrio contradice los límites que el propio sistema declara."
+      }
+    ]
+  }
+}

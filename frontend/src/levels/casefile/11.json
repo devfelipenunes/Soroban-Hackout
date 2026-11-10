@@ -1,0 +1,48 @@
+{
+  "objective": {
+    "pt-BR": "Investigue a rejeição do Decoder e recupere o contexto do manifesto.",
+    "en": "Investigate the Decoder rejection and recover the manifest context.",
+    "es": "Investiga el rechazo del Decoder y recupera el contexto manifiesto."
+  },
+  "target": {
+    "pt-BR": "Rewrite",
+    "en": "Rewrite",
+    "es": "Volver a escribir"
+  },
+  "owner": {
+    "pt-BR": "Controle legado de diagnóstico",
+    "en": "Legacy diagnostic controller",
+    "es": "Controlador de diagnóstico heredado"
+  },
+  "network": {
+    "pt-BR": "Stellar testnet",
+    "en": "Stellar testnet",
+    "es": "Stellar Testnet"
+  },
+  "lead": {
+    "pt-BR": "Um manifesto assinado por Voss termina em diagnose_core. O rodapé parece familiar, mas a origem não amplia o escopo da autorização.",
+    "en": "A manifest signed by Voss ends at diagnose_core. Its footer looks familiar, but origin does not expand the authorization’s scope.",
+    "es": "Un manifiesto firmado por Voss termina en diagnose_core. Su cierre parece familiar, pero el origen no amplía el alcance de la autorización."
+  },
+  "known": [
+    {
+      "pt-BR": "A instância expõe seu compromisso criptográfico; o contexto XDR inclui domínio, rede, instância e carteira. A origem histórica, por si só, não prova autorização atual.",
+      "en": "The instance exposes its commitment; the XDR context includes domain, network, instance and wallet. Historical origin alone does not prove current authorization.",
+      "es": "La instancia expone su compromiso; el contexto XDR incluye dominio, red, instancia y billetera. El origen histórico por sí solo no prueba la autorización actual."
+    }
+  ],
+  "unknown": [
+    {
+      "pt-BR": "Qual registro o Decoder aceita como contexto — e por que a origem não resolve isso?",
+      "en": "Which record does the Decoder accept as context — and why does origin not settle that?",
+      "es": "¿Qué registro acepta el Decoder como contexto y por qué el origen no lo resuelve?"
+    }
+  ],
+  "reading": [
+    {
+      "pt-BR": "Reconstrua a evidência, compare o registro exato com a variante aceita e observe a resposta do Decoder. As dicas são opcionais.",
+      "en": "Reconstruct the evidence, compare the exact record with the accepted variant, and observe the Decoder response. Hints are optional.",
+      "es": "Reconstruya la evidencia, compare el registro exacto con la variante aceptada y observe la respuesta del Decoder. Las sugerencias son opcionales."
+    }
+  ]
+}

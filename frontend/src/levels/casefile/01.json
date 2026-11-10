@@ -1,0 +1,58 @@
+{
+  "objective": {
+    "pt-BR": "Entre no Vault sem possuir a chave.",
+    "en": "Enter the Vault without possessing its key.",
+    "es": "Entra al Vault sin tener tu llave."
+  },
+  "target": {
+    "pt-BR": "Contrato do portão de acesso",
+    "en": "Access gate contract",
+    "es": "Contrato de puerta de acceso"
+  },
+  "owner": {
+    "pt-BR": "Proprietário registrado da porta 17",
+    "en": "Registered owner of door 17",
+    "es": "Propietario registrado de la puerta 17"
+  },
+  "network": {
+    "pt-BR": "Stellar testnet",
+    "en": "Stellar testnet",
+    "es": "Stellar Testnet"
+  },
+  "lead": {
+    "pt-BR": "O auditor permanece no local do crime. O vidro não foi quebrado, as travas não foram forçadas e o endereço do proprietário coincide com o cadastro oficial. Nada disso explica a operação aceita naquela madrugada.",
+    "en": "The auditor remains at the crime scene. The glass is unbroken, the locks show no forced entry, and the owner address matches the official record. None of it explains the operation accepted that night.",
+    "es": "El auditor sigue en la escena. El cristal está intacto, las cerraduras no muestran señales de entrada forzada y la dirección del propietario coincide con el registro oficial. Nada de eso explica la operación aceptada esa noche."
+  },
+  "known": [
+    {
+      "pt-BR": "A porta está intacta e não houve chave reportada como comprometida.",
+      "en": "The door is intact and no key was reported compromised.",
+      "es": "La puerta está intacta y no se informó que ninguna llave estuviera comprometida."
+    },
+    {
+      "pt-BR": "O dono registrado da porta não é você.",
+      "en": "You are not the registered door owner.",
+      "es": "No eres el propietario de la puerta registrada."
+    }
+  ],
+  "unknown": [
+    {
+      "pt-BR": "Qual premissa sustenta o relatório de acesso?",
+      "en": "What assumption supports the access report?",
+      "es": "¿Qué supuesto respalda el informe de acceso?"
+    },
+    {
+      "pt-BR": "O que a execução aceita realmente comprova?",
+      "en": "What does accepted execution actually prove?",
+      "es": "¿Qué prueba realmente la ejecución aceptada?"
+    }
+  ],
+  "reading": [
+    {
+      "pt-BR": "Leia a interface e observe o estado inicial antes de formular sua hipótese. As dicas técnicas são opcionais e progressivas.",
+      "en": "Read the interface and observe initial state before forming your hypothesis. Technical hints are optional and progressive.",
+      "es": "Lee la interfaz y observa el estado inicial antes de plantear una hipótesis. Las pistas técnicas son opcionales y progresivas."
+    }
+  ]
+}

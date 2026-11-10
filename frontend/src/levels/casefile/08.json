@@ -1,0 +1,58 @@
+{
+  "objective": {
+    "pt-BR": "Quebre o Archive. Veja o que ele está escondendo.",
+    "en": "Break the Archive. See what it is hiding.",
+    "es": "Rompe el Archive. Descubre qué esconde."
+  },
+  "target": {
+    "pt-BR": "Archive do Setor 13",
+    "en": "Sector 13 Archive",
+    "es": "Archivo del Sector 13"
+  },
+  "owner": {
+    "pt-BR": "Cemitério de dados do Setor 13",
+    "en": "Sector 13 data graveyard",
+    "es": "Cementerio de datos del sector 13"
+  },
+  "network": {
+    "pt-BR": "Stellar testnet",
+    "en": "Stellar testnet",
+    "es": "Stellar Testnet"
+  },
+  "lead": {
+    "pt-BR": "O Setor 13 parece um cemitério de dados que ainda recebe entregas. Registros repetidos, identidades descartáveis e referências incompletas se acumulam. O painel avisa: ARCHIVE LOAD: CRITICAL.",
+    "en": "Sector 13 looks like a data cemetery still accepting deliveries. Repeated records, disposable identities, and incomplete references accumulate. The panel warns: ARCHIVE LOAD: CRITICAL.",
+    "es": "El Sector 13 parece un cementerio de datos que aún recibe registros. Se acumulan entradas duplicadas, identidades descartables y referencias incompletas. El panel indica: ARCHIVE LOAD: CRITICAL."
+  },
+  "known": [
+    {
+      "pt-BR": "O Archive recebe registros e sua carga aumenta.",
+      "en": "The Archive receives records and its load grows.",
+      "es": "El Archive recibe registros y su carga crece."
+    },
+    {
+      "pt-BR": "A documentação menciona continuidade operacional com leitura legada.",
+      "en": "The documentation mentions operational continuity with legacy reads.",
+      "es": "La documentación menciona la continuidad operativa con lecturas heredadas."
+    }
+  ],
+  "unknown": [
+    {
+      "pt-BR": "Qual limite a instância permite demonstrar?",
+      "en": "What limit does the instance allow you to demonstrate?",
+      "es": "¿Qué límite te permite demostrar la instancia?"
+    },
+    {
+      "pt-BR": "O que muda quando a operação normal deixa de atender?",
+      "en": "What changes when normal operation becomes unavailable?",
+      "es": "¿Qué cambia cuando el funcionamiento normal deja de estar disponible?"
+    }
+  ],
+  "reading": [
+    {
+      "pt-BR": "Leia a interface e observe o estado inicial antes de formular sua hipótese. As dicas técnicas são opcionais e progressivas.",
+      "en": "Read the interface and observe initial state before forming your hypothesis. Technical hints are optional and progressive.",
+      "es": "Lee la interfaz y observa el estado inicial antes de formular una hipótesis. Las pistas técnicas son opcionales y progresivas."
+    }
+  ]
+}

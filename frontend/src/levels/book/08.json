@@ -1,0 +1,143 @@
+{
+  "title": {
+    "pt-BR": "Capítulo 8 — Setor 13",
+    "en": "Chapter 8 — Sector 13",
+    "es": "Capítulo 8 — Sector 13"
+  },
+  "openingCount": 6,
+  "pages": [
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O Setor 13 ficava abaixo de uma faixa de infraestrutura que os mapas modernos classificavam apenas como manutenção.",
+          "en": "Sector 13 lay beneath a strip of infrastructure that modern maps classified only as maintenance.",
+          "es": "El sector 13 se encontraba debajo de una franja de infraestructura que los mapas modernos clasificaban sólo como mantenimiento."
+        },
+        {
+          "pt-BR": "A entrada não tinha nome.",
+          "en": "The entrance had no name.",
+          "es": "La entrada no tenía nombre."
+        },
+        {
+          "pt-BR": "O interior parecia um cemitério de dados que se recusava a morrer.",
+          "en": "The interior looked like a graveyard of data that refused to die.",
+          "es": "El interior parecía un cementerio de datos que se negaban a morir."
+        },
+        {
+          "pt-BR": "Fileiras de unidades antigas armazenavam identidades descartáveis, registros duplicados, referências incompletas e milhões de entradas sem valor aparente. O Archive continuava recebendo informações embora ninguém, oficialmente, devesse estar usando o sistema.",
+          "en": "Rows of old units stored disposable identities, duplicate records, incomplete references and millions of entries with no apparent value. The Archive kept receiving information even though, officially, no one should be using the system.",
+          "es": "Filas de unidades antiguas almacenaban identidades desechables, registros duplicados, referencias incompletas y millones de entradas sin valor aparente. El Archive siguió recibiendo información aunque, oficialmente, nadie debería utilizar el sistema."
+        },
+        {
+          "pt-BR": "No painel central, um aviso pulsava.",
+          "en": "On the central panel, a warning pulsed.",
+          "es": "En el panel central, pulsó una advertencia."
+        },
+        {
+          "pt-BR": "`ARCHIVE LOAD: CRITICAL`",
+          "en": "`ARCHIVE LOAD: CRITICAL`",
+          "es": "`ARCHIVE LOAD: CRITICAL`"
+        },
+        {
+          "pt-BR": "Entre os arquivos de Voss havia uma instrução curta.",
+          "en": "Among Voss's files there was a short instruction.",
+          "es": "Entre los archivos de Voss había una breve instrucción."
+        },
+        {
+          "pt-BR": "— Quebre o Archive.",
+          "en": "— Break the Archive.",
+          "es": "— Romper el archivo."
+        },
+        {
+          "pt-BR": "Mara releu a frase.",
+          "en": "Mara reread the sentence.",
+          "es": "Mara releyó la frase."
+        },
+        {
+          "pt-BR": "— Ele quer que você destrua isso?",
+          "en": "— He wants you to destroy this?",
+          "es": "— ¿Quiere que destruyas esto?"
+        },
+        {
+          "pt-BR": "— Talvez queira que eu veja o que acontece quando ele falha.",
+          "en": "— Maybe he wants me to see what happens when it fails.",
+          "es": "— Tal vez quiera que vea qué pasa cuando falla."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "O Setor 13 parece um cemitério de dados que ainda recebe entregas. Registros repetidos, identidades descartáveis e referências incompletas se acumulam. O painel avisa: ARCHIVE LOAD: CRITICAL.",
+          "en": "Sector 13 looks like a data cemetery still accepting deliveries. Repeated records, disposable identities, and incomplete references accumulate. The panel warns: ARCHIVE LOAD: CRITICAL.",
+          "es": "El Sector 13 parece un cementerio de datos que aún recibe registros. Se acumulan entradas duplicadas, identidades descartables y referencias incompletas. El panel indica: ARCHIVE LOAD: CRITICAL."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "Voss deixou uma instrução: “Quebre o Archive.” Mara pergunta se ele quer destruir a instalação. O auditor precisa entender o que significa fazê-la falhar e quem depende dela.",
+          "en": "Voss left an instruction: “Break the Archive.” Mara asks whether he wants the facility destroyed. The auditor must understand what making it fail means and who depends on it.",
+          "es": "Voss dejó una instrucción: \"Rompe el archivo\". Mara le pregunta si quiere que destruyan las instalaciones. El auditor debe comprender qué significa hacerlo fallar y quién depende de ello."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "A documentação de continuidade menciona uma cópia externa do estado e um escopo legado de leitura. Ainda não se sabe o que ela contém. O contrato é público; o arquivo operacional pertence a outro serviço.",
+          "en": "Continuity documentation mentions an external snapshot and a legacy read scope. Its contents are still unknown. The contract is public; the operational archive belongs to another service.",
+          "es": "La documentación de continuidad menciona una instantánea externa y un alcance de lectura heredado. Su contenido aún se desconoce. El contrato es público; el archivo operativo pertenece a otro servicio."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "A cada operação, o terminal registra o que realmente foi aceito. O objetivo exige demonstrar o limite do Archive, sem confundir a prova com uma licença para continuar aumentando o dano.",
+          "en": "For each operation, the terminal records what was actually accepted. The objective requires demonstrating the Archive’s limit, without treating proof as permission to keep increasing the damage.",
+          "es": "Para cada operación, el terminal registra lo que realmente se aceptó. El objetivo pasa por demostrar el límite del Archive, sin tratar la prueba como un permiso para seguir aumentando el daño."
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "pt-BR": "RECOVERY_MODE: LEGACY / SNAPSHOT_READ_SCOPE: EXTENDED. O serviço externo observa os resultados da reconstrução. Sua cópia operacional não é o armazenamento privado do Soroban. O conteúdo da cópia de estado ainda não foi recuperado.",
+          "en": "RECOVERY_MODE: LEGACY / SNAPSHOT_READ_SCOPE: EXTENDED. The external service observes rebuild results. Its operational copy is not private Soroban storage. The snapshot content has not yet been recovered.",
+          "es": "RECOVERY_MODE: LEGADO / SNAPSHOT_READ_SCOPE: EXTENDIDO. El servicio externo observa los resultados de la reconstrucción. Su copia operativa no es un almacenamiento privado de Soroban. El contenido de la instantánea aún no se ha recuperado."
+        },
+        {
+          "pt-BR": "As inserções aumentam a carga do processamento global. Outros operadores dependem do Archive. Demonstrar a falha não elimina o custo da indisponibilidade nem autoriza manter a pressão depois da prova.",
+          "en": "Insertions increase global processing load. Other operators depend on the Archive. Demonstrating the flaw does not erase the cost of downtime or authorize continued pressure after proof.",
+          "es": "Las inserciones aumentan la carga de procesamiento global. Otros operadores dependen del Archive. Demostrar la falla no borra el costo del tiempo de inactividad ni autoriza una presión continua después de la prueba."
+        }
+      ]
+    }
+  ],
+  "continuation": {
+    "paragraphs": [
+      {
+        "pt-BR": "O limite foi demonstrado. O indexador de continuidade detecta a falha na reconstrução e passa a servir sua cópia externa do estado. O escopo de leitura legado é amplo demais. Nenhum segredo foi extraído de um suposto armazenamento privado do ledger.",
+        "en": "The limit was demonstrated. The continuity indexer detects the failed rebuild and serves its external snapshot. The legacy read scope is too broad. No secret was extracted from supposedly private ledger storage.",
+        "es": "El límite quedó demostrado. El indexador de continuidad detecta la reconstrucción fallida y entrega su instantánea externa. El alcance de lectura heredado es demasiado amplio. No se extrajo ningún secreto del almacenamiento del ledger supuestamente privado."
+      },
+      {
+        "pt-BR": "O Breaker interrompe novas inserções. A carga deixa de crescer, mas a indisponibilidade já teve custo. Mara não permite chamar isso de recuperação sem consequências.",
+        "en": "The Breaker stops new insertions. The load stops growing, but the outage has already had a cost. Mara does not let him call this recovery without consequences.",
+        "es": "Breaker detiene las nuevas inserciones. El volumen deja de crecer, pero la interrupción ya tuvo un costo. Mara no permite que esta recuperación quede sin consecuencias."
+      },
+      {
+        "pt-BR": "O instantâneo apresenta o BREAKER REGISTRY. Entradas mascaradas: MISSING, ACCEPTED, DECEASED. Um nome permanece legível: AREN VOSS — REFUSED. Logo abaixo está o próprio auditor: ACTIVE.",
+        "en": "The snapshot reveals the BREAKER REGISTRY. Masked entries: MISSING, ACCEPTED, DECEASED. One name remains readable: AREN VOSS — REFUSED. Below it is the auditor himself: ACTIVE.",
+        "es": "La instantánea revela el BREAKER REGISTRY. Entradas enmascaradas: MISSING, ACCEPTED, DECEASED. Queda legible un nombre: AREN VOSS — REFUSED. Debajo está el propio auditor: ACTIVE."
+      },
+      {
+        "pt-BR": "A marca de tempo é posterior à abertura do caso. Ele estava seguindo Voss; alguém também acompanha seus passos. A próxima referência se chama ORACLE. Pela primeira vez, a pista vem do observador.",
+        "en": "The timestamp is later than the case opening. He was following Voss; someone is also following his steps. The next reference is ORACLE. For the first time, the lead comes from the observer.",
+        "es": "La marca de tiempo es posterior a la apertura del caso. Estaba siguiendo a Voss; alguien también está siguiendo sus pasos. La siguiente referencia es ORACLE. Por primera vez, el liderazgo proviene del observador."
+      }
+    ]
+  }
+}
