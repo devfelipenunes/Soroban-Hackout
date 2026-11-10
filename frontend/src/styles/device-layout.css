@@ -1,0 +1,396 @@
+
+
+.level-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 22rem;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 86rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  align-items: start;
+}
+
+.level-layout--closed {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.level-layout__main {
+  min-width: 0;
+}
+
+@supports (animation-timeline: view()) {
+  .level-layout__main > * {
+    animation: level-content-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 32%;
+  }
+
+  @keyframes level-content-rise {
+    from {
+      opacity: 0.15;
+      transform: translate3d(0, 3.5rem, 0) scale(0.985);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .level-layout__main > * {
+    animation: none;
+  }
+}
+
+.level-layout .envelope {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+.os {
+  position: sticky;
+  top: 4.5rem;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 5.5rem);
+  overflow: hidden;
+  border: 1px solid var(--season-line);
+  background: var(--season-ink);
+  color: var(--season-ivory);
+  font-family: var(--season-sans);
+}
+
+.os__message {
+  margin: 0 0 0.85rem;
+  padding-left: 0.55rem;
+  border-left: 1px solid var(--season-line);
+}
+
+.os__message:last-child {
+  margin-bottom: 0;
+}
+
+.os__message--mara {
+  border-left-color: var(--season-amber);
+}
+
+.os__message--breaker {
+  border-left-color: rgba(241, 234, 217, 0.4);
+}
+
+.os__message--system {
+  border-left-color: var(--season-cyan);
+}
+
+.os__message--custodian {
+  border-left-color: var(--season-ivory);
+}
+
+.os__message--voss {
+  border-left-color: var(--season-amber);
+}
+
+.os__message--architect {
+  border-left-color: var(--season-blood);
+}
+
+.os__speaker {
+  display: block;
+  margin-bottom: 0.18rem;
+  font-family: var(--source-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  color: var(--season-ash);
+}
+
+.os__message--mara .os__speaker {
+  color: var(--season-amber);
+}
+
+.os__message--system .os__speaker {
+  color: var(--season-cyan);
+}
+
+.os__message--custodian .os__speaker {
+  color: var(--season-ivory);
+}
+
+.os__message--voss .os__speaker {
+  color: var(--season-amber);
+}
+
+.os__message--architect .os__speaker {
+  color: var(--season-blood);
+}
+
+.os__text {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--season-ivory);
+}
+
+.os__message--system .os__text {
+  font-family: var(--source-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--season-cyan);
+}
+
+.os__choice {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0 0 0.85rem 0.55rem;
+  padding-left: 0.55rem;
+  border-left: 1px dashed var(--season-amber);
+}
+
+.os__choice-option {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--season-line);
+  background: rgba(241, 234, 217, 0.03);
+  color: var(--season-ivory);
+  font-family: var(--source-mono);
+  font-size: 0.66rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  text-align: left;
+  cursor: pointer;
+}
+
+.os__choice-option:hover,
+.os__choice-option:focus-visible {
+  border-color: var(--season-amber);
+  color: var(--season-amber);
+  outline: none;
+}
+
+.os__evidence {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.os__evidence-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--season-line);
+  background: rgba(241, 234, 217, 0.03);
+}
+
+.os__label {
+  font-family: var(--source-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--season-ash);
+}
+
+.os__value {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--season-ivory);
+  overflow-wrap: anywhere;
+}
+
+.os__terminal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.os__call {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.5rem;
+  align-items: baseline;
+  padding: 0.35rem 0.4rem;
+  border-bottom: 1px solid rgba(241, 234, 217, 0.06);
+  font-family: var(--source-mono);
+  font-size: 0.66rem;
+}
+
+.os__call-method {
+  color: var(--season-ivory);
+  overflow-wrap: anywhere;
+}
+
+.os__call-kind {
+  color: var(--season-ash);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+}
+
+.os__call-outcome {
+  color: var(--season-amber);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+}
+
+.os__call--failed .os__call-outcome {
+  color: #e7a9a9;
+}
+
+.os-toggle {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--season-line);
+  background: var(--season-ink);
+  color: var(--season-ivory);
+  font-family: var(--source-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+}
+
+.os-toggle:hover {
+  border-color: var(--season-amber);
+  color: var(--season-amber);
+}
+
+.os-toggle__dot {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--season-amber);
+}
+
+@media (max-width: 1100px) {
+  .level-layout {
+    display: block;
+    padding: 0 1.25rem;
+  }
+
+  .os {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 40;
+    max-height: 70vh;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  .season-creed {
+    display: none;
+  }
+
+  .season-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-top: 5rem;
+  }
+
+  .season-creed {
+    justify-self: start;
+    max-width: 28rem;
+  }
+
+  .campaign-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .season-map {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem 1rem;
+    width: auto;
+    height: auto;
+    margin: 0 1.25rem 1.25rem;
+  }
+
+  .season-sector {
+    position: static;
+    max-width: none;
+    transform: none;
+  }
+
+  .season-sector__tick {
+    height: 0.9rem;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .season-hero {
+    min-height: 70vh;
+  }
+
+  .season-hero__inner {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
+
+  .season-hero__title {
+    font-size: clamp(2.4rem, 13vw, 4rem);
+  }
+
+  .season-hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+
+  .season-creed {
+    max-width: 100%;
+  }
+
+  .season-sector__tick {
+    height: 1rem;
+  }
+
+  .campaign-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-card__summary {
+    -webkit-line-clamp: 2;
+  }
+
+  .next-card--final {
+    min-height: 380px;
+  }
+
+  .level-hero .level__title,
+  .level-hero__story-title,
+  .level-hero__book-title {
+    font-size: clamp(1.7rem, 9vw, 2.6rem);
+  }
+
+  .level-hero .level__meta {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

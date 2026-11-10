@@ -1,0 +1,273 @@
+
+
+.final {
+  min-height: 100vh;
+  background: var(--season-ink);
+  color: var(--season-ivory);
+}
+
+.final__inner {
+  width: min(100%, 82ch);
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 6rem) clamp(1rem, 4vw, 2.5rem) 5rem;
+}
+
+.final__eyebrow {
+  display: block;
+  font-family: var(--season-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--season-amber);
+}
+
+.final__title {
+  margin: 0.6rem 0 0;
+  font-family: var(--season-display);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--season-ivory);
+}
+
+.final__subtitle {
+  max-width: 60ch;
+  margin: 0.8rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--season-ash);
+}
+
+.final__note {
+  margin: 2rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--season-line);
+  font-family: var(--source-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+  color: var(--season-ash);
+}
+
+.final__locked {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--season-line);
+  background: rgba(241, 234, 217, 0.03);
+}
+
+.final__locked h2 {
+  margin: 0 0 0.6rem;
+  font-family: var(--season-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--season-ivory);
+}
+
+.final__locked p {
+  margin: 0 0 1.2rem;
+  color: var(--season-ash);
+}
+
+.final__scene {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--season-line);
+}
+
+.final__code {
+  display: block;
+  font-family: var(--source-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--season-amber);
+}
+
+.final__scene-title {
+  margin: 0.5rem 0 0;
+  font-family: var(--season-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--season-ivory);
+}
+
+.final__lines {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 1.5rem;
+}
+
+.final__line {
+  padding-left: 0.8rem;
+  border-left: 1px solid var(--season-line);
+}
+
+.final__line--mara {
+  border-left-color: var(--season-amber);
+}
+
+.final__line--breaker {
+  border-left-color: rgba(241, 234, 217, 0.4);
+}
+
+.final__line--system {
+  border-left-color: var(--season-cyan);
+}
+
+.final__line--voss {
+  border-left-color: var(--season-amber);
+}
+
+.final__line--architect {
+  border-left-color: var(--season-blood);
+}
+
+.final__speaker {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-family: var(--source-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  color: var(--season-ash);
+}
+
+.final__line--mara .final__speaker {
+  color: var(--season-amber);
+}
+
+.final__line--system .final__speaker {
+  color: var(--season-cyan);
+}
+
+.final__line--voss .final__speaker {
+  color: var(--season-amber);
+}
+
+.final__line--architect .final__speaker {
+  color: var(--season-blood);
+}
+
+.final__line p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--season-ivory);
+}
+
+.final__line--system p {
+  font-family: var(--source-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+  color: var(--season-cyan);
+}
+
+.final__terminal {
+  margin: 1.4rem 0 0;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--season-line);
+  background: rgba(5, 8, 13, 0.6);
+  font-family: var(--source-mono);
+  font-size: 0.74rem;
+  line-height: 1.7;
+  color: var(--season-cyan);
+}
+
+.final__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.final__choice h2 {
+  margin: 3rem 0 0;
+  font-family: var(--season-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--season-ivory);
+}
+
+.final__response {
+  margin: 2rem 0 0;
+  font-family: var(--season-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--season-ivory);
+}
+
+.final__response--echo {
+  margin-top: 1.4rem;
+  padding-left: 0.7rem;
+  border-left: 1px solid var(--season-amber);
+  font-family: var(--source-mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.final__response--echo .final__speaker {
+  color: var(--season-amber);
+}
+
+.final .button {
+  border: 1px solid rgba(241, 234, 217, 0.6);
+  border-radius: 0;
+  background: transparent;
+  color: var(--season-ivory);
+  font-family: var(--season-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.final .button:hover:not(:disabled) {
+  background: var(--season-ivory);
+  color: var(--season-ink);
+  filter: none;
+}
+
+.final .button--secondary {
+  border-color: var(--season-line);
+  color: var(--season-ash);
+}
+
+.final .button--secondary:hover:not(:disabled) {
+  background: rgba(241, 234, 217, 0.08);
+  color: var(--season-ivory);
+}
+
+@media (max-width: 700px) {
+  .final__inner {
+    padding-top: 2.5rem;
+  }
+
+  .final__line p {
+    font-size: 0.86rem;
+  }
+}
+
+.final__gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2px;
+  margin-top: 1.5rem;
+}
+
+.final__gallery img {
+  width: 100%;
+  aspect-ratio: 1.7 / 1;
+  object-fit: cover;
+  filter: saturate(0.65) brightness(0.7);
+}
+
+@media (max-width: 700px) {
+  .final__gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
