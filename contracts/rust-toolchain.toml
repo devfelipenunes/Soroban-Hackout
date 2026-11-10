@@ -1,0 +1,9 @@
+# O build e o deploy dos contratos usam este toolchain fixo para que os WASMs
+# possam ser reconstruídos e comparados com os hashes de `deployments.json`.
+# Atualizá-lo pode mudar esses hashes; confira os artefatos e implantações.
+
+[toolchain]
+channel = "1.98.1"
+
+# Rustup instala o alvo necessário ao entrar no diretório.
+targets = ["wasm32v1-none"]

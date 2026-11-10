@@ -1,0 +1,60 @@
+[workspace]
+resolver = "2"
+members = [
+    "core",
+    "credentials",
+    "attribution",
+    "levels/00-counter/instance",
+    "levels/00-counter/validator",
+    "levels/01-noentry/instance",
+    "levels/01-noentry/validator",
+    "levels/02-deadman/instance",
+    "levels/02-deadman/validator",
+    "levels/03-warehouse/instance",
+    "levels/03-warehouse/validator",
+    "levels/04-forgotten/instance",
+    "levels/04-forgotten/validator",
+    "levels/05-custodian/instance",
+    "levels/05-custodian/validator",
+    "levels/06-investigator/instance",
+    "levels/06-investigator/validator",
+    "levels/06-investigator/aux",
+    "levels/07-impossible/instance",
+    "levels/07-impossible/validator",
+    "levels/08-sector/instance",
+    "levels/08-sector/validator",
+    "levels/09-oracle/instance",
+    "levels/09-oracle/validator",
+    "levels/10-steal/instance",
+    "levels/10-steal/validator",
+    "levels/11-rewrite/instance",
+    "levels/11-rewrite/validator",
+    "levels/11-rewrite/aux",
+    "levels/12-architect/instance",
+    "levels/12-architect/validator",
+    "tests",
+    "tests/fixture-overflow",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.91.0"
+license = "MIT"
+repository = "https://github.com/devfelipenunes/Soroban-Hackout"
+
+[workspace.dependencies]
+# Keep this exact SDK version: changing it can change the generated WASM.
+soroban-sdk = "=28.0.0"
+
+# These release settings produce the WASM uploaded to testnet. Keep overflow
+# checks enabled so the deployed contracts and the WASM-based test harness agree.
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true
