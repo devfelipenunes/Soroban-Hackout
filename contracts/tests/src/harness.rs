@@ -199,6 +199,82 @@ fn spec_section(wasm: &[u8]) -> Option<&[u8]> {
     None
 }
 
+fn import_section(wasm: &[u8]) -> Option<&[u8]> {
+    let mut i = 8;
+
+    while i < wasm.len() {
+        let id = wasm[i];
+        let (size, after_size) = read_leb128(wasm, i + 1);
+        let payload = &wasm[after_size..after_size + size];
+        i = after_size + size;
+
+        if id == 2 {
+            return Some(payload);
+        }
+    }
+
+    None
+}
+
+fn read_name(bytes: &[u8], at: usize) -> (String, usize) {
+    let (len, after_len) = read_leb128(bytes, at);
+    let end = after_len + len;
+    (
+        String::from_utf8_lossy(&bytes[after_len..end]).into_owned(),
+        end,
+    )
+}
+
+fn skip_limits(bytes: &[u8], at: usize) -> usize {
+    let (flags, after_flags) = read_leb128(bytes, at);
+    let (_, after_min) = read_leb128(bytes, after_flags);
+    if flags & 1 != 0 {
+        read_leb128(bytes, after_min).1
+    } else {
+        after_min
+    }
+}
+
+pub fn wasm_imports(name: &str) -> Vec<String> {
+    let wasm = read_wasm(name);
+    let payload = import_section(&wasm).unwrap_or_else(|| {
+        panic!(
+            "`{name}.wasm` has no import section. Every contract this project builds imports \
+             host functions, so its absence means the build changed shape — and a surface check \
+             read off an empty section would pass by finding nothing"
+        )
+    });
+    let (count, mut i) = read_leb128(payload, 0);
+    let mut found = Vec::new();
+
+    for _ in 0..count {
+        let (module, after_module) = read_name(payload, i);
+        let (field, after_field) = read_name(payload, after_module);
+        let kind = payload[after_field];
+        i = after_field + 1;
+
+        match kind {
+            0 => {
+                i = read_leb128(payload, i).1;
+                found.push(format!("{module}.{field}"));
+            }
+            1 => {
+                i += 1;
+                i = skip_limits(payload, i);
+            }
+            2 => {
+                i = skip_limits(payload, i);
+            }
+            3 => {
+                i += 2;
+            }
+            other => panic!("unknown import kind {other} in `{name}.wasm`"),
+        }
+    }
+
+    found
+}
+
 fn is_identifier_byte(byte: u8) -> bool {
     byte.is_ascii_alphanumeric() || byte == b'_'
 }

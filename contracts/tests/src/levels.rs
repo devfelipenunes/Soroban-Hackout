@@ -42,6 +42,36 @@ fn each_level_exposes_exactly_its_declared_interface() {
 }
 
 #[test]
+fn no_level_imports_an_upgrade_host_function() {
+    let mut names: Vec<String> = Vec::new();
+    for spec in ALL {
+        names.push(spec.instance_wasm());
+        names.push(spec.validator_wasm());
+    }
+    names.push(String::from("breaker_level_06_decoder"));
+    names.push(String::from("breaker_level_11_decoder"));
+
+    let forbidden = ["update_current_contract", "executable_refs", "ExternalRef"];
+    for name in names {
+        let imports = crate::harness::wasm_imports(&name);
+        assert!(
+            !imports.is_empty(),
+            "`{name}.wasm` exposed no imports to check"
+        );
+        for import in imports {
+            for needle in forbidden {
+                assert!(
+                    !import.contains(needle),
+                    "`{name}.wasm` imports `{import}`; rule 5 forbids every path by which a \
+                     contract can replace an executable — including an internal call inside an \
+                     existing function, which the spec whitelist cannot see"
+                );
+            }
+        }
+    }
+}
+
+#[test]
 fn the_interface_extractor_reads_names_out_of_a_spec_it_did_not_build() {
     assert_eq!(
         spec_identifiers("breaker_level_00_validator"),
