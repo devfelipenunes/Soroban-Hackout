@@ -486,6 +486,14 @@ scripts_job() {
     recipes_lint "$HERE" || exit 1
     echo "  ✓ every level has a recipe, and no recipe reads past the contract"
 
+    upgrade_surface="$(grep -rnE 'update_current_contract|executable_refs|ExternalRef' contracts/levels 2>/dev/null || true)"
+    [ -z "$upgrade_surface" ] || {
+        echo "✗ a level references an upgrade surface:" >&2
+        printf '%s\n' "$upgrade_surface" >&2
+        exit 1
+    }
+    echo "  ✓ no level references an upgrade surface"
+
     variant_probe || exit 1
 
     sandbox_build
@@ -550,9 +558,9 @@ scripts_job() {
 
     fresh store
     cp "$GOOD" "$PROBE/deployments.json"
-    PROBE_TMPDIR=/dev/null
+    chmod 555 "$PROBE"
     status=0; deploy_run --force 00 || status=$?
-    PROBE_TMPDIR=""
+    chmod 755 "$PROBE"
     invokes="$(logged '^contract invoke')"
     [ "$status" != 0 ] || refuse \
         "P3: the script could not write the record and reported success anyway." \
@@ -626,6 +634,19 @@ scripts_job() {
         "P7: the refusal did not report that the local core was not built."
     echo "  ✓ P7  --force without a built core fails with a message"
 
+    fresh wrong_network
+    jq '.network = "othernet"' "$GOOD" > "$PROBE/deployments.json"
+    status=0; deploy_run || status=$?
+    uploads="$(logged '^contract upload')"
+    [ "$status" != 0 ] || refuse \
+        "P8: a record from another network was accepted and the deploy proceeded." \
+        "Every target was chosen from a record that belongs to a different ledger."
+    [ "$uploads" = 0 ] || refuse \
+        "P8: the script aborted, but only after uploading $uploads WASM(s)."
+    grep -q 'is for othernet' "$OUT" || refuse \
+        "P8: the run stopped, but not because the record named another network."
+    echo "  ✓ P8  a record from another network is refused before any upload"
+
     echo
     echo "  the probes are the ways \`deploy.sh\` used to fail without saying so:"
     echo "    P1  a flag the record normalises and the script does not"
@@ -635,6 +656,7 @@ scripts_job() {
     echo "    P5  a manifest whose levels cannot be read"
     echo "    P6  a deploy output without an address"
     echo "    P7  --force against a tree with no built core"
+    echo "    P8  a record that belongs to another network"
     echo "  they run against a stub \`stellar\` in a sandbox with an empty HOME — no network,"
     echo "  no keys, no \`deployments.json\` of the real repository."
     echo
