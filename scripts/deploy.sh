@@ -96,13 +96,16 @@ if [ "$FRESH" = 1 ]; then
             fi
         else
             local partial="${RECORD_TARGET}.partial.$(date -u +%Y%m%dT%H%M%SZ).$$"
-            mv "$STAGED_RECORD" "$partial"
             if [ -f "$RECORD_TARGET" ]; then
                 echo "✗ deploy failed; the previous record was preserved at $RECORD_TARGET." >&2
             else
                 echo "✗ deploy failed; no previous record existed at $RECORD_TARGET." >&2
             fi
-            echo "  Partial deployment progress is recorded at $partial." >&2
+            if mv "$STAGED_RECORD" "$partial"; then
+                echo "  Partial deployment progress is recorded at $partial." >&2
+            else
+                echo "✗ could not preserve the partial record." >&2
+            fi
         fi
         exit "$status"
     }
@@ -114,6 +117,12 @@ elif ! jq -e . "$RECORD" >/dev/null 2>&1; then
     echo "  Refusing to continue. A record that cannot be read looks exactly like an EMPTY" >&2
     echo "  record — and an empty record makes this script deploy a SECOND core." >&2
     echo "  Fix the file, or run ./scripts/deploy.sh --fresh to start a new era on purpose." >&2
+    exit 1
+fi
+
+RECORD_NETWORK="$(jq -r '.network // empty' "$RECORD" 2>/dev/null || true)"
+if [ -n "$RECORD_NETWORK" ] && [ "$RECORD_NETWORK" != "$NETWORK" ]; then
+    echo "✗ $RECORD is for $RECORD_NETWORK, not $NETWORK." >&2
     exit 1
 fi
 
@@ -154,7 +163,7 @@ already_have() {
 }
 
 store() {
-    local tmp; tmp="$(mktemp)" || tmp=""
+    local tmp; tmp="$(mktemp "$(dirname "$RECORD")/.$(basename "$RECORD").XXXXXX")" || tmp=""
     if [ -z "$tmp" ] \
        || ! jq --arg v "$2" "$1 = \$v" "$RECORD" > "$tmp" 2>/dev/null \
        || ! mv "$tmp" "$RECORD"; then
@@ -413,8 +422,12 @@ fi
 echo
 
 echo "── registro final ────────────────────────────────────────────"
-TMP="$(mktemp)"
-jq -n \
+TMP="$(mktemp "$(dirname "$RECORD")/.$(basename "$RECORD").final.XXXXXX")" || TMP=""
+if [ -z "$TMP" ]; then
+    echo "✗ could not create a temporary record next to $RECORD." >&2
+    exit 1
+fi
+if ! jq -n \
   --arg network "$NETWORK" \
   --arg admin "$ADMIN" \
   --arg cli "$(stellar --version 2>&1 | head -1)" \
@@ -434,8 +447,16 @@ jq -n \
      },
      contracts: ($current[0].contracts // {}),
      levels: ($current[0].levels // {})
-   }' > "$TMP"
-mv "$TMP" "$RECORD"
+   }' > "$TMP"; then
+    rm -f "$TMP"
+    echo "✗ could not write the final record." >&2
+    exit 1
+fi
+if ! mv "$TMP" "$RECORD"; then
+    rm -f "$TMP"
+    echo "✗ could not replace $RECORD." >&2
+    exit 1
+fi
 
 jq '.' "$RECORD"
 
