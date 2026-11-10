@@ -37,6 +37,13 @@ function escapeHtml(value: string): string {
   });
 }
 
+function sanitizeLinks(html: string): string {
+  return html.replace(/\s(href|src)="([^"]*)"/gi, (match, _attribute: string, url: string) => {
+    const compact = url.replace(/[\s\u0000-\u001f]/g, "").toLowerCase();
+    return /^(javascript|vbscript):/.test(compact) ? match.replace(/"[^"]*"/, '"#"') : match;
+  });
+}
+
 function consoleBlock(text: string, label: string): string {
   const lines = text.replace(/\n$/, "").split("\n");
   return `<div class="markdown__commands">${lines
@@ -65,10 +72,12 @@ export function Markdown({ source, copyCommandLabel, onCopyCommand }: MarkdownPr
       if (copyCommandLabel === undefined || token.lang !== "js") return defaultCode(token);
       return consoleBlock(token.text, copyCommandLabel);
     };
-    return marked.parse(source, {
-      async: false,
-      renderer,
-    });
+    return sanitizeLinks(
+      marked.parse(source, {
+        async: false,
+        renderer,
+      }),
+    );
   }, [copyCommandLabel, source]);
 
   const copyCommand = useCallback(

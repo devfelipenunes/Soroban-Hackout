@@ -12,6 +12,8 @@ import { HOMEPAGE_IMAGE, LEVELS, levelImage } from "../levels/index.ts";
 
 const SECTORS = ["upper", "central", "lower", "spire"] as const;
 
+const MOSAIC_LEVELS = LEVELS.slice(0, -1);
+
 export function Home(): ReactElement {
   const { t } = useLanguage();
   const { solvedIds: sessionSolved } = useProgress();
@@ -207,7 +209,7 @@ export function Home(): ReactElement {
             </p>
           )}
           <Mosaic
-            levels={LEVELS.slice(0, -1)}
+            levels={MOSAIC_LEVELS}
             solvedIds={solvedIds}
             lockedIds={lockedIds}
           />

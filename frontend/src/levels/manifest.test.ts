@@ -885,3 +885,26 @@ describe("Network Wire", () => {
     expect(article?.body.length).toBeGreaterThan(0);
   });
 });
+
+describe("the level loader", () => {
+  it("surfaces a narrative that fails to load", async () => {
+    const level = LEVELS[0];
+    expect(level).toBeDefined();
+    if (level === undefined) return;
+
+    const content = await loadLevel(level, {
+      briefings: {},
+      conclusions: {},
+      sources: {},
+      narratives: {
+        [`./narrative/${String(level.id).padStart(2, "0")}.json`]: async () => {
+          throw new Error("boom");
+        },
+      },
+      caseFiles: {},
+    });
+
+    expect(content.narrative).toBeNull();
+    expect(content.missing.some((path) => path.includes("narrative/"))).toBe(true);
+  });
+});

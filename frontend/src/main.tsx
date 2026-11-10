@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
 import { App } from "./App.tsx";
+import { Boundary } from "./components/Boundary.tsx";
+import { Broken } from "./pages/Broken.tsx";
 import { useWallet, WalletProvider } from "./wallet/context.tsx";
 import type { WalletEngine } from "./wallet/engine.ts";
 import { realEngine } from "./wallet/real-engine.ts";
@@ -58,15 +60,17 @@ migrateLegacyStorage();
 createRoot(root).render(
   <StrictMode>
     <LanguageProvider>
-      <WalletProvider engine={walletEngine}>
-        <AccountLayer>
-          <ProgressProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
-          </ProgressProvider>
-        </AccountLayer>
-      </WalletProvider>
+      <Boundary fallback={(error, retry) => <Broken error={error} retry={retry} />}>
+        <WalletProvider engine={walletEngine}>
+          <AccountLayer>
+            <ProgressProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </ProgressProvider>
+          </AccountLayer>
+        </WalletProvider>
+      </Boundary>
     </LanguageProvider>
   </StrictMode>,
 );

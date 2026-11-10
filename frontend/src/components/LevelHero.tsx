@@ -68,6 +68,7 @@ export function LevelHero({
   summary,
   lead,
   player,
+  previousCompleted,
 }: {
   level: Level;
   kind: string;
@@ -75,6 +76,7 @@ export function LevelHero({
   summary: string | null;
   lead: LocalizedText | null;
   player: string | undefined;
+  previousCompleted: boolean;
 }): ReactElement {
   const { t, language } = useLanguage();
   const wrap = useRef<HTMLElement | null>(null);
@@ -94,13 +96,15 @@ export function LevelHero({
   const [introReady, setIntroReady] = useState(false);
 
   const recap = level.id > 0;
-  const recapPages = paginateBookPages(
-    previous === null
-      ? []
-      : [previous.continuation ?? previous.pages[previous.pages.length - 1]].filter(
-          (page): page is NonNullable<typeof page> => page !== undefined,
-        ),
-  );
+  const recapPages = previousCompleted
+    ? paginateBookPages(
+        previous === null
+          ? []
+          : [previous.continuation ?? previous.pages[previous.pages.length - 1]].filter(
+              (page): page is NonNullable<typeof page> => page !== undefined,
+            ),
+      )
+    : [];
   const storyIndex = recap ? 1 + recapPages.length : 1;
   const pagesStart = storyIndex + 1;
   const bookPages = paginateBookPages(book?.pages ?? []);
@@ -467,6 +471,9 @@ export function LevelHero({
                   <Difficulty value={level.difficulty} />
                 </div>
                 {summary !== null && <p className="level-hero__summary">{summary}</p>}
+                {recap && !previousCompleted && (
+                  <p className="level-hero__summary">{t("levelHero.pending")}</p>
+                )}
                 <span className="level-hero__cue">{t("levelHero.scroll")}</span>
               </div>
             </>,

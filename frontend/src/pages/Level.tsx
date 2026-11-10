@@ -500,6 +500,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
         summary={summary?.text ?? null}
         lead={content?.caseFile?.lead ?? null}
         player={address ?? undefined}
+        previousCompleted={previousCompleted}
       />
 
       <div className="level-layout level-layout--closed">

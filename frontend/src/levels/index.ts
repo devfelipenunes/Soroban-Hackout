@@ -118,32 +118,42 @@ const FILES: LevelFiles = { briefings, conclusions, sources, narratives, caseFil
 async function readNarrative(
   files: Record<string, () => Promise<Narrative>>,
   path: string,
+  missing: string[],
 ): Promise<Narrative | null> {
   const load = files[path];
-  if (load === undefined) return null;
+  if (load === undefined) {
+    missing.push(path);
+    return null;
+  }
 
   try {
     return await load();
   } catch {
+    missing.push(path);
     return null;
   }
 }
 
 
 export async function loadNarrative(levelId: number): Promise<Narrative | null> {
-  return readNarrative(narratives, `./narrative/${pad(levelId)}.json`);
+  return readNarrative(narratives, `./narrative/${pad(levelId)}.json`, []);
 }
 
 async function readCaseFile(
   files: Record<string, () => Promise<CaseFile>>,
   path: string,
+  missing: string[],
 ): Promise<CaseFile | null> {
   const load = files[path];
-  if (load === undefined) return null;
+  if (load === undefined) {
+    missing.push(path);
+    return null;
+  }
 
   try {
     return await load();
   } catch {
+    missing.push(path);
     return null;
   }
 }
@@ -165,8 +175,8 @@ export async function loadLevel(level: Level, files: LevelFiles = FILES): Promis
       `../../../contracts/levels/${pad(level.id)}-${level.slug}/instance/src/lib.rs`,
       missing,
     ),
-    readNarrative(files.narratives ?? {}, `./narrative/${pad(level.id)}.json`),
-    readCaseFile(files.caseFiles ?? {}, `./casefile/${pad(level.id)}.json`),
+    readNarrative(files.narratives ?? {}, `./narrative/${pad(level.id)}.json`, missing),
+    readCaseFile(files.caseFiles ?? {}, `./casefile/${pad(level.id)}.json`, missing),
   ]);
 
   for (const entry of localized) {
@@ -200,7 +210,7 @@ export async function loadStory(
 
 export async function loadNews(levelId = 0): Promise<NarrativeDocument | null> {
   const key = `./narrative/${pad(levelId)}.json`;
-  const narrative = await readNarrative(narratives, key);
+  const narrative = await readNarrative(narratives, key, []);
   if (!narrative?.documents?.length) return null;
   const preferred = levelId === 0
     ? narrative.documents.find((document) => document.id === "00-document-1")
