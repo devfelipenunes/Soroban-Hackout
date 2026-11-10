@@ -1,0 +1,54 @@
+# Rust / Cargo
+target/
+**/target/
+*.rs.bk
+*.pdb
+
+# Artefatos Soroban
+*.wasm
+!**/fixtures/*.wasm
+**/wasm_hash.txt
+
+# Snapshots escritos pelos testutils do soroban-sdk a cada `cargo test`.
+# São fotografia de execução, não entrada.
+**/test_snapshots/
+
+# Identidades do stellar-cli — contém chave privada em texto claro.
+# NUNCA versionar, mesmo de testnet.
+.stellar/
+**/.stellar/
+
+# Os bindings gerados SÃO versionados, de propósito: sem eles o `tsc` não roda
+# num clone limpo.
+
+# Node / frontend
+node_modules/
+**/node_modules/
+dist/
+build/
+.vite/
+*.tsbuildinfo
+
+# Segredos e configuração local
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# `deployments.json` é versionado de propósito enquanto só tiver ID público de
+# testnet. Se um dia carregar segredo, isso vira decisão explícita, não engano.
+
+# Sistema operacional / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/settings.json
+
+# Logs e temporários
+*.log
+npm-debug.log*
+.playwright-mcp/
+.playwright-cli/
