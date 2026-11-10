@@ -33,8 +33,8 @@
 ## Convenções
 
 ### Idioma da documentação
-**PT-BR.** O *jogo* é trilíngue (PT-BR/EN/ES via i18n); a *documentação interna* não. Não
-traduza os docs.
+O **README** é em inglês. A *documentação interna* é em PT-BR; o *jogo* é trilíngue
+(PT-BR/EN/ES via i18n). Não traduza os docs internos.
 
 ### Documentação
 - Todo arquivo abre com uma seção **Estado**
@@ -43,8 +43,8 @@ traduza os docs.
 - Link entre documentos com caminho relativo, sempre
 
 ### Código
-- **Rust/Soroban:** `soroban-sdk` em **versão exata, na linha `28.x`** — nunca `>=`
-  (**decisão 19**). O **piso de segurança** é o 25.1.1 (CVE-2026-26267); o 28.x é a **escolha**,
+- **Rust/Soroban:** `soroban-sdk` em **versão exata, na linha `28.x`** — nunca `>=`.
+  O **piso de segurança** é o 25.1.1 (CVE-2026-26267); o 28.x é a **escolha**,
   por ser onde existe o `ExternalRef` — a classe que é a tese do projeto. O `stellar-cli`
   acompanha a mesma linha.
 - **TS/React:** sem `any`; o `Client` gerado pelos bindings é a fonte de tipos
@@ -70,15 +70,11 @@ existe porque a anterior cai se ela cair.
 
 > **3. O jogador nunca interage com o validador diretamente.**
 >
-> A decisão 11 separou o que antes era uma peça só: o **núcleo** cria instâncias e guarda posse
-> e progresso; o **validador**, um por nível, decide se o objetivo foi cumprido. O jogador fala
-> com a **instância** e com o **núcleo** — criar a instância e submeter a solução são transações
-> dele, e não há como ser diferente. O que ele **nunca** toca é o validador: se o validador
-> virar superfície de ataque, as regras 1 e 2 caem junto.
->
-> *Nota de redação (questão **G**, resolvida em 2026-09-22).* A regra dizia "a factory" quando
-> só existia uma peça com esse nome, e por isso era **falsa na letra**: o jogador
-> necessariamente chama o núcleo. O invariante não mudou — o substantivo ficou preciso.
+> O **núcleo** cria instâncias e guarda posse e progresso; o **validador**, um por nível,
+> decide se o objetivo foi cumprido. O jogador fala com a **instância** e com o **núcleo** —
+> criar a instância e submeter a solução são transações dele, e não há como ser diferente.
+> O que ele **nunca** toca é o validador: se o validador virar superfície de ataque, as regras
+> 1 e 2 caem junto.
 
 > **4. Todo nível tem dois testes — e eles rodam contra o WASM deployado, não só contra
 > `cargo test`.**
@@ -104,8 +100,8 @@ existe porque a anterior cai se ela cair.
 >
 > **Por que isto é invariante, e não estilo:** o upgrade **preserva o storage** — só o campo
 > `executable` muda. Se o jogador trocar o código da instância, ele passa a escrever o estado
-> que o validador lê. A decisão 11 fez a validação **ler estado** em vez de ouvir a instância;
-> sem esta regra, aquele ganho se perde por outro caminho.
+> que o validador lê. A validação **lê estado** em vez de ouvir a instância; sem esta regra,
+> aquele ganho se perde por outro caminho.
 >
 > Vale para caminhos **indiretos**: qualquer função pública que receba `BytesN<32>` e chegue
 > em `update_current_contract_wasm`, e o registro de executable refs (`ExternalRef`,
@@ -119,7 +115,7 @@ Ordem de precedência quando duas fontes discordam:
 2. **A documentação oficial da SDF** (`developers.stellar.org`)
 3. **O spec do contrato** (`spec.funcs()` / `spec.jsonSchema()`) — a interface real, não a
    que alguém lembra que era
-4. **Este repositório** (`AGENTS.md`, `README.md`) — para decisões já tomadas aqui
+4. **Este repositório** (`AGENTS.md`, `README.md`) — para o que já está estabelecido aqui
 5. **Blogs, Medium, respostas de LLM** — não são fonte. Se só existe aí, não está verificado
 
 **Armadilha recorrente:** a documentação pública de TTL mostra valores de **mainnet**. No

@@ -1,151 +1,96 @@
 # Breaker
 
-> **Nome:** **Breaker** — decisão 77, substituindo a decisão 22. O nome antigo foi removido do
-> código, da interface, dos pacotes e dos documentos atuais.
->
-> ⚠️ **A disponibilidade externa de `Breaker` não foi verificada.** A verificação de 2026-09-22
-> era para o nome antigo e não se aplica.
+**Breaker** is a capture-the-flag game for **Stellar/Soroban**. Each level is a deliberately
+vulnerable contract that the player has to exploit to move forward.
 
-> **Estado:** **13 níveis no ar** na era jogável `CDUVH22U…`, com progressão on-chain de 0 a 12.
-> A era sandbox `CDWHNWW6…` tem os mesmos casos sem pré-requisitos, para desenvolvimento e
-> demonstração. Ambas são testnet.
+> **Status:** 13 levels are live on testnet in the playable era `CDUVH22U…`, with on-chain
+> progression from 0 to 12. The sandbox era `CDWHNWW6…` carries the same cases without
+> prerequisites, for development and demos. Both are testnet.
 
-Um jogo de captura-a-bandeira (CTF) para **Stellar/Soroban**: cada nível é um contrato
-deliberadamente vulnerável que o jogador precisa explorar para avançar.
+## What it is
 
-## O que é
+- A progressive game about real Soroban vulnerabilities.
+- Every player gets their own on-chain instance of each level.
+- Validation is on-chain: a contract checks whether the objective was met.
+- Interaction happens in the browser's native DevTools console.
+- Anyone can write a level; official levels are curated, and your own run in your own game.
 
-- Um jogo de níveis progressivos sobre **vulnerabilidades reais de Soroban**
-- Cada jogador recebe uma **instância própria** de cada nível, deployada on-chain
-- A validação é **on-chain**: um contrato verifica se o objetivo foi cumprido
-- A interação acontece no **console nativo do DevTools do navegador**
-- **Qualquer pessoa pode escrever um nível** — os oficiais são curados, e os seus rodam no seu
-  próprio jogo
+## What it is not
 
-## O que **não** é
+- **Not an adapted EVM CTF.** Reentrancy is impossible in Soroban — the host rejects the
+  A→B→A pattern (CAP-0046-11). The level repertoire here is necessarily different.
+- **Not a course.** It is a game. The text teaches the minimum; understanding comes from exploring.
+- **Not an audit tool.** It does not replace Scout, Sanctifier or a manual audit.
+- **Not mainnet.** The MVP runs on testnet.
 
-- **Não é um CTF de EVM adaptado.** Reentrância é **impossível** em Soroban — o host rejeita
-  o padrão A→B→A (CAP-0046-11). O repertório de níveis aqui é necessariamente outro.
-- **Não é um curso.** É um jogo. O texto ensina o mínimo; a compreensão vem de explorar.
-- **Não é uma ferramenta de auditoria.** Não substitui Scout, Sanctifier ou uma auditoria.
-- **Não é mainnet.** O MVP roda em **testnet**.
+> **This repository has no production code.** Breaker is a **zolvency** educational project.
+> The contracts are broken on purpose — each level is a planted vulnerability meant to be exploited.
 
-> ### ⚠️ Este repositório não tem código de produção
->
-> **Breaker** é um projeto da **zolvency**, e é **educacional**.
-> Os contratos aqui são **quebrados de propósito** — cada nível é uma vulnerabilidade
-> plantada, para ser explorada.
+## The thesis
 
-## A tese
+> The vulnerabilities that matter in Soroban are different from the ones in EVM, and nobody is
+> teaching them in practice.
 
-> As vulnerabilidades que importam em Soroban são **diferentes** das do EVM, e ninguém está
-> ensinando elas de forma prática.
+Missing or mis-scoped `require_auth`, replay in a custom account, unauthorized WASM upgrade,
+partial state corruption through `try_invoke_contract`, TTL and archival, deliberate overflow —
+none of these has a direct EVM equivalent, and none has a place to be practiced.
 
-`require_auth` ausente ou mal escopado, replay em conta customizada, upgrade não autorizado
-de WASM, corrupção de estado parcial via `try_invoke_contract`, TTL e archival, overflow
-deliberado — nada disso tem equivalente direto no mundo EVM, e nada disso tem onde ser
-praticado.
+## Environment
 
-## Pré-requisitos de ambiente
+All requirements are user-local; no `sudo`.
 
-Instalado e verificado em **2026-09-22**. Tudo **user-local**, sem `sudo`:
+| Requirement | Version / note |
+|---|---|
+| Node 22 LTS | 22.23.2 |
+| Rust + `wasm32v1-none` target | 1.98.1 |
+| `stellar-cli` | 28.0.0, pinned |
+| Funded testnet account | use a `stellar keys` identity |
 
-| Requisito | Situação | Observação |
-|---|---|---|
-| Node **22 LTS** | ✅ **22.23.2** via `fnm` | `/usr/bin/node` (18.19.1, do `apt`) **intacto** |
-| Rust + alvo `wasm32v1-none` | ✅ **1.98.1** via `rustup` | Rust **1.91+** — MSRV do `soroban-sdk` 28.0.0 |
-| `stellar-cli` | ✅ **28.0.0** pinado | Necessário para build, upload, deploy e geração de bindings |
-| Conta de testnet financiada | ✅ `dev` | Via Friendbot (10.000 XLM por conta) |
-
-## Como rodar
+## Running
 
 ```bash
-./scripts/ci.sh all              # tudo o que o CI checa, do jeito que ele checa
+./scripts/ci.sh all              # everything CI checks, the same way it checks
 
 cd contracts && ./build.sh && cargo test
 cd frontend && npm ci && npm test
-cd frontend && npm run dev                 # campanha jogável, em http://localhost:5173
-cd frontend && VITE_DEPLOYMENT_PROFILE=sandbox npm run dev  # sandbox on-chain sem progressão
+cd frontend && npm run dev                 # playable campaign at http://localhost:5173
+cd frontend && VITE_DEPLOYMENT_PROFILE=sandbox npm run dev  # sandbox, no progression
 
-./scripts/deploy.sh              # sobe o que ainda não subiu (escreve em testnet)
-./scripts/exploit.sh 1           # executa o exploit de um nível contra a rede
-./scripts/keeper.sh --plan       # o que o keeper estenderia, sem tocar a rede
+./scripts/deploy.sh              # deploy what is missing (writes to testnet)
+./scripts/exploit.sh 1           # run one level's exploit against the network
+./scripts/keeper.sh --plan       # what the keeper would extend, without touching the network
 ```
 
-⚠️ **O build dos contratos é `./contracts/build.sh`** — que chama `stellar contract build`.
-**Nunca `cargo` direto:** os dois produzem bytes diferentes para o mesmo fonte, e o hash no ledger
-deixaria de bater com o que o jogador reconstrói.
+**Build contracts with `./contracts/build.sh`**, which calls `stellar contract build`.
+Never call `cargo` directly: the two produce different bytes for the same source, and the
+ledger hash would stop matching what the player rebuilds.
 
-⚠️ **Os comandos que escrevem em rede são portão** — leia [`AGENTS.md`](AGENTS.md) antes de rodar
-`deploy.sh` ou `exploit.sh`.
+**Commands that write to the network are gated.** Read [`AGENTS.md`](AGENTS.md) before running
+`deploy.sh` or `exploit.sh`.
 
-## Estrutura do repositório
+## Repository layout
 
 ```
 .
-├── AGENTS.md            instruções para agentes de IA
-├── levels.json          catálogo e pré-requisitos dos níveis
-├── contracts/           núcleo, níveis, validadores e harness
-├── frontend/            jogo e interface
-└── scripts/             deploy, keeper e verificações locais
+├── AGENTS.md            instructions for AI agents
+├── levels.json          level catalog and prerequisites
+├── contracts/           core, levels, validators and harness
+├── frontend/            game and interface
+└── scripts/             deploy, keeper and local checks
 ```
 
-## Status do projeto
+## Status
 
-- [x] Pesquisa de viabilidade
-- [x] Levantamento de prior art
-- [x] Requisitos mínimos documentados
-- [x] Decisões do MVP resolvidas — **70 decididas, nenhuma em aberto**
-- [x] Ambiente preparado
-- [x] Os **níveis da campanha** (ids 0 a 12) implementados e verdes localmente
-- [x] A era nova do núcleo (decisão 38) — executada em 2026-09-28
-- [x] O keeper de TTL (decisão 35) — rodado contra a testnet, com a janela medida
-- [x] A home da Season 01 com as artes dos níveis da campanha, o Rewrite bloqueado e o Architect
-- [x] O Breaker OS nos **níveis da campanha** — rail COMMS/EVIDENCE/TERMINAL com beats e evidências
-- [x] O canon narrativo da Season 1 nos níveis da campanha — Mara Vale, Voss, `REFUSED`, andar 24
-- [x] A sequência final narrada (Rewrite + The Architect) — rota `/final`, 2026-10-21
-- [x] O **dossiê por nível** e a **história longa** pós-vitória — decisão 48, 2026-10-21
-- [x] O **Breaker OS como dispositivo** — handheld com home, apps, `CASES` como app padrão,
-      badges e gaveta no mobile — decisão 49, 2026-10-21
-- [x] A **auditoria narrativa** e os ajustes de contação — home sem spoiler, cards de mistério,
-      transição para `/final` e desfecho da Mara — decisão 50, 2026-10-21
-- [x] A **entrega da narrativa longa** — 11 histórias com 6 cenas e 400–600 palavras, `lead` +
-      `ThreadStrip`, três escolhas de tom com eco no epílogo e a contagem 10/11 — decisão 51,
-      2026-10-21
-- [x] A **entrada pela carteira Freighter** na testnet — decisões 65 e 66, 2026-10-22; o jogo
-      exige uma carteira conectada e não mantém uma sessão local como prova de acesso
-- [x] A **primeira impressão em movimento** — header transparente sobre a arte, fumaça, sweep do
-      herói, cards com cortina/parallax, prévia do caso e intro do login — decisão 53, 2026-10-21
-- [x] O **livro no carrossel** — os capítulos da novelização (`frontend/src/levels/book/`) em 6 páginas
-      bilíngues cada, com escolha de tom no fim; o scroll percorre os slides e setas/pontos/teclado/arrasto são atalhos —
-      decisão 54, 2026-10-21
-- [x] ~~O spoiler do livro~~ — o portão interno foi removido; a sequência fica no modal de entrada
-      — decisão 59, 2026-10-21
-- [x] O **desfecho no nível seguinte** — “No caso anterior” abre o nível com o fim do capítulo
-      anterior; a sequência será garantida no modal de entrada — decisão 56, 2026-10-21
-- [x] A **home abre todos os cards** no carregamento, sem esperar o scroll — decisão 58, 2026-10-21
-- [x] O **deck suave** — roda com auto-avanço de 450 ms, slides empilhados com parallax e régua em filmstrip —
-      decisão 60, 2026-10-21
-- [x] O **conteúdo do nível em parallax** — os blocos sobem e aparecem em cascata ao entrar na tela —
-      decisão 63, 2026-10-22
-- [x] A **cidade viva da home** — respiração, feixes, tráfego, fumaça, nuvens e pinos dos setores —
-      decisão 61, 2026-10-21
-- [x] Os **dossiês dos setores** — hover no pino desfoca a cidade e abre a lore do lugar —
-      decisão 64, 2026-10-22
-- [x] **“Casos, não níveis”** na UI, em PT e EN — decisão 62, 2026-10-21
-- [x] O **livro em PT-BR** — falas humanas traduzidas; sistema, nomes próprios e o mote ficam em
-      inglês — decisão 57, 2026-10-21
-- [x] O deploy da campanha e o `exploit.sh` de **todos os níveis** — 2026-10-21
-- [x] O keeper da campanha — **47 alvos**, todos a 30 dias
-- [ ] Jogar os níveis **no navegador** — nenhum foi, até hoje
-- [x] Os **contratos** de 11 (`Rewrite`) e 12 (`The Architect`) — implementados e presentes nos
-      registros de deploy; a história é narrada na sequência final
+- All 13 levels (ids 0–12) are implemented and covered by the two-test rule.
+- Contracts 11 (`Rewrite`) and 12 (`The Architect`) are implemented and present in the
+  deployment records.
+- The browser campaign has not been played end to end yet.
+- On-chain progress has a 30-day persistent TTL and no renewal path yet; a new era will fix it.
 
+## Third-party icons
 
-## Ícones de terceiros
-
-O BREAKER OS incorpora ícones da biblioteca [Phosphor](https://github.com/phosphor-icons/core),
-sem instalar dependências. Fonte e licença verificadas em 2026-10-22.
+The Breaker OS includes icons from [Phosphor](https://github.com/phosphor-icons/core) without
+installing a dependency. The license follows.
 
 ```text
 MIT License
