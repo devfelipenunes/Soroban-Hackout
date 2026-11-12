@@ -9,9 +9,9 @@
       },
       "paragraphs": [
         {
-          "pt-BR": "A torre conhecida como The Spire fica acima de Meridian. Antes da primeira consulta, a Meridian Authority interrompe o canal: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. O mandato concedido no Vault acabou.",
+          "pt-BR": "A Torre se ergue acima de Meridian. Antes da primeira consulta, a Autoridade de Meridian interrompe o canal: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. O mandato concedido no cofre acabou.",
           "en": "The Spire rises above Meridian. Before the first query, the Authority interrupts the channel: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. The mandate granted at the Vault has ended.",
-          "es": "La torre The Spire se eleva sobre Meridian. Ante la primera consulta, la Autoridad interrumpe el canal: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. El mandato otorgado en el Vault ha finalizado."
+          "es": "La Aguja se eleva sobre Meridian. Ante la primera consulta, la Autoridad interrumpe el canal: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. El mandato otorgado en la bóveda ha finalizado."
         },
         {
           "pt-BR": "Um canal privado reaparece. Mara fala: “Você tem uma hora. Uma prova que outra pessoa possa verificar. Isso não é uma autorização para entrar.”",
@@ -34,9 +34,9 @@
           "es": "\"No firmaré otro error por obediencia\". Mara conserva un recibo con su credencial tras la orden de cierre. El expediente hace auditable la evidencia y expone su propia responsabilidad."
         },
         {
-          "pt-BR": "Uma manutenção foi legitimamente agendada por um operador. O auditor não tem sua chave. Precisa investigar como a Spire identifica aquilo que foi autorizado e mantém esse significado até a execução.",
+          "pt-BR": "Uma manutenção foi legitimamente agendada por um operador. O auditor não tem sua chave. Precisa investigar como a Torre identifica aquilo que foi autorizado e mantém esse significado até a execução.",
           "en": "Maintenance was legitimately scheduled by an operator. The auditor does not have their key. He must investigate how the Spire identifies what was authorized and preserves that meaning until execution.",
-          "es": "El mantenimiento fue programado legítimamente por un operador. El auditor no tiene su clave. Debe investigar cómo The Spire identifica lo que fue autorizado y preserva ese significado hasta la ejecución."
+          "es": "El mantenimiento fue programado legítimamente por un operador. El auditor no tiene su clave. Debe investigar cómo La Aguja identifica lo que fue autorizado y preserva ese significado hasta la ejecución."
         }
       ]
     },
@@ -69,14 +69,14 @@
       },
       "paragraphs": [
         {
-          "pt-BR": "No interior da Spire aparece CONTRACT EXECUTABLE MANAGEMENT / CURRENT VERSION: 1. Até aqui, o auditor explorou regras existentes. O próximo console oferece poder sobre o código que as define.",
+          "pt-BR": "No interior da Torre aparece CONTRACT EXECUTABLE MANAGEMENT / CURRENT VERSION: 1. Até aqui, o auditor explorou regras existentes. O próximo console oferece poder sobre o código que as define.",
           "en": "Inside the Spire appears CONTRACT EXECUTABLE MANAGEMENT / CURRENT VERSION: 1. Until now, the auditor exploited existing rules. The next console offers power over the code defining them.",
-          "es": "Dentro dThe Spire aparece CONTRATO DE GESTIÓN EJECUTABLE / VERSIÓN ACTUAL: 1. Hasta ahora, el auditor explotaba las reglas existentes. La siguiente consola ofrece poder sobre el código que los define."
+          "es": "Dentro de la Aguja aparece CONTRATO DE GESTIÓN EJECUTABLE / VERSIÓN ACTUAL: 1. Hasta ahora, el auditor explotaba las reglas existentes. La siguiente consola ofrece poder sobre el código que los define."
         },
         {
-          "pt-BR": "A continuação segue em Rewrite. O arquivo de Voss muda a pergunta: não é mais sobre subir à Spire, mas sobre provar o que ela autorizou.",
+          "pt-BR": "A continuação segue em Reescrita. O arquivo de Voss muda a pergunta: não é mais sobre subir à Torre, mas sobre provar o que ela autorizou.",
           "en": "The story continues in Rewrite. Voss's archive changes the question: it is no longer about reaching the Spire, but proving what it authorized.",
-          "es": "La historia continúa en Rewrite. El archivo de Voss cambia la cuestión: ya no se trata de llegar al Spire, sino de demostrar lo que autorizó."
+          "es": "La historia continúa en Reescritura. El archivo de Voss cambia la cuestión: ya no se trata de llegar a la Aguja, sino de demostrar lo que autorizó."
         }
       ]
     }

@@ -14,9 +14,9 @@
           "es": "Meridian despierta con certezas. Las puertas reconocen a los propietarios, los trenes obedecen las credenciales y los mercados liquidan las transacciones sin que nadie tenga que ver el código. Todo se rige por un Contrato."
         },
         {
-          "pt-BR": "Na madrugada, o saldo do Meridian Vault passou de 2.400.000 a zero. A porta está intacta. Nenhuma chave foi reportada como comprometida. Os contratos continuam respondendo.",
+          "pt-BR": "Na madrugada, o saldo do Cofre de Meridian passou de 2.400.000 a zero. A porta está intacta. Nenhuma chave foi reportada como comprometida. Os contratos continuam respondendo.",
           "en": "Overnight, the Meridian Vault balance fell from 2,400,000 to zero. The door is intact. No key has been reported compromised. The contracts still respond.",
-          "es": "De la noche a la mañana, el saldo de Meridian Vault cayó de 2.400.000 a cero. La puerta está intacta. No se ha informado que ninguna clave esté comprometida. Los contratos todavía responden."
+          "es": "De la noche a la mañana, el saldo de Bóveda de Meridian cayó de 2.400.000 a cero. La puerta está intacta. No se ha informado que ninguna clave esté comprometida. Los contratos todavía responden."
         }
       ]
     },
@@ -34,7 +34,7 @@
           "es": "Mara Vale espera junto al informe. \"El sistema aceptó la transacción. Eso significa que alguien fue autorizado\". El auditor responde: \"Significa que el contrato creía que alguien estaba autorizado\"."
         },
         {
-          "pt-BR": "A Authority concede uma revisão limitada e auditada. Antes de tocar na porta, o auditor precisa estabelecer contato com o terminal de treinamento. O primeiro trabalho é aprender a consultar, executar e submeter uma prova.",
+          "pt-BR": "A Autoridade concede uma revisão limitada e auditada. Antes de tocar na porta, o auditor precisa estabelecer contato com o terminal de treinamento. O primeiro trabalho é aprender a consultar, executar e submeter uma prova.",
           "en": "The Authority grants a limited, audited review. Before touching the door, the auditor must establish contact with the training terminal. The first task is to learn to inspect, execute, and submit proof.",
           "es": "La Autoridad concede una revisión auditada limitada. Antes de tocar la puerta, el auditor debe establecer contacto con el terminal de formación. La primera tarea es aprender a inspeccionar, ejecutar y presentar pruebas."
         }
@@ -49,14 +49,14 @@
       },
       "paragraphs": [
         {
-          "pt-BR": "A primeira submissão foi confirmada. O terminal reconhece a operação, mas isso ainda não explica o Vault. Mara conserva o recibo e libera o contrato da porta de serviço.",
+          "pt-BR": "A primeira submissão foi confirmada. O terminal reconhece a operação, mas isso ainda não explica o cofre. Mara conserva o recibo e libera o contrato da porta de serviço.",
           "en": "The first submission was confirmed. The terminal recognizes the operation, but it does not explain the Vault yet. Mara preserves the receipt and releases the service-door contract.",
-          "es": "La primera presentación fue confirmada. El terminal reconoce la operación, pero aún no explica el Vault. Mara conserva el recibo y libera el contrato de puerta de servicio."
+          "es": "La primera presentación fue confirmada. El terminal reconoce la operación, pero aún no explica la bóveda. Mara conserva el recibo y libera el contrato de puerta de servicio."
         },
         {
-          "pt-BR": "“Agora temos um registro do que você fez”, diz ela. “No Vault, temos um registro do que aconteceu. Falta entender a diferença.”",
+          "pt-BR": "“Agora temos um registro do que você fez”, diz ela. “No cofre, temos um registro do que aconteceu. Falta entender a diferença.”",
           "en": "“Now we have a record of what you did,” she says. “At the Vault, we have a record of what happened. We still need to understand the difference.”",
-          "es": "\"Ahora tenemos un registro de lo que hiciste\", dice. \"En el Vault tenemos un registro de lo que sucedió. Aún necesitamos entender la diferencia\"."
+          "es": "\"Ahora tenemos un registro de lo que hiciste\", dice. \"En la bóveda tenemos un registro de lo que sucedió. Aún necesitamos entender la diferencia\"."
         }
       ]
     },
@@ -74,7 +74,7 @@
           "es": "Afuera, la gente sigue presentando credenciales ante puertas que siempre se abren. Aquí, una puerta cerrada guarda una explicación que nadie ha encontrado."
         },
         {
-          "pt-BR": "Mara mantém o escopo: investigar o Access Gate, preservar os registros originais e descobrir como entraram sem possuir a chave.",
+          "pt-BR": "Mara mantém o escopo: investigar o Portão de Acesso, preservar os registros originais e descobrir como entraram sem possuir a chave.",
           "en": "Mara keeps the scope precise: investigate the Access Gate, preserve the original records, and discover how someone entered without the key.",
           "es": "Mara mantiene el alcance preciso: investiga la puerta de acceso, preserva los registros originales y descubre cómo alguien entró sin la llave."
         }

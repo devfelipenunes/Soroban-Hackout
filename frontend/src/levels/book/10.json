@@ -9,14 +9,14 @@
     {
       "paragraphs": [
         {
-          "pt-BR": "Conhecida como The Spire, a torre se erguia acima de Meridian como uma lâmina escura.",
+          "pt-BR": "A Torre se erguia acima de Meridian como uma lâmina escura.",
           "en": "The Spire rose above Meridian like a dark blade.",
-          "es": "La torre The Spire se alzaba sobre Meridian como una hoja oscura."
+          "es": "La Aguja se alzaba sobre Meridian como una hoja oscura."
         },
         {
-          "pt-BR": "Ao contrário de tudo que existia na First Layer, ela não era ruína, arquivo ou infraestrutura esquecida. Continuava ativa. Operadores reais entravam e saíam. Rotinas de manutenção eram executadas. A Meridian Authority reconhecia o prédio.",
+          "pt-BR": "Ao contrário de tudo que existia na Primeira Camada, ela não era ruína, arquivo ou infraestrutura esquecida. Continuava ativa. Operadores reais entravam e saíam. Rotinas de manutenção eram executadas. A Autoridade de Meridian reconhecia o prédio.",
           "en": "Unlike everything that existed in the First Layer, it was not a ruin, an archive, or forgotten infrastructure. It remained active. Real operators came and went. Maintenance routines were carried out. The Meridian Authority recognized the building.",
-          "es": "A diferencia de los lugares de la First Layer, The Spire no era una ruina, un archivo ni una infraestructura olvidada. Seguía activo: operadores reales entraban y salían, se realizaban tareas de mantenimiento y la Meridian Authority reconocía el edificio."
+          "es": "A diferencia de los lugares de la Primera Capa, La Aguja no era una ruina, un archivo ni una infraestructura olvidada. Seguía activo: operadores reales entraban y salían, se realizaban tareas de mantenimiento y la Autoridad de Meridian reconocía el edificio."
         },
         {
           "pt-BR": "Quando Mara viu as coordenadas, sua voz mudou.",
@@ -34,7 +34,7 @@
           "es": "Breaker se conectó al sistema de mantenimiento."
         },
         {
-          "pt-BR": "Antes que pudesse abrir o primeiro registro, uma mensagem da Authority atravessou o canal.",
+          "pt-BR": "Antes que pudesse abrir o primeiro registro, uma mensagem da Autoridade atravessou o canal.",
           "en": "Before he could open the first record, a message from the Authority crossed the channel.",
           "es": "Antes de que pudiera abrir el primer registro, un mensaje de la Autoridad cruzó el canal."
         },
@@ -58,9 +58,9 @@
     {
       "paragraphs": [
         {
-          "pt-BR": "A torre conhecida como The Spire fica acima de Meridian. Antes da primeira consulta, a Meridian Authority interrompe o canal: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. O mandato concedido no Vault acabou.",
+          "pt-BR": "A Torre se ergue acima de Meridian. Antes da primeira consulta, a Autoridade de Meridian interrompe o canal: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. O mandato concedido no cofre acabou.",
           "en": "The Spire rises above Meridian. Before the first query, the Authority interrupts the channel: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. The mandate granted at the Vault has ended.",
-          "es": "La torre The Spire se alza sobre Meridian. Ante la primera consulta, la Authority interrumpe el canal: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. El mandato otorgado en el Vault ha terminado."
+          "es": "La Aguja se alza sobre Meridian. Ante la primera consulta, la Autoridad interrumpe el canal: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. El mandato otorgado en la bóveda ha terminado."
         }
       ]
     },
@@ -85,18 +85,18 @@
     {
       "paragraphs": [
         {
-          "pt-BR": "Uma manutenção foi legitimamente agendada por um operador. O auditor não tem sua chave. Precisa investigar como a Spire identifica aquilo que foi autorizado e mantém esse significado até a execução.",
+          "pt-BR": "Uma manutenção foi legitimamente agendada por um operador. O auditor não tem sua chave. Precisa investigar como a Torre identifica aquilo que foi autorizado e mantém esse significado até a execução.",
           "en": "Maintenance was legitimately scheduled by an operator. The auditor does not have their key. He must investigate how the Spire identifies what was authorized and preserves that meaning until execution.",
-          "es": "Un operador programó el mantenimiento de forma legítima. El auditor no tiene su llave. Debe investigar cómo The Spire identifica lo autorizado y conserva ese significado hasta la ejecución."
+          "es": "Un operador programó el mantenimiento de forma legítima. El auditor no tiene su llave. Debe investigar cómo La Aguja identifica lo autorizado y conserva ese significado hasta la ejecución."
         }
       ]
     },
     {
       "paragraphs": [
         {
-          "pt-BR": "CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. O auditor já não possui o mandato recebido no Vault. The Spire permanece operacional.",
+          "pt-BR": "CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. O auditor já não possui o mandato recebido no cofre. A Torre permanece operacional.",
           "en": "CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. The auditor no longer holds the mandate received at the Vault. The Spire remains operational.",
-          "es": "CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. El auditor ya no tiene el mandato que recibió en el Vault. The Spire sigue en funcionamiento."
+          "es": "CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. El auditor ya no tiene el mandato que recibió en la bóveda. La Aguja sigue en funcionamiento."
         },
         {
           "pt-BR": "EVIDENCE_RECEIPT: SIGNED / SIGNER: MARA VALE / CASE STATUS: TERMINATED. Mara assinou depois da ordem de encerramento. Esse registro auditável poderá responsabilizá-la; o canal privado não concede autoridade irrestrita.",
@@ -119,14 +119,14 @@
         "es": "—No robaste la llave —dice Mara. —No hizo falta —responde el Breaker. Cambió el sentido de una autorización válida. El recibo de Mara sigue vinculado al caso cerrado."
       },
       {
-        "pt-BR": "No interior da Spire aparece CONTRACT EXECUTABLE MANAGEMENT / CURRENT VERSION: 1. Até aqui, o auditor explorou regras existentes. O próximo console oferece poder sobre o código que as define.",
+        "pt-BR": "No interior da Torre aparece CONTRACT EXECUTABLE MANAGEMENT / CURRENT VERSION: 1. Até aqui, o auditor explorou regras existentes. O próximo console oferece poder sobre o código que as define.",
         "en": "Inside the Spire appears CONTRACT EXECUTABLE MANAGEMENT / CURRENT VERSION: 1. Until now, the auditor exploited existing rules. The next console offers power over the code defining them.",
-        "es": "Dentro de The Spire aparece: EXECUTABLE MANAGEMENT CONTRACT / CURRENT VERSION: 1. Hasta ahora, el auditor explotaba las reglas existentes. La siguiente consola le dará poder sobre el código que las define."
+        "es": "Dentro de La Aguja aparece: EXECUTABLE MANAGEMENT CONTRACT / CURRENT VERSION: 1. Hasta ahora, el auditor explotaba las reglas existentes. La siguiente consola le dará poder sobre el código que las define."
       },
       {
-        "pt-BR": "A continuação segue em Rewrite. O arquivo de Voss muda a pergunta: não é mais sobre subir à Spire, mas sobre provar o que ela autorizou.",
+        "pt-BR": "A continuação segue em Reescrita. O arquivo de Voss muda a pergunta: não é mais sobre subir à Torre, mas sobre provar o que ela autorizou.",
         "en": "The story continues in Rewrite. Voss's archive changes the question: it is no longer about reaching the Spire, but proving what it authorized.",
-        "es": "La historia continúa en Rewrite. El archivo de Voss cambia la pregunta: ya no se trata de llegar a The Spire, sino de demostrar qué se autorizó."
+        "es": "La historia continúa en Reescritura. El archivo de Voss cambia la pregunta: ya no se trata de llegar a La Aguja, sino de demostrar qué se autorizó."
       }
     ]
   }

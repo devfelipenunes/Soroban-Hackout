@@ -4,9 +4,9 @@
       "trigger": "start",
       "speaker": "mara",
       "text": {
-        "pt-BR": "A Authority concede uma revisão limitada e auditada. Antes de tocar na porta, o auditor precisa estabelecer contato com o terminal de treinamento. O primeiro trabalho é aprender a consultar, executar e submeter uma prova.",
+        "pt-BR": "A Autoridade concede uma revisão limitada e auditada. Antes de tocar na porta, o auditor precisa estabelecer contato com o terminal de treinamento. O primeiro trabalho é aprender a consultar, executar e submeter uma prova.",
         "en": "The Authority grants a limited, audited review. Before touching the door, the auditor must establish contact with the training terminal. The first task is to learn to inspect, execute, and submit proof.",
-        "es": "La Authority concede una revisión limitada y auditada. Antes de tocar la puerta, el auditor debe establecer contacto con el terminal de entrenamiento. La primera tarea es aprender a inspeccionar, ejecutar y presentar una prueba."
+        "es": "La Autoridad concede una revisión limitada y auditada. Antes de tocar la puerta, el auditor debe establecer contacto con el terminal de entrenamiento. La primera tarea es aprender a inspeccionar, ejecutar y presentar una prueba."
       }
     },
     {
@@ -46,9 +46,9 @@
         "es": "Mandato de auditoría"
       },
       "value": {
-        "pt-BR": "Meridian Authority",
+        "pt-BR": "Autoridade de Meridian",
         "en": "Meridian Authority",
-        "es": "Meridian Authority"
+        "es": "Autoridad de Meridian"
       },
       "reveal": "start",
       "documentId": "00-document-0"
@@ -96,15 +96,15 @@
         "es": "Mandato de auditoría"
       },
       "source": {
-        "pt-BR": "Meridian Authority",
+        "pt-BR": "Autoridade de Meridian",
         "en": "Meridian Authority",
-        "es": "Meridian Authority"
+        "es": "Autoridad de Meridian"
       },
       "body": [
         {
-          "pt-BR": "Acesso limitado ao terminal de treinamento e, depois, ao Access Gate. Preservar marcas de tempo, IDs e recibos. O acesso de auditoria não concede propriedade sobre ativos.",
+          "pt-BR": "Acesso limitado ao terminal de treinamento e, depois, ao Portão de Acesso. Preservar marcas de tempo, IDs e recibos. O acesso de auditoria não concede propriedade sobre ativos.",
           "en": "Limited access to the training terminal and then the Access Gate. Preserve timestamps, IDs, and receipts. Audit access grants no ownership of assets.",
-          "es": "Acceso limitado al terminal de entrenamiento y después al Access Gate. Conserva marcas de tiempo, identificadores y recibos. El acceso de auditoría no concede propiedad sobre activos."
+          "es": "Acceso limitado al terminal de entrenamiento y después al Puerta de Acceso. Conserva marcas de tiempo, identificadores y recibos. El acceso de auditoría no concede propiedad sobre activos."
         }
       ],
       "reveal": "start"
@@ -123,14 +123,14 @@
       },
       "body": [
         {
-          "pt-BR": "O saldo de um dos Vaults mais protegidos de Meridian foi reduzido a zero durante a madrugada. A inspeção inicial não identificou entrada forçada nem recebeu relato de chave privada comprometida.",
+          "pt-BR": "O saldo de um dos Cofres mais protegidos de Meridian foi reduzido a zero durante a madrugada. A inspeção inicial não identificou entrada forçada nem recebeu relato de chave privada comprometida.",
           "en": "The balance of one of Meridian’s most protected Vaults fell to zero overnight. The initial inspection found no forced entry and received no report of a compromised private key.",
-          "es": "El saldo de uno de los Vaults más protegidos de Meridian cayó a cero durante la noche. La inspección inicial no encontró entrada forzada ni recibió ningún reporte de clave privada comprometida."
+          "es": "El saldo de uno de los Bóvedas más protegidos de Meridian cayó a cero durante la noche. La inspección inicial no encontró entrada forzada ni recibió ningún reporte de clave privada comprometida."
         },
         {
-          "pt-BR": "A Meridian Authority ainda não apresentou uma explicação para a operação. Os contratos envolvidos continuam respondendo. Autor, motivo e responsabilidade pela movimentação permanecem sob investigação.",
+          "pt-BR": "A Autoridade de Meridian ainda não apresentou uma explicação para a operação. Os contratos envolvidos continuam respondendo. Autor, motivo e responsabilidade pela movimentação permanecem sob investigação.",
           "en": "The Meridian Authority has not yet explained the operation. The contracts involved continue to respond. Authorship, motive, and responsibility for the movement remain under investigation.",
-          "es": "La Meridian Authority todavía no ha explicado la operación. Los contratos involucrados siguen respondiendo. La autoría, el motivo y la responsabilidad por el movimiento continúan bajo investigación."
+          "es": "La Autoridad de Meridian todavía no ha explicado la operación. Los contratos involucrados siguen respondiendo. La autoría, el motivo y la responsabilidad por el movimiento continúan bajo investigación."
         }
       ],
       "reveal": "start"

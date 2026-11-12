@@ -177,7 +177,7 @@
       },
       "body": [
         {
-          "pt-BR": "O registro comprometido reconheceu o auditor como controlador. O Custodian consultou sua dependência e aceitou a resposta. Seu Core não precisou ter uma falha local para abrir uma passagem indevida.",
+          "pt-BR": "O registro comprometido reconheceu o auditor como controlador. O Custódio consultou sua dependência e aceitou a resposta. Seu Core não precisou ter uma falha local para abrir uma passagem indevida.",
           "en": "The compromised registry recognized the auditor as controller. The Custodian consulted its dependency and accepted the answer. Its Core did not need a local flaw to open an improper passage.",
           "es": "El registro comprometido reconoció al auditor como controlador. El Custodio consultó su dependencia y aceptó la respuesta. Su Núcleo no necesitaba una falla local para abrir un pasaje inadecuado."
         },

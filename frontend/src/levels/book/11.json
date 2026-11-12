@@ -1,6 +1,6 @@
 {
   "title": {
-    "pt-BR": "Rewrite",
+    "pt-BR": "Reescrita",
     "en": "Rewrite",
     "es": "Reescritura"
   },
@@ -9,9 +9,9 @@
     {
       "paragraphs": [
         {
-          "pt-BR": "The Spire abriu com uma autorização cujo significado foi trocado. A equipe de manutenção ficou diante de um escotilha técnica fechada. Mara preserva as duas cargas úteis no recibo.",
+          "pt-BR": "A Torre abriu com uma autorização cujo significado foi trocado. A equipe de manutenção ficou diante de uma escotilha técnica fechada. Mara preserva as duas cargas úteis no recibo.",
           "en": "The Spire opened using an authorization whose meaning was changed. The maintenance crew faced a closed hatch. Mara preserves both payloads in her receipt.",
-          "es": "The Spire se abrió usando una autorización cuyo significado fue cambiado. El equipo de mantenimiento se encontraba frente a una escotilla cerrada. Mara conserva ambas cargas útiles en su recibo."
+          "es": "La Aguja se abrió usando una autorización cuyo significado fue cambiado. El equipo de mantenimiento se encontraba frente a una escotilla cerrada. Mara conserva ambas cargas útiles en su recibo."
         }
       ]
     },
@@ -53,7 +53,7 @@
       {
         "pt-BR": "O relatório expõe uma operação de diagnóstico no controle do Architect. Mara encerra o canal privado. O recibo permanece; a responsabilidade pela próxima ação pertence ao Breaker.",
         "en": "The report exposes a diagnostic operation in the Architect’s control system. Mara closes the private channel. The receipt remains; responsibility for the next action belongs to the Breaker.",
-        "es": "El informe revela una operación de diagnóstico en el sistema de control de The Architect. Mara cierra el canal privado. El recibo permanece; la responsabilidad de la siguiente acción es del Breaker."
+        "es": "El informe revela una operación de diagnóstico en el sistema de control del Arquitecto. Mara cierra el canal privado. El recibo permanece; la responsabilidad de la siguiente acción es del Breaker."
       }
     ]
   }
