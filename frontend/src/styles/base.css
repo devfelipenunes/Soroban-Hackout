@@ -3469,6 +3469,11 @@ button {
     min-height: 70vh;
   }
 
+  .season-city,
+  .season-map {
+    display: none;
+  }
+
   .season-hero__inner {
     padding-top: 4rem;
     padding-bottom: 2rem;

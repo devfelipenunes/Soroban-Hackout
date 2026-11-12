@@ -17,6 +17,12 @@ const brand = {
   quality: 88,
 };
 
+const mobileHomepage = {
+  input: join(ROOT, "assets-src/levels/homepage-mobile.png"),
+  key: "/images/levels/homepage-mobile.png",
+  quality: 88,
+};
+
 async function listSources() {
   const sources = [];
   for (const dir of SCAN_DIRS) {
@@ -31,7 +37,7 @@ async function listSources() {
       });
     }
   }
-  sources.push(brand);
+  sources.push(brand, mobileHomepage);
   return sources.sort((a, b) => a.key.localeCompare(b.key));
 }
 
@@ -83,7 +89,7 @@ for (const source of sources) {
   const avif = [];
 
   for (const width of widths) {
-    if (width !== meta.width || source.key === brand.key) {
+    if (width !== meta.width || source.key === brand.key || source.key === mobileHomepage.key) {
       bytes += await writeVariant(source.input, source.key, width, "webp", source.quality);
       written += 1;
       webp.push({ url: variantKey(source.key, width, "webp"), width });

@@ -24,23 +24,30 @@
         if (connection && connection.saveData) return;
         var covers = { 2: 1, 3: 1, 4: 1, 6: 1, 7: 1 };
         var base = null;
+        var mobileHome = false;
         var match = /^\/level\/(\d+)\/?$/.exec(location.pathname);
         if (match) {
           var id = Number(match[1]);
           if (id < 0 || id > 12) return;
           base = "/images/levels/" + String(id).padStart(2, "0") + (covers[id] ? "-cover" : "");
         } else if (location.pathname === "/") {
-          base = "/images/levels/homepage";
+          mobileHome = window.matchMedia("(max-width: 640px)").matches;
+          base = mobileHome
+            ? "/images/levels/homepage-mobile"
+            : "/images/levels/homepage";
         } else {
           return;
         }
         var link = document.createElement("link");
         link.rel = "preload";
         link.as = "image";
-        link.type = "image/webp";
+        link.type = mobileHome ? "image/avif" : "image/webp";
+        var imageSet = mobileHome
+          ? base + "-768.avif 768w, " + base + "-1024.avif 1024w"
+          : base + "-768.webp 768w, " + base + "-1200.webp 1200w, " + base + ".webp 2048w";
         link.setAttribute(
           "imagesrcset",
-          base + "-768.webp 768w, " + base + "-1200.webp 1200w, " + base + ".webp 2048w",
+          imageSet,
         );
         link.setAttribute("imagesizes", "100vw");
         link.setAttribute("fetchpriority", "high");

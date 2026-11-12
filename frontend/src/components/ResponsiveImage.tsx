@@ -7,6 +7,7 @@ type Props = Omit<
   "src" | "srcSet" | "sizes" | "width" | "height"
 > & {
   src: string;
+  mobileSrc?: string;
   sizes: string;
   alt: string;
   avif?: boolean;
@@ -14,6 +15,7 @@ type Props = Omit<
 
 export function ResponsiveImage({
   src,
+  mobileSrc,
   sizes,
   alt,
   avif = true,
@@ -23,6 +25,7 @@ export function ResponsiveImage({
   ...rest
 }: Props): ReactElement {
   const image = responsiveImage(src);
+  const mobileImage = mobileSrc ? responsiveImage(mobileSrc) : null;
   const [failedSource, setFailedSource] = useState<string | null>(null);
 
   if (image === null || failedSource === src) {
@@ -43,6 +46,22 @@ export function ResponsiveImage({
 
   return (
     <picture className="responsive-picture">
+      {mobileImage !== null && mobileImage.avif.length > 0 && (
+        <source
+          media="(max-width: 640px)"
+          type="image/avif"
+          srcSet={srcSetOf(mobileImage.avif)}
+          sizes={sizes}
+        />
+      )}
+      {mobileImage !== null && (
+        <source
+          media="(max-width: 640px)"
+          type="image/webp"
+          srcSet={srcSetOf(mobileImage.webp)}
+          sizes={sizes}
+        />
+      )}
       {avif && image.avif.length > 0 && (
         <source type="image/avif" srcSet={srcSetOf(image.avif)} sizes={sizes} />
       )}

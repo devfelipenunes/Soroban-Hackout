@@ -64,6 +64,7 @@ export type LevelContent = {
 const pad = (id: number) => String(id).padStart(2, "0");
 
 export const HOMEPAGE_IMAGE = "/images/levels/homepage.webp";
+export const HOMEPAGE_MOBILE_IMAGE = "/images/levels/homepage-mobile.png";
 
 const optimizedCovers = new Set([2, 3, 4, 6, 7]);
 

@@ -608,6 +608,30 @@
         }
       ]
     },
+    "/images/levels/homepage-mobile.png": {
+      "width": 1024,
+      "height": 1536,
+      "webp": [
+        {
+          "url": "/images/levels/homepage-mobile-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/homepage-mobile-1024.webp",
+          "width": 1024
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/homepage-mobile-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/homepage-mobile-1024.avif",
+          "width": 1024
+        }
+      ]
+    },
     "/images/levels/homepage.webp": {
       "width": 2048,
       "height": 768,

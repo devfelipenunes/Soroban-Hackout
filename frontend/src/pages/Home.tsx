@@ -9,7 +9,12 @@ import { Smoke } from "../components/Smoke.tsx";
 import { useLanguage } from "../i18n/language.tsx";
 import { useProgress } from "../game/progress.tsx";
 import { useSeasonProgress } from "../game/season.ts";
-import { HOMEPAGE_IMAGE, LEVELS, levelImage } from "../levels/index.ts";
+import {
+  HOMEPAGE_IMAGE,
+  HOMEPAGE_MOBILE_IMAGE,
+  LEVELS,
+  levelImage,
+} from "../levels/index.ts";
 
 const SECTORS = ["upper", "central", "lower", "spire"] as const;
 
@@ -90,6 +95,7 @@ export function Home(): ReactElement {
           <ResponsiveImage
             className="season-hero__art"
             src={HOMEPAGE_IMAGE}
+            mobileSrc={HOMEPAGE_MOBILE_IMAGE}
             alt=""
             sizes="100vw"
             avif={false}
@@ -99,6 +105,7 @@ export function Home(): ReactElement {
           <ResponsiveImage
             className="season-hero__depth"
             src={HOMEPAGE_IMAGE}
+            mobileSrc={HOMEPAGE_MOBILE_IMAGE}
             alt=""
             aria-hidden="true"
             sizes="100vw"
