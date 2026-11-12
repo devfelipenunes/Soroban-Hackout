@@ -85,6 +85,16 @@ export default defineConfig({
     }),
   ],
 
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom", "react-router-dom"],
+        },
+      },
+    },
+  },
+
   define: {
     global: "globalThis",
   },
@@ -109,5 +119,22 @@ export default defineConfig({
   test: {
     environment: "node",
     include: ["src/**/*.test.{ts,tsx}"],
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "html"],
+      exclude: [
+        "src/contracts/**",
+        "src/**/*.test.{ts,tsx}",
+        "src/levels/casefile.ts",
+        "src/levels/story.ts",
+        "src/levels/text.ts",
+      ],
+      thresholds: {
+        statements: 39,
+        branches: 70,
+        functions: 50,
+        lines: 39,
+      },
+    },
   },
 });
