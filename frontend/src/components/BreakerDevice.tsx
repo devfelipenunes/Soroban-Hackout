@@ -43,16 +43,10 @@ import { useCopy } from "./copy.ts";
 import { BreachRoom } from "./BreachRoom.tsx";
 import { ResponsiveImage } from "./ResponsiveImage.tsx";
 import { swipeDestination } from "./device-gesture.ts";
-import {
-  buildCall,
-  updateCellArguments,
-  waitSource,
-  type CaseSubmit,
-  type OperationCell,
-  type OperationCellRun,
-} from "./plan.ts";
+import type { OperationCell, OperationCellRun } from "./plan.ts";
 import { SeasonClaim } from "./SeasonClaim.tsx";
 import { CaseFileBody } from "./CaseFile.tsx";
+import { HelpGuide } from "../pages/Help.tsx";
 import {
   choiceAnchors,
   conversationBeats,
@@ -155,7 +149,6 @@ const APPS: readonly { id: OsAppId; labelKey: string; accent: Accent }[] = [
   { id: "terminal", labelKey: "device.app.terminal", accent: "cyan" },
   { id: "comms", labelKey: "device.app.comms", accent: "cyan" },
   { id: "wallet", labelKey: "device.app.wallet", accent: "cyan" },
-  { id: "collection", labelKey: "device.app.collection", accent: "amber" },
   { id: "news", labelKey: "device.app.news", accent: "ivory" },
   { id: "help", labelKey: "device.app.help", accent: "ash" },
 ];
@@ -176,17 +169,6 @@ function revealEditor(editor: HTMLElement): void {
 }
 
 type AsyncScript = () => Promise<unknown>;
-
-const GLOBAL_SUBMIT: CaseSubmit = {
-  onSubmit: async () => {},
-  submitting: false,
-  canSubmit: false,
-  message: null,
-  diagnostics: null,
-  diagnosticsLoading: false,
-  diagnosticsFailed: false,
-  onRefreshDiagnostics: () => {},
-};
 
 function freshOperationCell(): OperationCell {
   return {
@@ -979,7 +961,6 @@ export function BreakerDevice({
   caseState,
   focus,
   contractSpec,
-  submit,
   onCreateInstance,
   creatingInstance = false,
 }: {
@@ -994,7 +975,6 @@ export function BreakerDevice({
   caseState: CaseNarrative;
   focus: OsFocus | null;
   contractSpec: readonly Descriptor[];
-  submit: CaseSubmit;
   onCreateInstance?: (() => void) | undefined;
   creatingInstance?: boolean | undefined;
 }): ReactElement {
@@ -1019,7 +999,6 @@ export function BreakerDevice({
     () => operationCells[0]?.id ?? "cell-1",
   );
   const [runningCellId, setRunningCellId] = useState<string | null>(null);
-  const [runningPlan, setRunningPlan] = useState(false);
   const operationEditors = useRef<Record<string, HTMLTextAreaElement | null>>(
     {},
   );
@@ -1970,20 +1949,9 @@ export function BreakerDevice({
   };
 
   const help = () => (
-    <div className="device__stack">
-      <p className="device__note">
-        {t(
-          mobileGameplay ? "device.help.console.mobile" : "device.help.console",
-        )}
-      </p>
-      <p className="device__note">
-        {t(mobileGameplay ? "device.help.note.mobile" : "device.help.note")}
-      </p>
-
+    <div className="device__stack device__help">
+      <HelpGuide mobileGameplay={mobileGameplay} />
       <div className="device__actions">
-        <Link className="button button--secondary" to="/help">
-          {t("device.help.help")}
-        </Link>
         <button
           type="button"
           className="button button--secondary"
@@ -2209,22 +2177,6 @@ export function BreakerDevice({
     await executeOperationCell(cell);
   };
 
-  const runPlan = async (): Promise<void> => {
-    if (!instance || runningCellId !== null || runningPlan) return;
-    setRunningPlan(true);
-    try {
-      for (const cell of operationCells) {
-        if (cell.source.trim() === "") continue;
-        setActiveCellId(cell.id);
-        const ok = await executeOperationCell(cell);
-        if (!ok) break;
-      }
-    } finally {
-      setRunningPlan(false);
-      if (instance) void submit.onRefreshDiagnostics();
-    }
-  };
-
   const argumentSeed = (
     entry: Entry,
     methodName: string,
@@ -2294,100 +2246,6 @@ export function BreakerDevice({
     }
     if (normalized === "bytes") return "new Uint8Array(0)";
     return "null";
-  };
-
-  const addMethodCell = (descriptor: Descriptor): void => {
-    const args: Record<string, string> = {};
-    const variants: Record<string, string> = {};
-    for (const entry of descriptor.entries) {
-      const variant = entry.variants?.[0];
-      if (variant !== undefined) variants[entry.name] = variant.name;
-      args[entry.name] = argumentSeed(entry, descriptor.name, variant?.name);
-    }
-    const cell: OperationCell = {
-      ...freshOperationCell(),
-      source: buildCall(descriptor, args),
-      method: descriptor.name,
-      args,
-      variants,
-    };
-    const active = operationCells.find((item) => item.id === activeCellId);
-    const replaceActive =
-      active !== undefined &&
-      active.method === undefined &&
-      active.source.trim() === "";
-    const nextCells = replaceActive
-      ? operationCells.map((item) =>
-          item.id === active.id ? { ...cell, id: item.id } : item,
-        )
-      : [...operationCells, cell];
-    setOperationCells(nextCells);
-    saveOperationDraft(player, levelId, nextCells);
-    setActiveCellId(replaceActive && active !== undefined ? active.id : cell.id);
-    setOperationCellRuns((previous) => {
-      const next = { ...previous };
-      delete next[cell.id];
-      return next;
-    });
-  };
-
-  const updatePlanCell = (
-    cellId: string,
-    patch: {
-      args?: Record<string, string>;
-      variants?: Record<string, string>;
-      waitMs?: number;
-    },
-  ): void => {
-    const nextCells = operationCells.map((cell) => {
-      if (cell.id !== cellId) return cell;
-      if (patch.waitMs !== undefined) {
-        const waitMs = Math.max(0, Math.round(patch.waitMs));
-        return { ...cell, waitMs, source: waitSource(waitMs) };
-      }
-      const descriptor = contractSpec.find((item) => item.name === cell.method);
-      return updateCellArguments(cell, descriptor, patch.args, patch.variants);
-    });
-    setOperationCells(nextCells);
-    saveOperationDraft(player, levelId, nextCells);
-    setOperationCellRuns((previous) => {
-      const next = { ...previous };
-      delete next[cellId];
-      return next;
-    });
-  };
-
-  const addWaitCell = (): void => {
-    const cell: OperationCell = {
-      ...freshOperationCell(),
-      waitMs: 5_000,
-      source: waitSource(5_000),
-    };
-    const nextCells = [...operationCells, cell];
-    setOperationCells(nextCells);
-    saveOperationDraft(player, levelId, nextCells);
-    setActiveCellId(cell.id);
-    setOperationCellRuns((previous) => {
-      const next = { ...previous };
-      delete next[cell.id];
-      return next;
-    });
-  };
-
-  const movePlanCell = (cellId: string, direction: -1 | 1): void => {
-    const index = operationCells.findIndex((cell) => cell.id === cellId);
-    if (index < 0) return;
-    const target = index + direction;
-    if (target < 0 || target >= operationCells.length) return;
-    const nextCells = [...operationCells];
-    const current = nextCells[index];
-    const other = nextCells[target];
-    if (current === undefined || other === undefined) return;
-    nextCells[index] = other;
-    nextCells[target] = current;
-    setOperationCells(nextCells);
-    saveOperationDraft(player, levelId, nextCells);
-    setActiveCellId(cellId);
   };
 
   const notebook = () => {
@@ -2677,6 +2535,9 @@ export function BreakerDevice({
     ) {
       return (
         <div className="device__operation-start">
+          <span className="device__operation-start-eyebrow">
+            {choose(level.name, language)?.text}
+          </span>
           <p className="device__operation-start-note">
             {t("device.operations.startNote")}
           </p>
@@ -2694,30 +2555,7 @@ export function BreakerDevice({
         </div>
       );
     }
-    return (
-      <BreachRoom
-        level={level}
-        instance={instance}
-        spec={contractSpec}
-        cells={operationCells}
-        runs={operationCellRuns}
-        activeCellId={activeCellId}
-        runningCellId={runningCellId}
-        runningPlan={runningPlan}
-        submit={submit}
-        solved={solved}
-        onAddCell={addOperationCell}
-        onAddWait={addWaitCell}
-        onAddMethod={addMethodCell}
-        onUpdateCell={updatePlanCell}
-        onRemoveCell={deleteOperationCell}
-        onMoveCell={movePlanCell}
-        onRunCell={(cell) => void runMobileOperation(cell)}
-        onRunPlan={() => void runPlan()}
-        onClose={onToggle}
-        notebook={notebook()}
-      />
-    );
+    return <BreachRoom notebook={notebook()} />;
   };
 
   const viewLabel = (target: View): string =>
@@ -3064,7 +2902,7 @@ export function BreakerDevice({
         <div className="device__settings-about">
           <DeviceBrand />
           <div className="device__settings-official">
-            <span>BREAKER OS / MERIDIAN AUTHORITY</span>
+            <span>{t("device.about.issuer")}</span>
             <strong>{t("device.about.official")}</strong>
             <p>{t("device.about.terminal")}</p>
             <small>{t("device.about.build")}</small>
@@ -3473,7 +3311,7 @@ export function BreakerDevice({
       >
         <span className="device__mission-meta">
           {level === null
-            ? t("device.today")
+            ? t("device.mission.today")
             : `SEQUENCE 01 / CASE ${levelCode(level.id)}`}
         </span>
         <strong>
@@ -3483,13 +3321,17 @@ export function BreakerDevice({
         </strong>
 
         <span className="device__mission-state">
-          {t(solved ? "collection.solved" : "device.investigation")}
+          {level === null
+            ? t("device.noActiveCase")
+            : t(solved ? "collection.solved" : "device.investigation")}
         </span>
-        <span className="device__mission-meter">
-          <i style={{ width: solved ? "100%" : "28%" }} />
-        </span>
+        {level !== null && (
+          <span className="device__mission-meter">
+            <i style={{ width: solved ? "100%" : "0%" }} />
+          </span>
+        )}
         <span className="device__mission-cta">
-          {t("device.continueInvestigation")}
+          {t(level === null ? "device.chooseCaseCta" : "device.continueInvestigation")}
           <SystemIcon id="next" />
         </span>
       </button>
@@ -4202,9 +4044,7 @@ function DeviceWallet({ onClose }: { onClose: () => void }): ReactElement {
             role="group"
             aria-label={t("device.wallet.network")}
           >
-            <button type="button" className="is-active">
-              TESTNET
-            </button>
+            <span className="is-active">TESTNET</span>
             <button
               type="button"
               disabled
@@ -4935,7 +4775,7 @@ function DeviceIdentity(): ReactElement {
         <dd>Stellar Testnet</dd>
         <dt>{t("device.operator")}</dt>
         <dd>
-          {wallet.state.phase === "connected" ? "Online" : t("device.guest")}
+          {wallet.state.phase === "connected" ? t("device.status.online") : t("device.guest")}
         </dd>
         <dt>{t("device.session")}</dt>
         <dd>
@@ -5192,7 +5032,6 @@ export function GlobalBreakerDevice({
       caseState={GLOBAL_CASE_STATE}
       focus={focus}
       contractSpec={[]}
-      submit={GLOBAL_SUBMIT}
     />
   );
 }

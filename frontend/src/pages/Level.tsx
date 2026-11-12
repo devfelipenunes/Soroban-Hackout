@@ -81,6 +81,11 @@ const BreakerDevice = lazy(() =>
     })),
   ),
 );
+
+function preloadBreakerDevice(): void {
+  void import("../components/BreakerDevice.tsx").catch(() => {});
+}
+
 const Code = lazy(() =>
   loadChunk(() =>
     import("../components/Code.tsx").then(({ Code: Component }) => ({ default: Component })),
@@ -159,7 +164,10 @@ function Page({ level }: { level: LevelType }): ReactElement {
   useEffect(() => {
     const dialog = osDialog.current;
     if (!dialog) return;
-    if (osOpen && !dialog.open) dialog.showModal();
+    if (osOpen && !dialog.open) {
+      dialog.showModal();
+      dialog.focus();
+    }
     if (!osOpen && dialog.open) dialog.close();
   }, [osOpen]);
 
@@ -206,6 +214,27 @@ function Page({ level }: { level: LevelType }): ReactElement {
     [address, signer, testOnly],
   );
   const reader = useMemo(() => coreReader(), [readAttempt]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const preload = (): void => {
+      if (!cancelled) preloadBreakerDevice();
+    };
+
+    if (typeof window.requestIdleCallback === "function") {
+      const handle = window.requestIdleCallback(preload, { timeout: 1200 });
+      return () => {
+        cancelled = true;
+        window.cancelIdleCallback(handle);
+      };
+    }
+
+    const handle = window.setTimeout(preload, 600);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(handle);
+    };
+  }, []);
 
   useEffect(() => {
     if (!address || !previous) return;
@@ -864,6 +893,8 @@ function Page({ level }: { level: LevelType }): ReactElement {
                 <button
                   type="button"
                   className="button button--secondary"
+                  onPointerEnter={preloadBreakerDevice}
+                  onFocus={preloadBreakerDevice}
                   onClick={() => {
                     setOsFocus({ app: "operations", at: Date.now() });
                     setOsOpen(true);
@@ -889,6 +920,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
       <dialog
         className="breaker-device-dialog"
         ref={osDialog}
+        tabIndex={-1}
         aria-label="Breaker OS"
         onCancel={() => setOsOpen(false)}
         onClose={() => setOsOpen(false)}
@@ -912,25 +944,17 @@ function Page({ level }: { level: LevelType }): ReactElement {
               contractSpec={contractSpec}
               onCreateInstance={() => void createInstance()}
               creatingInstance={creating}
-              submit={{
-                onSubmit: submit,
-                submitting,
-                canSubmit,
-                message: message
-                  ? { tone: message.tone, text: message.text }
-                  : null,
-                diagnostics,
-                diagnosticsLoading,
-                diagnosticsFailed,
-                onRefreshDiagnostics: () => void refreshDiagnostics(),
-              }}
             />
           </Suspense>
         )}
       </dialog>
 
       {gate && <Gate onClose={() => setGate(false)} />}
-      {copied && <p className="toast">{t("wallet.copied")}</p>}
+      {copied && (
+        <p className="toast" role="status" aria-live="polite">
+          {t("wallet.copied")}
+        </p>
+      )}
     </main>
   );
 }
