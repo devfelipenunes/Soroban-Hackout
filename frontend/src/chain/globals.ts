@@ -9,6 +9,12 @@ export type GlobalRegistry = Record<string, unknown>;
 export type Entry = {
   name: string;
   kind: string;
+  variants?: readonly Variant[];
+};
+
+export type Variant = {
+  name: string;
+  inputs: readonly string[];
 };
 
 export type Descriptor = {
