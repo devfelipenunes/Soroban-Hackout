@@ -8,7 +8,7 @@ import { SeasonClaim } from "../components/SeasonClaim.tsx";
 import { Smoke } from "../components/Smoke.tsx";
 import { useLanguage } from "../i18n/language.tsx";
 import { useProgress } from "../game/progress.tsx";
-import { useSeasonProgress } from "../game/season.ts";
+import { lockedLevelIds, useSeasonProgress } from "../game/season.ts";
 import {
   HOMEPAGE_IMAGE,
   HOMEPAGE_MOBILE_IMAGE,
@@ -33,11 +33,11 @@ export function Home(): ReactElement {
     ...(season.status === "ready" ? chainSolved : []),
   ]);
   const lockedIds = new Set(
-    season.status === "error"
-      ? LEVELS.map((level) => level.id)
-      : season.status === "ready"
-        ? LEVELS.filter((_, index) => !season.accessible[index]).map((level) => level.id)
-        : [],
+    lockedLevelIds(
+      season.status,
+      LEVELS.map((level) => level.id),
+      season.accessible,
+    ),
   );
   const allSolved = confirmedSolvedIds.size === LEVELS.length;
   const readyForArchitect = confirmedSolvedIds.has(11) && !confirmedSolvedIds.has(12);
@@ -126,7 +126,7 @@ export function Home(): ReactElement {
 
           <div className="season-hero__inner">
             <div className="season-hero__copy">
-              <span className="season-hero__brand">BREAKER</span>
+              <span className="season-hero__brand" translate="no">BREAKER</span>
               <span className="season-hero__eyebrow">{t("home.eyebrow")}</span>
               <h1 className="season-hero__title">{t("home.title")}</h1>
               <p className="season-hero__tagline">{t("home.tagline")}</p>
@@ -161,7 +161,6 @@ export function Home(): ReactElement {
                 onClick={() => toggleSector(key)}
                 aria-expanded={sector === key}
                 aria-pressed={pinned && sector === key}
-                aria-label={`${t(`home.sector.${key}`)}: ${t(`home.sector.${key}.sub`)}`}
                 aria-controls="season-dossier"
               >
                 <span className="season-sector__name">{t(`home.sector.${key}`)}</span>
@@ -192,7 +191,7 @@ export function Home(): ReactElement {
                 aria-label={`${t("home.sector.dossier")}: ${t(`home.sector.${sector}`)}`}
               >
                 {sector !== "meridian" && <span className="season-dossier__eyebrow">{t("home.sector.dossier")}</span>}
-                <h3 className="season-dossier__title">{t(`home.sector.${sector}`)}</h3>
+                <h2 className="season-dossier__title">{t(`home.sector.${sector}`)}</h2>
                 {sector !== "meridian" && <span className="season-dossier__sub">{t(`home.sector.${sector}.sub`)}</span>}
                 <p className="season-dossier__body">{t(`home.sector.${sector}.body`)}</p>
                 {sector === "meridian" && <p className="season-dossier__body">{t("home.sector.meridian.life")}</p>}
@@ -238,7 +237,8 @@ export function Home(): ReactElement {
               className="next-card__art"
               src={levelImage(12)}
               alt=""
-              sizes="(max-width: 1000px) 100vw, 1000px"
+              sizes="100vw"
+              avif={false}
               loading="lazy"
             />
             <div className="next-card__veil" aria-hidden="true" />
@@ -315,7 +315,7 @@ export function Home(): ReactElement {
               <div className="season-hero__inner">
                 <div className="season-hero__copy">
                   <span className="season-hero__eyebrow">{t("home.season3.eyebrow")}</span>
-                  <h2 className="season-hero__title">The Veil</h2>
+                  <h2 className="season-hero__title">{t("home.season3.title")}</h2>
                   <p className="season-hero__subtitle">{t("home.season3.body")}</p>
                 </div>
               </div>
