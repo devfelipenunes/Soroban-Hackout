@@ -47,8 +47,8 @@ export function Final(): ReactElement {
       : progress.status;
 
   useEffect(() => {
-    document.title = "The Architect — BREAKER";
-  }, []);
+    document.title = `${t("final.title")} — BREAKER`;
+  }, [t]);
 
   const text = (value: FinalText): string => fill(pick(value, language), address);
 

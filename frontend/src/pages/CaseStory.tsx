@@ -39,8 +39,8 @@ function Page({ level }: { level: Level }): ReactElement {
   const name = choose(level.name, language)?.text ?? `Level ${level.id}`;
 
   useEffect(() => {
-    document.title = `${name} — case story — BREAKER`;
-  }, [name]);
+    document.title = `${name} — ${t("story.eyebrow")} — BREAKER`;
+  }, [name, t]);
 
   useEffect(() => {
     let alive = true;

@@ -200,7 +200,6 @@ export function Mosaic({
               className={`case-card${locked ? " case-card--locked" : ""}${
                 revealed ? " is-in" : ""
               }`}
-              aria-label={t("levels.open") + ": " + label}
               style={{
                 "--card-index": index,
                 "--card-art-position": cardArtPositions[level.id] ?? "center",

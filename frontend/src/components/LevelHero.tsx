@@ -58,7 +58,13 @@ function proseClass(text: string): string | undefined {
   if (trimmed.startsWith("—")) return "is-dialogue";
   if (trimmed.includes("`") || /\b[A-Z][A-Z_]{3,}\b/.test(trimmed) && /(?:→|:|\/)/.test(trimmed)) return "is-terminal";
   if (trimmed.startsWith("“") || trimmed.startsWith("\"")) return "is-quote";
-  if (/^(Até|Então|Mas|No entanto|A partir|O próximo|A investigação)/.test(trimmed)) return "is-turn";
+  if (
+    /^(Até|Então|Mas|No entanto|A partir|O próximo|A investigação|But|Then|Until|The next|The investigation|Pero|Sin embargo|Entonces|Hasta|El próximo|La investigación)/.test(
+      trimmed,
+    )
+  ) {
+    return "is-turn";
+  }
   return undefined;
 }
 
@@ -253,6 +259,11 @@ export function LevelHero({
       const startY = window.scrollY;
       const delta = targetY - startY;
       if (Math.abs(delta) < 1) return;
+
+      if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+        window.scrollTo(0, targetY);
+        return;
+      }
 
       const duration = 450;
       const started = performance.now();
