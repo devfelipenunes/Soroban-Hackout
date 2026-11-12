@@ -10,6 +10,7 @@ function render(matches: boolean): string {
   vi.stubGlobal("window", {
     matchMedia: vi.fn().mockReturnValue({ matches }),
   });
+  vi.stubGlobal("navigator", { language: "pt-BR" });
 
   return renderToStaticMarkup(
     createElement(
