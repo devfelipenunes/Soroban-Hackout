@@ -22,6 +22,7 @@ type MarkdownProps = {
   source: string;
   copyCommandLabel?: string | undefined;
   onCopyCommand?: ((command: string) => void | Promise<void>) | undefined;
+  consoleCode?: "show" | "hide" | undefined;
 };
 
 function escapeHtml(value: string): string {
@@ -44,6 +45,13 @@ function sanitizeLinks(html: string): string {
   });
 }
 
+function deviceSource(source: string, consoleCode: "show" | "hide"): string {
+  if (consoleCode === "hide") {
+    return source.replace(/\[\[desktop-only\]\][\s\S]*?\[\[\/desktop-only\]\]/g, "");
+  }
+  return source.replace(/\[\[\/?desktop-only\]\]/g, "");
+}
+
 function consoleBlock(text: string, label: string): string {
   const lines = text.replace(/\n$/, "").split("\n");
   return `<div class="markdown__commands">${lines
@@ -63,22 +71,28 @@ function consoleBlock(text: string, label: string): string {
     .join("")}</div>`;
 }
 
-export function Markdown({ source, copyCommandLabel, onCopyCommand }: MarkdownProps): ReactElement {
+export function Markdown({
+  source,
+  copyCommandLabel,
+  onCopyCommand,
+  consoleCode = "show",
+}: MarkdownProps): ReactElement {
   const html = useMemo(() => {
     configure();
     const renderer = new Renderer();
     const defaultCode = renderer.code.bind(renderer);
     renderer.code = (token) => {
+      if (consoleCode === "hide" && token.lang === "js") return "";
       if (copyCommandLabel === undefined || token.lang !== "js") return defaultCode(token);
       return consoleBlock(token.text, copyCommandLabel);
     };
     return sanitizeLinks(
-      marked.parse(source, {
+      marked.parse(deviceSource(source, consoleCode), {
         async: false,
         renderer,
       }),
     );
-  }, [copyCommandLabel, source]);
+  }, [consoleCode, copyCommandLabel, source]);
 
   const copyCommand = useCallback(
     (event: MouseEvent<HTMLDivElement>) => {
