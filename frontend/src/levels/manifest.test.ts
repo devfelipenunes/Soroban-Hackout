@@ -9,7 +9,17 @@ import testsLib from "../../../contracts/tests/src/lib.rs?raw";
 import testsLevels from "../../../contracts/tests/src/levels.rs?raw";
 import workspaceToml from "../../../contracts/Cargo.toml?raw";
 import { TOTAL as DIFFICULTY_SCALE } from "../components/Difficulty.tsx";
-import { LEVELS, levelImage, loadBook, loadLevel, loadStory, loadNews } from "./index.ts";
+import {
+  HOMEPAGE_IMAGE,
+  LEVELS,
+  levelImage,
+  levelResponsiveImage,
+  loadBook,
+  loadLevel,
+  loadStory,
+  loadNews,
+  responsiveImage,
+} from "./index.ts";
 import { type Narrative } from "./narrative.ts";
 import { FINAL_AFTER, FINAL_SCENES } from "./epilogue.ts";
 import type { BookChapter } from "./book.ts";
@@ -836,6 +846,34 @@ describe("the season art", () => {
     for (const level of entries) {
       const file = basename(levelImage(level.id));
       expect(existsSync(resolve(seasonDir, file)), file).toBe(true);
+    }
+  });
+
+  it("has every responsive variant for every level", () => {
+    for (const level of entries) {
+      const image = levelResponsiveImage(level.id);
+      expect(image, `level ${level.id}`).not.toBeNull();
+      if (image === null) continue;
+
+      expect(image.webp.map((variant) => variant.width), `level ${level.id} webp`).toEqual(
+        expect.arrayContaining([768, 1200, 2048]),
+      );
+      for (const variant of [...image.webp, ...image.avif]) {
+        expect(
+          existsSync(resolve(seasonDir, basename(variant.url))),
+          variant.url,
+        ).toBe(true);
+      }
+    }
+  });
+
+  it("has the homepage responsive variants", () => {
+    const image = responsiveImage(HOMEPAGE_IMAGE);
+    expect(image, "homepage").not.toBeNull();
+    if (image === null) return;
+
+    for (const variant of [...image.webp, ...image.avif]) {
+      expect(existsSync(resolve(seasonDir, basename(variant.url))), variant.url).toBe(true);
     }
   });
 
