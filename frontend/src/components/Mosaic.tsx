@@ -17,6 +17,7 @@ import {
   levelImage,
   type Level,
 } from "../levels/index.ts";
+import { MOBILE_GAMEPLAY_QUERY } from "../platform/viewport.ts";
 import { CasePeek } from "./CasePeek.tsx";
 
 
@@ -124,6 +125,55 @@ export function Mosaic({
       window.cancelAnimationFrame(second);
     };
   }, [levels, trailer]);
+
+  useEffect(() => {
+    const node = grid.current;
+    if (node === null || typeof window.matchMedia !== "function") return;
+
+    const media = window.matchMedia(MOBILE_GAMEPLAY_QUERY);
+    const cards = [...node.querySelectorAll<HTMLElement>(".case-card:not(.case-card--locked)")];
+    let frame = 0;
+
+    const updateCenteredCard = (): void => {
+      if (frame !== 0) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        if (!media.matches) {
+          cards.forEach((card) => card.classList.remove("is-centered"));
+          return;
+        }
+
+        const centerY = window.innerHeight / 2;
+        let closest: HTMLElement | null = null;
+        let closestDistance = Number.POSITIVE_INFINITY;
+
+        for (const card of cards) {
+          const rect = card.getBoundingClientRect();
+          const crossesCenter = rect.top <= centerY && rect.bottom >= centerY;
+          const distance = Math.abs((rect.top + rect.bottom) / 2 - centerY);
+          if (crossesCenter && distance < closestDistance) {
+            closest = card;
+            closestDistance = distance;
+          }
+        }
+
+        cards.forEach((card) => card.classList.toggle("is-centered", card === closest));
+      });
+    };
+
+    updateCenteredCard();
+    window.addEventListener("scroll", updateCenteredCard, { passive: true });
+    window.addEventListener("resize", updateCenteredCard);
+    media.addEventListener("change", updateCenteredCard);
+
+    return () => {
+      window.removeEventListener("scroll", updateCenteredCard);
+      window.removeEventListener("resize", updateCenteredCard);
+      media.removeEventListener("change", updateCenteredCard);
+      if (frame !== 0) window.cancelAnimationFrame(frame);
+      cards.forEach((card) => card.classList.remove("is-centered"));
+    };
+  }, [levels, lockedIds, trailer]);
 
   if (levels.length === 0) {
     return <p className="empty">{t("levels.empty")}</p>;

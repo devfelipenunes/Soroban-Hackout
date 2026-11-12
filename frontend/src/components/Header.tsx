@@ -6,10 +6,13 @@ import { useLanguage } from "../i18n/language.tsx";
 import { languageCode, nextLanguage } from "../i18n/translate.ts";
 import { DEPLOYMENT_PROFILE } from "../chain/network.ts";
 import { Gate, walletLabel, walletTone } from "./Gate.tsx";
+import { loadChunk } from "./Boundary.tsx";
 import type { OsFocus } from "./BreakerDevice.tsx";
 
 const GlobalBreakerDevice = lazy(() =>
-  import("./BreakerDevice.tsx").then(({ GlobalBreakerDevice: Device }) => ({ default: Device })),
+  loadChunk(() =>
+    import("./BreakerDevice.tsx").then(({ GlobalBreakerDevice: Device }) => ({ default: Device })),
+  ),
 );
 
 function homeNotificationCount(player: string | undefined): number {
@@ -131,7 +134,7 @@ export function Header(): ReactElement {
               type="button"
               className="icon-button"
               onClick={() => toggleLanguage(outroIdioma)}
-              aria-label={t("language.label")}
+              aria-label={`${languageCode(outroIdioma)} — ${t("language.label")}`}
               title={t("language.label")}
             >
               {languageCode(outroIdioma)}
@@ -142,7 +145,8 @@ export function Header(): ReactElement {
               className={
                 "wallet-chip" +
                 walletTone(state) +
-                (state.phase === "checking" ? " pulse" : "")
+                (state.phase === "checking" ? " pulse" : "") +
+                (unread > 0 ? " wallet-chip--alert" : "")
               }
               data-breaker-os-toggle
               aria-expanded={inCase ? caseDeviceOpen : osOpen}

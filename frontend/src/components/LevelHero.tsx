@@ -18,6 +18,7 @@ import { levelCode, levelImage, loadBook, type Level } from "../levels/index.ts"
 import type { LocalizedText } from "../levels/text.ts";
 import type { Tone } from "../levels/narrative.ts";
 import { Difficulty } from "./Difficulty.tsx";
+import { ResponsiveImage } from "./ResponsiveImage.tsx";
 import { Smoke } from "./Smoke.tsx";
 
 const READER_SIZES = [1, 1.12, 1.25] as const;
@@ -448,8 +449,17 @@ export function LevelHero({
             "level-hero__slide--scene",
             <>
               <div className="level-hero__scene" aria-hidden="true">
-                <img className="level-hero__art" src={levelImage(level.id)} alt=""
-                  fetchPriority="high" onLoad={() => setIntroReady(true)} onError={() => setIntroReady(true)} />
+                <ResponsiveImage
+                  className="level-hero__art"
+                  src={levelImage(level.id)}
+                  alt=""
+                  sizes="100vw"
+                  avif={false}
+                  loading="eager"
+                  fetchPriority="high"
+                  onLoad={() => setIntroReady(true)}
+                  onError={() => setIntroReady(true)}
+                />
                 <Smoke />
               </div>
               <div className="level-hero__veil" aria-hidden="true" />
@@ -484,10 +494,13 @@ export function LevelHero({
               1 + recapIndex,
               "level-hero__slide--recap",
                   <>
-                    <img
+                    <ResponsiveImage
                       className="level-hero__art level-hero__art--story"
                       src={levelImage(level.id - 1)}
                       alt=""
+                      sizes="100vw"
+                      avif={false}
+                      loading="lazy"
                     />
                     <div className="level-hero__veil level-hero__veil--book" aria-hidden="true" />
 
@@ -546,10 +559,13 @@ export function LevelHero({
             storyIndex,
             "level-hero__slide--story",
             <>
-              <img
+              <ResponsiveImage
                 className="level-hero__art level-hero__art--story"
                 src={levelImage(level.id)}
                 alt=""
+                sizes="100vw"
+                avif={false}
+                loading="lazy"
               />
               <div className="level-hero__veil level-hero__veil--story" aria-hidden="true" />
 
@@ -586,10 +602,13 @@ export function LevelHero({
               pagesStart + pageIndex,
               "level-hero__slide--book",
               <>
-                <img
+                <ResponsiveImage
                   className="level-hero__art level-hero__art--story"
                   src={levelImage(level.id)}
                   alt=""
+                  sizes="100vw"
+                  avif={false}
+                  loading="lazy"
                 />
                 <div className="level-hero__veil level-hero__veil--book" aria-hidden="true" />
 
@@ -672,10 +691,13 @@ export function LevelHero({
               count - 1,
               "level-hero__slide--choice",
               <>
-                <img
+                <ResponsiveImage
                   className="level-hero__art level-hero__art--story"
                   src={levelImage(level.id)}
                   alt=""
+                  sizes="100vw"
+                  avif={false}
+                  loading="lazy"
                 />
                 <div className="level-hero__veil level-hero__veil--story" aria-hidden="true" />
 
@@ -751,7 +773,7 @@ export function LevelHero({
                 type="button"
                 className="level-hero__size"
                 onClick={cycleReader}
-                aria-label={t("levelHero.textSize")}
+                aria-label={`Aa — ${t("levelHero.textSize")}`}
               >
                 Aa
               </button>

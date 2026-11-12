@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Mosaic } from "../components/Mosaic.tsx";
 import { Clouds } from "../components/Clouds.tsx";
+import { ResponsiveImage } from "../components/ResponsiveImage.tsx";
 import { SeasonClaim } from "../components/SeasonClaim.tsx";
 import { Smoke } from "../components/Smoke.tsx";
 import { useLanguage } from "../i18n/language.tsx";
@@ -86,14 +87,22 @@ export function Home(): ReactElement {
     <main id="main-content" className="content">
       <div className="season-home">
         <section className={`season-hero${sector === null ? "" : " is-focus"}`}>
-          <img className="season-hero__art" src={HOMEPAGE_IMAGE} alt="" width={2048} height={768} />
-          <img
+          <ResponsiveImage
+            className="season-hero__art"
+            src={HOMEPAGE_IMAGE}
+            alt=""
+            sizes="100vw"
+            avif={false}
+            loading="eager"
+            fetchPriority="high"
+          />
+          <ResponsiveImage
             className="season-hero__depth"
             src={HOMEPAGE_IMAGE}
-            width={2048}
-            height={768}
             alt=""
             aria-hidden="true"
+            sizes="100vw"
+            avif={false}
           />
           <Clouds />
           <div className="season-hero__beams" aria-hidden="true">
@@ -218,14 +227,12 @@ export function Home(): ReactElement {
         <section className="season-next">
           <h2 className="visually-hidden">{t("home.final.title")}</h2>
           <article className="next-card next-card--final">
-            <img
+            <ResponsiveImage
               className="next-card__art"
               src={levelImage(12)}
-              width={1600}
-              height={600}
               alt=""
+              sizes="(max-width: 1000px) 100vw, 1000px"
               loading="lazy"
-              decoding="async"
             />
             <div className="next-card__veil" aria-hidden="true" />
             <div className="next-card__body">
@@ -274,7 +281,7 @@ export function Home(): ReactElement {
           </div>
           <div className="season-reveal">
             <article className="season-hero season-hero--upcoming">
-              <img className="season-hero__art" src="/images/seasons/lumen.webp" alt="" loading="lazy" decoding="async" width={2048} height={683} />
+              <ResponsiveImage className="season-hero__art" src="/images/seasons/lumen.webp" alt="" sizes="100vw" loading="lazy" />
               <Clouds />
               <Smoke />
               <div className="season-hero__veil" aria-hidden="true" />
@@ -293,7 +300,7 @@ export function Home(): ReactElement {
         <section className="season-next season-next--upcoming" aria-label={t("home.season3.eyebrow")}>
           <div className="season-reveal">
             <article className="season-hero season-hero--upcoming">
-              <img className="season-hero__art" src="/images/seasons/veil.webp" alt="" loading="lazy" decoding="async" width={2172} height={724} />
+              <ResponsiveImage className="season-hero__art" src="/images/seasons/veil.webp" alt="" sizes="100vw" loading="lazy" />
               <Clouds />
               <Smoke />
               <div className="season-hero__veil" aria-hidden="true" />

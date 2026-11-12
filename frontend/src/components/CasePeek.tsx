@@ -9,6 +9,7 @@ import {
   type Level,
 } from "../levels/index.ts";
 import { Difficulty } from "./Difficulty.tsx";
+import { ResponsiveImage } from "./ResponsiveImage.tsx";
 
 export function CasePeek({
   level,
@@ -46,7 +47,14 @@ export function CasePeek({
         tabIndex={-1}
         ref={panel}
       >
-        <img className="case-peek__art" src={levelImage(level.id)} alt="" />
+        <ResponsiveImage
+          className="case-peek__art"
+          src={levelImage(level.id)}
+          alt=""
+          sizes="(max-width: 700px) 100vw, 54rem"
+          loading="eager"
+          fetchPriority="high"
+        />
         <div className="case-peek__veil" aria-hidden="true" />
 
         <button
