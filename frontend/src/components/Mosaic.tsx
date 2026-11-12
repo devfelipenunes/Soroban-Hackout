@@ -60,6 +60,7 @@ export function Mosaic({
     level: Level;
     locked: boolean;
   } | null>(null);
+  const [revealed, setRevealed] = useState(false);
 
   const openCase = (
     level: Level,
@@ -109,14 +110,12 @@ export function Mosaic({
     const node = grid.current;
     if (node === null) return;
 
-    const cards = [...node.querySelectorAll(".case-card")];
-
     node.classList.add("campaign-grid--armed");
 
     let second = 0;
     const first = window.requestAnimationFrame(() => {
       second = window.requestAnimationFrame(() => {
-        for (const card of cards) card.classList.add("is-in");
+        setRevealed(true);
       });
     });
 
@@ -198,7 +197,9 @@ export function Mosaic({
             <Link
               key={level.id}
               to={`/level/${level.id}`}
-              className={`case-card${locked ? " case-card--locked" : ""}`}
+              className={`case-card${locked ? " case-card--locked" : ""}${
+                revealed ? " is-in" : ""
+              }`}
               aria-label={t("levels.open") + ": " + label}
               style={{
                 "--card-index": index,
