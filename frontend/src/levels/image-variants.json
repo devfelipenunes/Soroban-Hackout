@@ -1,0 +1,796 @@
+{
+  "images": {
+    "/images/brand/breaker-logo.webp": {
+      "width": 1200,
+      "height": 403,
+      "webp": [
+        {
+          "url": "/images/brand/breaker-logo-480.webp",
+          "width": 480
+        },
+        {
+          "url": "/images/brand/breaker-logo-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/brand/breaker-logo.webp",
+          "width": 1200
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/brand/breaker-logo-480.avif",
+          "width": 480
+        },
+        {
+          "url": "/images/brand/breaker-logo-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/brand/breaker-logo-1200.avif",
+          "width": 1200
+        }
+      ]
+    },
+    "/images/brand/breaker-os-presentation.png": {
+      "width": 1672,
+      "height": 941,
+      "webp": [
+        {
+          "url": "/images/brand/breaker-os-presentation-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/brand/breaker-os-presentation-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/brand/breaker-os-presentation-1672.webp",
+          "width": 1672
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/brand/breaker-os-presentation-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/brand/breaker-os-presentation-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/brand/breaker-os-presentation-1672.avif",
+          "width": 1672
+        }
+      ]
+    },
+    "/images/levels/00.webp": {
+      "width": 2048,
+      "height": 768,
+      "webp": [
+        {
+          "url": "/images/levels/00-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/00-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/00.webp",
+          "width": 2048
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/00-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/00-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/00-2048.avif",
+          "width": 2048
+        }
+      ]
+    },
+    "/images/levels/01.webp": {
+      "width": 2048,
+      "height": 768,
+      "webp": [
+        {
+          "url": "/images/levels/01-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/01-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/01.webp",
+          "width": 2048
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/01-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/01-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/01-2048.avif",
+          "width": 2048
+        }
+      ]
+    },
+    "/images/levels/02-cover.webp": {
+      "width": 2048,
+      "height": 768,
+      "webp": [
+        {
+          "url": "/images/levels/02-cover-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/02-cover-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/02-cover.webp",
+          "width": 2048
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/02-cover-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/02-cover-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/02-cover-2048.avif",
+          "width": 2048
+        }
+      ]
+    },
+    "/images/levels/02.webp": {
+      "width": 1600,
+      "height": 600,
+      "webp": [
+        {
+          "url": "/images/levels/02-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/02-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/02.webp",
+          "width": 1600
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/02-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/02-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/02-1600.avif",
+          "width": 1600
+        }
+      ]
+    },
+    "/images/levels/03-cover.webp": {
+      "width": 2048,
+      "height": 768,
+      "webp": [
+        {
+          "url": "/images/levels/03-cover-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/03-cover-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/03-cover.webp",
+          "width": 2048
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/03-cover-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/03-cover-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/03-cover-2048.avif",
+          "width": 2048
+        }
+      ]
+    },
+    "/images/levels/03.webp": {
+      "width": 1600,
+      "height": 600,
+      "webp": [
+        {
+          "url": "/images/levels/03-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/03-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/03.webp",
+          "width": 1600
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/03-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/03-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/03-1600.avif",
+          "width": 1600
+        }
+      ]
+    },
+    "/images/levels/04-cover.webp": {
+      "width": 2048,
+      "height": 768,
+      "webp": [
+        {
+          "url": "/images/levels/04-cover-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/04-cover-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/04-cover.webp",
+          "width": 2048
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/04-cover-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/04-cover-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/04-cover-2048.avif",
+          "width": 2048
+        }
+      ]
+    },
+    "/images/levels/04.webp": {
+      "width": 1600,
+      "height": 600,
+      "webp": [
+        {
+          "url": "/images/levels/04-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/04-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/04.webp",
+          "width": 1600
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/04-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/04-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/04-1600.avif",
+          "width": 1600
+        }
+      ]
+    },
+    "/images/levels/05.webp": {
+      "width": 2048,
+      "height": 768,
+      "webp": [
+        {
+          "url": "/images/levels/05-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/05-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/05.webp",
+          "width": 2048
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/05-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/05-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/05-2048.avif",
+          "width": 2048
+        }
+      ]
+    },
+    "/images/levels/06-cover.webp": {
+      "width": 2048,
+      "height": 768,
+      "webp": [
+        {
+          "url": "/images/levels/06-cover-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/06-cover-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/06-cover.webp",
+          "width": 2048
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/06-cover-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/06-cover-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/06-cover-2048.avif",
+          "width": 2048
+        }
+      ]
+    },
+    "/images/levels/06.webp": {
+      "width": 1600,
+      "height": 600,
+      "webp": [
+        {
+          "url": "/images/levels/06-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/06-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/06.webp",
+          "width": 1600
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/06-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/06-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/06-1600.avif",
+          "width": 1600
+        }
+      ]
+    },
+    "/images/levels/07-cover.webp": {
+      "width": 2048,
+      "height": 768,
+      "webp": [
+        {
+          "url": "/images/levels/07-cover-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/07-cover-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/07-cover.webp",
+          "width": 2048
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/07-cover-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/07-cover-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/07-cover-2048.avif",
+          "width": 2048
+        }
+      ]
+    },
+    "/images/levels/07.webp": {
+      "width": 1600,
+      "height": 600,
+      "webp": [
+        {
+          "url": "/images/levels/07-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/07-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/07.webp",
+          "width": 1600
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/07-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/07-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/07-1600.avif",
+          "width": 1600
+        }
+      ]
+    },
+    "/images/levels/08.webp": {
+      "width": 2048,
+      "height": 768,
+      "webp": [
+        {
+          "url": "/images/levels/08-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/08-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/08.webp",
+          "width": 2048
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/08-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/08-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/08-2048.avif",
+          "width": 2048
+        }
+      ]
+    },
+    "/images/levels/09.webp": {
+      "width": 2048,
+      "height": 768,
+      "webp": [
+        {
+          "url": "/images/levels/09-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/09-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/09.webp",
+          "width": 2048
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/09-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/09-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/09-2048.avif",
+          "width": 2048
+        }
+      ]
+    },
+    "/images/levels/10.webp": {
+      "width": 2048,
+      "height": 768,
+      "webp": [
+        {
+          "url": "/images/levels/10-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/10-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/10.webp",
+          "width": 2048
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/10-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/10-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/10-2048.avif",
+          "width": 2048
+        }
+      ]
+    },
+    "/images/levels/11.webp": {
+      "width": 2048,
+      "height": 768,
+      "webp": [
+        {
+          "url": "/images/levels/11-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/11-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/11.webp",
+          "width": 2048
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/11-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/11-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/11-2048.avif",
+          "width": 2048
+        }
+      ]
+    },
+    "/images/levels/12.webp": {
+      "width": 2048,
+      "height": 768,
+      "webp": [
+        {
+          "url": "/images/levels/12-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/12-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/12.webp",
+          "width": 2048
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/12-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/12-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/12-2048.avif",
+          "width": 2048
+        }
+      ]
+    },
+    "/images/levels/homepage-mobile.png": {
+      "width": 1024,
+      "height": 1536,
+      "webp": [
+        {
+          "url": "/images/levels/homepage-mobile-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/homepage-mobile-1024.webp",
+          "width": 1024
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/homepage-mobile-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/homepage-mobile-1024.avif",
+          "width": 1024
+        }
+      ]
+    },
+    "/images/levels/homepage.webp": {
+      "width": 2048,
+      "height": 768,
+      "webp": [
+        {
+          "url": "/images/levels/homepage-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/homepage-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/homepage.webp",
+          "width": 2048
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/levels/homepage-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/levels/homepage-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/levels/homepage-2048.avif",
+          "width": 2048
+        }
+      ]
+    },
+    "/images/login/meridian.webp": {
+      "width": 1672,
+      "height": 941,
+      "webp": [
+        {
+          "url": "/images/login/meridian-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/login/meridian-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/login/meridian.webp",
+          "width": 1672
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/login/meridian-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/login/meridian-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/login/meridian-1672.avif",
+          "width": 1672
+        }
+      ]
+    },
+    "/images/seasons/lumen.webp": {
+      "width": 2172,
+      "height": 724,
+      "webp": [
+        {
+          "url": "/images/seasons/lumen-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/seasons/lumen-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/seasons/lumen.webp",
+          "width": 2172
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/seasons/lumen-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/seasons/lumen-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/seasons/lumen-2172.avif",
+          "width": 2172
+        }
+      ]
+    },
+    "/images/seasons/veil.webp": {
+      "width": 2172,
+      "height": 724,
+      "webp": [
+        {
+          "url": "/images/seasons/veil-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/seasons/veil-1200.webp",
+          "width": 1200
+        },
+        {
+          "url": "/images/seasons/veil.webp",
+          "width": 2172
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/seasons/veil-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/seasons/veil-1200.avif",
+          "width": 1200
+        },
+        {
+          "url": "/images/seasons/veil-2172.avif",
+          "width": 2172
+        }
+      ]
+    }
+  }
+}

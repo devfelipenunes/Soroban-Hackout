@@ -1,4 +1,5 @@
 import manifest from "../../../levels.json";
+import variantData from "./image-variants.json";
 import { LANGUAGES, type Language } from "../i18n/translate.ts";
 import type { BookChapter } from "./book.ts";
 import type { CaseFile } from "./casefile.ts";
@@ -63,11 +64,55 @@ export type LevelContent = {
 const pad = (id: number) => String(id).padStart(2, "0");
 
 export const HOMEPAGE_IMAGE = "/images/levels/homepage.webp";
+export const HOMEPAGE_MOBILE_IMAGE = "/images/levels/homepage-mobile.png";
 
 const optimizedCovers = new Set([2, 3, 4, 6, 7]);
 
 export const levelImage = (id: number): string =>
   `/images/levels/${pad(id)}${optimizedCovers.has(id) ? "-cover.webp" : ".webp"}`;
+
+export type ImageVariant = { url: string; width: number };
+
+export type ResponsiveImage = {
+  original: string;
+  fallback: string;
+  width: number;
+  height: number;
+  webp: readonly ImageVariant[];
+  avif: readonly ImageVariant[];
+};
+
+type VariantEntry = {
+  width: number;
+  height: number;
+  webp: ImageVariant[];
+  avif: ImageVariant[];
+};
+
+const VARIANTS: Record<string, VariantEntry | undefined> = variantData.images;
+
+export const srcSetOf = (variants: readonly ImageVariant[]): string =>
+  variants.map(({ url, width }) => `${url} ${width}w`).join(", ");
+
+export function responsiveImage(src: string): ResponsiveImage | null {
+  const entry = VARIANTS[src];
+  if (entry === undefined) return null;
+
+  const fallback = entry.webp[entry.webp.length - 1];
+  if (fallback === undefined) return null;
+
+  return {
+    original: src,
+    fallback: fallback.url,
+    width: entry.width,
+    height: entry.height,
+    webp: entry.webp,
+    avif: entry.avif,
+  };
+}
+
+export const levelResponsiveImage = (id: number): ResponsiveImage | null =>
+  responsiveImage(levelImage(id));
 
 export const levelCode = (id: number): string => {
   if (id === 5) return "B1";

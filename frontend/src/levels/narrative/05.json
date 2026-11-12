@@ -4,7 +4,7 @@
       "trigger": "previous-solved",
       "speaker": "system",
       "text": {
-        "pt-BR": "O elevador desce além do mapa conhecido. As portas abrem para corredores muito mais antigos que os acabamentos da cidade. Na parede: I // FIRST LAYER.",
+        "pt-BR": "O elevador desce além do mapa conhecido. As portas abrem para corredores muito mais antigos que os acabamentos da cidade. Na parede: I // PRIMEIRA CAMADA.",
         "en": "The elevator descends beyond the known map. Its doors open onto corridors much older than the city’s finishes. On the wall: I // FIRST LAYER.",
         "es": "El ascensor desciende más allá del mapa conocido. Sus puertas se abren a pasillos mucho más antiguos que los acabados de la ciudad. En la pared: I // PRIMERA CAPA."
       }
@@ -13,7 +13,7 @@
       "trigger": "start",
       "speaker": "mara",
       "text": {
-        "pt-BR": "“Estou lhe dando uma evidência, não uma autorização.” Cabe ao auditor descobrir como os sistemas decidem quem pertence à First Layer.",
+        "pt-BR": "“Estou lhe dando uma evidência, não uma autorização.” Cabe ao auditor descobrir como os sistemas decidem quem pertence à Primeira Camada.",
         "en": "“I am giving you evidence, not authorization.” The auditor must discover how these systems decide who belongs to the First Layer.",
         "es": "\"Les estoy dando pruebas, no autorización\". El auditor debe descubrir cómo estos sistemas deciden quién pertenece a la Primera Capa."
       }
@@ -50,14 +50,14 @@
     {
       "id": "05-document-0",
       "label": {
-        "pt-BR": "Política do Custodian",
+        "pt-BR": "Política do Custódio",
         "en": "Custodian policy",
         "es": "Política de custodia"
       },
       "value": {
-        "pt-BR": "Core Gate / documentação disponível",
+        "pt-BR": "Portão do Núcleo / documentação disponível",
         "en": "Core Gate / available documentation",
-        "es": "Core Gate / documentación disponible"
+        "es": "Puerta del Núcleo / documentación disponible"
       },
       "reveal": "start",
       "documentId": "05-document-0"
@@ -115,14 +115,14 @@
     {
       "id": "05-document-0",
       "title": {
-        "pt-BR": "Política do Custodian",
+        "pt-BR": "Política do Custódio",
         "en": "Custodian policy",
         "es": "Política de custodia"
       },
       "source": {
-        "pt-BR": "Core Gate / documentação disponível",
+        "pt-BR": "Portão do Núcleo / documentação disponível",
         "en": "Core Gate / available documentation",
-        "es": "Core Gate / documentación disponible"
+        "es": "Puerta del Núcleo / documentación disponible"
       },
       "body": [
         {
@@ -178,7 +178,7 @@
           "es": "La ciudad no demolió el piso. Dejó de mantener su referencia en la capa activa. El estado archivado y la infraestructura destruida eran hipótesis diferentes."
         },
         {
-          "pt-BR": "O elevador desce além do mapa conhecido. As portas abrem para corredores muito mais antigos que os acabamentos da cidade. Na parede: I // FIRST LAYER.",
+          "pt-BR": "O elevador desce além do mapa conhecido. As portas abrem para corredores muito mais antigos que os acabamentos da cidade. Na parede: I // PRIMEIRA CAMADA.",
           "en": "The elevator descends beyond the known map. Its doors open onto corridors much older than the city’s finishes. On the wall: I // FIRST LAYER.",
           "es": "El ascensor desciende más allá del mapa conocido. Sus puertas se abren a pasillos mucho más antiguos que los acabados de la ciudad. En la pared: I // PRIMERA CAPA."
         },

@@ -4,18 +4,18 @@
       "trigger": "previous-solved",
       "speaker": "system",
       "text": {
-        "pt-BR": "“Qual dos dois você quebrou?”, pergunta Mara. Uma palavra ocupa o painel: ARCHITECT. Abaixo aparecem as coordenadas da Spire e a confirmação do caminho do participante.",
+        "pt-BR": "“Qual dos dois você quebrou?”, pergunta Mara. Uma palavra ocupa o painel: ARCHITECT. Abaixo aparecem as coordenadas da Torre e a confirmação do caminho do participante.",
         "en": "“Which one did you break?” Mara asks. One word fills the panel: ARCHITECT. Below it appear the Spire coordinates and confirmation of the subject’s path.",
-        "es": "«¿Cuál de los dos rompiste?», pregunta Mara. Una palabra ocupa el panel: ARCHITECT. Debajo aparecen las coordenadas de The Spire y la confirmación de la ruta del sujeto."
+        "es": "«¿Cuál de los dos rompiste?», pregunta Mara. Una palabra ocupa el panel: ARCHITECT. Debajo aparecen las coordenadas de La Aguja y la confirmación de la ruta del sujeto."
       }
     },
     {
       "trigger": "start",
       "speaker": "mara",
       "text": {
-        "pt-BR": "Uma manutenção foi legitimamente agendada por um operador. O auditor não tem sua chave. Precisa investigar como a Spire identifica aquilo que foi autorizado e mantém esse significado até a execução.",
+        "pt-BR": "Uma manutenção foi legitimamente agendada por um operador. O auditor não tem sua chave. Precisa investigar como a Torre identifica aquilo que foi autorizado e mantém esse significado até a execução.",
         "en": "Maintenance was legitimately scheduled by an operator. The auditor does not have their key. He must investigate how the Spire identifies what was authorized and preserves that meaning until execution.",
-        "es": "El mantenimiento fue programado legítimamente por un operador. El auditor no tiene su clave. Debe investigar cómo The Spire identifica lo que fue autorizado y preserva ese significado hasta la ejecución."
+        "es": "El mantenimiento fue programado legítimamente por un operador. El auditor no tiene su clave. Debe investigar cómo La Aguja identifica lo que fue autorizado y preserva ese significado hasta la ejecución."
       }
     },
     {
@@ -31,7 +31,7 @@
       "trigger": "first-call",
       "speaker": "mara",
       "text": {
-        "pt-BR": "Minha assinatura preserva a prova. Não devolve o mandato que a Authority revogou.",
+        "pt-BR": "Minha assinatura preserva a prova. Não devolve o mandato que a Autoridade revogou.",
         "en": "My signature preserves the evidence. It does not restore the mandate the Authority revoked.",
         "es": "Mi firma preserva la evidencia. No restablece el mandato que la Autoridad revocó."
       }
@@ -55,9 +55,9 @@
         "es": "Cierre oficial"
       },
       "value": {
-        "pt-BR": "Meridian Authority",
+        "pt-BR": "Autoridade de Meridian",
         "en": "Meridian Authority",
-        "es": "Meridian Authority"
+        "es": "Autoridad de Meridian"
       },
       "reveal": "start",
       "documentId": "10-document-0"
@@ -120,15 +120,15 @@
         "es": "Cierre oficial"
       },
       "source": {
-        "pt-BR": "Meridian Authority",
+        "pt-BR": "Autoridade de Meridian",
         "en": "Meridian Authority",
-        "es": "Meridian Authority"
+        "es": "Autoridad de Meridian"
       },
       "body": [
         {
-          "pt-BR": "CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. O auditor já não possui o mandato recebido no Vault. The Spire permanece operacional.",
+          "pt-BR": "CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. O auditor já não possui o mandato recebido no cofre. A Torre permanece operacional.",
           "en": "CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. The auditor no longer holds the mandate received at the Vault. The Spire remains operational.",
-          "es": "CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. El auditor ya no ejerce el mandato recibido en el Vault. The Spire sigue en funcionamiento."
+          "es": "CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. El auditor ya no ejerce el mandato recibido en la bóveda. La Aguja sigue en funcionamiento."
         }
       ],
       "reveal": "start"
@@ -178,14 +178,14 @@
           "es": "Los hologramas se detienen. PROPHECY_ENGINE: FAILED. Una fuente diferente permanece activa: SUBJECT_CLASSIFIER: OBSERVING. El segundo módulo no necesitaba predecir el futuro para rastrear a quien desmanteló el primero."
         },
         {
-          "pt-BR": "“Qual dos dois você quebrou?”, pergunta Mara. Uma palavra ocupa o painel: ARCHITECT. Abaixo aparecem as coordenadas da Spire e a confirmação do caminho do participante.",
+          "pt-BR": "“Qual dos dois você quebrou?”, pergunta Mara. Uma palavra ocupa o painel: ARCHITECT. Abaixo aparecem as coordenadas da Torre e a confirmação do caminho do participante.",
           "en": "“Which one did you break?” Mara asks. One word fills the panel: ARCHITECT. Below it appear the Spire coordinates and confirmation of the subject’s path.",
-          "es": "«¿Cuál de los dos rompiste?», pregunta Mara. Una palabra ocupa el panel: ARCHITECT. Debajo aparecen las coordenadas de The Spire y la confirmación de la ruta del sujeto."
+          "es": "«¿Cuál de los dos rompiste?», pregunta Mara. Una palabra ocupa el panel: ARCHITECT. Debajo aparecen las coordenadas de La Aguja y la confirmación de la ruta del sujeto."
         },
         {
-          "pt-BR": "The Spire continua oficialmente operacional. Existem operadores reais e rotinas em andamento. A próxima etapa já não é entrar em uma ruína esquecida.",
+          "pt-BR": "A Torre continua oficialmente operacional. Existem operadores reais e rotinas em andamento. A próxima etapa já não é entrar em uma ruína esquecida.",
           "en": "The Spire remains officially operational. Real operators work there and routines are running. The next step is no longer entering a forgotten ruin.",
-          "es": "The Spire sigue oficialmente operativo. Allí trabajan operadores reales y se ejecutan rutinas. El siguiente paso ya no es adentrarse en una ruina olvidada."
+          "es": "La Aguja sigue oficialmente operativa. Allí trabajan operadores reales y se ejecutan rutinas. El siguiente paso ya no es adentrarse en una ruina olvidada."
         }
       ],
       "reveal": "previous-solved"

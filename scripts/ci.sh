@@ -24,7 +24,7 @@ contracts_job() {
 
 frontend_job() {
     echo "── frontend ──────────────────────────────────────────────────"
-    (cd frontend && npm ci && npm test && npm run build)
+    (cd frontend && npm ci && npm run lint && npm run test:coverage && npm run build)
 }
 
 SANDBOX=""

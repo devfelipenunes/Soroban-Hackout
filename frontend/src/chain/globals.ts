@@ -2,13 +2,17 @@ import { emit, type CallFailure } from "./events.ts";
 
 export const GLOBAL_NAMES = ["player", "instance", "contract", "aux", "help"] as const;
 
-export type GlobalName = (typeof GLOBAL_NAMES)[number];
-
 export type GlobalRegistry = Record<string, unknown>;
 
 export type Entry = {
   name: string;
   kind: string;
+  variants?: readonly Variant[];
+};
+
+export type Variant = {
+  name: string;
+  inputs: readonly string[];
 };
 
 export type Descriptor = {

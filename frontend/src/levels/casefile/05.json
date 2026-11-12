@@ -1,8 +1,8 @@
 {
   "objective": {
-    "pt-BR": "Faça o Custódio acreditar que você pertence à First Layer.",
+    "pt-BR": "Faça o Custódio acreditar que você pertence à Primeira Camada.",
     "en": "Make the Custodian believe you belong to the First Layer.",
-    "es": "Haz que el Custodio crea que perteneces a First Layer."
+    "es": "Haz que el Custodio crea que perteneces a Primera Capa."
   },
   "target": {
     "pt-BR": "Portão do Custódio",
@@ -10,9 +10,9 @@
     "es": "Puerta de custodia"
   },
   "owner": {
-    "pt-BR": "Registro de autoridade da First Layer",
+    "pt-BR": "Registro de autoridade da Primeira Camada",
     "en": "First Layer authority registry",
-    "es": "Registro de autoridad de First Layer"
+    "es": "Registro de autoridad de Primera Capa"
   },
   "network": {
     "pt-BR": "Stellar testnet",
@@ -20,7 +20,7 @@
     "es": "Stellar Testnet"
   },
   "lead": {
-    "pt-BR": "O Custodian não tem rosto. Sua presença ocupa leitores, portas e linhas de autoridade. “Credenciais de operador obrigatórias.” Não há confronto físico; existe uma cadeia de confiança a compreender.",
+    "pt-BR": "O Custódio não tem rosto. Sua presença ocupa leitores, portas e linhas de autoridade. “Credenciais de operador obrigatórias.” Não há confronto físico; existe uma cadeia de confiança a compreender.",
     "en": "The Custodian has no face. Its presence fills readers, doors, and authority links. “Operator credentials required.” There is no physical battle; there is a chain of trust to understand.",
     "es": "El Custodio no tiene rostro. Su presencia se manifiesta en lectores, puertas y controles de autoridad. «Se requieren credenciales de operador». No hay una batalla física, sino una cadena de confianza que debes entender."
   },

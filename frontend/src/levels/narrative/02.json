@@ -126,9 +126,9 @@
       },
       "body": [
         {
-          "pt-BR": "Morte confirmada há seis meses. A identidade de operador citada na trilha é metadado legado. Não há prova de que a carteira de Elias tenha custodiado os fundos do Vault.",
+          "pt-BR": "Morte confirmada há seis meses. A identidade de operador citada na trilha é metadado legado. Não há prova de que a carteira de Elias tenha custodiado os fundos do cofre.",
           "en": "Death confirmed six months ago. The operator identity cited in the trail is legacy metadata. There is no proof that Elias’s wallet held the Vault funds.",
-          "es": "Muerte confirmada hace seis meses. La identidad del operador citada en el rastro son metadatos heredados. No hay pruebas de que la billetera de Elias contuviera los fondos de el Vault."
+          "es": "Muerte confirmada hace seis meses. La identidad del operador citada en el rastro son metadatos heredados. No hay pruebas de que la billetera de Elias contuviera los fondos de la bóveda."
         }
       ],
       "reveal": "start"

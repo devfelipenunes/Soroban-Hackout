@@ -20,9 +20,9 @@
     "es": "Stellar Testnet"
   },
   "lead": {
-    "pt-BR": "A fila preserva a intenção original e aguarda o prazo. Diferente de Rewrite, o contexto desta instância é conferido exatamente; a pergunta agora é se a operação executada ainda corresponde ao que foi aprovado.",
+    "pt-BR": "A fila preserva a intenção original e aguarda o prazo. Diferente de Reescrita, o contexto desta instância é conferido exatamente; a pergunta agora é se a operação executada ainda corresponde ao que foi aprovado.",
     "en": "The queue preserves its original intent and waits for the delay. Unlike Rewrite, this instance’s context is checked exactly; the question now is whether the executed operation still matches what was approved.",
-    "es": "La cola conserva su intención original y espera el retraso. A diferencia de Rewrite, el contexto de esta instancia se verifica exactamente; la pregunta ahora es si la operación ejecutada aún coincide con lo aprobado."
+    "es": "La cola conserva su intención original y espera el retraso. A diferencia de Reescritura, el contexto de esta instancia se verifica exactamente; la pregunta ahora es si la operación ejecutada aún coincide con lo aprobado."
   },
   "known": [
     {

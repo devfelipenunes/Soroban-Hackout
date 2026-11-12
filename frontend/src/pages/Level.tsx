@@ -35,11 +35,15 @@ import {
   mountGlobals,
   mountWithoutInstance,
   resolveCalls,
+  type Descriptor,
   type GlobalRegistry,
 } from "../chain/globals.ts";
 import { descriptorsFromSpec } from "../chain/spec.ts";
 import { useWallet } from "../wallet/context.tsx";
+import { useMobileGameplay } from "../platform/viewport.ts";
 import { AccountNotice } from "../components/AccountNotice.tsx";
+import { loadChunk } from "../components/Boundary.tsx";
+import { Loading } from "../components/Loading.tsx";
 import type { OsFocus } from "../components/BreakerDevice.tsx";
 import { LevelHero } from "../components/LevelHero.tsx";
 import { ThreadStrip } from "../components/ThreadStrip.tsx";
@@ -54,7 +58,9 @@ import {
   choose,
   levelById,
   levelCode,
+  levelResponsiveImage,
   loadLevel,
+  srcSetOf,
   type Level as LevelType,
   type LevelContent,
 } from "../levels/index.ts";
@@ -69,12 +75,21 @@ type Message = {
 };
 
 const BreakerDevice = lazy(() =>
-  import("../components/BreakerDevice.tsx").then(({ BreakerDevice: Component }) => ({
-    default: Component,
-  })),
+  loadChunk(() =>
+    import("../components/BreakerDevice.tsx").then(({ BreakerDevice: Component }) => ({
+      default: Component,
+    })),
+  ),
 );
+
+function preloadBreakerDevice(): void {
+  void import("../components/BreakerDevice.tsx").catch(() => {});
+}
+
 const Code = lazy(() =>
-  import("../components/Code.tsx").then(({ Code: Component }) => ({ default: Component })),
+  loadChunk(() =>
+    import("../components/Code.tsx").then(({ Code: Component }) => ({ default: Component })),
+  ),
 );
 
 export function Level(): ReactElement {
@@ -110,6 +125,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
   const [previousProof, setPreviousProof] = useState<{ player: string; completed: boolean } | null>(null);
   const [readAttempt, setReadAttempt] = useState(0);
   const [callable, setCallable] = useState<Callable | null>(null);
+  const [contractSpec, setContractSpec] = useState<readonly Descriptor[]>([]);
   const [diagnostics, setDiagnostics] = useState<CheckResult[] | null>(null);
   const [diagnosticsLoading, setDiagnosticsLoading] = useState(false);
   const [diagnosticsFailed, setDiagnosticsFailed] = useState(false);
@@ -119,6 +135,8 @@ function Page({ level }: { level: LevelType }): ReactElement {
     current: number;
   } | null>(null);
   const [osOpen, setOsOpen] = useState(false);
+  const [osMounted, setOsMounted] = useState(false);
+  const mobileGameplay = useMobileGameplay();
   const [osFocus, setOsFocus] = useState<OsFocus | null>(null);
   const osDialog = useRef<HTMLDialogElement | null>(null);
   const { copied, copy } = useCopy();
@@ -146,8 +164,15 @@ function Page({ level }: { level: LevelType }): ReactElement {
   useEffect(() => {
     const dialog = osDialog.current;
     if (!dialog) return;
-    if (osOpen && !dialog.open) dialog.showModal();
+    if (osOpen && !dialog.open) {
+      dialog.showModal();
+      dialog.focus();
+    }
     if (!osOpen && dialog.open) dialog.close();
+  }, [osOpen]);
+
+  useEffect(() => {
+    if (osOpen) setOsMounted(true);
   }, [osOpen]);
 
   const flag = useRef(createFlag());
@@ -189,6 +214,27 @@ function Page({ level }: { level: LevelType }): ReactElement {
     [address, signer, testOnly],
   );
   const reader = useMemo(() => coreReader(), [readAttempt]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const preload = (): void => {
+      if (!cancelled) preloadBreakerDevice();
+    };
+
+    if (typeof window.requestIdleCallback === "function") {
+      const handle = window.requestIdleCallback(preload, { timeout: 1200 });
+      return () => {
+        cancelled = true;
+        window.cancelIdleCallback(handle);
+      };
+    }
+
+    const handle = window.setTimeout(preload, 600);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(handle);
+    };
+  }, []);
 
   useEffect(() => {
     if (!address || !previous) return;
@@ -254,6 +300,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
 
     if (!instance || !address || !signer) {
       setCallable(null);
+      setContractSpec([]);
       return mountWithoutInstance(target);
     }
 
@@ -277,9 +324,13 @@ function Page({ level }: { level: LevelType }): ReactElement {
           spec,
           aux: auxId(level),
         });
+        setContractSpec(spec);
         setCallable(resolved as Callable);
       } catch {
-        if (alive) unmount = mountWithoutInstance(target);
+        if (alive) {
+          setContractSpec([]);
+          unmount = mountWithoutInstance(target);
+        }
       }
     })();
 
@@ -287,6 +338,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
       alive = false;
       unmount?.();
       setCallable(null);
+      setContractSpec([]);
     };
   }, [instance, address, signer, level]);
 
@@ -332,6 +384,35 @@ function Page({ level }: { level: LevelType }): ReactElement {
   useEffect(() => {
     if (solved && !level.revealCode) setCodeOpen(true);
   }, [solved, level.revealCode]);
+
+  useEffect(() => {
+    if (next === undefined) return;
+    const image = levelResponsiveImage(next.id);
+    if (image === null) return;
+
+    let cancelled = false;
+    const load = (): void => {
+      if (cancelled) return;
+      const preload = new Image();
+      preload.sizes = "100vw";
+      preload.srcset = srcSetOf(image.webp);
+      preload.src = image.fallback;
+    };
+
+    if (typeof window.requestIdleCallback === "function") {
+      const handle = window.requestIdleCallback(load, { timeout: 3000 });
+      return () => {
+        cancelled = true;
+        window.cancelIdleCallback(handle);
+      };
+    }
+
+    const handle = window.setTimeout(load, 2500);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(handle);
+    };
+  }, [next]);
 
   useEffect(
     () => () => {
@@ -414,6 +495,20 @@ function Page({ level }: { level: LevelType }): ReactElement {
     }
   }, [client, reader, address, accountReady, level.id, t, testOnly, previous]);
 
+  const refreshDiagnostics = useCallback(async () => {
+    if (!callable || !address) return;
+    setDiagnosticsLoading(true);
+    setDiagnosticsFailed(false);
+    try {
+      setDiagnostics(await readDiagnostics(callable, level.id, address));
+    } catch {
+      setDiagnostics(null);
+      setDiagnosticsFailed(true);
+    } finally {
+      setDiagnosticsLoading(false);
+    }
+  }, [callable, address, level.id]);
+
   const submit = useCallback(async () => {
     if (!flag.current.released()) return;
 
@@ -435,7 +530,6 @@ function Page({ level }: { level: LevelType }): ReactElement {
       setConfirmed(true);
       markSolved(level.id);
       clearSeasonCache(address ?? undefined);
-      setMessage({ tone: "ok", text: t("level.success") });
     } catch (error) {
       const code = contractErrorCode(error);
       const key = errorKey(code);
@@ -444,22 +538,12 @@ function Page({ level }: { level: LevelType }): ReactElement {
         setConfirmed(true);
         markSolved(level.id);
         clearSeasonCache(address ?? undefined);
-        setMessage({ tone: "ok", text: t("level.success") });
       } else if (code === ERR_OBJECTIVE_NOT_MET) {
         rejections.current += 1;
         emit({ type: "rejected", at: Date.now() });
         if (rejections.current === 3) emit({ type: "stuck", at: Date.now() });
         setMessage({ tone: "notice", text: t("level.failure") });
-        if (callable && address) {
-          setDiagnosticsLoading(true);
-          void readDiagnostics(callable, level.id, address)
-            .then((results) => setDiagnostics(results))
-            .catch(() => {
-              setDiagnostics(null);
-              setDiagnosticsFailed(true);
-            })
-            .finally(() => setDiagnosticsLoading(false));
-        }
+        void refreshDiagnostics();
       } else if (code === ERR_ACCESS_LOCKED) {
         setMessage({
           tone: "error",
@@ -479,7 +563,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
     } finally {
       setSubmitting(false);
     }
-  }, [client, instance, level.id, t, lock, markSolved, callable, address, previous]);
+  }, [client, instance, level.id, t, lock, markSolved, address, previous, refreshDiagnostics]);
 
   const canSubmit = !submitting && !locked && !solved;
   const codeHeader = solved && !level.revealCode;
@@ -490,9 +574,42 @@ function Page({ level }: { level: LevelType }): ReactElement {
       : level.id === 5
         ? `${t("home.boss")} I`
         : `${t("home.case")} ${levelCode(level.id)}`;
+  const showActions = mobileGameplay;
+  const startAction = (
+    <>
+      {accessible === false && (
+        <p className="message message--notice">
+          {t("error.accessLocked")}{" "}
+          {previous && (
+            <Link to={`/level/${previous.id}`}>
+              {t("level.previousCase", { code: levelCode(previous.id) })}
+            </Link>
+          )}
+        </p>
+      )}
+      <button
+        type="button"
+        className="button level-start__action"
+        onClick={() => void createInstance()}
+        disabled={creating || accountBusy}
+        aria-busy={creating}
+      >
+        {creating ? t("level.creating") : t("level.start.action")}
+      </button>
+      {creating && (
+        <p className="level-start__progress" role="status" aria-live="polite">
+          <span className="level-start__spinner" aria-hidden="true" />
+          {t("level.creatingDetail")}
+        </p>
+      )}
+    </>
+  );
 
   return (
-    <main id="main-content" className="content">
+    <main
+      id="main-content"
+      className={`content${showActions ? " content--actions" : ""}`}
+    >
       <LevelHero
         level={level}
         kind={kind}
@@ -521,8 +638,6 @@ function Page({ level }: { level: LevelType }): ReactElement {
           </p>
         )}
 
-        {solved && <p className="message message--ok">✓ {t("level.success")}</p>}
-
         <ThreadStrip
           caseFile={content?.caseFile ?? null}
           player={address ?? undefined}
@@ -536,19 +651,20 @@ function Page({ level }: { level: LevelType }): ReactElement {
               source={briefing}
               copyCommandLabel={level.id === 0 ? t("level.copyCommand") : undefined}
               onCopyCommand={level.id === 0 ? copy : undefined}
+              consoleCode={mobileGameplay ? "hide" : "show"}
             />
           )}
           {level.id > 0 && caseFile !== null && (
             <div className="level-operation">
               <h3>{t("level.operation.title")}</h3>
               <p>{caseFile.objective[language]}</p>
-              <p>{t("level.operation.discovery")}</p>
+              <p>{t(mobileGameplay ? "level.operation.discovery.mobile" : "level.operation.discovery")}</p>
               <p className="level-operation__question">{caseFile.unknown[0]?.[language]}</p>
             </div>
           )}
         </section>
 
-        {!instance && !solved && (
+        {!mobileGameplay && !instance && !solved && (
           <section className="level-start" aria-labelledby="level-start-title">
             <span className="level-start__eyebrow">{t("level.start.eyebrow")}</span>
             <h2 className="level-start__title" id="level-start-title">
@@ -560,25 +676,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
               <li>{t("level.start.step.console")}</li>
               <li>{t("level.start.step.submit")}</li>
             </ol>
-            {accessible === false && (
-              <p className="message message--notice">
-                {t("error.accessLocked")}{" "}
-                {previous && (
-                  <Link to={`/level/${previous.id}`}>
-                    {t("level.previousCase", { code: levelCode(previous.id) })}
-                  </Link>
-                )}
-              </p>
-            )}
-            <button
-              type="button"
-              className="button level-start__action"
-              onClick={() => void createInstance()}
-              disabled={creating || accountBusy}
-              aria-busy={creating}
-            >
-              {creating ? t("level.creating") : t("level.start.action")}
-            </button>
+            {startAction}
           </section>
         )}
 
@@ -586,7 +684,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
           <p className="notice notice--operation">{t("level.operation")}</p>
         )}
 
-        {level.id === 0 && (
+        {!mobileGameplay && level.id === 0 && (
           <section className="tutorial">
             <h2 className="tutorial__title">{t("level.tutorial.title")}</h2>
             <p>{t("level.tutorial.body")}</p>
@@ -615,89 +713,59 @@ function Page({ level }: { level: LevelType }): ReactElement {
                 </div>
               ))}
             </div>
-            <p className="tutorial__note">{t("level.tutorial.desktop")}</p>
+            <p className="tutorial__note">
+              {t("level.tutorial.desktop")}
+            </p>
           </section>
         )}
 
-        <div className="device-chip">
-          <button
-            type="button"
-            className="button button--secondary"
-            onClick={() => {
-              setOsFocus({ app: "investigation", at: Date.now() });
-              setOsOpen(true);
-            }}
-          >
-            {t("device.openDossier")}
-          </button>
-          <span className="device-chip__note">{t("device.chipNote")}</span>
-        </div>
-
-        <section className="box" id="contract">
-          <h2 className="box__title">{t("level.contract")}</h2>
-          {instance ? (
-            <div className="contract-id">
-              <span className="contract-id__value">{instance}</span>
-              <button
-                type="button"
-                className="button button--secondary"
-                onClick={() => void copy(instance)}
-              >
-                {t("wallet.copy")}
-              </button>
-            </div>
-          ) : (
-            <p className="muted">{t("level.noInstance")}</p>
-          )}
-          {instance && (
-            <p className="level-start__ready">{t("level.start.ready")}</p>
-          )}
-          {ledger && (
-            <p className="ledger-clock">
-              {level.id === 9
-                ? `${t("ledger.current", { value: ledger.current })} · ${t("ledger.predict")}`
-                : ledgersUntil(ledger.target, ledger.latest) > 0
-                  ? t("ledger.wait", {
-                      count: ledgersUntil(ledger.target, ledger.latest),
-                      seconds: secondsFor(ledgersUntil(ledger.target, ledger.latest)),
-                    })
-                  : t("ledger.ready")}
-            </p>
-          )}
-        </section>
+        {ledger && (
+          <p className="ledger-clock">
+            {level.id === 9
+              ? `${t("ledger.current", { value: ledger.current })} · ${t("ledger.predict")}`
+              : ledgersUntil(ledger.target, ledger.latest) > 0
+                ? t("ledger.wait", {
+                    count: ledgersUntil(ledger.target, ledger.latest),
+                    seconds: secondsFor(ledgersUntil(ledger.target, ledger.latest)),
+                  })
+                : t("ledger.ready")}
+          </p>
+        )}
 
         <AccountNotice />
 
-        <div className="buttons">
-          {instance && (
+        {!mobileGameplay && (
+          <div className="buttons">
+            {instance && (
+              <button
+                type="button"
+                className="button"
+                onClick={() => void createInstance()}
+                disabled={creating || accountBusy}
+                aria-busy={creating}
+              >
+                {creating ? t("level.creating") : t("level.newInstance")}
+              </button>
+            )}
+
             <button
               type="button"
-              className="button"
-              onClick={() => void createInstance()}
-              disabled={creating || accountBusy}
-              aria-busy={creating}
+              className="button button--secondary"
+              onClick={() => void submit()}
+              disabled={!canSubmit}
+              aria-busy={submitting}
             >
-              {creating ? t("level.creating") : t("level.newInstance")}
+              {submitting ? t("level.submitting") : t("level.submit")}
             </button>
-          )}
 
-          <button
-            type="button"
-            className="button button--secondary"
-            onClick={() => void submit()}
-            disabled={!canSubmit}
-            aria-busy={submitting}
-          >
-            {submitting ? t("level.submitting") : t("level.submit")}
-          </button>
-
-          {solved && next && (
-            <Link className="button" to={`/level/${next.id}`}>
-              {t("level.next")}
-            </Link>
-          )}
-          {solved && !next && <Link className="button" to="/final">{t("levelHero.continueStory")}</Link>}
-        </div>
+            {solved && next && (
+              <Link className="button" to={`/level/${next.id}`}>
+                {t("level.next")}
+              </Link>
+            )}
+            {solved && !next && <Link className="button" to="/final">{t("levelHero.continueStory")}</Link>}
+          </div>
+        )}
 
         {message && (
           <div className={"message message--" + message.tone}>
@@ -762,45 +830,40 @@ function Page({ level }: { level: LevelType }): ReactElement {
           </div>
         )}
 
-        {!solved && level.id <= 2 && (
-          <p className="notice">
-            <span>{t("level.hint")}</span>
-            <Link to="/help">{t("level.seeHelp")}</Link>
-          </p>
+        {!mobileGameplay && (
+          <section className={codeHeader || level.revealCode ? "box box--raw" : "box"} id="source">
+            <div className="box__head">
+              <h2 className="box__title">{t("level.code")}</h2>
+              {codeHeader && (
+                <button
+                  type="button"
+                  className="button button--secondary"
+                  onClick={() => setCodeOpen((previous) => !previous)}
+                >
+                  {codeOpen ? t("level.hide") : t("level.reveal")}
+                </button>
+              )}
+            </div>
+            {content !== null &&
+              (level.revealCode || codeOpen ? (
+                <Suspense
+                  fallback={
+                    <pre className="code-raw" data-loading="true">
+                      <code>{content.source}</code>
+                    </pre>
+                  }
+                >
+                  <Code source={content.source} />
+                </Suspense>
+              ) : (
+                <p className="box__note">
+                  {level.difficulty === 0
+                    ? t("level.hiddenCodeTutorial")
+                    : t("level.hiddenCode")}
+                </p>
+              ))}
+          </section>
         )}
-
-        <section className={codeHeader || level.revealCode ? "box box--raw" : "box"} id="source">
-          <div className="box__head">
-            <h2 className="box__title">{t("level.code")}</h2>
-            {codeHeader && (
-              <button
-                type="button"
-                className="button button--secondary"
-                onClick={() => setCodeOpen((previous) => !previous)}
-              >
-                {codeOpen ? t("level.hide") : t("level.reveal")}
-              </button>
-            )}
-          </div>
-          {content !== null &&
-            (level.revealCode || codeOpen ? (
-              <Suspense
-                fallback={
-                  <pre className="code-raw" data-loading="true">
-                    <code>{content.source}</code>
-                  </pre>
-                }
-              >
-                <Code source={content.source} />
-              </Suspense>
-            ) : (
-              <p className="box__note">
-                {level.difficulty === 0
-                  ? t("level.hiddenCodeTutorial")
-                  : t("level.hiddenCode")}
-              </p>
-            ))}
-        </section>
 
         {solved && conclusion && (
           <section className="box" id="debrief">
@@ -812,9 +875,52 @@ function Page({ level }: { level: LevelType }): ReactElement {
 
       </div>
 
+      {showActions && (
+        <nav className="level-actions" aria-label={t("level.actions")}>
+          <div className="level-actions__row">
+            {solved ? (
+              next !== undefined ? (
+                <Link className="button level-actions__next" to={`/level/${next.id}`}>
+                  {t("level.next")}
+                </Link>
+              ) : (
+                <Link className="button level-actions__next" to="/final">
+                  {t("levelHero.continueStory")}
+                </Link>
+              )
+            ) : (
+              <>
+                <button
+                  type="button"
+                  className="button button--secondary"
+                  onPointerEnter={preloadBreakerDevice}
+                  onFocus={preloadBreakerDevice}
+                  onClick={() => {
+                    setOsFocus({ app: "operations", at: Date.now() });
+                    setOsOpen(true);
+                  }}
+                >
+                  {t("level.openOperations")}
+                </button>
+                <button
+                  type="button"
+                  className="button"
+                  onClick={() => void submit()}
+                  disabled={!canSubmit || instance === null}
+                  aria-busy={submitting}
+                >
+                  {submitting ? t("level.submitting") : t("level.submit")}
+                </button>
+              </>
+            )}
+          </div>
+        </nav>
+      )}
+
       <dialog
         className="breaker-device-dialog"
         ref={osDialog}
+        tabIndex={-1}
         aria-label="Breaker OS"
         onCancel={() => setOsOpen(false)}
         onClose={() => setOsOpen(false)}
@@ -822,8 +928,8 @@ function Page({ level }: { level: LevelType }): ReactElement {
           if (event.target === event.currentTarget) setOsOpen(false);
         }}
       >
-        {osOpen && (
-          <Suspense fallback={<div role="status" aria-busy="true" />}>
+        {(osOpen || osMounted) && (
+          <Suspense fallback={<Loading label={t("device.opening")} />}>
             <BreakerDevice
               level={level}
               narrative={content?.narrative ?? null}
@@ -831,17 +937,24 @@ function Page({ level }: { level: LevelType }): ReactElement {
               instance={instance ?? undefined}
               caseFile={content?.caseFile ?? null}
               solved={solved}
-              open
+              open={osOpen}
               onToggle={() => setOsOpen(false)}
               caseState={caseNarrative}
               focus={osFocus}
+              contractSpec={contractSpec}
+              onCreateInstance={() => void createInstance()}
+              creatingInstance={creating}
             />
           </Suspense>
         )}
       </dialog>
 
       {gate && <Gate onClose={() => setGate(false)} />}
-      {copied && <p className="toast">{t("wallet.copied")}</p>}
+      {copied && (
+        <p className="toast" role="status" aria-live="polite">
+          {t("wallet.copied")}
+        </p>
+      )}
     </main>
   );
 }

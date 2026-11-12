@@ -5,14 +5,14 @@
     "es": "Robar acceso sin robar la clave."
   },
   "target": {
-    "pt-BR": "Bloqueio temporal da Spire",
+    "pt-BR": "Bloqueio temporal da Torre",
     "en": "Spire timelock",
     "es": "Bloqueo de tiempo de aguja"
   },
   "owner": {
-    "pt-BR": "Operador legítimo da Spire",
+    "pt-BR": "Operador legítimo da Torre",
     "en": "Legitimate Spire operator",
-    "es": "Operador legítimo de Spire"
+    "es": "Operador legítimo de Aguja"
   },
   "network": {
     "pt-BR": "Stellar testnet",
@@ -20,9 +20,9 @@
     "es": "Stellar Testnet"
   },
   "lead": {
-    "pt-BR": "A torre conhecida como The Spire fica acima de Meridian. Antes da primeira consulta, a Meridian Authority interrompe o canal: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. O mandato concedido no Vault acabou.",
+    "pt-BR": "A Torre se ergue acima de Meridian. Antes da primeira consulta, a Autoridade de Meridian interrompe o canal: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. O mandato concedido no cofre acabou.",
     "en": "The Spire rises above Meridian. Before the first query, the Authority interrupts the channel: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. The mandate granted at the Vault has ended.",
-    "es": "La torre The Spire se eleva sobre Meridian. Ante la primera consulta, la Autoridad interrumpe el canal: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. El mandato otorgado en el Vault ha finalizado."
+    "es": "La Aguja se eleva sobre Meridian. Ante la primera consulta, la Autoridad interrumpe el canal: CASE STATUS: TERMINATED / EXTERNAL ACCESS: REVOKED. El mandato otorgado en la bóveda ha finalizado."
   },
   "known": [
     {

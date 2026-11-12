@@ -12,7 +12,8 @@ vulnerable contract that the player has to exploit to move forward.
 - A progressive game about real Soroban vulnerabilities.
 - Every player gets their own on-chain instance of each level.
 - Validation is on-chain: a contract checks whether the objective was met.
-- Interaction happens in the browser's native DevTools console.
+- On desktop, the browser's native DevTools console is the primary interface; Breaker OS also
+  offers the **Operations** app, on desktop and mobile.
 - Anyone can write a level; official levels are curated, and your own run in your own game.
 
 ## What it is not
@@ -61,12 +62,30 @@ cd frontend && VITE_DEPLOYMENT_PROFILE=sandbox npm run dev  # sandbox, no progre
 ./scripts/keeper.sh --plan       # what the keeper would extend, without touching the network
 ```
 
+### Mobile
+
+On a phone or tablet, open the game over HTTPS (or `localhost` in development). The login offers a
+passkey (Testnet only, platform authenticator required) alongside a Stellar wallet. Once a case has
+an instance, open **Breaker OS → Operations** to write and run JavaScript against `window.contract`;
+the case page still creates the instance and submits the solution. `127.0.0.1` is rejected for
+passkeys — use `localhost` or an HTTPS host. The same Operations app is available inside Breaker
+OS on desktop; the browser console remains the primary desktop path.
+
 **Build contracts with `./contracts/build.sh`**, which calls `stellar contract build`.
 Never call `cargo` directly: the two produce different bytes for the same source, and the
 ledger hash would stop matching what the player rebuilds.
 
 **Commands that write to the network are gated.** Read [`AGENTS.md`](AGENTS.md) before running
 `deploy.sh` or `exploit.sh`.
+
+### Deploy (Vercel)
+
+The frontend is a static Vite build. Set the Vercel project **Root Directory** to `frontend`; the
+committed `frontend/vercel.json` defines the build, the SPA rewrite and the cache headers. Hashed
+`/assets/` and `/fonts/` are immutable; `/sw.js`, the web manifest and the HTML routes are
+revalidated; `/images/` and `/icons/` use stale-while-revalidate. The service worker is generated
+by `vite-plugin-pwa` at build time — there is no `public/sw.js`. Run `npm run images` after
+changing art and commit the generated variants.
 
 ## Repository layout
 

@@ -91,6 +91,18 @@ describe("real wallet engine", () => {
     expect(connected).toMatchObject({ address: "GPLAYER", rightNetwork: true });
   });
 
+  it("sets the wallet kit to Testnet on every viewport", async () => {
+    vi.stubGlobal("window", {
+      matchMedia: vi.fn().mockReturnValue({ matches: false }),
+    });
+    kit.authModal.mockResolvedValue({ address: "GPLAYER" });
+    kit.getNetwork.mockResolvedValue({ network: "TESTNET", networkPassphrase: PASSPHRASE });
+
+    await realEngine.connect();
+
+    expect(kit.init).toHaveBeenCalledWith(expect.objectContaining({ network: PASSPHRASE }));
+  });
+
   it("flags a wallet that is on another network", async () => {
     kit.authModal.mockResolvedValue({ address: "GPLAYER" });
     kit.getNetwork.mockResolvedValue({

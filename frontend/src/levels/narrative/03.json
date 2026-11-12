@@ -4,18 +4,18 @@
       "trigger": "previous-solved",
       "speaker": "system",
       "text": {
-        "pt-BR": "Mara registra a prova e a revogação. “O Armazém 17 não existe.” Os mapas modernos não retornam resultado, mas uma malha antiga de manutenção conserva uma rota em Lower Meridian.",
+        "pt-BR": "Mara registra a prova e a revogação. “O Armazém 17 não existe.” Os mapas modernos não retornam resultado, mas uma malha antiga de manutenção conserva uma rota em Meridian Inferior.",
         "en": "Mara records the evidence and the release. “Warehouse 17 does not exist.” Modern maps return no result, but an old maintenance network retains a route in Lower Meridian.",
-        "es": "Mara registra la evidencia y la liberación. \"El almacén 17 no existe\". Los mapas modernos no arrojan resultados, pero una antigua red de mantenimiento conserva una ruta en Lower Meridian."
+        "es": "Mara registra la evidencia y la liberación. \"El almacén 17 no existe\". Los mapas modernos no arrojan resultados, pero una antigua red de mantenimiento conserva una ruta en Meridian Inferior."
       }
     },
     {
       "trigger": "start",
       "speaker": "mara",
       "text": {
-        "pt-BR": "“Você olha o que o contrato aceitou. Eu estou procurando quem perdeu o equipamento.” Entre os itens há um dispositivo ligado às imagens do Vault. O auditor precisa alcançá-lo sem confundir posse registrada com direito.",
+        "pt-BR": "“Você olha o que o contrato aceitou. Eu estou procurando quem perdeu o equipamento.” Entre os itens há um dispositivo ligado às imagens do cofre. O auditor precisa alcançá-lo sem confundir posse registrada com direito.",
         "en": "“You are looking at what the contract accepted. I am looking for who lost the equipment.” Among the items is a device linked to the Vault images. The auditor must reach it without confusing registered ownership with entitlement.",
-        "es": "\"Estás mirando lo que aceptó el contrato. Estoy buscando quién perdió el equipo\". Entre los elementos se encuentra un dispositivo vinculado a las imágenes de Vault. El auditor debe alcanzarlo sin confundir propiedad registrada con derecho."
+        "es": "\"Estás mirando lo que aceptó el contrato. Estoy buscando quién perdió el equipo\". Entre los elementos se encuentra un dispositivo vinculado a las imágenes de bóveda. El auditor debe alcanzarlo sin confundir propiedad registrada con derecho."
       }
     },
     {
@@ -70,9 +70,9 @@
         "es": "Orden de servicio pendiente"
       },
       "value": {
-        "pt-BR": "Lower Meridian / documento obtido por Mara",
+        "pt-BR": "Meridian Inferior / documento obtido por Mara",
         "en": "Lower Meridian / document obtained by Mara",
-        "es": "Lower Meridian / documento obtenido por Mara"
+        "es": "Meridian Inferior / documento obtenido por Mara"
       },
       "reveal": "start",
       "documentId": "03-document-1"
@@ -141,9 +141,9 @@
         "es": "Orden de servicio pendiente"
       },
       "source": {
-        "pt-BR": "Lower Meridian / documento obtido por Mara",
+        "pt-BR": "Meridian Inferior / documento obtido por Mara",
         "en": "Lower Meridian / document obtained by Mara",
-        "es": "Lower Meridian / documento obtenido por Mara"
+        "es": "Meridian Inferior / documento obtenido por Mara"
       },
       "body": [
         {
@@ -178,14 +178,14 @@
           "es": "La pista quedó preservada. El Breaker libera explícitamente el control indebido. La adquisición queda en la historia; cerrar una ventana no borraría el estado persistente."
         },
         {
-          "pt-BR": "Mara registra a prova e a revogação. “O Armazém 17 não existe.” Os mapas modernos não retornam resultado, mas uma malha antiga de manutenção conserva uma rota em Lower Meridian.",
+          "pt-BR": "Mara registra a prova e a revogação. “O Armazém 17 não existe.” Os mapas modernos não retornam resultado, mas uma malha antiga de manutenção conserva uma rota em Meridian Inferior.",
           "en": "Mara records the evidence and the release. “Warehouse 17 does not exist.” Modern maps return no result, but an old maintenance network retains a route in Lower Meridian.",
-          "es": "Mara registra la evidencia y la liberación. \"El almacén 17 no existe\". Los mapas modernos no arrojan resultados, pero una antigua red de mantenimiento conserva una ruta en Lower Meridian."
+          "es": "Mara registra la evidencia y la liberación. \"El almacén 17 no existe\". Los mapas modernos no arrojan resultados, pero una antigua red de mantenimiento conserva una ruta en Meridian Inferior."
         },
         {
-          "pt-BR": "A investigação deixa o Vault. Uma identidade que deveria estar encerrada acaba de apontar para um lugar que a cidade afirma não possuir.",
+          "pt-BR": "A investigação deixa o cofre. Uma identidade que deveria estar encerrada acaba de apontar para um lugar que a cidade afirma não possuir.",
           "en": "The investigation leaves the Vault. An identity that should be closed has pointed to a place the city claims it does not have.",
-          "es": "La investigación sale de el Vault. Una identidad que debería cerrarse ha señalado un lugar que la ciudad dice no tener."
+          "es": "La investigación sale de la bóveda. Una identidad que debería cerrarse ha señalado un lugar que la ciudad dice no tener."
         }
       ],
       "reveal": "previous-solved"

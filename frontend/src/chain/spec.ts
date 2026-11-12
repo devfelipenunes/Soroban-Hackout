@@ -1,4 +1,4 @@
-import type { Descriptor, Entry } from "./globals.ts";
+import type { Descriptor, Entry, Variant } from "./globals.ts";
 
 const CONSTRUCTOR = "__constructor";
 
@@ -53,6 +53,45 @@ function text(value: unknown): string | undefined {
   return rendered === "" || rendered === "[object Object]" ? undefined : rendered;
 }
 
+function udtName(type: unknown): string | undefined {
+  const json = toJson(type);
+  if (json === null || typeof json !== "object") return undefined;
+  const udt = (json as { udt?: unknown }).udt;
+  if (typeof udt === "string") return udt;
+  if (udt === null || typeof udt !== "object") return undefined;
+  return text((udt as { name?: unknown }).name);
+}
+
+function unionVariants(spec: unknown, name: string): Variant[] | undefined {
+  const findEntry = (spec as { findEntry?: unknown } | null)?.findEntry;
+  if (typeof findEntry !== "function") return undefined;
+
+  let found: unknown;
+  try {
+    found = (findEntry as (entryName: string) => unknown).call(spec, name);
+  } catch {
+    return undefined;
+  }
+
+  const entry = read<{ value?: unknown }>(found);
+  const definition = read<{ cases?: unknown }>(entry?.value);
+  const cases = read<unknown[]>(definition?.cases, definition);
+  if (!Array.isArray(cases)) return undefined;
+
+  return cases.flatMap((item) => {
+    const shape = item as { type?: unknown; value?: unknown } | null;
+    const value = read<{ name?: unknown; type?: unknown }>(shape?.value);
+    const variantName = text(value?.name);
+    if (variantName === undefined) return [];
+    const caseType = String(read<unknown>(shape?.type, shape) ?? "");
+    const rawInputs = read<unknown[]>(value?.type, value);
+    const inputs = caseType.includes("Tuple") && Array.isArray(rawInputs)
+      ? rawInputs.map(typeName)
+      : [];
+    return [{ name: variantName, inputs }];
+  });
+}
+
 function typeName(kind: unknown): string {
   const json = toJson(kind);
 
@@ -67,6 +106,7 @@ function typeName(kind: unknown): string {
       const body = shape[key] as Record<string, unknown> | null | undefined;
 
       if (key === "bytes_n") return `BytesN<${String(body?.["n"] ?? "?")}>`;
+      if (key === "udt") return text(body?.["name"]) ?? label(key);
 
       const element = body?.["element_type"];
       if (element !== undefined) return `${label(key)}<${typeName(element)}>`;
@@ -81,14 +121,21 @@ function typeName(kind: unknown): string {
   return "?";
 }
 
-function entriesOf(raw: unknown, receiver: unknown): Entry[] {
+function entriesOf(raw: unknown, receiver: unknown, spec: unknown): Entry[] {
   const list = read<unknown[]>(raw, receiver);
   if (!Array.isArray(list)) return [];
 
-  return list.map((item) => ({
-    name: text((item as { name?: unknown } | null)?.name) ?? "?",
-    kind: typeName((item as { type?: unknown } | null)?.type),
-  }));
+  return list.map((item) => {
+    const input = item as { name?: unknown; type?: unknown } | null;
+    const type = input?.type;
+    const name = udtName(type);
+    const variants = name === undefined ? undefined : unionVariants(spec, name);
+    return {
+      name: text(input?.name) ?? "?",
+      kind: typeName(type),
+      ...(variants === undefined ? {} : { variants }),
+    };
+  });
 }
 
 export function descriptorsFromSpec(spec: unknown): Descriptor[] {
@@ -109,7 +156,7 @@ export function descriptorsFromSpec(spec: unknown): Descriptor[] {
       {
         name,
         doc: text((f as { doc?: unknown } | null)?.doc),
-        entries: entriesOf((f as { inputs?: unknown } | null)?.inputs, f),
+        entries: entriesOf((f as { inputs?: unknown } | null)?.inputs, f, spec),
         outputs: Array.isArray(outputs) ? outputs.map(typeName) : [],
       },
     ];

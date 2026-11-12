@@ -10,6 +10,7 @@ import { useWallet } from "../wallet/context.tsx";
 import { Gate } from "../components/Gate.tsx";
 
 import { Clouds } from "../components/Clouds.tsx";
+import { ResponsiveImage } from "../components/ResponsiveImage.tsx";
 import { Smoke } from "../components/Smoke.tsx";
 import { useLanguage } from "../i18n/language.tsx";
 import { languageCode, nextLanguage } from "../i18n/translate.ts";
@@ -20,7 +21,22 @@ export function Login(): ReactElement {
   const wallet = useWallet();
   const navigate = useNavigate();
   const [gate, setGate] = useState(false);
+  const [passkeyFlow, setPasskeyFlow] = useState<"create" | "connect" | null>(null);
   const connecting = wallet.state.phase === "checking";
+
+  useEffect(() => {
+    if (wallet.state.phase !== "checking") setPasskeyFlow(null);
+  }, [wallet.state.phase]);
+
+  const startPasskey = (flow: "create" | "connect"): void => {
+    setPasskeyFlow(flow);
+    if (flow === "create") void wallet.createPasskey?.();
+    else void wallet.connectPasskey?.();
+  };
+
+  const preloadPasskey = (): void => {
+    void import("../wallet/passkey-engine.ts").catch(() => {});
+  };
 
   useEffect(() => {
     if (wallet.state.phase !== "connected") return;
@@ -28,8 +44,8 @@ export function Login(): ReactElement {
   }, [wallet.state.phase, navigate]);
 
   useEffect(() => {
-    document.title = "Enter Meridian — BREAKER";
-  }, []);
+    document.title = `${t("login.enter")} — BREAKER`;
+  }, [t]);
 
   const setTilt = (x: string, y: string, glowX: string, glowY: string): void => {
     const node = mark.current;
@@ -57,7 +73,14 @@ export function Login(): ReactElement {
 
   return (
     <main className="login">
-      <img className="login__backdrop" src="/images/login/meridian.webp" alt="" />
+      <ResponsiveImage
+        className="login__backdrop"
+        src="/images/login/meridian.webp"
+        alt=""
+        sizes="100vw"
+        loading="eager"
+        fetchPriority="high"
+      />
       <Smoke />
       <Clouds />
       <div className="login__veil" aria-hidden="true" />
@@ -72,9 +95,10 @@ export function Login(): ReactElement {
         type="button"
         className="login__language"
         onClick={() => toggleLanguage(nextLanguage(language))}
-        aria-label={t("language.label")}
+        aria-label={`${languageCode(language)} — ${t("language.label")}`}
+        title={`${languageCode(language)} — ${t("language.label")}`}
       >
-        {languageCode(nextLanguage(language))}
+        {languageCode(language)}
       </button>
 
       <div className="login__inner">
@@ -84,24 +108,67 @@ export function Login(): ReactElement {
           onPointerMove={onMove}
           onPointerLeave={onLeave}
         >
-          <img className="login__logo" src="/images/brand/breaker-logo.webp" alt="BREAKER" />
+          <ResponsiveImage
+            className="login__logo"
+            src="/images/brand/breaker-logo.webp"
+            alt="BREAKER"
+            sizes="(max-width: 640px) 100vw, 37rem"
+            loading="eager"
+            fetchPriority="high"
+          />
         </div>
 
         <div className="login__season-card" aria-label={t("home.eyebrow")}>
           <span className="login__season">{t("home.eyebrow")}</span>
         </div>
         <div className="login__actions">
+          {wallet.createPasskey && (
+            <div
+              className="login__passkey-actions"
+              onPointerEnter={preloadPasskey}
+              onFocus={preloadPasskey}
+              onTouchStart={preloadPasskey}
+            >
+              <button
+                type="button"
+                className="login__button login__button--passkey"
+                disabled={connecting}
+                onClick={() => startPasskey("create")}
+              >
+                <svg className="login__passkey-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M15 3a6 6 0 0 0-5.6 8.15L3 17.55V21h3.45l1.7-1.7v-1.8h1.8l1.55-1.55A6 6 0 1 0 15 3Zm2 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" />
+                </svg>
+                <span className="login__label">{t("wallet.passkey.create")}</span>
+              </button>
+              <button
+                type="button"
+                className="login__passkey-return"
+                disabled={connecting}
+                onClick={() => startPasskey("connect")}
+              >
+                {t("wallet.passkey.connect")}
+              </button>
+              {passkeyFlow !== null ? (
+                <div
+                  className="login__passkey-progress"
+                  role="status"
+                  aria-live="polite"
+                  aria-busy="true"
+                  aria-label={t("wallet.connecting")}
+                >
+                  <span className="login__spinner" aria-hidden="true" />
+                </div>
+              ) : null}
+            </div>
+          )}
           <button type="button" className="login__button login__button--wallet"
             disabled={connecting}
             onClick={() => {
               if (wallet.state.phase === "no-extension" || wallet.state.phase === "incompatible") setGate(true);
               else void wallet.connect();
             }}>
-            <span className="login__label">{t(connecting ? "wallet.connecting" : "wallet.connect")}</span>
+            <span className="login__label">{t("wallet.connect")}</span>
           </button>
-          {wallet.state.phase === "failed" && <p className="login__feedback" role="alert">{t("wallet.failed.title")} {wallet.state.reason}</p>}
-          {wallet.state.phase === "wrong-network" && <p className="login__feedback" role="alert">{t("wallet.wrongNetwork.body")}</p>}
-          {wallet.state.phase === "network-unverified" && <p className="login__feedback" role="alert">{t("wallet.networkUnverified.body")}</p>}
         </div>
 
         <div className="login__divider" aria-hidden="true">

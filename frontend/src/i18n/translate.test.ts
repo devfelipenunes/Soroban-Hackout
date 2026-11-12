@@ -87,10 +87,10 @@ describe("language selector", () => {
     expect(nextLanguage("es")).toBe("pt-BR");
   });
 
-  it("shows the locale code for the next language", () => {
-    expect(languageCode(nextLanguage("pt-BR"))).toBe("EN");
-    expect(languageCode(nextLanguage("en"))).toBe("ES");
-    expect(languageCode(nextLanguage("es"))).toBe("PT");
+  it("shows the locale code for each language", () => {
+    expect(languageCode("pt-BR")).toBe("PT");
+    expect(languageCode("en")).toBe("EN");
+    expect(languageCode("es")).toBe("ES");
   });
 });
 

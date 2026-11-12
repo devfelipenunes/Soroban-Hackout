@@ -1,8 +1,8 @@
 {
   "objective": {
-    "pt-BR": "Entre no Vault sem possuir a chave.",
+    "pt-BR": "Entre no cofre sem possuir a chave.",
     "en": "Enter the Vault without possessing its key.",
-    "es": "Entra al Vault sin tener tu llave."
+    "es": "Entra a la bóveda sin tener tu llave."
   },
   "target": {
     "pt-BR": "Contrato do portão de acesso",

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type ReactElement, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactElement } from "react";
 
 import { useWallet, type Wallet, type WalletState } from "../wallet/context.tsx";
 import { useLanguage } from "../i18n/language.tsx";
@@ -306,23 +306,6 @@ function Body({
       )}
 
       <p className="gate__note">{t("footer.notice")}</p>
-    </>
-  );
-}
-
-export function WithGate({
-  open,
-  onClose,
-  children,
-}: {
-  open: boolean;
-  onClose: () => void;
-  children: ReactNode;
-}): ReactElement {
-  return (
-    <>
-      {children}
-      {open && <Gate onClose={onClose} />}
     </>
   );
 }

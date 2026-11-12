@@ -44,7 +44,8 @@ async function requestFromFriendbot(address: string): Promise<void> {
 }
 
 export function AccountProvider({ children }: { children: ReactNode }) {
-  const { address, testOnly } = useWallet();
+  const { address, signer, testOnly } = useWallet();
+  const transactionSource = signer?.transactionSource ?? address;
   const [status, setStatus] = useState<FundingStatus>({ phase: "idle" });
 
   useEffect(() => {
@@ -53,7 +54,7 @@ export function AccountProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    if (!address) {
+    if (!transactionSource) {
       setStatus({ phase: "idle" });
       return;
     }
@@ -64,13 +65,13 @@ export function AccountProvider({ children }: { children: ReactNode }) {
       setStatus({ phase: "checking" });
 
       try {
-        if (await exists(address)) {
+        if (await exists(transactionSource)) {
           if (alive) setStatus({ phase: "ready" });
           return;
         }
 
         if (alive) setStatus({ phase: "funding" });
-        await requestFromFriendbot(address);
+        await requestFromFriendbot(transactionSource);
         if (alive) setStatus({ phase: "ready" });
       } catch (error) {
         if (alive) setStatus({ phase: "failed", reason: reasonOf(error) });
@@ -80,21 +81,21 @@ export function AccountProvider({ children }: { children: ReactNode }) {
     return () => {
       alive = false;
     };
-  }, [address, testOnly]);
+  }, [transactionSource, testOnly]);
 
   const fund = useCallback(async () => {
     if (testOnly) return;
-    if (!address) return;
+    if (!transactionSource) return;
 
     setStatus({ phase: "funding" });
 
     try {
-      await requestFromFriendbot(address);
+      await requestFromFriendbot(transactionSource);
       setStatus({ phase: "ready" });
     } catch (error) {
       setStatus({ phase: "failed", reason: reasonOf(error) });
     }
-  }, [address, testOnly]);
+  }, [transactionSource, testOnly]);
 
   const value = useMemo<Value>(
     () => ({

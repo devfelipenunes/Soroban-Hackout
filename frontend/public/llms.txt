@@ -1,0 +1,13 @@
+# BREAKER — The First Layer
+
+BREAKER is a browser-based investigative RPG about Soroban smart contracts on the Stellar testnet. Each case is a real contract with a real flaw; the player investigates it through the in-game Breaker OS or the browser console.
+
+- Season 01: The First Layer
+- Languages: pt-BR, en, es
+- Stack: React, Vite, Stellar/Soroban
+
+## Pages
+
+- [Home](/) — the season hub and case list.
+- [Help](/help) — how to play.
+- [Login](/login) — wallet or passkey entry.

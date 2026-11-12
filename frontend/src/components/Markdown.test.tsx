@@ -10,4 +10,58 @@ describe("the markdown renderer", () => {
     expect(html).not.toContain("javascript:");
     expect(html).toContain('href="#"');
   });
+
+  it("renders raw HTML as text instead of markup", () => {
+    const html = renderToStaticMarkup(
+      <Markdown source={'<img src="x" onerror="alert(1)">'} />,
+    );
+
+    expect(html).not.toContain("<img");
+    expect(html).toContain("&lt;img");
+  });
+
+  it("neutralizes a data: link", () => {
+    const html = renderToStaticMarkup(
+      <Markdown source={"[x](data:text/html,<script>alert(1)</script>)"} />,
+    );
+
+    expect(html).not.toContain("data:text/html");
+    expect(html).toContain('href="#"');
+  });
+
+  it("drops a desktop-only block when the console code is hidden", () => {
+    const html = renderToStaticMarkup(
+      <Markdown
+        source={"[[desktop-only]]\nconsole path\n[[/desktop-only]]\n\nshared path"}
+        consoleCode="hide"
+      />,
+    );
+
+    expect(html).not.toContain("console path");
+    expect(html).toContain("shared path");
+    expect(html).not.toContain("desktop-only");
+  });
+
+  it("keeps a desktop-only block on desktop and strips its markers", () => {
+    const html = renderToStaticMarkup(
+      <Markdown source={"[[desktop-only]]console path[[/desktop-only]]"} />,
+    );
+
+    expect(html).toContain("console path");
+    expect(html).not.toContain("desktop-only");
+  });
+
+  it("drops an inline desktop-only sentence when the console code is hidden", () => {
+    const html = renderToStaticMarkup(
+      <Markdown
+        source={"keep [[desktop-only]]drop[[/desktop-only]] end"}
+        consoleCode="hide"
+      />,
+    );
+
+    expect(html).toContain("keep");
+    expect(html).toContain("end");
+    expect(html).not.toContain("drop");
+    expect(html).not.toContain("desktop-only");
+  });
 });

@@ -2,7 +2,13 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { CoreReads } from "../chain/level.ts";
 import { LEVELS } from "../levels/index.ts";
-import { activateSeasonCache, clearSeasonCache, loadStoredSeason, readSeason } from "./season.ts";
+import {
+  activateSeasonCache,
+  clearSeasonCache,
+  loadStoredSeason,
+  lockedLevelIds,
+  readSeason,
+} from "./season.ts";
 
 const fake = (): {
   client: CoreReads;
@@ -28,6 +34,17 @@ const fake = (): {
 
 beforeEach(() => clearSeasonCache());
 afterEach(() => vi.unstubAllGlobals());
+
+describe("lockedLevelIds", () => {
+  it("does not lock cases when progress could not be read", () => {
+    expect(lockedLevelIds("error", [0, 1, 2], [false, false, false])).toEqual([]);
+    expect(lockedLevelIds("checking", [0, 1], [false, false])).toEqual([]);
+  });
+
+  it("locks only the cases the chain marks inaccessible", () => {
+    expect(lockedLevelIds("ready", [0, 1, 2], [true, false, true])).toEqual([1]);
+  });
+});
 
 describe("the season read cache", () => {
   it("reads each level's verdict once and then serves the cache", async () => {

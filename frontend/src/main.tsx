@@ -7,12 +7,13 @@ import { Boundary } from "./components/Boundary.tsx";
 import { Broken } from "./pages/Broken.tsx";
 import { useWallet, WalletProvider } from "./wallet/context.tsx";
 import type { WalletEngine } from "./wallet/engine.ts";
-import { realEngine } from "./wallet/real-engine.ts";
+import { walletEngineForViewport } from "./wallet/mobile-engine.ts";
 import { LanguageProvider } from "./i18n/language.tsx";
 import { ProgressProvider } from "./game/progress.tsx";
 import { migrateLegacyStorage } from "./game/storage.ts";
 
 import "./styles/base.css";
+import "./styles/passkey-mobile.css";
 
 const AccountProvider = lazy(() =>
   import("./chain/account.tsx").then(({ AccountProvider: Provider }) => ({
@@ -48,7 +49,7 @@ const localTestEngine: WalletEngine = {
 
 const useLocalTestWallet =
   import.meta.env.DEV && new URLSearchParams(window.location.search).get("breaker-test-wallet") === "1";
-const walletEngine = useLocalTestWallet ? localTestEngine : realEngine;
+const walletEngine = useLocalTestWallet ? localTestEngine : walletEngineForViewport();
 
 const root = document.getElementById("root");
 if (!root) {
@@ -56,6 +57,10 @@ if (!root) {
 }
 
 migrateLegacyStorage();
+
+if (import.meta.env.PROD && "caches" in window) {
+  void caches.delete("breaker-shell-v1");
+}
 
 createRoot(root).render(
   <StrictMode>

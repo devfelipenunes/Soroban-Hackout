@@ -12,6 +12,15 @@ import { useWallet } from "../wallet/context.tsx";
 
 export type SeasonStatus = "cached" | "checking" | "no-wallet" | "ready" | "error";
 
+export function lockedLevelIds(
+  status: SeasonStatus,
+  levelIds: readonly number[],
+  accessible: readonly boolean[],
+): readonly number[] {
+  if (status !== "ready") return [];
+  return levelIds.filter((_, index) => accessible[index] !== true);
+}
+
 export type SeasonProgress = {
   readonly status: SeasonStatus;
   readonly completed: readonly boolean[];

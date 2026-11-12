@@ -12,6 +12,7 @@ import {
   type FinalText,
 } from "../levels/epilogue.ts";
 import { LEVELS, levelImage } from "../levels/index.ts";
+import { ResponsiveImage } from "../components/ResponsiveImage.tsx";
 import { useWallet } from "../wallet/context.tsx";
 
 type Status = "cached" | "checking" | "no-wallet" | "locked" | "ready" | "error";
@@ -46,8 +47,8 @@ export function Final(): ReactElement {
       : progress.status;
 
   useEffect(() => {
-    document.title = "The Architect — BREAKER";
-  }, []);
+    document.title = `${t("final.title")} — BREAKER`;
+  }, [t]);
 
   const text = (value: FinalText): string => fill(pick(value, language), address);
 
@@ -81,7 +82,13 @@ export function Final(): ReactElement {
       {scene.gallery !== undefined && (
         <div className="final__gallery">
           {scene.gallery.map((id) => (
-            <img key={id} src={levelImage(id)} alt="" loading="lazy" decoding="async" />
+            <ResponsiveImage
+              key={id}
+              src={levelImage(id)}
+              alt=""
+              sizes="(max-width: 700px) 50vw, (max-width: 1200px) 25vw, 250px"
+              loading="lazy"
+            />
           ))}
         </div>
       )}

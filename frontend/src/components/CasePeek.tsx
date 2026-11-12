@@ -9,6 +9,7 @@ import {
   type Level,
 } from "../levels/index.ts";
 import { Difficulty } from "./Difficulty.tsx";
+import { ResponsiveImage } from "./ResponsiveImage.tsx";
 
 export function CasePeek({
   level,
@@ -23,7 +24,33 @@ export function CasePeek({
   const panel = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    panel.current?.focus();
+    const node = panel.current;
+    node?.focus();
+    if (node === null) return;
+
+    const onKeyDown = (event: KeyboardEvent): void => {
+      if (event.key !== "Tab") return;
+
+      const items = [
+        ...node.querySelectorAll<HTMLElement>('button:not(:disabled), a[href], [tabindex="0"]'),
+      ].filter((item) => item.getClientRects().length > 0);
+      const first = items[0];
+      const last = items[items.length - 1];
+
+      if (!first || !last) {
+        event.preventDefault();
+        node.focus();
+      } else if (event.shiftKey && (document.activeElement === first || document.activeElement === node)) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || document.activeElement === node)) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
 
   const name = choose(level.name, language);
@@ -46,7 +73,14 @@ export function CasePeek({
         tabIndex={-1}
         ref={panel}
       >
-        <img className="case-peek__art" src={levelImage(level.id)} alt="" />
+        <ResponsiveImage
+          className="case-peek__art"
+          src={levelImage(level.id)}
+          alt=""
+          sizes="(max-width: 700px) 100vw, 54rem"
+          loading="eager"
+          fetchPriority="high"
+        />
         <div className="case-peek__veil" aria-hidden="true" />
 
         <button

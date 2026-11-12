@@ -45,11 +45,11 @@ describe("wallet-only entry", () => {
     expect(home()).not.toContain('class="season-home"');
   });
   it("renders the home when the wallet is connected without browser markers", async () => {
-    wallet.state = { phase: "connected", address: "GPLAYER" };
+    wallet.state = { phase: "connected", address: "GPLAYER", transactionSource: "GPLAYER", walletKind: "stellar" };
     expect(await homeAfterLazyLoad()).toContain('class="season-home"');
   });
   it("keeps the phone closed on entry", () => {
-    wallet.state = { phase: "connected", address: "GPLAYER" };
+    wallet.state = { phase: "connected", address: "GPLAYER", transactionSource: "GPLAYER", walletKind: "stellar" };
     expect(home()).not.toContain('class="device__grid"');
   });
 });

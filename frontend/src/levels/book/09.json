@@ -19,7 +19,7 @@
           "es": "Esa fue la primera cosa extraña al respecto."
         },
         {
-          "pt-BR": "Embora o Armazém 17, o 24º andar e o Setor 13 tivessem sido removidos da geografia oficial, o Oracle era conhecido em Meridian. Empresas o consultavam. Seguradoras compravam previsões. Setores da Authority utilizavam seus modelos para antecipar anomalias, congestionamentos e riscos.",
+          "pt-BR": "Embora o Armazém 17, o 24º andar e o Setor 13 tivessem sido removidos da geografia oficial, o Oracle era conhecido em Meridian. Empresas o consultavam. Seguradoras compravam previsões. Setores da Autoridade utilizavam seus modelos para antecipar anomalias, congestionamentos e riscos.",
           "en": "While Warehouse 17, Floor 24, and Sector 13 had been removed from the official geography, the Oracle was known in Meridian. Companies consulted it. Insurers bought predictions. Authority departments used its models to anticipate anomalies, congestion, and risks.",
           "es": "Si bien el Almacén 17, el Piso 24 y el Sector 13 habían sido eliminados de la geografía oficial, el Oráculo era conocido en Meridian. Las empresas lo consultaron. Las aseguradoras compraron predicciones. Los departamentos de la autoridad utilizaron sus modelos para anticipar anomalías, congestión y riesgos."
         },
@@ -63,7 +63,7 @@
     {
       "paragraphs": [
         {
-          "pt-BR": "O Oracle não fica escondido. Empresas e setores da Authority consultam suas previsões. A câmara monumental parece oferecer uma certeza que a investigação já aprendeu a desconfiar.",
+          "pt-BR": "O Oracle não fica escondido. Empresas e setores da Autoridade consultam suas previsões. A câmara monumental parece oferecer uma certeza que a investigação já aprendeu a desconfiar.",
           "en": "The Oracle is not hidden. Companies and Authority departments consult its predictions. Its monumental chamber seems to offer a certainty the investigation has learned to distrust.",
           "es": "El Oráculo no está oculto. Empresas y departamentos de la Autoridad consultan sus predicciones. Su monumental cámara parece ofrecer una certeza de la que la investigación ha aprendido a desconfiar."
         }
@@ -124,14 +124,14 @@
         "es": "Los hologramas se detienen. PROPHECY_ENGINE: FAILED. Una fuente diferente permanece activa: SUBJECT_CLASSIFIER: OBSERVING. El segundo módulo no necesitaba predecir el futuro para rastrear a quien desmanteló el primero."
       },
       {
-        "pt-BR": "“Qual dos dois você quebrou?”, pergunta Mara. Uma palavra ocupa o painel: ARCHITECT. Abaixo aparecem as coordenadas da Spire e a confirmação do caminho do participante.",
+        "pt-BR": "“Qual dos dois você quebrou?”, pergunta Mara. Uma palavra ocupa o painel: ARCHITECT. Abaixo aparecem as coordenadas da Torre e a confirmação do caminho do participante.",
         "en": "“Which one did you break?” Mara asks. One word fills the panel: ARCHITECT. Below it appear the Spire coordinates and confirmation of the subject’s path.",
-        "es": "«¿Cuál de los dos rompiste?», pregunta Mara. Una palabra ocupa el panel: ARCHITECT. Debajo aparecen las coordenadas de The Spire y la confirmación de la ruta del sujeto."
+        "es": "«¿Cuál de los dos rompiste?», pregunta Mara. Una palabra ocupa el panel: ARCHITECT. Debajo aparecen las coordenadas de La Aguja y la confirmación de la ruta del sujeto."
       },
       {
-        "pt-BR": "The Spire continua oficialmente operacional. Existem operadores reais e rotinas em andamento. A próxima etapa já não é entrar em uma ruína esquecida.",
+        "pt-BR": "A Torre continua oficialmente operacional. Existem operadores reais e rotinas em andamento. A próxima etapa já não é entrar em uma ruína esquecida.",
         "en": "The Spire remains officially operational. Real operators work there and routines are running. The next step is no longer entering a forgotten ruin.",
-        "es": "The Spire sigue oficialmente operativo. Allí trabajan operadores reales y se ejecutan rutinas. El siguiente paso ya no es adentrarse en una ruina olvidada."
+        "es": "La Aguja sigue oficialmente operativa. Allí trabajan operadores reales y se ejecutan rutinas. El siguiente paso ya no es adentrarse en una ruina olvidada."
       }
     ]
   }

@@ -450,6 +450,47 @@ describe("descriptorsFromSpec", () => {
 
     expect(descriptorsFromSpec(spec)[0]?.entries).toEqual([{ name: "x", kind: "something_new" }]);
   });
+
+  it("keeps union variants so the notebook can seed a tagged argument", () => {
+    const spec = {
+      funcs: () => [
+        {
+          name: xdrString("choose"),
+          doc: xdrString(""),
+          inputs: [{ name: xdrString("mode"), type: typeDef({ udt: "Mode" }) }],
+          outputs: [],
+        },
+      ],
+      findEntry: (name: string) =>
+        name === "Mode"
+          ? {
+              value: {
+                cases: [
+                  { type: "void", value: { name: xdrString("Off") } },
+                  {
+                    type: "Tuple",
+                    value: {
+                      name: xdrString("Amount"),
+                      type: [typeDef({ vec: { element_type: "u32" } })],
+                    },
+                  },
+                ],
+              },
+            }
+          : undefined,
+    };
+
+    expect(descriptorsFromSpec(spec)[0]?.entries).toEqual([
+      {
+        name: "mode",
+        kind: "Udt",
+        variants: [
+          { name: "Off", inputs: [] },
+          { name: "Amount", inputs: ["Vec<u32>"] },
+        ],
+      },
+    ]);
+  });
 });
 
 describe("argument coercion", () => {

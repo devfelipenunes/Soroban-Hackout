@@ -3,12 +3,18 @@ import { Link } from "react-router-dom";
 
 import { Mosaic } from "../components/Mosaic.tsx";
 import { Clouds } from "../components/Clouds.tsx";
+import { ResponsiveImage } from "../components/ResponsiveImage.tsx";
 import { SeasonClaim } from "../components/SeasonClaim.tsx";
 import { Smoke } from "../components/Smoke.tsx";
 import { useLanguage } from "../i18n/language.tsx";
 import { useProgress } from "../game/progress.tsx";
-import { useSeasonProgress } from "../game/season.ts";
-import { HOMEPAGE_IMAGE, LEVELS, levelImage } from "../levels/index.ts";
+import { lockedLevelIds, useSeasonProgress } from "../game/season.ts";
+import {
+  HOMEPAGE_IMAGE,
+  HOMEPAGE_MOBILE_IMAGE,
+  LEVELS,
+  levelImage,
+} from "../levels/index.ts";
 
 const SECTORS = ["upper", "central", "lower", "spire"] as const;
 
@@ -27,11 +33,11 @@ export function Home(): ReactElement {
     ...(season.status === "ready" ? chainSolved : []),
   ]);
   const lockedIds = new Set(
-    season.status === "error"
-      ? LEVELS.map((level) => level.id)
-      : season.status === "ready"
-        ? LEVELS.filter((_, index) => !season.accessible[index]).map((level) => level.id)
-        : [],
+    lockedLevelIds(
+      season.status,
+      LEVELS.map((level) => level.id),
+      season.accessible,
+    ),
   );
   const allSolved = confirmedSolvedIds.size === LEVELS.length;
   const readyForArchitect = confirmedSolvedIds.has(11) && !confirmedSolvedIds.has(12);
@@ -86,14 +92,24 @@ export function Home(): ReactElement {
     <main id="main-content" className="content">
       <div className="season-home">
         <section className={`season-hero${sector === null ? "" : " is-focus"}`}>
-          <img className="season-hero__art" src={HOMEPAGE_IMAGE} alt="" width={2048} height={768} />
-          <img
+          <ResponsiveImage
+            className="season-hero__art"
+            src={HOMEPAGE_IMAGE}
+            mobileSrc={HOMEPAGE_MOBILE_IMAGE}
+            alt=""
+            sizes="100vw"
+            avif={false}
+            loading="eager"
+            fetchPriority="high"
+          />
+          <ResponsiveImage
             className="season-hero__depth"
             src={HOMEPAGE_IMAGE}
-            width={2048}
-            height={768}
+            mobileSrc={HOMEPAGE_MOBILE_IMAGE}
             alt=""
             aria-hidden="true"
+            sizes="100vw"
+            avif={false}
           />
           <Clouds />
           <div className="season-hero__beams" aria-hidden="true">
@@ -110,7 +126,7 @@ export function Home(): ReactElement {
 
           <div className="season-hero__inner">
             <div className="season-hero__copy">
-              <span className="season-hero__brand">BREAKER</span>
+              <span className="season-hero__brand" translate="no">BREAKER</span>
               <span className="season-hero__eyebrow">{t("home.eyebrow")}</span>
               <h1 className="season-hero__title">{t("home.title")}</h1>
               <p className="season-hero__tagline">{t("home.tagline")}</p>
@@ -145,7 +161,6 @@ export function Home(): ReactElement {
                 onClick={() => toggleSector(key)}
                 aria-expanded={sector === key}
                 aria-pressed={pinned && sector === key}
-                aria-label={`${t(`home.sector.${key}`)}: ${t(`home.sector.${key}.sub`)}`}
                 aria-controls="season-dossier"
               >
                 <span className="season-sector__name">{t(`home.sector.${key}`)}</span>
@@ -176,7 +191,7 @@ export function Home(): ReactElement {
                 aria-label={`${t("home.sector.dossier")}: ${t(`home.sector.${sector}`)}`}
               >
                 {sector !== "meridian" && <span className="season-dossier__eyebrow">{t("home.sector.dossier")}</span>}
-                <h3 className="season-dossier__title">{t(`home.sector.${sector}`)}</h3>
+                <h2 className="season-dossier__title">{t(`home.sector.${sector}`)}</h2>
                 {sector !== "meridian" && <span className="season-dossier__sub">{t(`home.sector.${sector}.sub`)}</span>}
                 <p className="season-dossier__body">{t(`home.sector.${sector}.body`)}</p>
                 {sector === "meridian" && <p className="season-dossier__body">{t("home.sector.meridian.life")}</p>}
@@ -218,14 +233,13 @@ export function Home(): ReactElement {
         <section className="season-next">
           <h2 className="visually-hidden">{t("home.final.title")}</h2>
           <article className="next-card next-card--final">
-            <img
+            <ResponsiveImage
               className="next-card__art"
               src={levelImage(12)}
-              width={1600}
-              height={600}
               alt=""
+              sizes="100vw"
+              avif={false}
               loading="lazy"
-              decoding="async"
             />
             <div className="next-card__veil" aria-hidden="true" />
             <div className="next-card__body">
@@ -274,7 +288,7 @@ export function Home(): ReactElement {
           </div>
           <div className="season-reveal">
             <article className="season-hero season-hero--upcoming">
-              <img className="season-hero__art" src="/images/seasons/lumen.webp" alt="" loading="lazy" decoding="async" width={2048} height={683} />
+              <ResponsiveImage className="season-hero__art" src="/images/seasons/lumen.webp" alt="" sizes="100vw" loading="lazy" />
               <Clouds />
               <Smoke />
               <div className="season-hero__veil" aria-hidden="true" />
@@ -293,7 +307,7 @@ export function Home(): ReactElement {
         <section className="season-next season-next--upcoming" aria-label={t("home.season3.eyebrow")}>
           <div className="season-reveal">
             <article className="season-hero season-hero--upcoming">
-              <img className="season-hero__art" src="/images/seasons/veil.webp" alt="" loading="lazy" decoding="async" width={2172} height={724} />
+              <ResponsiveImage className="season-hero__art" src="/images/seasons/veil.webp" alt="" sizes="100vw" loading="lazy" />
               <Clouds />
               <Smoke />
               <div className="season-hero__veil" aria-hidden="true" />
@@ -301,7 +315,7 @@ export function Home(): ReactElement {
               <div className="season-hero__inner">
                 <div className="season-hero__copy">
                   <span className="season-hero__eyebrow">{t("home.season3.eyebrow")}</span>
-                  <h2 className="season-hero__title">The Veil</h2>
+                  <h2 className="season-hero__title">{t("home.season3.title")}</h2>
                   <p className="season-hero__subtitle">{t("home.season3.body")}</p>
                 </div>
               </div>

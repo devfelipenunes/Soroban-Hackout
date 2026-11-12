@@ -9,12 +9,12 @@
       },
       "paragraphs": [
         {
-          "pt-BR": "O Custodian não tem rosto. Sua presença ocupa leitores, portas e linhas de autoridade. “Credenciais de operador obrigatórias.” Não há confronto físico; existe uma cadeia de confiança a compreender.",
+          "pt-BR": "O Custódio não tem rosto. Sua presença ocupa leitores, portas e linhas de autoridade. “Credenciais de operador obrigatórias.” Não há confronto físico; existe uma cadeia de confiança a compreender.",
           "en": "The Custodian has no face. Its presence fills readers, doors, and authority links. “Operator credentials required.” There is no physical battle; there is a chain of trust to understand.",
           "es": "El Custodio no tiene rostro. Su presencia llena lectores, puertas y vínculos de autoridad. \"Se requieren credenciales de operador\". No hay batalla física; hay una cadena de confianza que entender."
         },
         {
-          "pt-BR": "Legacy Identity, Authority Registry e Core Gate continuam ativos. O Core parece cumprir sua política. Mara lê o mesmo trecho: “Esse não parece quebrado.”",
+          "pt-BR": "Identidade Legada, Registro de Autoridade e Portão do Núcleo continuam ativos. O Core parece cumprir sua política. Mara lê o mesmo trecho: “Esse não parece quebrado.”",
           "en": "Legacy Identity, Authority Registry, and Core Gate remain active. The Core appears to follow its policy. Mara reads the same passage: “This one does not look broken.”",
           "es": "La identidad heredada, el registro de autoridad y la puerta central permanecen activos. El Núcleo parece seguir su política. Mara lee el mismo pasaje: “Éste no parece roto”."
         }
@@ -34,7 +34,7 @@
           "es": "La Ghost Key apunta a un perfil antiguo, pero la investigación necesita su vínculo histórico. Mara lo encuentra en un archivo administrativo fuera del contrato que el auditor está examinando."
         },
         {
-          "pt-BR": "“Estou lhe dando uma evidência, não uma autorização.” Cabe ao auditor descobrir como os sistemas decidem quem pertence à First Layer.",
+          "pt-BR": "“Estou lhe dando uma evidência, não uma autorização.” Cabe ao auditor descobrir como os sistemas decidem quem pertence à Primeira Camada.",
           "en": "“I am giving you evidence, not authorization.” The auditor must discover how these systems decide who belongs to the First Layer.",
           "es": "\"Les estoy dando pruebas, no autorización\". El auditor debe descubrir cómo estos sistemas deciden quién pertenece a la Primera Capa."
         }
@@ -49,7 +49,7 @@
       },
       "paragraphs": [
         {
-          "pt-BR": "O registro comprometido reconheceu o auditor como controlador. O Custodian consultou sua dependência e aceitou a resposta. Seu Core não precisou ter uma falha local para abrir uma passagem indevida.",
+          "pt-BR": "O registro comprometido reconheceu o auditor como controlador. O Custódio consultou sua dependência e aceitou a resposta. Seu Core não precisou ter uma falha local para abrir uma passagem indevida.",
           "en": "The compromised registry recognized the auditor as controller. The Custodian consulted its dependency and accepted the answer. Its Core did not need a local flaw to open an improper passage.",
           "es": "El registro comprometido reconoció al auditor como controlador. El Custodio consultó su dependencia y aceptó la respuesta. Su Núcleo no necesitaba una falla local para abrir un pasaje inadecuado."
         },
