@@ -107,10 +107,6 @@ async function createFeePayer(): Promise<Keypair> {
   return candidate;
 }
 
-export function warmPasskeyWallet(): void {
-  void getFeePayer().catch(() => {});
-}
-
 export function isTransientFundingError(error: unknown): boolean {
   const message = error instanceof Error ? error.message : String(error);
   return /429|too many requests|not[_ ]?found|timeout|timed out|econn|5\d\d/i.test(message);

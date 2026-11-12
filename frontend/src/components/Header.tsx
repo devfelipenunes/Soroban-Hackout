@@ -6,6 +6,7 @@ import { useLanguage } from "../i18n/language.tsx";
 import { languageCode, nextLanguage } from "../i18n/translate.ts";
 import { DEPLOYMENT_PROFILE } from "../chain/network.ts";
 import { Gate, walletLabel, walletTone } from "./Gate.tsx";
+import { ResponsiveImage } from "./ResponsiveImage.tsx";
 import { loadChunk } from "./Boundary.tsx";
 import type { OsFocus } from "./BreakerDevice.tsx";
 
@@ -92,6 +93,7 @@ export function Header(): ReactElement {
     const overflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     node.showModal();
+    node.focus();
     return () => { node.close(); document.body.style.overflow = overflow; };
   }, [osOpen, inCase]);
 
@@ -117,27 +119,39 @@ export function Header(): ReactElement {
       <header className={`header${scrolled ? " header--scrolled" : ""}`}>
         <div className="envelope header__inner">
           <Link to="/" className="brand">
-            <img
+            <ResponsiveImage
               className="brand__logo"
               src="/images/brand/breaker-logo.webp"
               alt={t("app.title")}
+              sizes="120px"
             />
           </Link>
 
           <div className="actions">
-            <span className="environment-badge">
-              {DEPLOYMENT_PROFILE === "sandbox"
-                ? t("network.sandbox")
-                : t("network.testnet")}
+            <span
+              className="environment-badge"
+              role="img"
+              aria-label={
+                DEPLOYMENT_PROFILE === "sandbox"
+                  ? t("network.sandbox")
+                  : t("network.testnet")
+              }
+              title={
+                DEPLOYMENT_PROFILE === "sandbox"
+                  ? t("network.sandbox")
+                  : t("network.testnet")
+              }
+            >
+              {DEPLOYMENT_PROFILE === "sandbox" ? "S" : "T"}
             </span>
             <button
               type="button"
               className="icon-button"
               onClick={() => toggleLanguage(outroIdioma)}
-              aria-label={`${languageCode(outroIdioma)} — ${t("language.label")}`}
-              title={t("language.label")}
+              aria-label={`${languageCode(language)} — ${t("language.label")}`}
+              title={`${languageCode(language)} — ${t("language.label")}`}
             >
-              {languageCode(outroIdioma)}
+              {languageCode(language)}
             </button>
 
             <button
@@ -159,18 +173,26 @@ export function Header(): ReactElement {
                   setOsOpen((previous) => !previous);
                 }
               }}
-              aria-label={state.phase === "connected" ? `BREAKER OS${unread > 0 ? `. ${t("device.unread", { count: unread })}` : ""}` : undefined}
             >
               <span className="wallet-chip__dot" />
-              {state.phase === "connected" ? "BREAKER OS" : walletLabel(state, t)}
+              {state.phase === "connected" ? (
+                <span translate="no">BREAKER OS</span>
+              ) : (
+                walletLabel(state, t)
+              )}
               {unread > 0 && <span className="wallet-chip__badge" aria-hidden="true">{unread}</span>}
+              {state.phase === "connected" && unread > 0 && (
+                <span className="visually-hidden">
+                  {t("device.unread", { count: unread })}
+                </span>
+              )}
             </button>
           </div>
         </div>
       </header>
 
       {gate && <Gate onClose={() => setGate(false)} />}
-      {!inCase && <dialog className="breaker-device-dialog" ref={deviceDialog}
+      {!inCase && <dialog className="breaker-device-dialog" ref={deviceDialog} tabIndex={-1}
         aria-label="Breaker OS" onCancel={() => setOsOpen(false)}
         onClick={(event) => {
           if (event.target !== event.currentTarget) return;

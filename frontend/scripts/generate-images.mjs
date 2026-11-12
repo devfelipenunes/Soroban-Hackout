@@ -17,6 +17,13 @@ const brand = {
   quality: 88,
 };
 
+const logo = {
+  input: join(PUBLIC, "images/brand/breaker-logo.webp"),
+  key: "/images/brand/breaker-logo.webp",
+  quality: 82,
+  widths: [480, 768, 1200],
+};
+
 const mobileHomepage = {
   input: join(ROOT, "assets-src/levels/homepage-mobile.png"),
   key: "/images/levels/homepage-mobile.png",
@@ -37,7 +44,7 @@ async function listSources() {
       });
     }
   }
-  sources.push(brand, mobileHomepage);
+  sources.push(brand, mobileHomepage, logo);
   return sources.sort((a, b) => a.key.localeCompare(b.key));
 }
 
@@ -84,7 +91,7 @@ for (const source of sources) {
     throw new Error(`missing dimensions: ${source.key}`);
   }
 
-  const widths = widthsFor(meta.width);
+  const widths = source.widths ?? widthsFor(meta.width);
   const webp = [];
   const avif = [];
 

@@ -1,5 +1,37 @@
 {
   "images": {
+    "/images/brand/breaker-logo.webp": {
+      "width": 1200,
+      "height": 403,
+      "webp": [
+        {
+          "url": "/images/brand/breaker-logo-480.webp",
+          "width": 480
+        },
+        {
+          "url": "/images/brand/breaker-logo-768.webp",
+          "width": 768
+        },
+        {
+          "url": "/images/brand/breaker-logo.webp",
+          "width": 1200
+        }
+      ],
+      "avif": [
+        {
+          "url": "/images/brand/breaker-logo-480.avif",
+          "width": 480
+        },
+        {
+          "url": "/images/brand/breaker-logo-768.avif",
+          "width": 768
+        },
+        {
+          "url": "/images/brand/breaker-logo-1200.avif",
+          "width": 1200
+        }
+      ]
+    },
     "/images/brand/breaker-os-presentation.png": {
       "width": 1672,
       "height": 941,

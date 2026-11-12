@@ -13,6 +13,7 @@ const SOURCES = [
   "/images/seasons/lumen.webp",
   "/images/seasons/veil.webp",
   "/images/login/meridian.webp",
+  "/images/brand/breaker-logo.webp",
   "/images/brand/breaker-os-presentation.png",
 ];
 
