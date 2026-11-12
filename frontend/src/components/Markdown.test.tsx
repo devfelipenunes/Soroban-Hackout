@@ -11,6 +11,24 @@ describe("the markdown renderer", () => {
     expect(html).toContain('href="#"');
   });
 
+  it("renders raw HTML as text instead of markup", () => {
+    const html = renderToStaticMarkup(
+      <Markdown source={'<img src="x" onerror="alert(1)">'} />,
+    );
+
+    expect(html).not.toContain("<img");
+    expect(html).toContain("&lt;img");
+  });
+
+  it("neutralizes a data: link", () => {
+    const html = renderToStaticMarkup(
+      <Markdown source={"[x](data:text/html,<script>alert(1)</script>)"} />,
+    );
+
+    expect(html).not.toContain("data:text/html");
+    expect(html).toContain('href="#"');
+  });
+
   it("drops a desktop-only block when the console code is hidden", () => {
     const html = renderToStaticMarkup(
       <Markdown

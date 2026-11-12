@@ -41,7 +41,7 @@ function escapeHtml(value: string): string {
 function sanitizeLinks(html: string): string {
   return html.replace(/\s(href|src)="([^"]*)"/gi, (match, _attribute: string, url: string) => {
     const compact = url.replace(/[\s\u0000-\u001f]/g, "").toLowerCase();
-    return /^(javascript|vbscript):/.test(compact) ? match.replace(/"[^"]*"/, '"#"') : match;
+    return /^(javascript|vbscript|data):/.test(compact) ? match.replace(/"[^"]*"/, '"#"') : match;
   });
 }
 
