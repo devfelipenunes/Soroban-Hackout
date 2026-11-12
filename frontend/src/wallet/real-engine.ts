@@ -11,9 +11,11 @@ import {
 
 type WalletKit = typeof import("@creit.tech/stellar-wallets-kit/sdk").StellarWalletsKit;
 type WalletTheme = typeof import("@creit.tech/stellar-wallets-kit/types").SwkAppDarkTheme;
+type KitNetworks = typeof import("@creit.tech/stellar-wallets-kit/types").Networks;
 type LoadedWalletKit = {
   readonly kit: WalletKit;
   readonly theme: WalletTheme;
+  readonly networks: KitNetworks;
   readonly modules: ModuleInterface[];
 };
 
@@ -35,6 +37,7 @@ function loadKit(): Promise<LoadedWalletKit> {
   ]).then(([sdk, types, albedo, bitget, cactusLink, freighter, hana, klever, oneKey, rabet, scopuly, xbull]) => ({
     kit: sdk.StellarWalletsKit,
     theme: types.SwkAppDarkTheme,
+    networks: types.Networks,
     modules: [
       new freighter.FreighterModule(), new xbull.xBullModule(), new albedo.AlbedoModule(),
       new rabet.RabetModule(), new hana.HanaModule(), new klever.KleverModule(),
@@ -46,8 +49,8 @@ function loadKit(): Promise<LoadedWalletKit> {
 }
 
 async function select(): Promise<WalletKit> {
-  const { kit, modules, theme } = await loadKit();
-  kit.init({ modules, theme });
+  const { kit, modules, theme, networks } = await loadKit();
+  kit.init({ modules, theme, network: networks.TESTNET });
   return kit;
 }
 

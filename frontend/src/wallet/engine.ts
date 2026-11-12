@@ -1,6 +1,8 @@
 export type Signer = {
   signTransaction: (xdr: string) => Promise<string>;
   signAuthEntry: (xdr: string) => Promise<string>;
+  /** Account that pays transaction fees; may differ from the player's address. */
+  transactionSource?: string;
 };
 
 export type Detection =
@@ -13,6 +15,7 @@ export type Connected = {
   address: string;
   rightNetwork: boolean | null;
   signer: Signer;
+  walletKind?: "stellar" | "passkey";
 };
 
 export class WalletSelectionCancelled extends Error {
@@ -26,6 +29,8 @@ export type WalletEngine = {
   detect: () => Promise<Detection>;
   connect: () => Promise<Connected>;
   disconnect: () => Promise<void>;
+  createPasskey?: () => Promise<Connected>;
+  connectPasskey?: () => Promise<Connected>;
 
   testOnly?: boolean;
 };

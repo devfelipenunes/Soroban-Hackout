@@ -1,0 +1,404 @@
+@media (max-width: 1100px) and (any-pointer: coarse) {
+  .login--passkey-loading .login__loading {
+    display: grid;
+    place-items: center;
+    min-height: 3.25rem;
+    margin-top: 1rem;
+  }
+
+  .login--passkey-loading .login__spinner {
+    width: 2rem;
+    height: 2rem;
+    border-width: 2px;
+  }
+
+  .login__inner {
+    justify-content: center;
+    min-height: 100svh;
+    padding: max(4.5rem, env(safe-area-inset-top)) 1.25rem max(3rem, env(safe-area-inset-bottom));
+  }
+
+  .login__mark {
+    width: min(100%, 37rem);
+    margin-inline: auto;
+  }
+
+  .login__logo {
+    width: 100%;
+  }
+
+  .login__season-card {
+    margin-top: -1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .login__actions {
+    width: min(100%, 25rem);
+    gap: 0;
+  }
+
+  .login__language {
+    min-width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .icon-button,
+  .wallet-chip {
+    height: 2.75rem;
+  }
+
+  .wallet-chip--alert {
+    animation: breaker-alert 1600ms ease-in-out infinite;
+  }
+
+  .wallet-chip--alert .wallet-chip__badge {
+    animation: breaker-alert-badge 1600ms ease-in-out infinite;
+  }
+
+  @keyframes breaker-alert {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgb(0 230 173 / 0%);
+    }
+    50% {
+      box-shadow:
+        0 0 0 4px rgb(0 230 173 / 24%),
+        0 0 14px rgb(0 230 173 / 45%);
+    }
+  }
+
+  @keyframes breaker-alert-badge {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.18);
+    }
+  }
+
+  .os-toggle {
+    min-height: 2.75rem;
+  }
+
+  .notice a {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+  }
+
+  .device__close-os {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    margin: -10px -9px -10px 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--season-ivory);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .device__close-os svg {
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-width: 1.6;
+  }
+
+  .device__close-os:active {
+    background: rgba(127, 208, 220, 0.14);
+  }
+
+  .device__close-os:focus-visible {
+    outline: 2px solid var(--season-cyan);
+    outline-offset: 2px;
+  }
+
+  .device__notebook-cell textarea {
+    min-height: 112px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .device__code-tools {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    overflow: visible;
+  }
+
+  .device__code-tools button {
+    min-width: 0;
+    width: 100%;
+    padding-inline: 0.25rem;
+  }
+
+  .device__cell-output {
+    font-size: 0.68rem;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  .device__cell-progress,
+  .device__cell-elapsed,
+  .device__cell-running-note {
+    margin: 0;
+    color: #c1d0d1;
+    font: 0.72rem/1.45 var(--source);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .device__cell-elapsed,
+  .device__cell-running-note {
+    color: #9fb7bb;
+    font-size: 0.67rem;
+  }
+
+  .device__cell-output pre {
+    font-size: 0.75rem;
+  }
+
+  .device__cell-output--error .device__cell-progress,
+  .device__cell-output--error .device__cell-elapsed,
+  .device__cell-output--error .device__cell-running-note {
+    color: #ffc0b5;
+  }
+  .login__passkey-actions {
+    display: grid;
+    justify-items: center;
+    gap: 0.8rem;
+    width: min(100%, 24rem);
+    margin-bottom: 0;
+  }
+
+  /* Mobile login uses the device passkey as its only wallet entry point. */
+  .login__actions > .login__button--wallet {
+    display: none;
+  }
+
+  .login__button--passkey {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    min-height: 3.75rem;
+    padding: 0.85rem 1.2rem;
+    border: 1px solid #f2c77f;
+    border-radius: 0.7rem;
+    background: #e1ad62;
+    color: #20170f;
+    box-shadow: 0 10px 26px rgb(0 0 0 / 28%), inset 0 1px rgb(255 255 255 / 28%);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.005em;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .login__button--passkey:hover:not(:disabled) {
+    background: #efbd71;
+    box-shadow: 0 13px 30px rgb(0 0 0 / 34%), inset 0 1px rgb(255 255 255 / 32%);
+  }
+
+  .login__button--passkey:active:not(:disabled) {
+    transform: translateY(1px);
+    background: #d5a052;
+  }
+
+  .login__button--passkey:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .login__passkey-icon {
+    display: block;
+    width: 1.65rem;
+    height: 1.65rem;
+    color: #20170f;
+    fill: currentColor;
+  }
+
+  .login__passkey-return {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    min-height: 3.25rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid rgb(241 234 217 / 48%);
+    border-radius: 0.7rem;
+    background: rgb(9 12 16 / 46%);
+    color: var(--season-ivory);
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .login__passkey-return:hover:not(:disabled) {
+    border-color: rgb(241 234 217 / 78%);
+    background: rgb(36 34 30 / 76%);
+  }
+
+  .login__passkey-return:active:not(:disabled) {
+    transform: translateY(1px);
+    background: rgb(52 47 40 / 82%);
+  }
+
+  .login__button--passkey:focus-visible,
+  .login__passkey-return:focus-visible {
+    outline: 2px solid var(--season-ivory);
+    outline-offset: 3px;
+  }
+
+  .login__passkey-return:disabled {
+    opacity: 0.58;
+  }
+
+  .login__passkey-hint {
+    display: none;
+  }
+
+  .login__passkey-hint--unavailable {
+    display: block;
+    max-width: 23rem;
+    margin: 0.15rem 0 0;
+    color: rgb(255 218 185 / 92%);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .login__divider,
+  .login__enter {
+    display: none;
+  }
+
+  .login__button--wallet {
+    min-height: 2.85rem;
+    padding-inline: 1rem;
+    font-size: 0.86rem;
+  }
+
+  .breaker-device-dialog {
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #05090b;
+  }
+
+  .breaker-device-dialog::backdrop {
+    background: #05090b;
+    backdrop-filter: none;
+  }
+
+  .breaker-device-dialog .os.os--device {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .breaker-device-dialog .device--panel {
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .breaker-device-dialog .device--panel .device__status {
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-left: max(1rem, env(safe-area-inset-left));
+  }
+
+  .breaker-device-dialog .device--panel .device__appbar,
+  .breaker-device-dialog .device--panel .device__phone-controls {
+    padding-right: max(0.8rem, env(safe-area-inset-right));
+    padding-left: max(0.8rem, env(safe-area-inset-left));
+  }
+
+  .breaker-device-dialog .device--panel .device__phone-controls {
+    padding-bottom: max(0.35rem, env(safe-area-inset-bottom));
+  }
+
+  .breaker-device-dialog .device--panel .device__home {
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-left: max(1rem, env(safe-area-inset-left));
+  }
+
+  .breaker-device-dialog .device__lockclock {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+
+  .breaker-device-dialog .device__notifications {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .level-actions {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 30;
+    display: grid;
+    gap: 0.35rem;
+    padding:
+      0.55rem max(0.9rem, env(safe-area-inset-right))
+      calc(0.55rem + env(safe-area-inset-bottom))
+      max(0.9rem, env(safe-area-inset-left));
+    border-top: 1px solid var(--season-line);
+    background: color-mix(in srgb, var(--season-ink) 94%, transparent);
+    backdrop-filter: blur(14px);
+  }
+
+  .level-actions__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0.5rem;
+  }
+
+  .level-actions__row > * {
+    margin: 0;
+    min-height: 2.75rem;
+  }
+
+  .level-actions__next {
+    grid-column: 1 / -1;
+  }
+
+  .content--actions {
+    padding-bottom: calc(7rem + env(safe-area-inset-bottom));
+  }
+
+  .tutorial__start {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(217, 160, 91, 0.28);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .login__button--passkey,
+    .login__button--passkey:hover:not(:disabled) {
+      transition: none;
+    }
+
+    .wallet-chip--alert,
+    .wallet-chip--alert .wallet-chip__badge {
+      animation: none;
+    }
+  }
+}

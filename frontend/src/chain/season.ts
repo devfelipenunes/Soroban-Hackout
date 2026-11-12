@@ -25,7 +25,7 @@ export async function seasonClient(address: string, signer: Signer): Promise<Sea
     contractId: SEASON_ID,
     networkPassphrase: PASSPHRASE,
     rpcUrl: RPC_URL,
-    publicKey: address,
+    publicKey: signer.transactionSource ?? address,
     ...callbacks(signer),
   });
 

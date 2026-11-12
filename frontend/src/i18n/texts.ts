@@ -32,8 +32,10 @@ const BASE_TEXTS: Texts = {
     "home.ctaExplore": "Ver os casos",
     "home.creed.label": "Meridian",
     "home.sector.meridian": "Meridian",
-    "home.sector.meridian.body": "Uma cidade construída sobre certezas. Trens cruzam os distritos em linhas de luz, credenciais abrem edifícios e os mercados processam operações continuamente. Energia, identidade, propriedade e segurança dependem de contratos que a maioria dos habitantes jamais viu.",
-    "home.sector.meridian.life": "No alto, torres administrativas e a Meridian Authority. No centro, comércio e vida pública. Embaixo, fábricas, armazéns e equipes de manutenção que mantêm tudo de pé. Para quem vive aqui, contratos não parecem programas: fazem parte da ordem natural da cidade.",
+    "home.sector.meridian.body":
+      "Uma cidade construída sobre certezas. Trens cruzam os distritos em linhas de luz, credenciais abrem edifícios e os mercados processam operações continuamente. Energia, identidade, propriedade e segurança dependem de contratos que a maioria dos habitantes jamais viu.",
+    "home.sector.meridian.life":
+      "No alto, torres administrativas e a Meridian Authority. No centro, comércio e vida pública. Embaixo, fábricas, armazéns e equipes de manutenção que mantêm tudo de pé. Para quem vive aqui, contratos não parecem programas: fazem parte da ordem natural da cidade.",
     "home.sector.upper": "Upper Meridian",
     "home.sector.upper.sub": "Governança e elite",
     "home.sector.central": "Central Meridian",
@@ -80,7 +82,8 @@ const BASE_TEXTS: Texts = {
       "A sequência final da First Layer. Rewrite e The Architect também podem ser jogados nesta era.",
     "final.checking": "Lendo o seu progresso na cadeia…",
     "final.noWallet": "Conecte a carteira para ler a sequência final.",
-    "final.noWalletHint": "A sequência é liberada quando os 13 casos estão resolvidos.",
+    "final.noWalletHint":
+      "A sequência é liberada quando os 13 casos estão resolvidos.",
     "final.howToPlay": "Como jogar",
     "final.locked": "Sequência bloqueada.",
     "final.progress": "{solved} de {total} casos resolvidos.",
@@ -102,6 +105,18 @@ const BASE_TEXTS: Texts = {
 
     "wallet.title": "Carteira",
     "wallet.connect": "Conectar carteira",
+    "wallet.passkey.create": "Criar passkey",
+    "wallet.passkey.connect": "Já tenho uma passkey",
+    "wallet.passkey.unavailable": "Este navegador não oferece passkey neste aparelho. Tente Safari ou Chrome atualizado em HTTPS com bloqueio de tela ativo.",
+    "wallet.passkey.account": "Sua identidade de jogo",
+    "wallet.passkey.step.credential": "Criando a credencial no aparelho…",
+    "wallet.passkey.step.funding": "Preparando a taxa na Testnet…",
+    "wallet.passkey.step.deploying": "Publicando sua conta na Testnet…",
+    "wallet.passkey.step.connecting": "Conectando a conta…",
+    "wallet.passkey.step.slow":
+      "Na Testnet, a primeira vez pode levar até ~20 s.",
+    "device.wallet.passkeyOnly": "Sua passkey já é a carteira que assina os casos. Para consultar saldos ou transferir XLM e tokens, conecte uma carteira Stellar.",
+    "device.wallet.connectForTokens": "Conectar carteira Stellar para tokens",
     "wallet.connecting": "Conectando…",
     "wallet.checking": "Procurando carteira…",
     "wallet.tryAgain": "Tentar de novo",
@@ -147,19 +162,24 @@ const BASE_TEXTS: Texts = {
     "device.cases.locked": "Acesso bloqueado",
     "collection.playerDevice": "Dispositivo pessoal",
     "collection.back": "Voltar à coleção",
-    "collection.connect": "Conecte sua carteira na home do dispositivo para consultar seu progresso.",
+    "collection.connect":
+      "Conecte sua carteira na home do dispositivo para consultar seu progresso.",
     "collection.title": "Sua coleção BREAKER",
-    "collection.subtitle": "Cada caso deixa uma marca. Acompanhe sua jornada por Meridian.",
+    "collection.subtitle":
+      "Cada caso deixa uma marca. Acompanhe sua jornada por Meridian.",
     "collection.loading": "Consultando seus casos na testnet…",
-    "collection.error": "Não foi possível consultar seu progresso. Tente atualizar.",
+    "collection.error":
+      "Não foi possível consultar seu progresso. Tente atualizar.",
     "collection.progress": "{count} de {total} casos resolvidos",
     "collection.refresh": "Atualizar",
-    "collection.preview": "Prévia da coleção por caso. A credencial da temporada é um NFT soulbound.",
+    "collection.preview":
+      "Prévia da coleção por caso. A credencial da temporada é um NFT soulbound.",
     "collection.unknown": "Progresso não confirmado",
     "collection.solved": "Caso resolvido",
     "collection.pending": "Caso pendente",
     "collection.details": "Detalhes do colecionável",
-    "collection.ownership": "A credencial da temporada é soulbound: não pode ser transferida.",
+    "collection.ownership":
+      "A credencial da temporada é soulbound: não pode ser transferida.",
     "collection.openCase": "Abrir caso",
     "collection.claimLoading": "Verificando a credencial da temporada…",
     "collection.claim": "Reivindicar NFT da temporada",
@@ -195,12 +215,15 @@ const BASE_TEXTS: Texts = {
 
     "level.back": "Todos os casos",
     "levelHero.play": "Ir ao desafio",
-    "levelHero.pending": "A continuação aparece aqui depois de resolver o caso anterior. Você pode jogar este desafio diretamente.",
+    "levelHero.pending":
+      "A continuação aparece aqui depois de resolver o caso anterior. Você pode jogar este desafio diretamente.",
     "levelHero.continueStory": "Continuar a história",
     "device.document.open": "Abrir documento",
     "device.document.source": "Origem",
-    "device.document.empty": "Os documentos desta etapa aparecerão aqui conforme a investigação avançar.",
-    "device.story.next": "A história continua na abertura do próximo caso. O registro completo também está disponível para releitura.",
+    "device.document.empty":
+      "Os documentos desta etapa aparecerão aqui conforme a investigação avançar.",
+    "device.story.next":
+      "A história continua na abertura do próximo caso. O registro completo também está disponível para releitura.",
     "levelHero.caseStep": "O caso",
     "levelHero.storyStep": "A história",
     "levelHero.scroll": "Role para ler o caso",
@@ -217,8 +240,6 @@ const BASE_TEXTS: Texts = {
     "levelHero.recap": "A história continua",
     "levelHero.recapNext": "E agora, o caso atual",
     "level.statement": "Enunciado",
-    "level.contract": "Contrato desta instância",
-    "level.noInstance": "Você ainda não tem uma instância deste caso.",
     "level.code": "Código-fonte",
     "level.hiddenCode": "O código deste caso fica escondido até você resolver.",
     "level.hiddenCodeTutorial":
@@ -235,35 +256,43 @@ const BASE_TEXTS: Texts = {
     "level.start.step.submit":
       "Volte aqui e clique em Submeter; o núcleo valida a instância na cadeia.",
     "level.start.action": "Criar instância",
-    "level.start.ready": "Instância ativa — o console está liberado.",
     "error.levelNotFound": "O caso não existe no núcleo.",
     "error.unknownInstance": "Essa instância não foi criada por este núcleo.",
     "error.alreadySolved": "Este caso já foi resolvido.",
     "error.objectiveNotMet": "O objetivo ainda não foi cumprido.",
     "error.notInitialised": "O núcleo não foi inicializado.",
-    "error.accessLocked": "Este caso está bloqueado: resolva o caso anterior primeiro.",
+    "error.accessLocked":
+      "Este caso está bloqueado: resolva o caso anterior primeiro.",
     "error.invalidPrerequisite": "O pré-requisito declarado é inválido.",
     "level.previousCase": "Ir ao caso {code}",
     "level.retry": "Tentar de novo",
-    "level.operation": "Operação de disponibilidade: os testes do contrato demonstram a renovação real do TTL. O validador consulta a renovação do andar 24.",
+    "level.operation":
+      "Operação de disponibilidade: os testes do contrato demonstram a renovação real do TTL. O validador consulta a renovação do andar 24.",
     "level.diagnostics": "O que o validador ainda exige",
     "level.diagnosticNow": "agora: {value}",
     "level.diagnosticExpected": "esperado: {value}",
     "level.diagnosticLoading": "Conferindo o que o validador ainda exige…",
-    "level.diagnosticError": "Não foi possível ler o checklist de diagnóstico. Submeta de novo para tentar outra vez.",
+    "level.diagnosticError":
+      "Não foi possível ler o checklist de diagnóstico. Submeta de novo para tentar outra vez.",
     "level.tutorial.title": "Como jogar este prólogo",
-    "level.tutorial.body": "O terminal do jogo é o console do navegador. Abra-o, chame os métodos e submeta a instância.",
-    "level.tutorial.console": "Abra o console do navegador (F12 → Console, ou Ctrl+Shift+J).",
+    "level.tutorial.body":
+      "O terminal do jogo é o console do navegador. Abra-o, chame os métodos e submeta a instância.",
+    "level.tutorial.console":
+      "Abra o console do navegador (F12 → Console, ou Ctrl+Shift+J).",
     "level.tutorial.instance": "Crie a instância com o botão abaixo.",
-    "level.tutorial.call": "No console, leia o estado, chame increment e leia de novo.",
-    "level.tutorial.submit": "Clique em Submeter; o núcleo registra a conclusão na rede.",
-    "level.tutorial.desktop": "O desafio é jogado no console do desktop; no celular dá para ler, criar a instância e submeter.",
+    "level.tutorial.call":
+      "No console, leia o estado, chame increment e leia de novo.",
+    "level.tutorial.submit":
+      "Clique em Submeter; o núcleo registra a conclusão na rede.",
+    "level.tutorial.desktop":
+      "O desafio é jogado no console do desktop; o Breaker OS também oferece Operações, no desktop e no celular.",
     "ledger.current": "Ledger atual: {value}",
     "ledger.predict": "preveja três alvos à frente",
     "ledger.wait": "faltam {count} ledgers (~{seconds} s)",
     "ledger.ready": "O ledger-alvo chegou.",
     "home.progress": "{solved}/{total} verificados na rede",
-    "home.progressCached": "{solved}/{total} no último acesso · verificando a rede…",
+    "home.progressCached":
+      "{solved}/{total} no último acesso · verificando a rede…",
     "home.progressChecking": "Verificando o progresso na rede…",
     "home.progressError": "Não foi possível ler o progresso na cadeia.",
     "home.readingChain": "Lendo o progresso na cadeia…",
@@ -275,34 +304,39 @@ const BASE_TEXTS: Texts = {
     "casefile.hintStuck": "aberta pelo gatilho de travamento",
     "casefile.assisted": "Caso assistido: a terceira dica revela a solução.",
     "level.creating": "Criando instância…",
+    "level.creatingDetail":
+      "Publicando sua instância na Testnet. Isso pode levar alguns segundos.",
     "level.submit": "Submeter",
     "level.submitting": "Submetendo…",
     "level.next": "Próximo caso",
     "level.reveal": "Revelar código",
     "level.hide": "Esconder código",
     "level.readFailed": "Não deu para ler o seu progresso na rede: {reason}",
-    "level.broken": "Este caso está incompleto. Faltam {count} arquivos: {files}.",
+    "level.broken":
+      "Este caso está incompleto. Faltam {count} arquivos: {files}.",
     "level.notFound": "Este caso não existe.",
     "level.backToLevels": "Voltar para os casos",
 
-    "level.success": "Objetivo cumprido. Caso resolvido.",
-    "level.failure": "O validador não aceitou. O objetivo ainda não foi cumprido.",
+    "level.failure":
+      "O validador não aceitou. O objetivo ainda não foi cumprido.",
     "level.error": "Não deu certo: {reason}",
-    "level.localTestWallet": "Modo de teste local: o terminal está disponível, mas nenhuma instância ou transação é criada.",
+    "level.localTestWallet":
+      "Modo de teste local: o terminal está disponível, mas nenhuma instância ou transação é criada.",
     "level.conclusion": "Conclusão",
     "level.needsWallet": "Conecte a carteira para criar uma instância.",
     "level.needsInstance": "Crie uma instância deste caso antes de submeter.",
-    "level.hint":
-      "Não há caixa de texto: assim que a instância existir, fale com o contrato pelo console do navegador.",
-    "level.seeHelp": "Como jogar",
     "level.copyCommand": "Copiar comando",
     "level.operation.title": "Objetivo da operação",
-    "level.operation.discovery": "Inspecione a interface real com `window.help()`, formule uma hipótese e só então execute. A prova é verificada na rede quando você submete a solução.",
+    "level.operation.discovery":
+      "Inspecione a interface real com `window.help()`, formule uma hipótese e só então execute. A prova é verificada na rede quando você submete a solução.",
+    "level.operation.discovery.mobile":
+      "No app Operações, consulte Métodos e insira uma chamada em uma célula. Execute a célula e submeta para verificar a solução na rede.",
 
     "thread.title": "O que você já sabe",
 
     "casefile.title": "Dossiê do caso",
-    "casefile.summary": "{known} fatos · {unknown} perguntas · {evidence} evidências",
+    "casefile.summary":
+      "{known} fatos · {unknown} perguntas · {evidence} evidências",
     "casefile.objective": "Objetivo",
     "casefile.target": "Alvo",
     "casefile.owner": "Proprietário / autoridade",
@@ -334,7 +368,8 @@ const BASE_TEXTS: Texts = {
     "archive.trail": "Trilha de Voss",
     "archive.trailLede":
       "As evidências que você coletou, na ordem em que os casos aconteceram.",
-    "archive.trailEmpty": "Nenhuma evidência coletada ainda. Jogue um caso para começar.",
+    "archive.trailEmpty":
+      "Nenhuma evidência coletada ainda. Jogue um caso para começar.",
     "archive.codex": "Compêndio",
     "archive.readProgress": "{read} de {total} entradas lidas.",
     "archive.search": "Buscar no compêndio…",
@@ -373,15 +408,20 @@ const BASE_TEXTS: Texts = {
       "Este é o texto completo do caso. Ele não altera a validação na rede nem é necessário para resolver o desafio.",
 
     "device.open": "Abrir Breaker OS",
-    "device.openDossier": "Abrir dossiê",
-    "device.chipNote": "O dossiê completo fica no Breaker OS.",
+    "level.openOperations": "Abrir Operações",
+    "level.actions": "Ações do caso",
     "device.notifications": "Notificações",
     "device.caseReceived": "Caso recebido",
-    "device.updatesAvailable": "Novas atualizações disponíveis. Toque para abrir.",
-    "device.notification.evidence": "Uma nova evidência foi adicionada ao caso.",
-    "device.notification.callAccepted": "Operação aceita pela instância. Revise o registro.",
-    "device.notification.callFailed": "A instância recusou a operação. Revise o estado antes de tentar de novo.",
-    "device.notification.story": "O relatório de encerramento do caso está disponível.",
+    "device.updatesAvailable":
+      "Novas atualizações disponíveis. Toque para abrir.",
+    "device.notification.evidence":
+      "Uma nova evidência foi adicionada ao caso.",
+    "device.notification.callAccepted":
+      "Operação aceita pela instância. Revise o registro.",
+    "device.notification.callFailed":
+      "A instância recusou a operação. Revise o estado antes de tentar de novo.",
+    "device.notification.story":
+      "O relatório de encerramento do caso está disponível.",
     "device.noNotifications": "Nenhuma notificação por enquanto.",
     "device.unlockFingerprint": "Desbloquear com digital",
     "device.fingerprintReading": "Lendo digital…",
@@ -403,10 +443,12 @@ const BASE_TEXTS: Texts = {
     "device.scanner": "Ler código QR",
     "device.map": "Mapa de campo",
     "device.map.kicker": "MERIDIAN / MALHA DE INVESTIGAÇÃO",
-    "device.map.body": "Referências de distrito para situar a investigação atual.",
+    "device.map.body":
+      "Referências de distrito para situar a investigação atual.",
     "device.map.locations": "Locais catalogados",
     "device.map.active": "Sinal ativo: {district}",
-    "device.map.note": "O mapa organiza lugares da história. Ele não contém códigos, chaves ou rotas de solução.",
+    "device.map.note":
+      "O mapa organiza lugares da história. Ele não contém códigos, chaves ou rotas de solução.",
     "device.scanner.fieldRecord": "LEITURA DE CAMPO",
     "device.scanner.openRecord": "Abrir registro da investigação",
     "device.searchPlaceholder": "Buscar aplicativos, casos e evidências…",
@@ -423,11 +465,15 @@ const BASE_TEXTS: Texts = {
     "device.brightness": "Brilho",
     "device.showPreviews": "Mostrar prévias na tela bloqueada",
     "device.clearNotifications": "Limpar notificações",
-    "device.privacyBody": "O desbloqueio por digital é uma simulação. Sua carteira continua autorizando as transações.",
-    "device.sceneControlsNote": "Os controles de conexão são do aparelho fictício. Eles não alteram sua conexão com a rede Stellar.",
-    "device.storageBody": "O dossiê, as notas e as preferências ficam neste navegador. Limpar o dossiê não apaga o progresso confirmado na rede.",
+    "device.privacyBody":
+      "O desbloqueio por digital é uma simulação. Sua carteira continua autorizando as transações.",
+    "device.sceneControlsNote":
+      "Os controles de conexão são do aparelho fictício. Eles não alteram sua conexão com a rede Stellar.",
+    "device.storageBody":
+      "O dossiê, as notas e as preferências ficam neste navegador. Limpar o dossiê não apaga o progresso confirmado na rede.",
     "device.cleared": "Dossiê local limpo.",
-    "device.aboutBody": "Seu dispositivo de investigação em Meridian. Casos, comunicações e evidências da temporada 01 — The First Layer.",
+    "device.aboutBody":
+      "Seu dispositivo de investigação em Meridian. Casos, comunicações e evidências da temporada 01 — The First Layer.",
     "device.wifi": "Wi-Fi",
     "device.bluetooth": "Bluetooth",
     "device.focus": "Foco",
@@ -470,22 +516,33 @@ const BASE_TEXTS: Texts = {
     "device.notesLabel": "Anotações da investigação",
     "device.notesPlaceholder": "Registre pistas, métodos e hipóteses…",
     "device.notesSaved": "Salvo neste navegador.",
-    "device.notesUnsaved": "Não foi possível salvar. Exporte uma cópia para guardar suas notas.",
+    "device.notesUnsaved":
+      "Não foi possível salvar. Exporte uma cópia para guardar suas notas.",
     "device.exportNotes": "Exportar notas",
-    "device.cameraError": "Câmera indisponível. Confira as permissões de câmera do navegador.",
-    "device.qrUnavailable": "A câmera está disponível, mas este navegador não tem um leitor de QR code.",
-    "device.cameraNote": "Ative a câmera para ler um código QR. O conteúdo será exibido antes de qualquer ação.",
+    "device.cameraError":
+      "Câmera indisponível. Confira as permissões de câmera do navegador.",
+    "device.qrUnavailable":
+      "A câmera está disponível, mas este navegador não tem um leitor de QR code.",
+    "device.cameraNote":
+      "Ative a câmera para ler um código QR. O conteúdo será exibido antes de qualquer ação.",
     "device.stopCamera": "Desligar câmera",
     "device.startCamera": "Ativar câmera",
     "device.session": "Sessão",
     "device.chat.homeContext": "Meridian · chegada",
-    "device.chat.homeWelcome": "Bem-vindo a Meridian, Breaker. Estou no canal. Posso te apresentar a cidade ou te acompanhar quando escolher um caso.",
-    "device.chat.homeReply": "Estou com você. Pergunte sobre Meridian ou escolha um caso no app Casos. Quando entrar, seguimos a conversa daquele lugar.",
-    "device.chat.homeCases": "Abra o app Casos no celular e escolha uma investigação. Cada caso tem um alvo, um dossiê e transmissões próprias. O prólogo apresenta o seu primeiro trabalho.",
-    "device.chat.city": "Meridian vive sobre contratos: portas, credenciais, transporte e mercados dependem deles. No alto ficam a Authority e suas torres; no centro, a vida pública; embaixo, a indústria que mantém tudo funcionando.",
-    "device.chat.caseReply": "Anotado. Vamos manter o foco neste caso. Posso retomar o objetivo, identificar o alvo ou liberar uma dica quando você pedir.",
-    "device.chat.hintOffer": "Posso liberar uma dica. Toque em Pedir dica para confirmar; cada pedido avança um passo.",
-    "device.chat.hintUnavailable": "Ainda não há uma dica disponível. Vamos começar pelo objetivo do dossiê.",
+    "device.chat.homeWelcome":
+      "Bem-vindo a Meridian, Breaker. Estou no canal. Posso te apresentar a cidade ou te acompanhar quando escolher um caso.",
+    "device.chat.homeReply":
+      "Estou com você. Pergunte sobre Meridian ou escolha um caso no app Casos. Quando entrar, seguimos a conversa daquele lugar.",
+    "device.chat.homeCases":
+      "Abra o app Casos no celular e escolha uma investigação. Cada caso tem um alvo, um dossiê e transmissões próprias. O prólogo apresenta o seu primeiro trabalho.",
+    "device.chat.city":
+      "Meridian vive sobre contratos: portas, credenciais, transporte e mercados dependem deles. No alto ficam a Authority e suas torres; no centro, a vida pública; embaixo, a indústria que mantém tudo funcionando.",
+    "device.chat.caseReply":
+      "Anotado. Vamos manter o foco neste caso. Posso retomar o objetivo, identificar o alvo ou liberar uma dica quando você pedir.",
+    "device.chat.hintOffer":
+      "Posso liberar uma dica. Toque em Pedir dica para confirmar; cada pedido avança um passo.",
+    "device.chat.hintUnavailable":
+      "Ainda não há uma dica disponível. Vamos começar pelo objetivo do dossiê.",
     "device.chat.connecting": "Sintonizando as transmissões deste caso…",
     "device.chat.askCity": "Como é Meridian?",
     "device.chat.askCases": "Como começo um caso?",
@@ -496,17 +553,20 @@ const BASE_TEXTS: Texts = {
     "device.chat.send": "Enviar mensagem",
     "device.chat.secure": "Canal de investigação",
     "device.app.wallet": "Carteira",
-    "device.wallet.connect": "Conecte sua carteira para consultar, receber e enviar tokens.",
+    "device.wallet.connect":
+      "Conecte sua carteira para consultar, receber e enviar tokens.",
     "device.wallet.balance": "Saldo",
     "device.wallet.receive": "Receber",
     "device.wallet.send": "Enviar",
-    "device.wallet.loadError": "Não foi possível consultar os saldos. Atualize ou ative sua conta na aba Receber.",
+    "device.wallet.loadError":
+      "Não foi possível consultar os saldos. Atualize ou ative sua conta na aba Receber.",
     "device.wallet.loading": "Consultando a testnet…",
     "device.wallet.native": "Ativo nativo",
     "device.wallet.available": "Disponível",
     "device.wallet.reserve": "Reserva mínima da conta",
     "device.wallet.receiveTitle": "Receber na sua carteira",
-    "device.wallet.receiveBody": "Este é seu endereço na testnet do Stellar. Envie somente XLM e ativos dessa rede. Para receber outros ativos, sua conta precisa criar a linha de confiança (trustline) correspondente.",
+    "device.wallet.receiveBody":
+      "Este é seu endereço na testnet do Stellar. Envie somente XLM e ativos dessa rede. Para receber outros ativos, sua conta precisa criar a linha de confiança (trustline) correspondente.",
     "device.wallet.friendbot": "Receber XLM de teste",
     "device.wallet.review": "Revisar transferência",
     "device.wallet.token": "Token",
@@ -525,45 +585,68 @@ const BASE_TEXTS: Texts = {
     "device.wallet.signing": "Confirme os dados na sua carteira…",
     "device.wallet.submitting": "Enviando e aguardando a confirmação da rede…",
     "device.wallet.accountHistory": "Ver histórico da carteira",
-    "device.wallet.error.unavailable": "A rede não retornou os parâmetros necessários. Atualize e tente novamente.",
-    "device.wallet.error.amount": "Informe uma quantidade positiva com até sete casas decimais.",
-    "device.wallet.error.address": "Informe um endereço Stellar válido de conta, começando com G.",
-    "device.wallet.error.sameAddress": "O endereço de destino precisa ser diferente do endereço da sua carteira.",
-    "device.wallet.error.memo": "Confira o memo: texto com até 28 bytes ou um ID numérico válido.",
-    "device.wallet.error.destinationMissing": "A conta de destino ainda não está ativa na testnet. Ative-a antes de transferir.",
-    "device.wallet.error.asset": "O ativo não está disponível nesta conta ou não foi autorizado.",
-    "device.wallet.error.reserve": "O saldo em XLM precisa cobrir a reserva mínima e a taxa de rede.",
-    "device.wallet.error.balance": "A quantidade supera o saldo disponível do token.",
-    "device.wallet.error.trustline": "A conta de destino não tem uma linha de confiança autorizada para este ativo.",
-    "device.wallet.error.trustlineLimit": "A quantidade excede o limite da linha de confiança da conta de destino.",
-    "device.wallet.error.accountChanged": "A carteira mudou. Confira os dados da transferência antes de continuar.",
-    "device.wallet.error.changedTransaction": "A transação assinada não corresponde aos dados que você revisou. O envio foi interrompido.",
-    "device.wallet.error.expired": "A confirmação da transferência expirou. Prepare uma nova transferência.",
-    "device.wallet.error.memoRequired": "A conta de destino exige memo. Confira o valor com o destinatário.",
-    "device.wallet.error.submissionUnconfirmed": "Não foi possível confirmar o resultado do envio. Confira o hash no explorador de blocos antes de repetir a transferência.",
-    "device.browser.invalid": "Informe um endereço HTTP/HTTPS ou os termos da busca.",
+    "device.wallet.error.unavailable":
+      "A rede não retornou os parâmetros necessários. Atualize e tente novamente.",
+    "device.wallet.error.amount":
+      "Informe uma quantidade positiva com até sete casas decimais.",
+    "device.wallet.error.address":
+      "Informe um endereço Stellar válido de conta, começando com G.",
+    "device.wallet.error.sameAddress":
+      "O endereço de destino precisa ser diferente do endereço da sua carteira.",
+    "device.wallet.error.memo":
+      "Confira o memo: texto com até 28 bytes ou um ID numérico válido.",
+    "device.wallet.error.destinationMissing":
+      "A conta de destino ainda não está ativa na testnet. Ative-a antes de transferir.",
+    "device.wallet.error.asset":
+      "O ativo não está disponível nesta conta ou não foi autorizado.",
+    "device.wallet.error.reserve":
+      "O saldo em XLM precisa cobrir a reserva mínima e a taxa de rede.",
+    "device.wallet.error.balance":
+      "A quantidade supera o saldo disponível do token.",
+    "device.wallet.error.trustline":
+      "A conta de destino não tem uma linha de confiança autorizada para este ativo.",
+    "device.wallet.error.trustlineLimit":
+      "A quantidade excede o limite da linha de confiança da conta de destino.",
+    "device.wallet.error.accountChanged":
+      "A carteira mudou. Confira os dados da transferência antes de continuar.",
+    "device.wallet.error.changedTransaction":
+      "A transação assinada não corresponde aos dados que você revisou. O envio foi interrompido.",
+    "device.wallet.error.expired":
+      "A confirmação da transferência expirou. Prepare uma nova transferência.",
+    "device.wallet.error.memoRequired":
+      "A conta de destino exige memo. Confira o valor com o destinatário.",
+    "device.wallet.error.submissionUnconfirmed":
+      "Não foi possível confirmar o resultado do envio. Confira o hash no explorador de blocos antes de repetir a transferência.",
+    "device.browser.invalid":
+      "Informe um endereço HTTP/HTTPS ou os termos da busca.",
     "device.browser.placeholder": "Digite um site ou faça uma busca…",
     "device.browser.go": "Acessar",
     "device.browser.back": "Endereço anterior",
     "device.browser.forward": "Próximo endereço",
     "device.browser.external": "Abrir em nova aba",
-    "device.browser.blocked": "Este site pode bloquear a exibição no celular. Use Abrir em nova aba para continuar.",
+    "device.browser.blocked":
+      "Este site pode bloquear a exibição no celular. Use Abrir em nova aba para continuar.",
     "device.browser.loading": "Abrindo página…",
     "device.browser.page": "Página da internet",
     "device.browser.start": "Navegue pela internet",
-    "device.browser.startBody": "Digite um endereço ou faça uma busca. Navegue aqui e abra outra aba quando precisar.",
-    "device.browser.policy": "Alguns sites podem ser exibidos aqui; outros precisam de uma aba própria.",
+    "device.browser.startBody":
+      "Digite um endereço ou faça uma busca. Navegue aqui e abra outra aba quando precisar.",
+    "device.browser.policy":
+      "Alguns sites podem ser exibidos aqui; outros precisam de uma aba própria.",
     "device.chat.conversations": "Conversas",
     "device.chat.conversationsBody": "Contatos e mensagens deste caso.",
     "device.chat.availableReplies": "Mensagens disponíveis",
     "device.chat.askStart": "Como começo a investigação?",
-    "device.chat.waitProgress": "A conversa continua quando a investigação avançar.",
+    "device.chat.waitProgress":
+      "A conversa continua quando a investigação avançar.",
     "device.chat.exhausted": "Sem novas mensagens para enviar.",
-    "device.chat.readOnly": "Este contato só envia transmissões. Não é possível responder por aqui.",
+    "device.chat.readOnly":
+      "Este contato só envia transmissões. Não é possível responder por aqui.",
     "device.chat.noMessages": "Sem mensagens neste caso ainda.",
     "device.chat.received": "Transmissões recebidas neste caso.",
     "device.brand": "BREAKER OS",
     "device.close": "Fechar Breaker OS",
+    "device.opening": "Abrindo Breaker OS…",
     "device.home": "Início",
     "device.case": "CASO {code}",
     "device.player": "OPERADOR",
@@ -579,24 +662,113 @@ const BASE_TEXTS: Texts = {
       "Canal de escuta: o mundo fala; às vezes você responde. A ação continua no console.",
     "device.empty.evidence": "Nenhuma evidência coletada ainda.",
     "device.empty.terminal": "Nenhuma chamada ainda.",
+    "device.operations.noInstanceShort": "Crie uma instância para executar.",
+    "device.operations.start": "Iniciar operação",
+    "device.operations.starting": "Iniciando operação…",
+    "device.operations.startNote":
+      "Cria uma instância descartável deste caso para a sua carteira.",
+    "device.operations.notebook": "Caderno de operações",
+    "device.operations.cell": "Célula {number}",
+    "device.operations.runShort": "Rodar",
+    "device.operations.runningShort": "Rodando…",
+    "device.operations.clearCell": "Limpar célula",
+    "device.operations.deleteCell": "Excluir célula",
+    "device.operations.output": "Saída",
+    "device.operations.failedShort": "Erro",
+    "device.operations.addCell": "Adicionar célula",
+    "device.operations.saved": "Salvo neste aparelho",
+    "device.operations.progress.starting": "Preparando a operação…",
+    "device.operations.progress.call": "Chamada {number}: {method}",
+    "device.operations.progress.signing": "Aguardando sua assinatura para {method}…",
+    "device.operations.progress.completed": "{completed} de {started} chamadas concluídas · {method}",
+    "device.operations.progress.waiting": "A execução está demorando. A operação continua ativa…",
+    "device.operations.progress.elapsed": "{elapsed} · {completed}/{started} chamadas",
+    "device.operations.progress.canClose": "Você pode fechar o Breaker OS; esta operação continuará em andamento enquanto esta página estiver aberta.",
+    "device.operations.placeholderShort": "Escreva JavaScript…",
+    "device.operations.noMethodsShort": "Nenhum método disponível.",
+    "device.operations.methods": "Métodos do contrato",
+    "device.operations.methodHint": "Escolha um método para inserir uma chamada JavaScript editável no caderno. Confira os valores antes de executar.",
+    "device.operations.insertMethod": "Usar método",
+    "device.operations.returns": "Retorna: {types}",
+    "device.operations.noMethods":
+      "Nenhum método disponível. Confira se a instância foi carregada.",
+    "device.operations.noArguments": "sem argumentos",
+    "device.operations.insert": "Inserir no código",
+    "device.operations.script": "Script da operação",
+    "device.operations.javascript": "JavaScript real",
+    "device.operations.placeholder":
+      "Escolha um método ou escreva JavaScript. Ex.: return await window.contract.count();",
+    "device.operations.insertToken": "Inserir símbolo JavaScript",
+    "device.operations.token.await": "await",
+    "device.operations.token.contract": "contrato",
+    "device.operations.token.parentheses": "( )",
+    "device.operations.token.braces": "{ }",
+    "device.operations.token.brackets": "[ ]",
+    "device.operations.token.quotes": '" "',
+    "device.operations.token.return": "return",
+    "device.operations.returnHint":
+      "Use return para mostrar um valor. Chamadas de escrita podem abrir sua carteira para assinatura.",
+    "device.operations.run": "Executar operação",
+    "device.operations.running": "Executando…",
+    "device.operations.waiting": "Aguardando a chamada e a carteira…",
+    "device.operations.failed": "A operação falhou",
+    "device.operations.result": "Resultado",
+    "device.operations.complete": "Concluída",
+    "device.operations.noReturn": "Execução concluída sem valor retornado.",
+    "device.operations.plan.empty": "Nenhuma chamada no plano ainda.",
+    "device.operations.plan.add": "Adicionar chamada",
+    "device.operations.plan.addCustom": "Adicionar script",
+    "device.operations.plan.addMethod": "Adicionar ao plano",
+    "device.operations.plan.step": "Passo {number}",
+    "device.operations.plan.run": "Executar plano",
+    "device.operations.plan.running": "Executando plano…",
+    "device.operations.plan.moveUp": "Subir",
+    "device.operations.plan.moveDown": "Descer",
+    "device.operations.plan.remove": "Remover do plano",
+    "device.operations.plan.custom": "Script livre",
+    "device.operations.plan.editCode": "Editar no código",
+    "device.operations.plan.usePlayer": "usar player",
+    "device.operations.plan.useAux": "usar aux",
+    "device.operations.plan.wait": "Espera",
+    "device.operations.plan.waitSeconds": "Segundos de espera",
+    "device.operations.plan.addWait": "Adicionar espera",
+    "device.operations.plan.expression": "expressão",
+    "device.operations.plan.field": "campo",
+    "device.operations.target.instance": "Instância",
+    "device.operations.target.state": "Estado e guardas",
+    "device.operations.target.refresh": "Conferir estado",
+    "device.operations.target.noState":
+      "Ainda não há estado lido. Toque em Conferir estado.",
+    "device.operations.target.add": "Adicionar ao plano",
+    "device.operations.run.title": "Execução",
+    "device.operations.run.empty": "Execute o plano para ver o traço.",
+    "device.operations.run.pending": "Ainda não executado.",
+    "device.operations.run.validate": "Validar instância",
+    "device.operations.run.validating": "Validando…",
+    "device.operations.run.next": "Próximo caso",
+    "device.operations.run.diagnostics": "O que ainda falta",
     "device.terminal.outcome.pending": "em andamento",
     "device.terminal.outcome.accepted": "concluída",
-    "device.terminal.failure.rejected": "instância recusou — confira o estado e a sequência",
+    "device.terminal.failure.rejected":
+      "instância recusou — confira o estado e a sequência",
     "device.terminal.failure.cancelled": "carteira não assinou a chamada",
     "device.terminal.failure.unknown": "não foi possível concluir",
     "device.app.cases": "Notas",
-    "device.app.investigation": "Dossiê",
-    "device.notesArchive.title": "Notas",
-    "device.notesArchive.progress": "Notas liberadas: {count}.",
-    "device.notesArchive.empty": "Resolva um caso para registrar a primeira nota.",
+    "device.app.investigation": "Notas",
+    "device.notesArchive.title": "Casos concluídos",
+    "device.notesArchive.progress": "Casos concluídos: {count}.",
+    "device.notesArchive.empty":
+      "Nenhum caso concluído ainda.",
     "device.app.comms": "Chat",
     "device.app.evidence": "Evidências",
+    "device.app.operations": "Operações",
     "device.app.terminal": "Terminal",
     "device.app.story": "História",
     "device.app.news": "Jornal",
     "device.news.edition": "Meridian · Notícias da rede",
     "device.news.loading": "Carregando a edição…",
-    "device.news.empty": "Não foi possível abrir a edição. Feche e abra o Jornal para tentar novamente.",
+    "device.news.empty":
+      "Não foi possível abrir a edição. Feche e abra o Jornal para tentar novamente.",
     "device.news.ariaSections": "Seções do jornal",
     "device.news.masthead": "MERIDIAN / CENTRAL DE INTELIGÊNCIA",
     "device.news.title": "NOTÍCIAS DE MERIDIAN",
@@ -615,7 +787,8 @@ const BASE_TEXTS: Texts = {
     "device.status.ready": "PRONTO",
     "device.about.official": "SISTEMA OFICIAL DE CAMPO",
     "device.about.build": "VERSÃO 01.10 · ACESSO PROVISÓRIO",
-    "device.about.terminal": "Este terminal faz parte da infraestrutura oficial de investigação da Meridian.",
+    "device.about.terminal":
+      "Este terminal faz parte da infraestrutura oficial de investigação da Meridian.",
     "device.app.final": "Final",
     "device.app.help": "Ajuda",
     "device.story.body": "O texto longo deste caso, em cenas.",
@@ -625,8 +798,13 @@ const BASE_TEXTS: Texts = {
     "device.final.ready": "Sequência final pronta.",
     "device.final.open": "Abrir sequência final",
     "device.help.console":
-      "O console do DevTools é o terminal. O Breaker OS não executa código.",
-    "device.help.note": "Este dispositivo organiza o caso; a ação acontece no console.",
+      "O console do DevTools é o terminal principal. O Breaker OS também executa código em Operações.",
+    "device.help.console.mobile":
+      "Use Operações para executar JavaScript. O Terminal registra as chamadas.",
+    "device.help.note":
+      "Este dispositivo organiza o caso; o console é o caminho principal, e Operações também está disponível.",
+    "device.help.note.mobile":
+      "Investigue, execute suas hipóteses e consulte o registro sem sair do Breaker OS.",
     "device.help.help": "Como jogar",
     "device.help.language": "Trocar idioma",
     "device.help.clear": "Limpar dossiê",
@@ -637,8 +815,11 @@ const BASE_TEXTS: Texts = {
 
     "help.title": "Ajuda",
     "help.console.title": "O console é a sua interface",
+    "help.console.title.mobile": "Operações é a sua interface",
     "help.console.body":
-      "Não há caixa de texto neste jogo, e isso é intencional. Abra as ferramentas do desenvolvedor do navegador (F12), selecione a aba Console e interaja com o contrato por lá — é assim que se consulta um contrato de verdade.",
+      "No desktop, o console do navegador é o caminho principal: abra o DevTools (F12), selecione a aba Console e interaja com o contrato por lá. O Breaker OS também oferece o app Operações, se você preferir.",
+    "help.console.body.mobile":
+      "No celular, entre com a passkey salva no aparelho. Em um caso, abra o Breaker OS e toque em Operações para investigar e executar chamadas.",
     "help.globals.title": "Os cinco objetos",
     "help.globals.body":
       "Assim que você criar uma instância, estes objetos passam a existir em window:",
@@ -648,12 +829,27 @@ const BASE_TEXTS: Texts = {
     "help.global.aux": "o contrato auxiliar do caso, quando existe",
     "help.global.help": "a lista de tudo isso e dos métodos",
     "help.steps.title": "O ciclo, em seis passos",
-    "help.step1": "Abra a página e conecte uma carteira compatível à testnet do Stellar.",
-    "help.step2": "Abra um caso e clique em Nova instância. O núcleo implanta um novo contrato, exclusivo para você.",
-    "help.step3": "Leia o enunciado e anote o endereço do contrato da instância.",
-    "help.step4": "Abra o console e interaja com o contrato usando os objetos disponíveis em window.",
+    "help.step1":
+      "Abra a página e conecte uma carteira compatível à testnet do Stellar.",
+    "help.step1.mobile": "Entre usando a passkey salva no aparelho.",
+    "help.step2":
+      "Abra um caso e clique em Nova instância. O núcleo implanta um novo contrato, exclusivo para você.",
+    "help.step2.mobile":
+      "Abra um caso, toque em Abrir Operações e inicie a instância. O núcleo implanta um novo contrato, exclusivo para você.",
+    "help.step3":
+      "Leia o enunciado e anote o endereço do contrato da instância.",
+    "help.step3.mobile":
+      "Leia o enunciado e anote o endereço do contrato da instância.",
+    "help.step4":
+      "Abra o console e interaja com o contrato usando os objetos disponíveis em window.",
+    "help.step4.mobile":
+      "Abra o Breaker OS e toque em Operações. Escreva e execute JavaScript nas células do notebook.",
     "help.step5": "Clique em Submeter — o núcleo chama o validador na rede.",
-    "help.step6": "Quando o objetivo for cumprido, o caso será marcado como resolvido.",
+    "help.step5.mobile": "Toque em Submeter na barra inferior — o núcleo chama o validador na rede.",
+    "help.step6":
+      "Quando o objetivo for cumprido, o caso será marcado como resolvido.",
+    "help.step6.mobile":
+      "Quando o objetivo for cumprido, o caso será marcado como resolvido.",
     "help.back": "Voltar",
 
     "footer.notice": "Nada aqui vale dinheiro de verdade.",
@@ -699,8 +895,10 @@ const BASE_TEXTS: Texts = {
     "home.ctaExplore": "See the cases",
     "home.creed.label": "Meridian",
     "home.sector.meridian": "Meridian",
-    "home.sector.meridian.body": "A city built on certainty. Trains cross its districts in lines of light, credentials open buildings, and markets settle trades without pause. Energy, identity, property, and security depend on contracts most residents have never seen.",
-    "home.sector.meridian.life": "Above, administrative towers and the Meridian Authority. At the center, commerce and public life. Below, factories, warehouses, and the maintenance that keeps everything standing. For those who live here, contracts do not feel like programs: they are part of the city’s natural order.",
+    "home.sector.meridian.body":
+      "A city built on certainty. Trains cross its districts in lines of light, credentials open buildings, and markets settle trades without pause. Energy, identity, property, and security depend on contracts most residents have never seen.",
+    "home.sector.meridian.life":
+      "Above, administrative towers and the Meridian Authority. At the center, commerce and public life. Below, factories, warehouses, and the maintenance that keeps everything standing. For those who live here, contracts do not feel like programs: they are part of the city’s natural order.",
     "home.sector.upper": "Upper Meridian",
     "home.sector.upper.sub": "Governance & Elite",
     "home.sector.central": "Central Meridian",
@@ -769,6 +967,18 @@ const BASE_TEXTS: Texts = {
 
     "wallet.title": "Wallet",
     "wallet.connect": "Connect wallet",
+    "wallet.passkey.create": "Create a passkey",
+    "wallet.passkey.connect": "I already have a passkey",
+    "wallet.passkey.unavailable": "This browser cannot create a passkey on this device. Try an up-to-date Safari or Chrome over HTTPS with a screen lock enabled.",
+    "wallet.passkey.account": "Your game identity",
+    "wallet.passkey.step.credential": "Creating the credential on this device…",
+    "wallet.passkey.step.funding": "Preparing the Testnet fee…",
+    "wallet.passkey.step.deploying": "Deploying your account on Testnet…",
+    "wallet.passkey.step.connecting": "Connecting the account…",
+    "wallet.passkey.step.slow":
+      "On Testnet, the first time can take up to ~20 s.",
+    "device.wallet.passkeyOnly": "Your passkey is already the wallet that signs your cases. To view balances or transfer XLM and tokens, connect a Stellar wallet.",
+    "device.wallet.connectForTokens": "Connect Stellar wallet for tokens",
     "wallet.connecting": "Connecting…",
     "wallet.checking": "Looking for a wallet…",
     "wallet.tryAgain": "Try again",
@@ -814,19 +1024,23 @@ const BASE_TEXTS: Texts = {
     "device.cases.locked": "Access locked",
     "collection.playerDevice": "Personal device",
     "collection.back": "Back to collection",
-    "collection.connect": "Connect your wallet from the device home to check your progress.",
+    "collection.connect":
+      "Connect your wallet from the device home to check your progress.",
     "collection.title": "Your BREAKER collection",
-    "collection.subtitle": "Every case leaves a mark. Follow your journey through Meridian.",
+    "collection.subtitle":
+      "Every case leaves a mark. Follow your journey through Meridian.",
     "collection.loading": "Checking your cases on testnet…",
     "collection.error": "Your progress could not be loaded. Try refreshing.",
     "collection.progress": "{count} of {total} cases solved",
     "collection.refresh": "Refresh",
-    "collection.preview": "A preview of the case collection. The season credential is a soulbound NFT.",
+    "collection.preview":
+      "A preview of the case collection. The season credential is a soulbound NFT.",
     "collection.unknown": "Progress unconfirmed",
     "collection.solved": "Case solved",
     "collection.pending": "Case pending",
     "collection.details": "Collectible details",
-    "collection.ownership": "The season credential is soulbound: it cannot be transferred.",
+    "collection.ownership":
+      "The season credential is soulbound: it cannot be transferred.",
     "collection.openCase": "Open case",
     "collection.claimLoading": "Checking the season credential…",
     "collection.claim": "Claim season NFT",
@@ -862,12 +1076,15 @@ const BASE_TEXTS: Texts = {
 
     "level.back": "All cases",
     "levelHero.play": "Go to the challenge",
-    "levelHero.pending": "The continuation appears here after you solve the previous case. You can play this challenge directly.",
+    "levelHero.pending":
+      "The continuation appears here after you solve the previous case. You can play this challenge directly.",
     "levelHero.continueStory": "Continue the story",
     "device.document.open": "Open document",
     "device.document.source": "Source",
-    "device.document.empty": "Documents for this stage will appear here as the investigation advances.",
-    "device.story.next": "The story continues at the start of the next case. You can also reread the full record.",
+    "device.document.empty":
+      "Documents for this stage will appear here as the investigation advances.",
+    "device.story.next":
+      "The story continues at the start of the next case. You can also reread the full record.",
     "levelHero.caseStep": "The case",
     "levelHero.storyStep": "The story",
     "levelHero.scroll": "Scroll to read the case",
@@ -884,8 +1101,6 @@ const BASE_TEXTS: Texts = {
     "levelHero.recap": "The story continues",
     "levelHero.recapNext": "And now, the current case",
     "level.statement": "Briefing",
-    "level.contract": "This instance's contract",
-    "level.noInstance": "You have no instance of this level yet.",
     "level.code": "Source code",
     "level.hiddenCode": "This case's code stays hidden until you solve it.",
     "level.hiddenCodeTutorial":
@@ -902,7 +1117,6 @@ const BASE_TEXTS: Texts = {
     "level.start.step.submit":
       "Come back and click Submit; the core validates the instance on-chain.",
     "level.start.action": "Create instance",
-    "level.start.ready": "Instance active — the console is unlocked.",
     "error.levelNotFound": "The case does not exist in the core.",
     "error.unknownInstance": "That instance was not created by this core.",
     "error.alreadySolved": "This case has already been solved.",
@@ -912,25 +1126,32 @@ const BASE_TEXTS: Texts = {
     "error.invalidPrerequisite": "The declared prerequisite is invalid.",
     "level.previousCase": "Go to case {code}",
     "level.retry": "Try again",
-    "level.operation": "Availability operation: the real TTL is proven in the contract tests; the validator reads floor 24's renewal.",
+    "level.operation":
+      "Availability operation: the real TTL is proven in the contract tests; the validator reads floor 24's renewal.",
     "level.diagnostics": "What the validator still requires",
     "level.diagnosticNow": "now: {value}",
     "level.diagnosticExpected": "expected: {value}",
     "level.diagnosticLoading": "Checking what the validator still requires…",
-    "level.diagnosticError": "Could not read the diagnostic checklist. Submit again to retry.",
+    "level.diagnosticError":
+      "Could not read the diagnostic checklist. Submit again to retry.",
     "level.tutorial.title": "How to play this prologue",
-    "level.tutorial.body": "The game's terminal is the browser console. Open it, call the methods and submit the instance.",
-    "level.tutorial.console": "Open the browser console (F12 → Console, or Ctrl+Shift+J).",
+    "level.tutorial.body":
+      "The game's terminal is the browser console. Open it, call the methods and submit the instance.",
+    "level.tutorial.console":
+      "Open the browser console (F12 → Console, or Ctrl+Shift+J).",
     "level.tutorial.instance": "Create the instance with the button below.",
-    "level.tutorial.call": "In the console, read the state, call increment and read again.",
+    "level.tutorial.call":
+      "In the console, read the state, call increment and read again.",
     "level.tutorial.submit": "Click Submit; the core confirms on the chain.",
-    "level.tutorial.desktop": "The challenge runs in the desktop console; on mobile you can read, create the instance and submit.",
+    "level.tutorial.desktop":
+      "The challenge runs in the desktop console; Breaker OS also offers Operations, on desktop and mobile.",
     "ledger.current": "Current ledger: {value}",
     "ledger.predict": "predict three targets ahead",
     "ledger.wait": "{count} ledgers left (~{seconds} s)",
     "ledger.ready": "The target ledger has arrived.",
     "home.progress": "{solved}/{total} verified on-chain",
-    "home.progressCached": "{solved}/{total} from the last visit · checking the network…",
+    "home.progressCached":
+      "{solved}/{total} from the last visit · checking the network…",
     "home.progressChecking": "Checking on-chain progress…",
     "home.progressError": "Could not read the on-chain progress.",
     "home.readingChain": "Reading on-chain progress…",
@@ -942,34 +1163,40 @@ const BASE_TEXTS: Texts = {
     "casefile.hintStuck": "unlocked by the stuck trigger",
     "casefile.assisted": "Assisted case: the third hint reveals the solution.",
     "level.creating": "Creating instance…",
+    "level.creatingDetail":
+      "Publishing your instance on Testnet. This can take a few seconds.",
     "level.submit": "Submit",
     "level.submitting": "Submitting…",
     "level.next": "Next case",
     "level.reveal": "Reveal code",
     "level.hide": "Hide code",
-    "level.readFailed": "Could not read your progress from the network: {reason}",
-    "level.broken": "This case is incomplete: {count} file(s) missing — {files}",
+    "level.readFailed":
+      "Could not read your progress from the network: {reason}",
+    "level.broken":
+      "This case is incomplete: {count} file(s) missing — {files}",
     "level.notFound": "This case does not exist.",
     "level.backToLevels": "Back to cases",
 
-    "level.success": "Objective met. Case solved.",
-    "level.failure": "The validator did not accept it. The objective is not met yet.",
+    "level.failure":
+      "The validator did not accept it. The objective is not met yet.",
     "level.error": "That did not work: {reason}",
-    "level.localTestWallet": "Local test mode: the console is available, but no instance or transaction is created.",
+    "level.localTestWallet":
+      "Local test mode: the console is available, but no instance or transaction is created.",
     "level.conclusion": "Debrief",
     "level.needsWallet": "Connect your wallet to create an instance.",
     "level.needsInstance": "Create an instance of this case before submitting.",
-    "level.hint":
-      "There is no text box: once the instance exists, talk to the contract through the browser console.",
-    "level.seeHelp": "How to play",
     "level.copyCommand": "Copy command",
     "level.operation.title": "Operation objective",
-    "level.operation.discovery": "Inspect the live interface with `window.help()`, form a hypothesis, and only then execute. The proof is checked on-chain when you submit.",
+    "level.operation.discovery":
+      "Inspect the live interface with `window.help()`, form a hypothesis, and only then execute. The proof is checked on-chain when you submit.",
+    "level.operation.discovery.mobile":
+      "In Operations, open Methods and insert a call into a cell. Run the cell, then submit to verify the solution on-chain.",
 
     "thread.title": "What you already know",
 
     "casefile.title": "Case file",
-    "casefile.summary": "{known} facts · {unknown} questions · {evidence} evidence",
+    "casefile.summary":
+      "{known} facts · {unknown} questions · {evidence} evidence",
     "casefile.objective": "Objective",
     "casefile.target": "Target",
     "casefile.owner": "Owner / authority",
@@ -1040,14 +1267,16 @@ const BASE_TEXTS: Texts = {
       "This is the long-form version of the case. It does not change on-chain validation and is not required to solve the case.",
 
     "device.open": "Open Breaker OS",
-    "device.openDossier": "Open case file",
-    "device.chipNote": "The full case file lives in Breaker OS.",
+    "level.openOperations": "Open Operations",
+    "level.actions": "Case actions",
     "device.notifications": "Notifications",
     "device.caseReceived": "Case received",
     "device.updatesAvailable": "New updates available. Tap to open.",
     "device.notification.evidence": "New evidence was linked to this case.",
-    "device.notification.callAccepted": "Operation accepted by the instance. Review the record.",
-    "device.notification.callFailed": "The instance rejected the operation. Review its state before trying again.",
+    "device.notification.callAccepted":
+      "Operation accepted by the instance. Review the record.",
+    "device.notification.callFailed":
+      "The instance rejected the operation. Review its state before trying again.",
     "device.notification.story": "The case debrief is now available.",
     "device.noNotifications": "No notifications yet.",
     "device.unlockFingerprint": "Unlock with fingerprint",
@@ -1070,10 +1299,12 @@ const BASE_TEXTS: Texts = {
     "device.scanner": "Scan QR",
     "device.map": "Field map",
     "device.map.kicker": "MERIDIAN / INVESTIGATION GRID",
-    "device.map.body": "District references to situate the current investigation.",
+    "device.map.body":
+      "District references to situate the current investigation.",
     "device.map.locations": "Catalogued locations",
     "device.map.active": "Active signal: {district}",
-    "device.map.note": "The map organizes story locations. It contains no codes, keys, or solution routes.",
+    "device.map.note":
+      "The map organizes story locations. It contains no codes, keys, or solution routes.",
     "device.scanner.fieldRecord": "FIELD READOUT",
     "device.scanner.openRecord": "Open investigation record",
     "device.searchPlaceholder": "Search apps, cases and evidence…",
@@ -1090,11 +1321,15 @@ const BASE_TEXTS: Texts = {
     "device.brightness": "Brightness",
     "device.showPreviews": "Show lock screen previews",
     "device.clearNotifications": "Clear notifications",
-    "device.privacyBody": "Fingerprint unlock is a simulation. Your wallet still authorizes transactions.",
-    "device.sceneControlsNote": "Connection controls belong to the fictional device. They do not change your Stellar network connection.",
-    "device.storageBody": "The case file, notes and preferences stay in this browser. Clearing the file does not erase progress confirmed on the network.",
+    "device.privacyBody":
+      "Fingerprint unlock is a simulation. Your wallet still authorizes transactions.",
+    "device.sceneControlsNote":
+      "Connection controls belong to the fictional device. They do not change your Stellar network connection.",
+    "device.storageBody":
+      "The case file, notes and preferences stay in this browser. Clearing the file does not erase progress confirmed on the network.",
     "device.cleared": "Local case file cleared.",
-    "device.aboutBody": "Your investigation device in Meridian. Cases, communications and evidence from Season 01 — The First Layer.",
+    "device.aboutBody":
+      "Your investigation device in Meridian. Cases, communications and evidence from Season 01 — The First Layer.",
     "device.wifi": "Wi-Fi",
     "device.bluetooth": "Bluetooth",
     "device.focus": "Focus",
@@ -1140,19 +1375,28 @@ const BASE_TEXTS: Texts = {
     "device.notesUnsaved": "Could not save. Export a copy to keep your notes.",
     "device.exportNotes": "Export notes",
     "device.cameraError": "Camera unavailable. Check your browser permissions.",
-    "device.qrUnavailable": "The camera is available, but this browser does not support QR reading.",
-    "device.cameraNote": "Enable the camera to read a QR code. Its content will be shown before any action.",
+    "device.qrUnavailable":
+      "The camera is available, but this browser does not support QR reading.",
+    "device.cameraNote":
+      "Enable the camera to read a QR code. Its content will be shown before any action.",
     "device.stopCamera": "Stop camera",
     "device.startCamera": "Enable camera",
     "device.session": "Session",
     "device.chat.homeContext": "Meridian · arrival",
-    "device.chat.homeWelcome": "Welcome to Meridian, Breaker. I am on the channel. I can introduce you to the city or join you when you choose a case.",
-    "device.chat.homeReply": "I am with you. Ask about Meridian or choose a case in the Cases app. Once you enter, we will follow that place's conversation.",
-    "device.chat.homeCases": "Open the Cases app on your phone and choose an investigation. Each case has its own target, file and transmissions. The prologue introduces your first assignment.",
-    "device.chat.city": "Meridian runs on contracts: doors, credentials, transport and markets depend on them. Above are the Authority and its towers; at the center, public life; below, the industry that keeps everything running.",
-    "device.chat.caseReply": "Noted. Let us stay focused on this case. I can review the objective, identify the target or share a hint when you ask.",
-    "device.chat.hintOffer": "I can share a hint. Tap Request hint to confirm; each request advances one step.",
-    "device.chat.hintUnavailable": "No hint is available yet. Let us start with the case file objective.",
+    "device.chat.homeWelcome":
+      "Welcome to Meridian, Breaker. I am on the channel. I can introduce you to the city or join you when you choose a case.",
+    "device.chat.homeReply":
+      "I am with you. Ask about Meridian or choose a case in the Cases app. Once you enter, we will follow that place's conversation.",
+    "device.chat.homeCases":
+      "Open the Cases app on your phone and choose an investigation. Each case has its own target, file and transmissions. The prologue introduces your first assignment.",
+    "device.chat.city":
+      "Meridian runs on contracts: doors, credentials, transport and markets depend on them. Above are the Authority and its towers; at the center, public life; below, the industry that keeps everything running.",
+    "device.chat.caseReply":
+      "Noted. Let us stay focused on this case. I can review the objective, identify the target or share a hint when you ask.",
+    "device.chat.hintOffer":
+      "I can share a hint. Tap Request hint to confirm; each request advances one step.",
+    "device.chat.hintUnavailable":
+      "No hint is available yet. Let us start with the case file objective.",
     "device.chat.connecting": "Tuning in to this case's transmissions…",
     "device.chat.askCity": "What is Meridian like?",
     "device.chat.askCases": "How do I start a case?",
@@ -1163,17 +1407,20 @@ const BASE_TEXTS: Texts = {
     "device.chat.send": "Send message",
     "device.chat.secure": "Investigation channel",
     "device.app.wallet": "Wallet",
-    "device.wallet.connect": "Connect your wallet to view, receive and send tokens.",
+    "device.wallet.connect":
+      "Connect your wallet to view, receive and send tokens.",
     "device.wallet.balance": "Balance",
     "device.wallet.receive": "Receive",
     "device.wallet.send": "Send",
-    "device.wallet.loadError": "Could not load balances. Refresh or activate your account in the Receive tab.",
+    "device.wallet.loadError":
+      "Could not load balances. Refresh or activate your account in the Receive tab.",
     "device.wallet.loading": "Checking testnet…",
     "device.wallet.native": "Native asset",
     "device.wallet.available": "Available",
     "device.wallet.reserve": "Account minimum reserve",
     "device.wallet.receiveTitle": "Receive in your wallet",
-    "device.wallet.receiveBody": "This is your Stellar Testnet address. Receive only XLM and assets on this network. Other assets require a corresponding trustline.",
+    "device.wallet.receiveBody":
+      "This is your Stellar Testnet address. Receive only XLM and assets on this network. Other assets require a corresponding trustline.",
     "device.wallet.friendbot": "Get test XLM",
     "device.wallet.review": "Review transfer",
     "device.wallet.token": "Token",
@@ -1192,45 +1439,67 @@ const BASE_TEXTS: Texts = {
     "device.wallet.signing": "Confirm the details in your wallet…",
     "device.wallet.submitting": "Submitting and awaiting network confirmation…",
     "device.wallet.accountHistory": "View wallet history",
-    "device.wallet.error.unavailable": "The network did not return the required parameters. Refresh and try again.",
-    "device.wallet.error.amount": "Enter a positive amount with up to seven decimal places.",
-    "device.wallet.error.address": "Enter a valid Stellar account address starting with G.",
-    "device.wallet.error.sameAddress": "The destination wallet must differ from yours.",
-    "device.wallet.error.memo": "Check the memo: up to 28 text bytes or a valid numeric ID.",
-    "device.wallet.error.destinationMissing": "The destination account is not yet active on testnet. Activate it before transferring.",
-    "device.wallet.error.asset": "The asset is unavailable or unauthorized on this account.",
-    "device.wallet.error.reserve": "The XLM balance must cover the minimum reserve and network fee.",
-    "device.wallet.error.balance": "The amount exceeds the token's available balance.",
-    "device.wallet.error.trustline": "The destination has no authorized trustline for this asset.",
-    "device.wallet.error.trustlineLimit": "The amount exceeds the destination trustline limit.",
-    "device.wallet.error.accountChanged": "The wallet changed. Review the transfer again.",
-    "device.wallet.error.changedTransaction": "The signed transaction does not match the review. Submission was stopped.",
-    "device.wallet.error.expired": "This review expired. Prepare a new transfer.",
-    "device.wallet.error.memoRequired": "The destination requires a memo. Confirm its value with the recipient.",
-    "device.wallet.error.submissionUnconfirmed": "The submission result could not be confirmed. Check the hash in the explorer before repeating the transfer.",
+    "device.wallet.error.unavailable":
+      "The network did not return the required parameters. Refresh and try again.",
+    "device.wallet.error.amount":
+      "Enter a positive amount with up to seven decimal places.",
+    "device.wallet.error.address":
+      "Enter a valid Stellar account address starting with G.",
+    "device.wallet.error.sameAddress":
+      "The destination wallet must differ from yours.",
+    "device.wallet.error.memo":
+      "Check the memo: up to 28 text bytes or a valid numeric ID.",
+    "device.wallet.error.destinationMissing":
+      "The destination account is not yet active on testnet. Activate it before transferring.",
+    "device.wallet.error.asset":
+      "The asset is unavailable or unauthorized on this account.",
+    "device.wallet.error.reserve":
+      "The XLM balance must cover the minimum reserve and network fee.",
+    "device.wallet.error.balance":
+      "The amount exceeds the token's available balance.",
+    "device.wallet.error.trustline":
+      "The destination has no authorized trustline for this asset.",
+    "device.wallet.error.trustlineLimit":
+      "The amount exceeds the destination trustline limit.",
+    "device.wallet.error.accountChanged":
+      "The wallet changed. Review the transfer again.",
+    "device.wallet.error.changedTransaction":
+      "The signed transaction does not match the review. Submission was stopped.",
+    "device.wallet.error.expired":
+      "This review expired. Prepare a new transfer.",
+    "device.wallet.error.memoRequired":
+      "The destination requires a memo. Confirm its value with the recipient.",
+    "device.wallet.error.submissionUnconfirmed":
+      "The submission result could not be confirmed. Check the hash in the explorer before repeating the transfer.",
     "device.browser.invalid": "Enter an HTTP/HTTPS address or search terms.",
     "device.browser.placeholder": "Enter a website or search…",
     "device.browser.go": "Go",
     "device.browser.back": "Previous address",
     "device.browser.forward": "Next address",
     "device.browser.external": "Open tab",
-    "device.browser.blocked": "This site may block display inside the phone. Use Open tab to continue.",
+    "device.browser.blocked":
+      "This site may block display inside the phone. Use Open tab to continue.",
     "device.browser.loading": "Opening page…",
     "device.browser.page": "Web page",
     "device.browser.start": "Internet on your device",
-    "device.browser.startBody": "Enter an address or search. Browse here and open an external tab whenever needed.",
-    "device.browser.policy": "Some websites allow display here; others require a separate tab.",
+    "device.browser.startBody":
+      "Enter an address or search. Browse here and open an external tab whenever needed.",
+    "device.browser.policy":
+      "Some websites allow display here; others require a separate tab.",
     "device.chat.conversations": "Conversations",
     "device.chat.conversationsBody": "Contacts and messages for this case.",
     "device.chat.availableReplies": "Available messages",
     "device.chat.askStart": "How do I start investigating?",
-    "device.chat.waitProgress": "The conversation continues as the investigation progresses.",
+    "device.chat.waitProgress":
+      "The conversation continues as the investigation progresses.",
     "device.chat.exhausted": "No new messages to send.",
-    "device.chat.readOnly": "This contact only sends transmissions. Replies are unavailable here.",
+    "device.chat.readOnly":
+      "This contact only sends transmissions. Replies are unavailable here.",
     "device.chat.noMessages": "No messages for this case yet.",
     "device.chat.received": "Transmissions received in this case.",
     "device.brand": "BREAKER OS",
     "device.close": "Close Breaker OS",
+    "device.opening": "Opening Breaker OS…",
     "device.home": "Home",
     "device.case": "CASE {code}",
     "device.player": "OPERATOR",
@@ -1246,24 +1515,114 @@ const BASE_TEXTS: Texts = {
       "Listening channel: the world speaks; sometimes you answer. Action stays in the console.",
     "device.empty.evidence": "No evidence collected yet.",
     "device.empty.terminal": "No calls yet.",
+    "device.operations.noInstanceShort": "Create an instance to run code.",
+    "device.operations.start": "Start operation",
+    "device.operations.starting": "Starting operation…",
+    "device.operations.startNote":
+      "Creates a disposable instance of this case for your wallet.",
+    "device.operations.notebook": "Operations notebook",
+    "device.operations.cell": "Cell {number}",
+    "device.operations.runShort": "Run",
+    "device.operations.runningShort": "Running…",
+    "device.operations.clearCell": "Clear cell",
+    "device.operations.deleteCell": "Delete cell",
+    "device.operations.output": "Output",
+    "device.operations.failedShort": "Error",
+    "device.operations.addCell": "Add cell",
+    "device.operations.saved": "Saved on this device",
+    "device.operations.progress.starting": "Preparing operation…",
+    "device.operations.progress.call": "Call {number}: {method}",
+    "device.operations.progress.signing": "Waiting for your signature for {method}…",
+    "device.operations.progress.completed": "{completed} of {started} calls completed · {method}",
+    "device.operations.progress.waiting": "This step is taking longer than usual. The operation is still running…",
+    "device.operations.progress.elapsed": "{elapsed} · {completed}/{started} calls",
+    "device.operations.progress.canClose": "You can close Breaker OS; this operation will keep running while this page stays open.",
+    "device.operations.placeholderShort": "Write JavaScript…",
+    "device.operations.noMethodsShort": "No methods available.",
+    "device.operations.methods": "Contract methods",
+    "device.operations.methodHint": "Choose a method to insert an editable JavaScript call into the notebook. Review the values before running it.",
+    "device.operations.insertMethod": "Use method",
+    "device.operations.returns": "Returns: {types}",
+    "device.operations.noMethods":
+      "No methods available. Check that the instance has loaded.",
+    "device.operations.noArguments": "no arguments",
+    "device.operations.insert": "Insert into code",
+    "device.operations.script": "Operation script",
+    "device.operations.javascript": "Real JavaScript",
+    "device.operations.placeholder":
+      "Choose a method or write JavaScript. Example: return await window.contract.count();",
+    "device.operations.insertToken": "Insert JavaScript token",
+    "device.operations.token.await": "await",
+    "device.operations.token.contract": "contract",
+    "device.operations.token.parentheses": "( )",
+    "device.operations.token.braces": "{ }",
+    "device.operations.token.brackets": "[ ]",
+    "device.operations.token.quotes": '" "',
+    "device.operations.token.return": "return",
+    "device.operations.returnHint":
+      "Use return to show a value. Write calls may open your wallet for a signature.",
+    "device.operations.run": "Run operation",
+    "device.operations.running": "Running…",
+    "device.operations.waiting": "Waiting for the call and wallet…",
+    "device.operations.failed": "Operation failed",
+    "device.operations.result": "Result",
+    "device.operations.complete": "Complete",
+    "device.operations.noReturn":
+      "Execution finished without a returned value.",
+    "device.operations.plan.empty": "No calls in the plan yet.",
+    "device.operations.plan.add": "Add call",
+    "device.operations.plan.addCustom": "Add script",
+    "device.operations.plan.addMethod": "Add to plan",
+    "device.operations.plan.step": "Step {number}",
+    "device.operations.plan.run": "Run plan",
+    "device.operations.plan.running": "Running plan…",
+    "device.operations.plan.moveUp": "Move up",
+    "device.operations.plan.moveDown": "Move down",
+    "device.operations.plan.remove": "Remove from plan",
+    "device.operations.plan.custom": "Free script",
+    "device.operations.plan.editCode": "Edit in code",
+    "device.operations.plan.usePlayer": "use player",
+    "device.operations.plan.useAux": "use aux",
+    "device.operations.plan.wait": "Wait",
+    "device.operations.plan.waitSeconds": "Wait seconds",
+    "device.operations.plan.addWait": "Add wait",
+    "device.operations.plan.expression": "expression",
+    "device.operations.plan.field": "field",
+    "device.operations.target.instance": "Instance",
+    "device.operations.target.state": "State and guards",
+    "device.operations.target.refresh": "Check state",
+    "device.operations.target.noState":
+      "No state read yet. Tap Check state.",
+    "device.operations.target.add": "Add to plan",
+    "device.operations.run.title": "Run",
+    "device.operations.run.empty": "Run the plan to see the trace.",
+    "device.operations.run.pending": "Not run yet.",
+    "device.operations.run.validate": "Validate instance",
+    "device.operations.run.validating": "Validating…",
+    "device.operations.run.next": "Next case",
+    "device.operations.run.diagnostics": "What is still missing",
     "device.terminal.outcome.pending": "in progress",
     "device.terminal.outcome.accepted": "completed",
-    "device.terminal.failure.rejected": "instance rejected it — check the state and sequence",
+    "device.terminal.failure.rejected":
+      "instance rejected it — check the state and sequence",
     "device.terminal.failure.cancelled": "wallet did not sign the call",
     "device.terminal.failure.unknown": "could not be completed",
     "device.app.cases": "Notes",
-    "device.app.investigation": "Case file",
-    "device.notesArchive.title": "Notes",
-    "device.notesArchive.progress": "{count} notes unlocked by confirmed victories.",
-    "device.notesArchive.empty": "Solve a case to record the first note.",
+    "device.app.investigation": "Notes",
+    "device.notesArchive.title": "Completed cases",
+    "device.notesArchive.progress":
+      "Completed cases: {count}.",
+    "device.notesArchive.empty": "No completed cases yet.",
     "device.app.comms": "Chat",
     "device.app.evidence": "Evidence",
+    "device.app.operations": "Operations",
     "device.app.terminal": "Terminal",
     "device.app.story": "Story",
     "device.app.news": "News",
     "device.news.edition": "Meridian · Network news",
     "device.news.loading": "Loading the edition…",
-    "device.news.empty": "The edition could not be opened. Close and reopen News to try again.",
+    "device.news.empty":
+      "The edition could not be opened. Close and reopen News to try again.",
     "device.news.ariaSections": "News sections",
     "device.news.masthead": "MERIDIAN / INTELLIGENCE DESK",
     "device.news.title": "MERIDIAN NEWS",
@@ -1282,7 +1641,8 @@ const BASE_TEXTS: Texts = {
     "device.status.ready": "READY",
     "device.about.official": "OFFICIAL FIELD SYSTEM",
     "device.about.build": "BUILD 01.10 · CLEARANCE PROVISIONAL",
-    "device.about.terminal": "This terminal is part of Meridian's official investigation infrastructure.",
+    "device.about.terminal":
+      "This terminal is part of Meridian's official investigation infrastructure.",
     "device.app.final": "Final",
     "device.app.help": "Help",
     "device.story.body": "This case's long-form text, in scenes.",
@@ -1292,8 +1652,13 @@ const BASE_TEXTS: Texts = {
     "device.final.ready": "Final sequence ready.",
     "device.final.open": "Open final sequence",
     "device.help.console":
-      "The DevTools console is the terminal. Breaker OS does not execute code.",
-    "device.help.note": "This device organizes the case; action happens in the console.",
+      "The DevTools console is the primary terminal. Breaker OS can also run code in Operations.",
+    "device.help.console.mobile":
+      "Use Operations to run JavaScript. Terminal keeps the call history.",
+    "device.help.note":
+      "This device organizes the case; the console is the primary path, and Operations is available too.",
+    "device.help.note.mobile":
+      "Investigate, run your hypotheses and review the call log without leaving Breaker OS.",
     "device.help.help": "How to play",
     "device.help.language": "Switch language",
     "device.help.clear": "Clear case file",
@@ -1304,8 +1669,11 @@ const BASE_TEXTS: Texts = {
 
     "help.title": "Help",
     "help.console.title": "The console is your interface",
+    "help.console.title.mobile": "Operations is your interface",
     "help.console.body":
-      "There is no text box in this game, and that is on purpose. Open DevTools (F12), go to the Console tab, and talk to the contract there — that is how you read a real contract.",
+      "On desktop, the browser console is the primary path: open DevTools (F12), go to the Console tab and talk to the contract there. Breaker OS also offers the Operations app if you prefer.",
+    "help.console.body.mobile":
+      "On mobile, sign in with the passkey saved on your device. In a case, open Breaker OS and tap Operations to investigate and run calls.",
     "help.globals.title": "The five objects",
     "help.globals.body":
       "As soon as you create an instance, these objects start existing on window:",
@@ -1316,11 +1684,21 @@ const BASE_TEXTS: Texts = {
     "help.global.help": "the list of all of this, and of the methods",
     "help.steps.title": "The loop, in six steps",
     "help.step1": "Open the page and connect a compatible wallet to testnet.",
-    "help.step2": "Open a case and click New instance. The core deploys a fresh contract, yours alone.",
+    "help.step1.mobile": "Sign in with the passkey saved on your device.",
+    "help.step2":
+      "Open a case and click New instance. The core deploys a fresh contract, yours alone.",
+    "help.step2.mobile":
+      "Open a case, tap Open Operations and start the instance. The core deploys a fresh contract, yours alone.",
     "help.step3": "Read the briefing and note the instance's contract.",
-    "help.step4": "Open the console and talk to the contract through the objects on window.",
+    "help.step3.mobile": "Read the briefing and note the instance's contract.",
+    "help.step4":
+      "Open the console and talk to the contract through the objects on window.",
+    "help.step4.mobile":
+      "Open Breaker OS and tap Operations. Write and run JavaScript in the notebook cells.",
     "help.step5": "Click Submit — the core calls the validator on-chain.",
+    "help.step5.mobile": "Tap Submit in the bottom bar — the core calls the validator on-chain.",
     "help.step6": "If the objective is met, the case is marked as solved.",
+    "help.step6.mobile": "If the objective is met, the case is marked as solved.",
     "help.back": "Back",
 
     "footer.notice": "Nothing here is worth real money.",
@@ -1334,10 +1712,11 @@ const BASE_TEXTS: Texts = {
     "common.error": "Error",
     "common.close": "Close",
   },
-  "es": {
+  es: {
     "app.title": "BREAKER",
     "app.tagline": "la primera capa de la red no aparece en los mapas",
-    "app.description": "RPG de investigación sobre contratos Soroban en Stellar Testnet. Cada caso presenta un contrato con una vulnerabilidad real. Tú eres Breaker: vas a encontrarla.",
+    "app.description":
+      "RPG de investigación sobre contratos Soroban en Stellar Testnet. Cada caso presenta un contrato con una vulnerabilidad real. Tú eres Breaker: vas a encontrarla.",
     "login.tagline": "Todo está regido por un contrato.",
     "login.subtitle": "Comienza tu recorrido como Breaker.",
     "login.enter": "Entrar en Meridian",
@@ -1349,7 +1728,8 @@ const BASE_TEXTS: Texts = {
     "home.season2.eyebrow": "Temporada 02",
     "home.season3.eyebrow": "Temporada 03",
     "home.title": "La primera capa",
-    "home.subtitle": "La ciudad, los sistemas, las sombras y lo que hay debajo.",
+    "home.subtitle":
+      "La ciudad, los sistemas, las sombras y lo que hay debajo.",
     "home.ctaExplore": "Ver los casos",
     "home.creed.label": "Meridian",
     "home.sector.upper": "Upper Meridian",
@@ -1362,32 +1742,41 @@ const BASE_TEXTS: Texts = {
     "home.sector.spire.sub": "Administración central",
     "home.sector.dossier": "Expediente del sector",
     "home.sector.close": "Cerrar",
-    "home.sector.upper.body": "Aquí la Meridian Authority firma aquello que la ciudad obedece. Torres administrativas, consejos y familias que heredaron contratos antes de aprender a leerlos. Cuanto más alto el piso, menos preguntas.",
-    "home.sector.central.body": "El corazón comercial: mercados, trenes, credenciales y una vida pública que nunca se detiene. Aquí la ciudad siente primero cuando falla un contrato.",
-    "home.sector.lower.body": "Industria, mantenimiento y los olvidados. Antiguas fábricas y almacenes que la ciudad utiliza sin admitir que todavía los necesita, como el Almacén 17.",
-    "home.sector.spire.body": "La torre no es una ruina ni un archivo. Sus operadores siguen entrando y saliendo; en la cima, el control del ejecutable espera a quien llegue lo bastante lejos.",
+    "home.sector.upper.body":
+      "Aquí la Meridian Authority firma aquello que la ciudad obedece. Torres administrativas, consejos y familias que heredaron contratos antes de aprender a leerlos. Cuanto más alto el piso, menos preguntas.",
+    "home.sector.central.body":
+      "El corazón comercial: mercados, trenes, credenciales y una vida pública que nunca se detiene. Aquí la ciudad siente primero cuando falla un contrato.",
+    "home.sector.lower.body":
+      "Industria, mantenimiento y los olvidados. Antiguas fábricas y almacenes que la ciudad utiliza sin admitir que todavía los necesita, como el Almacén 17.",
+    "home.sector.spire.body":
+      "La torre no es una ruina ni un archivo. Sus operadores siguen entrando y saliendo; en la cima, el control del ejecutable espera a quien llegue lo bastante lejos.",
     "home.cases": "Los casos",
     "home.case": "Caso",
     "home.prologue": "Prólogo",
     "home.boss": "Jefe",
     "home.locked": "Secuencia final",
     "home.rewrite": "Reescribir",
-    "home.rewrite.body": "El contrato que puede reemplazar sus propias reglas. Una nueva versión. La misma dirección.",
+    "home.rewrite.body":
+      "El contrato que puede reemplazar sus propias reglas. Una nueva versión. La misma dirección.",
     "home.final.eyebrow": "Final",
     "home.final.title": "The Architect",
     "home.final.quote": "No quebré Meridian. La encontré quebrada.",
-    "home.final.body": "The Architect no creó las vulnerabilidades. Encontró la ciudad ya quebrada y convirtió el camino en un filtro.",
+    "home.final.body":
+      "The Architect no creó las vulnerabilidades. Encontró la ciudad ya quebrada y convirtió el camino en un filtro.",
     "home.final.teaser": "Una arquitectura fuera del mapa. Encuéntrala.",
-    "home.final.teaserBody": "La secuencia final se desbloquea al resolver los 13 casos.",
+    "home.final.teaserBody":
+      "La secuencia final se desbloquea al resolver los 13 casos.",
     "home.final.ready": "Secuencia lista.",
     "home.final.locked": "El desenlace se cuenta en la secuencia final.",
     "home.final.open": "Leer la secuencia final",
     "final.eyebrow": "Secuencia final",
     "final.title": "The Architect",
-    "final.subtitle": "La secuencia final de The First Layer. La historia se lee; Rewrite y The Architect también se pueden jugar en esta era.",
+    "final.subtitle":
+      "La secuencia final de The First Layer. La historia se lee; Rewrite y The Architect también se pueden jugar en esta era.",
     "final.checking": "Consultando tu progreso en la cadena…",
     "final.noWallet": "Conecta tu billetera para leer la secuencia final.",
-    "final.noWalletHint": "La secuencia se desbloquea al resolver los 13 casos.",
+    "final.noWalletHint":
+      "La secuencia se desbloquea al resolver los 13 casos.",
     "final.howToPlay": "Cómo jugar",
     "final.locked": "Secuencia bloqueada.",
     "final.progress": "{solved} de {total} casos resueltos.",
@@ -1398,30 +1787,48 @@ const BASE_TEXTS: Texts = {
     "final.choice": "¿Por qué los quebraste?",
     "final.restart": "Leer de nuevo",
     "final.home": "Regresar a Meridian",
-    "final.readNote": "Rewrite y The Architect son casos jugables. La secuencia final reúne las consecuencias que ya demostraste en la cadena.",
+    "final.readNote":
+      "Rewrite y The Architect son casos jugables. La secuencia final reúne las consecuencias que ya demostraste en la cadena.",
     "nav.levels": "Casos",
     "nav.help": "Ayuda",
     "language.switch": "ES",
     "language.label": "Cambiar idioma",
     "wallet.title": "Billetera",
     "wallet.connect": "Conectar billetera",
+    "wallet.passkey.create": "Crear passkey",
+    "wallet.passkey.connect": "Ya tengo una passkey",
+    "wallet.passkey.unavailable": "Este navegador no permite crear una passkey en este dispositivo. Prueba Safari o Chrome actualizado en HTTPS con bloqueo de pantalla activo.",
+    "wallet.passkey.account": "Tu identidad de juego",
+    "wallet.passkey.step.credential": "Creando la credencial en el dispositivo…",
+    "wallet.passkey.step.funding": "Preparando la comisión en Testnet…",
+    "wallet.passkey.step.deploying": "Publicando tu cuenta en Testnet…",
+    "wallet.passkey.step.connecting": "Conectando la cuenta…",
+    "wallet.passkey.step.slow":
+      "En Testnet, la primera vez puede tardar hasta ~20 s.",
+    "device.wallet.passkeyOnly": "Tu passkey ya es la billetera que firma tus casos. Para ver saldos o transferir XLM y tokens, conecta una billetera Stellar.",
+    "device.wallet.connectForTokens": "Conectar billetera Stellar para tokens",
     "wallet.connecting": "Conectando…",
     "wallet.checking": "Buscando una billetera...",
     "wallet.tryAgain": "Inténtalo de nuevo",
     "wallet.disconnect": "Desconectar",
     "wallet.switched": "Cambiar de cuenta",
     "wallet.disconnected.title": "Conecta tu billetera",
-    "wallet.disconnected.body": "El juego firma transacciones en Stellar Testnet con tu billetera. Ninguna se envía sin tu confirmación.",
+    "wallet.disconnected.body":
+      "El juego firma transacciones en Stellar Testnet con tu billetera. Ninguna se envía sin tu confirmación.",
     "wallet.noExtension.title": "No se encontró ninguna billetera",
-    "wallet.noExtension.body": "No se detectó ninguna billetera compatible. Puedes instalar Freighter o usar otra billetera compatible con el juego.",
+    "wallet.noExtension.body":
+      "No se detectó ninguna billetera compatible. Puedes instalar Freighter o usar otra billetera compatible con el juego.",
     "wallet.noExtension.action": "Instalar Freighter",
     "wallet.noExtension.alreadyInstalled": "Lo instalé, verifica nuevamente",
     "wallet.incompatible.title": "{wallet} no funciona aquí",
-    "wallet.incompatible.body": "{wallet} elige la red por su cuenta y no permite que el juego la configure. En Testnet, la conexión puede fallar sin avisar y una transacción firmada podría no llegar a la red. Para jugar, usa una billetera compatible, como Freighter.",
+    "wallet.incompatible.body":
+      "{wallet} elige la red por su cuenta y no permite que el juego la configure. En Testnet, la conexión puede fallar sin avisar y una transacción firmada podría no llegar a la red. Para jugar, usa una billetera compatible, como Freighter.",
     "wallet.wrongNetwork.title": "Tu billetera está en la red equivocada",
-    "wallet.wrongNetwork.body": "El juego funciona en Stellar Testnet. Abre la configuración de tu billetera, cambia la red a Testnet y vuelve a intentarlo.",
+    "wallet.wrongNetwork.body":
+      "El juego funciona en Stellar Testnet. Abre la configuración de tu billetera, cambia la red a Testnet y vuelve a intentarlo.",
     "wallet.networkUnverified.title": "No se pudo verificar la red",
-    "wallet.networkUnverified.body": "La billetera no informó su red. Confirma que está en Testnet e intenta conectarte de nuevo.",
+    "wallet.networkUnverified.body":
+      "La billetera no informó su red. Confirma que está en Testnet e intenta conectarte de nuevo.",
     "wallet.failed.title": "No se pudo conectar",
     "wallet.connected": "Conectado a testnet",
     "wallet.copy": "Copiar dirección",
@@ -1433,7 +1840,8 @@ const BASE_TEXTS: Texts = {
     "wallet.chip.networkUnverified": "Red no verificada",
     "wallet.chip.failed": "Error",
     "account.checking": "Comprobando tu cuenta de Testnet…",
-    "account.funding": "Tu cuenta de Testnet aún no existe. En Stellar, una cuenta se crea cuando recibe fondos. Solicitando 10.000 XLM a Friendbot…",
+    "account.funding":
+      "Tu cuenta de Testnet aún no existe. En Stellar, una cuenta se crea cuando recibe fondos. Solicitando 10.000 XLM a Friendbot…",
     "account.failed": "No se pudo preparar tu cuenta: {reason}",
     "account.wait": "Espera a que tu cuenta de Testnet esté lista.",
     "levels.title": "Casos",
@@ -1461,33 +1869,35 @@ const BASE_TEXTS: Texts = {
     "levelHero.recap": "La historia continúa",
     "levelHero.recapNext": "Y ahora, el caso actual",
     "level.statement": "Enunciado",
-    "level.contract": "Contrato de esta instancia",
-    "level.noInstance": "Aún no tienes una instancia de este nivel.",
     "level.code": "Código fuente",
-    "level.hiddenCode": "El código de este caso permanece oculto hasta que lo resuelves.",
-    "level.hiddenCodeTutorial": "El código de este caso permanece oculto hasta que lo resuelvas. Es el tutorial: la idea es jugar antes de leer el código.",
+    "level.hiddenCode":
+      "El código de este caso permanece oculto hasta que lo resuelves.",
+    "level.hiddenCodeTutorial":
+      "El código de este caso permanece oculto hasta que lo resuelvas. Es el tutorial: la idea es jugar antes de leer el código.",
     "level.newInstance": "Nueva instancia",
     "level.creating": "Creando instancia…",
+    "level.creatingDetail":
+      "Publicando tu instancia en Testnet. Esto puede tardar unos segundos.",
     "level.submit": "Enviar",
     "level.submitting": "Enviando…",
     "level.next": "Próximo caso",
     "level.reveal": "Revelar código",
     "level.hide": "Ocultar código",
     "level.readFailed": "No se pudo consultar tu progreso en la red: {reason}",
-    "level.broken": "Este caso está incompleto: faltan {count} archivos: {files}",
+    "level.broken":
+      "Este caso está incompleto: faltan {count} archivos: {files}",
     "level.notFound": "Este caso no existe.",
     "level.backToLevels": "Volver a los casos",
-    "level.success": "Objetivo cumplido. Caso resuelto.",
-    "level.failure": "El validador rechazó la solución. El objetivo aún no se ha cumplido.",
+    "level.failure":
+      "El validador rechazó la solución. El objetivo aún no se ha cumplido.",
     "level.error": "Eso no funcionó: {reason}",
     "level.conclusion": "Informe",
     "level.needsWallet": "Conecta tu billetera para crear una instancia.",
     "level.needsInstance": "Crea una instancia de este caso antes de enviarlo.",
-    "level.hint": "No hay un campo de texto: cuando se cree la instancia, habla con el contrato desde la consola del navegador.",
-    "level.seeHelp": "Cómo jugar",
     "thread.title": "Lo que ya sabes",
     "casefile.title": "Expediente del caso",
-    "casefile.summary": "{known} hechos · {unknown} incógnitas · {evidence} pruebas",
+    "casefile.summary":
+      "{known} hechos · {unknown} incógnitas · {evidence} pruebas",
     "casefile.objective": "Objetivo",
     "casefile.target": "Objetivo",
     "casefile.owner": "Propietario / autoridad",
@@ -1502,20 +1912,25 @@ const BASE_TEXTS: Texts = {
     "casefile.hintMax": "No quedan más pistas. El caso es tuyo.",
     "casefile.noEvidence": "Aún no se han recopilado pruebas.",
     "casefile.story": "Leer el caso completo",
-    "casefile.storyLocked": "Resuelve el caso para desbloquear la historia completa.",
+    "casefile.storyLocked":
+      "Resuelve el caso para desbloquear la historia completa.",
     "casefile.debrief": "Leer el informe",
     "casefile.clear": "Borrar el expediente del caso",
     "casefile.empty": "Archivo del caso no disponible.",
     "archive.eyebrow": "Archivo de temporada",
     "archive.title": "El rastro y el códice",
-    "archive.subtitle": "Lo que has visto, lo que aún no sabes y las pistas que dejó la temporada.",
+    "archive.subtitle":
+      "Lo que has visto, lo que aún no sabes y las pistas que dejó la temporada.",
     "archive.loading": "Leyendo el archivo…",
-    "archive.connect": "Conecta tu billetera para ver el progreso de la temporada. El códice sigue disponible.",
+    "archive.connect":
+      "Conecta tu billetera para ver el progreso de la temporada. El códice sigue disponible.",
     "archive.error": "No se pudo leer el progreso: {reason}",
     "archive.jump": "Ir a",
     "archive.trail": "Ruta de Voss",
-    "archive.trailLede": "Las pruebas que reuniste, en el orden en que ocurrieron los casos.",
-    "archive.trailEmpty": "Aún no has reunido pruebas. Resuelve un caso para empezar.",
+    "archive.trailLede":
+      "Las pruebas que reuniste, en el orden en que ocurrieron los casos.",
+    "archive.trailEmpty":
+      "Aún no has reunido pruebas. Resuelve un caso para empezar.",
     "archive.codex": "Códice",
     "archive.readProgress": "Has leído {read} de {total} entradas.",
     "archive.search": "Buscar en el códice…",
@@ -1540,81 +1955,202 @@ const BASE_TEXTS: Texts = {
     "story.eyebrow": "Caso completo",
     "story.loading": "Abriendo el archivo…",
     "story.locked": "Caso aún no resuelto.",
-    "story.lockedBody": "La historia completa es la recompensa del caso. Primero resuélvelo; el expediente y las pistas seguirán disponibles en la página del caso.",
+    "story.lockedBody":
+      "La historia completa es la recompensa del caso. Primero resuélvelo; el expediente y las pistas seguirán disponibles en la página del caso.",
     "story.error": "No se pudo leer el progreso: {reason}",
-    "story.missing": "La historia completa de este caso aún no está disponible.",
+    "story.missing":
+      "La historia completa de este caso aún no está disponible.",
     "story.progress": "Escena {current} de {total}",
     "story.previous": "Anterior",
     "story.continue": "Continuar",
     "story.restart": "Leer de nuevo",
     "story.back": "Volver al caso",
-    "story.readNote": "Esta es la versión extensa del caso. No cambia la validación en la cadena ni hace falta leerla para resolverlo.",
+    "story.readNote":
+      "Esta es la versión extensa del caso. No cambia la validación en la cadena ni hace falta leerla para resolverlo.",
     "device.open": "Abrir Breaker OS",
-    "device.openDossier": "Abrir expediente del caso",
-    "device.chipNote": "El expediente completo está en Breaker OS.",
+    "level.openOperations": "Abrir Operaciones",
+    "level.actions": "Acciones del caso",
     "device.brand": "BREAKER OS",
     "device.close": "Cerrar Breaker OS",
+    "device.opening": "Abriendo Breaker OS…",
     "device.home": "Inicio",
     "device.case": "CASO {code}",
     "device.player": "JUGADOR",
     "device.network": "RED",
-    "device.homeHint": "Elige una aplicación. La consola sigue siendo el terminal.",
+    "device.homeHint":
+      "Elige una aplicación. La consola sigue siendo el terminal.",
     "device.today": "Caso actual",
     "device.today.open": "Abrir expediente del caso",
     "device.unread": "Elementos sin leer: {count}",
     "device.locked": "BLOQUEADO",
-    "device.lockedStory": "Resuelve el caso para desbloquear la historia completa.",
+    "device.lockedStory":
+      "Resuelve el caso para desbloquear la historia completa.",
     "device.empty.comms": "Aún no hay comunicaciones.",
-    "device.comms.note": "Canal de escucha: el mundo habla; a veces respondes. La acción ocurre en la consola.",
+    "device.comms.note":
+      "Canal de escucha: el mundo habla; a veces respondes. La acción ocurre en la consola.",
     "device.empty.evidence": "Aún no has reunido pruebas.",
     "device.empty.terminal": "Aún no hay llamadas.",
-    "device.app.cases": "Casos",
+    "device.operations.noInstanceShort": "Crea una instancia para ejecutar.",
+    "device.operations.start": "Iniciar operación",
+    "device.operations.starting": "Iniciando operación…",
+    "device.operations.startNote":
+      "Crea una instancia desechable de este caso para tu cartera.",
+    "device.operations.notebook": "Cuaderno de operaciones",
+    "device.operations.cell": "Celda {number}",
+    "device.operations.runShort": "Ejecutar",
+    "device.operations.runningShort": "Ejecutando…",
+    "device.operations.clearCell": "Limpiar celda",
+    "device.operations.deleteCell": "Eliminar celda",
+    "device.operations.output": "Salida",
+    "device.operations.failedShort": "Error",
+    "device.operations.addCell": "Añadir celda",
+    "device.operations.saved": "Guardado en este dispositivo",
+    "device.operations.progress.starting": "Preparando la operación…",
+    "device.operations.progress.call": "Llamada {number}: {method}",
+    "device.operations.progress.signing": "Esperando tu firma para {method}…",
+    "device.operations.progress.completed": "{completed} de {started} llamadas completadas · {method}",
+    "device.operations.progress.waiting": "Este paso está tardando más de lo habitual. La operación sigue activa…",
+    "device.operations.progress.elapsed": "{elapsed} · {completed}/{started} llamadas",
+    "device.operations.progress.canClose": "Puedes cerrar Breaker OS; esta operación seguirá activa mientras esta página esté abierta.",
+    "device.operations.placeholderShort": "Escribe JavaScript…",
+    "device.operations.noMethodsShort": "No hay métodos disponibles.",
+    "device.operations.methods": "Métodos del contrato",
+    "device.operations.methodHint": "Elige un método para insertar una llamada JavaScript editable en el cuaderno. Revisa los valores antes de ejecutarla.",
+    "device.operations.insertMethod": "Usar método",
+    "device.operations.returns": "Devuelve: {types}",
+    "device.operations.noMethods":
+      "No hay métodos disponibles. Comprueba que la instancia se haya cargado.",
+    "device.operations.noArguments": "sin argumentos",
+    "device.operations.insert": "Insertar en el código",
+    "device.operations.script": "Script de la operación",
+    "device.operations.javascript": "JavaScript real",
+    "device.operations.placeholder":
+      "Elige un método o escribe JavaScript. Ej.: return await window.contract.count();",
+    "device.operations.insertToken": "Insertar símbolo de JavaScript",
+    "device.operations.token.await": "await",
+    "device.operations.token.contract": "contrato",
+    "device.operations.token.parentheses": "( )",
+    "device.operations.token.braces": "{ }",
+    "device.operations.token.brackets": "[ ]",
+    "device.operations.token.quotes": '" "',
+    "device.operations.token.return": "return",
+    "device.operations.returnHint":
+      "Usa return para mostrar un valor. Las llamadas de escritura pueden abrir tu cartera para firmar.",
+    "device.operations.run": "Ejecutar operación",
+    "device.operations.running": "Ejecutando…",
+    "device.operations.waiting": "Esperando la llamada y la cartera…",
+    "device.operations.failed": "La operación falló",
+    "device.operations.result": "Resultado",
+    "device.operations.complete": "Completada",
+    "device.operations.noReturn": "La ejecución terminó sin devolver un valor.",
+    "device.operations.plan.empty": "Aún no hay llamadas en el plan.",
+    "device.operations.plan.add": "Añadir llamada",
+    "device.operations.plan.addCustom": "Añadir script",
+    "device.operations.plan.addMethod": "Añadir al plan",
+    "device.operations.plan.step": "Paso {number}",
+    "device.operations.plan.run": "Ejecutar plan",
+    "device.operations.plan.running": "Ejecutando plan…",
+    "device.operations.plan.moveUp": "Subir",
+    "device.operations.plan.moveDown": "Bajar",
+    "device.operations.plan.remove": "Quitar del plan",
+    "device.operations.plan.custom": "Script libre",
+    "device.operations.plan.editCode": "Editar en código",
+    "device.operations.plan.usePlayer": "usar player",
+    "device.operations.plan.useAux": "usar aux",
+    "device.operations.plan.wait": "Espera",
+    "device.operations.plan.waitSeconds": "Segundos de espera",
+    "device.operations.plan.addWait": "Añadir espera",
+    "device.operations.plan.expression": "expresión",
+    "device.operations.plan.field": "campo",
+    "device.operations.target.instance": "Instancia",
+    "device.operations.target.state": "Estado y guardas",
+    "device.operations.target.refresh": "Comprobar estado",
+    "device.operations.target.noState":
+      "Aún no hay estado leído. Toca Comprobar estado.",
+    "device.operations.target.add": "Añadir al plan",
+    "device.operations.run.title": "Ejecución",
+    "device.operations.run.empty": "Ejecuta el plan para ver el rastro.",
+    "device.operations.run.pending": "Aún no ejecutado.",
+    "device.operations.run.validate": "Validar instancia",
+    "device.operations.run.validating": "Validando…",
+    "device.operations.run.next": "Siguiente caso",
+    "device.operations.run.diagnostics": "Lo que aún falta",
+    "device.app.cases": "Notas",
     "device.app.comms": "Comunicaciones",
     "device.app.evidence": "Pruebas",
+    "device.app.operations": "Operaciones",
     "device.app.terminal": "Terminal",
     "device.app.story": "Historia",
     "device.app.final": "Final",
     "device.app.help": "Ayuda",
     "device.story.body": "La historia extensa del caso, contada en escenas.",
     "device.story.open": "Abrir historia",
-    "device.final.body": "La secuencia Rewrite + The Architect se desbloquea al resolver los 13 casos.",
+    "device.final.body":
+      "La secuencia Rewrite + The Architect se desbloquea al resolver los 13 casos.",
     "device.final.ready": "Secuencia 01 lista. Rewrite + The Architect.",
     "device.final.open": "Abrir secuencia final",
-    "device.help.console": "La consola de DevTools es el terminal. Breaker OS no ejecuta código.",
-    "device.help.note": "Este dispositivo organiza el caso; las acciones se realizan en la consola.",
+    "device.help.console":
+      "La consola de DevTools es el terminal principal. Breaker OS también ejecuta código en Operaciones.",
+    "device.help.console.mobile":
+      "Usa Operaciones para ejecutar JavaScript. Terminal conserva el historial de llamadas.",
+    "device.help.note":
+      "Este dispositivo organiza el caso; la consola es el camino principal y Operaciones también está disponible.",
+    "device.help.note.mobile":
+      "Investiga, ejecuta tus hipótesis y revisa el registro sin salir de Breaker OS.",
     "device.help.help": "Cómo jugar",
     "device.help.language": "Cambiar idioma",
     "device.help.clear": "Borrar expediente del caso",
-    "notice.missingTranslation": "Este caso aún no está traducido a tu idioma. Estás viendo la versión en portugués.",
+    "notice.missingTranslation":
+      "Este caso aún no está traducido a tu idioma. Estás viendo la versión en portugués.",
     "notice.contribute": "¿Quieres ayudar a traducirlo?",
     "help.title": "Ayuda",
     "help.console.title": "La consola es tu interfaz",
-    "help.console.body": "Este juego no tiene un campo de texto, y es intencional. Abre DevTools (F12), ve a la pestaña Consola y habla con el contrato desde allí. Así se interactúa con un contrato real.",
+    "help.console.title.mobile": "Operaciones es tu interfaz",
+    "help.console.body":
+      "En el escritorio, la consola del navegador es el camino principal: abre DevTools (F12), ve a la pestaña Consola e interactúa con el contrato desde allí. Breaker OS también ofrece la app Operaciones si lo prefieres.",
+    "help.console.body.mobile":
+      "En el móvil, inicia sesión con la passkey guardada en el dispositivo. Dentro de un caso, abre Breaker OS y toca Operaciones para investigar y ejecutar llamadas.",
     "help.globals.title": "Los cinco objetos",
-    "help.globals.body": "Al crear una instancia, estos objetos aparecen en window:",
+    "help.globals.body":
+      "Al crear una instancia, estos objetos aparecen en window:",
     "help.global.player": "tu dirección",
     "help.global.instance": "el contrato de tu instancia, solo tuyo",
     "help.global.contract": "el contrato, con todos sus métodos",
     "help.global.aux": "el contrato auxiliar del caso, si lo tiene",
     "help.global.help": "esta lista y la lista de métodos",
     "help.steps.title": "El ciclo en seis pasos",
-    "help.step1": "Abre la página y conecta una billetera compatible a Testnet.",
-    "help.step2": "Abre un caso y selecciona Nueva instancia. El núcleo desplegará un contrato nuevo, solo tuyo.",
-    "help.step3": "Lee el enunciado y anota la dirección del contrato de tu instancia.",
-    "help.step4": "Abre la consola e interactúa con el contrato mediante los objetos disponibles en window.",
-    "help.step5": "Haz clic en Enviar: el núcleo llamará al validador en la cadena.",
+    "help.step1":
+      "Abre la página y conecta una billetera compatible a Testnet.",
+    "help.step1.mobile": "Inicia sesión con la passkey guardada en tu dispositivo.",
+    "help.step2":
+      "Abre un caso y selecciona Nueva instancia. El núcleo desplegará un contrato nuevo, solo tuyo.",
+    "help.step2.mobile":
+      "Abre un caso, toca Abrir Operaciones e inicia la instancia. El núcleo desplegará un contrato nuevo, solo tuyo.",
+    "help.step3":
+      "Lee el enunciado y anota la dirección del contrato de tu instancia.",
+    "help.step3.mobile":
+      "Lee el enunciado y anota la dirección del contrato de tu instancia.",
+    "help.step4":
+      "Abre la consola e interactúa con el contrato mediante los objetos disponibles en window.",
+    "help.step4.mobile":
+      "Abre Breaker OS y toca Operaciones. Escribe y ejecuta JavaScript en las celdas del notebook.",
+    "help.step5":
+      "Haz clic en Enviar: el núcleo llamará al validador en la cadena.",
+    "help.step5.mobile":
+      "Toca Enviar en la barra inferior: el núcleo llamará al validador en la cadena.",
     "help.step6": "Si cumples el objetivo, el caso quedará resuelto.",
+    "help.step6.mobile": "Si cumples el objetivo, el caso quedará resuelto.",
     "help.back": "Volver",
     "footer.notice": "Nada aquí vale dinero real.",
     "error.title": "Esta pantalla se rompió.",
-    "error.body": "El error quedó contenido aquí; el resto del sitio sigue funcionando. Si vuelve a aparecer, es un defecto que conviene reportar.",
+    "error.body":
+      "El error quedó contenido aquí; el resto del sitio sigue funcionando. Si vuelve a aparecer, es un defecto que conviene reportar.",
     "error.detail": "Mensaje del navegador: {reason}",
     "error.retry": "Intentar de nuevo",
     "common.error": "Error",
     "common.close": "Cerrar",
   },
 };
-
 
 const ES_CAMPAIGN: Dictionary = {
   "app.skipToContent": "Saltar al contenido",
@@ -1623,10 +2159,13 @@ const ES_CAMPAIGN: Dictionary = {
   "home.season2.soon": "Muy pronto",
   "home.seasons.upcoming": "Próximas temporadas",
   "home.season2.body": "La próxima temporada de BREAKER.",
-  "home.season3.body": "Tokens confidenciales, privacidad y pruebas de conocimiento cero: la próxima temporada de BREAKER.",
+  "home.season3.body":
+    "Tokens confidenciales, privacidad y pruebas de conocimiento cero: la próxima temporada de BREAKER.",
   "home.sector.meridian": "Meridian",
-  "home.sector.meridian.body": "Una ciudad construida sobre la certeza. Los trenes cruzan sus distritos en líneas de luz, las credenciales abren edificios y los mercados liquidan transacciones sin pausa. La energía, la identidad, la propiedad y la seguridad dependen de contratos que la mayoría de sus habitantes nunca ha visto.",
-  "home.sector.meridian.life": "Arriba están las torres administrativas y la Meridian Authority. En el centro, el comercio y la vida pública. Abajo, las fábricas, los almacenes y el mantenimiento que sostiene la ciudad. Para quienes viven aquí, los contratos no parecen programas: son parte del orden natural de la ciudad.",
+  "home.sector.meridian.body":
+    "Una ciudad construida sobre la certeza. Los trenes cruzan sus distritos en líneas de luz, las credenciales abren edificios y los mercados liquidan transacciones sin pausa. La energía, la identidad, la propiedad y la seguridad dependen de contratos que la mayoría de sus habitantes nunca ha visto.",
+  "home.sector.meridian.life":
+    "Arriba están las torres administrativas y la Meridian Authority. En el centro, el comercio y la vida pública. Abajo, las fábricas, los almacenes y el mantenimiento que sostiene la ciudad. Para quienes viven aquí, los contratos no parecen programas: son parte del orden natural de la ciudad.",
   "home.caseLocked": "Bloqueado",
   "home.peek.locked": "Bloqueado",
   "device.wallet.connected": "Conectado",
@@ -1644,19 +2183,24 @@ const ES_CAMPAIGN: Dictionary = {
   "device.cases.locked": "Acceso bloqueado",
   "collection.playerDevice": "Dispositivo personal",
   "collection.back": "Volver a la colección",
-  "collection.connect": "Conecta tu billetera desde la pantalla de inicio del dispositivo para consultar tu progreso.",
+  "collection.connect":
+    "Conecta tu billetera desde la pantalla de inicio del dispositivo para consultar tu progreso.",
   "collection.title": "Tu colección BREAKER",
-  "collection.subtitle": "Cada caso deja una huella. Sigue tu viaje por Meridian.",
+  "collection.subtitle":
+    "Cada caso deja una huella. Sigue tu viaje por Meridian.",
   "collection.loading": "Consultando tus casos en testnet…",
-  "collection.error": "No se pudo consultar tu progreso. Intenta actualizar la página.",
+  "collection.error":
+    "No se pudo consultar tu progreso. Intenta actualizar la página.",
   "collection.progress": "{count} de {total} casos resueltos",
   "collection.refresh": "Actualizar",
-  "collection.preview": "Vista previa de tus logros por caso. La credencial de temporada es un NFT intransferible (soulbound).",
+  "collection.preview":
+    "Vista previa de tus logros por caso. La credencial de temporada es un NFT intransferible (soulbound).",
   "collection.unknown": "Progreso no confirmado",
   "collection.solved": "Caso resuelto",
   "collection.pending": "Caso pendiente",
   "collection.details": "Detalles del coleccionable",
-  "collection.ownership": "La credencial de temporada es intransferible (soulbound).",
+  "collection.ownership":
+    "La credencial de temporada es intransferible (soulbound).",
   "collection.openCase": "Abrir caso",
   "collection.claimLoading": "Comprobando la credencial de temporada…",
   "collection.claim": "Reclamar NFT de temporada",
@@ -1666,48 +2210,63 @@ const ES_CAMPAIGN: Dictionary = {
   "collection.claimRetry": "Intentar otra vez",
   "collection.soulbound": "Soulbound: intransferible.",
   "levelHero.play": "Ir al desafío",
-  "levelHero.pending": "La continuación aparece aquí después de resolver el caso anterior. Puedes jugar este desafío directamente.",
+  "levelHero.pending":
+    "La continuación aparece aquí después de resolver el caso anterior. Puedes jugar este desafío directamente.",
   "levelHero.continueStory": "Continuar la historia",
   "device.document.open": "Abrir documento",
   "device.document.source": "Fuente",
-  "device.document.empty": "Los documentos para esta etapa aparecerán aquí a medida que avance la investigación.",
-  "device.story.next": "La historia continúa al inicio del siguiente caso. También puedes volver a leer el registro completo.",
+  "device.document.empty":
+    "Los documentos para esta etapa aparecerán aquí a medida que avance la investigación.",
+  "device.story.next":
+    "La historia continúa al inicio del siguiente caso. También puedes volver a leer el registro completo.",
   "level.start.eyebrow": "Empieza aquí",
   "level.start.title": "Crear una instancia de este caso",
-  "level.start.body": "La instancia es una copia desechable del contrato, exclusiva para tu billetera. Ahí investigas y aprovechas la vulnerabilidad; el núcleo lee el resultado y registra que resolviste el caso.",
-  "level.start.step.instance": "Crea la instancia: así se habilitan la consola y el contrato de este intento.",
-  "level.start.step.console": "Abre la consola del navegador (F12) y llama a los métodos de window.contract.",
-  "level.start.step.submit": "Vuelve aquí y haz clic en Enviar; el núcleo valida la instancia en la cadena.",
+  "level.start.body":
+    "La instancia es una copia desechable del contrato, exclusiva para tu billetera. Ahí investigas y aprovechas la vulnerabilidad; el núcleo lee el resultado y registra que resolviste el caso.",
+  "level.start.step.instance":
+    "Crea la instancia: así se habilitan la consola y el contrato de este intento.",
+  "level.start.step.console":
+    "Abre la consola del navegador (F12) y llama a los métodos de window.contract.",
+  "level.start.step.submit":
+    "Vuelve aquí y haz clic en Enviar; el núcleo valida la instancia en la cadena.",
   "level.start.action": "Crear instancia",
-  "level.start.ready": "Instancia activa: ya puedes usar la consola.",
   "error.levelNotFound": "El caso no existe en el núcleo.",
   "error.unknownInstance": "Esa instancia no fue creada por este núcleo.",
   "error.alreadySolved": "Este caso ya ha sido resuelto.",
   "error.objectiveNotMet": "El objetivo aún no se ha cumplido.",
   "error.notInitialised": "El núcleo no se ha inicializado.",
-  "error.accessLocked": "Este caso está bloqueado: primero resuelve el caso anterior.",
+  "error.accessLocked":
+    "Este caso está bloqueado: primero resuelve el caso anterior.",
   "error.invalidPrerequisite": "El requisito previo declarado no es válido.",
   "level.previousCase": "Ir al caso {code}",
   "level.retry": "Intentar otra vez",
-  "level.operation": "Operación de disponibilidad: las pruebas del contrato verifican el TTL real; el validador comprueba la renovación del piso 24.",
+  "level.operation":
+    "Operación de disponibilidad: las pruebas del contrato verifican el TTL real; el validador comprueba la renovación del piso 24.",
   "level.diagnostics": "Lo que aún requiere el validador",
   "level.diagnosticNow": "ahora: {value}",
   "level.diagnosticExpected": "esperado: {value}",
   "level.diagnosticLoading": "Comprobando lo que aún exige el validador…",
-  "level.diagnosticError": "No se pudo leer la lista de diagnóstico. Vuelve a enviar la solución para intentarlo de nuevo.",
+  "level.diagnosticError":
+    "No se pudo leer la lista de diagnóstico. Vuelve a enviar la solución para intentarlo de nuevo.",
   "level.tutorial.title": "Cómo jugar este prólogo",
-  "level.tutorial.body": "La terminal del juego es la consola del navegador. Ábrela, llama a los métodos y envía la instancia.",
-  "level.tutorial.console": "Abre la consola del navegador (F12 → Consola o Ctrl+Shift+J).",
+  "level.tutorial.body":
+    "La terminal del juego es la consola del navegador. Ábrela, llama a los métodos y envía la instancia.",
+  "level.tutorial.console":
+    "Abre la consola del navegador (F12 → Consola o Ctrl+Shift+J).",
   "level.tutorial.instance": "Crea la instancia con el botón de abajo.",
-  "level.tutorial.call": "En la consola, consulta el estado, llama al método `increment` y vuelve a consultarlo.",
-  "level.tutorial.submit": "Haz clic en Enviar; el núcleo confirma el resultado en la cadena.",
-  "level.tutorial.desktop": "El desafío se resuelve desde la consola del navegador en una computadora. En el celular puedes leer, crear la instancia y enviar la solución.",
+  "level.tutorial.call":
+    "En la consola, consulta el estado, llama al método `increment` y vuelve a consultarlo.",
+  "level.tutorial.submit":
+    "Haz clic en Enviar; el núcleo confirma el resultado en la cadena.",
+  "level.tutorial.desktop":
+    "El desafío se resuelve desde la consola del navegador en una computadora; Breaker OS también ofrece Operaciones, en el escritorio y en el celular.",
   "ledger.current": "Ledger actual: {value}",
   "ledger.predict": "predice tres ledgers por adelantado",
   "ledger.wait": "Faltan {count} ledgers (~{seconds} s)",
   "ledger.ready": "Se alcanzó el ledger objetivo.",
   "home.progress": "{solved}/{total} verificados en cadena",
-  "home.progressCached": "{solved}/{total} de la última visita · comprobando la red…",
+  "home.progressCached":
+    "{solved}/{total} de la última visita · comprobando la red…",
   "home.progressChecking": "Comprobando el progreso en la cadena...",
   "home.progressError": "No se pudo leer el progreso en la cadena.",
   "home.readingChain": "Leyendo el progreso en cadena...",
@@ -1716,18 +2275,26 @@ const ES_CAMPAIGN: Dictionary = {
   "home.final.openCase": "Abrir caso 12",
   "network.testnet": "TESTNET",
   "network.sandbox": "SANDBOX",
-  "casefile.hintStuck": "desbloqueada al detectar que la investigación se estancó",
+  "casefile.hintStuck":
+    "desbloqueada al detectar que la investigación se estancó",
   "casefile.assisted": "Caso asistido: la tercera pista revela la solución.",
-  "level.localTestWallet": "Modo de prueba local: la consola está disponible, pero no se crea ninguna instancia ni transacción.",
+  "level.localTestWallet":
+    "Modo de prueba local: la consola está disponible, pero no se crea ninguna instancia ni transacción.",
   "level.copyCommand": "Copiar comando",
   "level.operation.title": "Objetivo de la operación",
-  "level.operation.discovery": "Inspecciona la interfaz real con `window.help()`, plantea una hipótesis y luego ejecútala. Al enviar la solución, el núcleo la verifica en la cadena.",
+  "level.operation.discovery":
+    "Inspecciona la interfaz real con `window.help()`, plantea una hipótesis y luego ejecútala. Al enviar la solución, el núcleo la verifica en la cadena.",
+  "level.operation.discovery.mobile":
+    "En Operaciones, abre Métodos e inserta una llamada en una celda. Ejecútala y luego envía para verificar la solución en la cadena.",
   "device.notifications": "Notificaciones",
   "device.caseReceived": "Caso recibido",
-  "device.updatesAvailable": "Hay actualizaciones disponibles. Toca para abrir.",
+  "device.updatesAvailable":
+    "Hay actualizaciones disponibles. Toca para abrir.",
   "device.notification.evidence": "Se vincularon nuevas pruebas a este caso.",
-  "device.notification.callAccepted": "La instancia aceptó la operación. Revisa el registro.",
-  "device.notification.callFailed": "La instancia rechazó la operación. Revisa su estado antes de volver a intentarlo.",
+  "device.notification.callAccepted":
+    "La instancia aceptó la operación. Revisa el registro.",
+  "device.notification.callFailed":
+    "La instancia rechazó la operación. Revisa su estado antes de volver a intentarlo.",
   "device.notification.story": "El informe del caso ya está disponible.",
   "device.noNotifications": "Aún no hay notificaciones.",
   "device.unlockFingerprint": "Desbloquear con huella digital",
@@ -1750,10 +2317,12 @@ const ES_CAMPAIGN: Dictionary = {
   "device.scanner": "Escanear QR",
   "device.map": "Mapa de campo",
   "device.map.kicker": "MERIDIAN / MAPA DE INVESTIGACIÓN",
-  "device.map.body": "Referencias distritales para situar la investigación actual.",
+  "device.map.body":
+    "Referencias distritales para situar la investigación actual.",
   "device.map.locations": "Ubicaciones catalogadas",
   "device.map.active": "Señal activa: {district}",
-  "device.map.note": "El mapa organiza las ubicaciones de la historia. No contiene códigos, claves ni rutas de solución.",
+  "device.map.note":
+    "El mapa organiza las ubicaciones de la historia. No contiene códigos, claves ni rutas de solución.",
   "device.scanner.fieldRecord": "LECTURA DE CAMPO",
   "device.scanner.openRecord": "Abrir el registro de investigación",
   "device.searchPlaceholder": "Busca aplicaciones, casos y evidencias…",
@@ -1770,11 +2339,15 @@ const ES_CAMPAIGN: Dictionary = {
   "device.brightness": "Brillo",
   "device.showPreviews": "Mostrar vistas previas de la pantalla de bloqueo",
   "device.clearNotifications": "Borrar notificaciones",
-  "device.privacyBody": "El desbloqueo con huella es una simulación. Tu billetera sigue autorizando las transacciones.",
-  "device.sceneControlsNote": "Los controles de conexión pertenecen al dispositivo ficticio. No cambian tu conexión a la red Stellar.",
-  "device.storageBody": "El expediente del caso, las notas y las preferencias permanecen en este navegador. Borrar el archivo no borra el progreso confirmado en la red.",
+  "device.privacyBody":
+    "El desbloqueo con huella es una simulación. Tu billetera sigue autorizando las transacciones.",
+  "device.sceneControlsNote":
+    "Los controles de conexión pertenecen al dispositivo ficticio. No cambian tu conexión a la red Stellar.",
+  "device.storageBody":
+    "El expediente del caso, las notas y las preferencias permanecen en este navegador. Borrar el archivo no borra el progreso confirmado en la red.",
   "device.cleared": "Se borró el expediente local del caso.",
-  "device.aboutBody": "Tu dispositivo de investigación en Meridian. Casos, comunicaciones y evidencias de la temporada 01 — The First Layer.",
+  "device.aboutBody":
+    "Tu dispositivo de investigación en Meridian. Casos, comunicaciones y evidencias de la temporada 01 — The First Layer.",
   "device.wifi": "Wi-Fi",
   "device.bluetooth": "Bluetooth",
   "device.focus": "Concentración",
@@ -1817,43 +2390,58 @@ const ES_CAMPAIGN: Dictionary = {
   "device.notesLabel": "Notas de investigación",
   "device.notesPlaceholder": "Registra pistas, métodos e hipótesis…",
   "device.notesSaved": "Guardado en este navegador.",
-  "device.notesUnsaved": "No se pudo guardar. Exporta una copia para guardar tus notas.",
+  "device.notesUnsaved":
+    "No se pudo guardar. Exporta una copia para guardar tus notas.",
   "device.exportNotes": "Exportar notas",
-  "device.cameraError": "Cámara no disponible. Revisa los permisos del navegador.",
-  "device.qrUnavailable": "La cámara está disponible, pero este navegador no admite la lectura de QR.",
-  "device.cameraNote": "Activa la cámara para leer un código QR. El contenido se mostrará antes de realizar cualquier acción.",
+  "device.cameraError":
+    "Cámara no disponible. Revisa los permisos del navegador.",
+  "device.qrUnavailable":
+    "La cámara está disponible, pero este navegador no admite la lectura de QR.",
+  "device.cameraNote":
+    "Activa la cámara para leer un código QR. El contenido se mostrará antes de realizar cualquier acción.",
   "device.stopCamera": "Detener la cámara",
   "device.startCamera": "Activar cámara",
   "device.session": "Sesión",
   "device.chat.homeContext": "Meridian · llegada",
-  "device.chat.homeWelcome": "Bienvenido a Meridian, Breaker. Estoy en el canal. Puedo presentarte la ciudad o acompañarte cuando elijas un caso.",
-  "device.chat.homeReply": "Aquí estoy. Pregúntame sobre Meridian o elige un caso en la aplicación Casos. Cuando entres, seguiremos la conversación de ese lugar.",
-  "device.chat.homeCases": "Abre la aplicación Casos en tu teléfono y elige una investigación. Cada caso tiene un objetivo, un expediente y sus propias comunicaciones. El prólogo presenta tu primera misión.",
-  "device.chat.city": "Meridian funciona gracias a los contratos: de ellos dependen las puertas, las credenciales, el transporte y los mercados. Arriba están la Authority y sus torres; en el centro, la vida pública; abajo, la industria que mantiene todo en marcha.",
-  "device.chat.caseReply": "Anotado. Sigamos con este caso. Puedo repasar el objetivo, identificar el blanco o compartir una pista cuando me la pidas.",
-  "device.chat.hintOffer": "Puedo darte una pista. Toca Solicitar pista para confirmarlo; cada solicitud avanza un paso.",
-  "device.chat.hintUnavailable": "Todavía no hay pistas disponibles. Empecemos por el objetivo del expediente.",
+  "device.chat.homeWelcome":
+    "Bienvenido a Meridian, Breaker. Estoy en el canal. Puedo presentarte la ciudad o acompañarte cuando elijas un caso.",
+  "device.chat.homeReply":
+    "Aquí estoy. Pregúntame sobre Meridian o elige un caso en la aplicación Casos. Cuando entres, seguiremos la conversación de ese lugar.",
+  "device.chat.homeCases":
+    "Abre la aplicación Casos en tu teléfono y elige una investigación. Cada caso tiene un objetivo, un expediente y sus propias comunicaciones. El prólogo presenta tu primera misión.",
+  "device.chat.city":
+    "Meridian funciona gracias a los contratos: de ellos dependen las puertas, las credenciales, el transporte y los mercados. Arriba están la Authority y sus torres; en el centro, la vida pública; abajo, la industria que mantiene todo en marcha.",
+  "device.chat.caseReply":
+    "Anotado. Sigamos con este caso. Puedo repasar el objetivo, identificar el blanco o compartir una pista cuando me la pidas.",
+  "device.chat.hintOffer":
+    "Puedo darte una pista. Toca Solicitar pista para confirmarlo; cada solicitud avanza un paso.",
+  "device.chat.hintUnavailable":
+    "Todavía no hay pistas disponibles. Empecemos por el objetivo del expediente.",
   "device.chat.connecting": "Sintonizando las transmisiones de este caso…",
   "device.chat.askCity": "¿Cómo es Meridian?",
   "device.chat.askCases": "¿Cómo inicio un caso?",
   "device.chat.askObjective": "¿Cuál es el objetivo?",
   "device.chat.askTarget": "¿Cuál es el objetivo?",
   "device.chat.askHint": "Solicitar pista",
-  "device.chat.placeholder": "Pregunta por el objetivo, el blanco o las pistas…",
+  "device.chat.placeholder":
+    "Pregunta por el objetivo, el blanco o las pistas…",
   "device.chat.send": "Enviar mensaje",
   "device.chat.secure": "Canal de investigación",
   "device.app.wallet": "Billetera",
-  "device.wallet.connect": "Conecta tu billetera para consultar, recibir y enviar activos.",
+  "device.wallet.connect":
+    "Conecta tu billetera para consultar, recibir y enviar activos.",
   "device.wallet.balance": "Saldo",
   "device.wallet.receive": "Recibir",
   "device.wallet.send": "Enviar",
-  "device.wallet.loadError": "No se pudieron cargar saldos. Actualiza o activa tu cuenta en la pestaña Recibir.",
+  "device.wallet.loadError":
+    "No se pudieron cargar saldos. Actualiza o activa tu cuenta en la pestaña Recibir.",
   "device.wallet.loading": "Consultando testnet…",
   "device.wallet.native": "Activo nativo (XLM)",
   "device.wallet.available": "Disponible",
   "device.wallet.reserve": "Reserva mínima de la cuenta",
   "device.wallet.receiveTitle": "Recibir en tu billetera",
-  "device.wallet.receiveBody": "Esta es tu dirección en Stellar Testnet. Recibe solo XLM y activos de esta red. Para otros activos necesitas la línea de confianza correspondiente.",
+  "device.wallet.receiveBody":
+    "Esta es tu dirección en Stellar Testnet. Recibe solo XLM y activos de esta red. Para otros activos necesitas la línea de confianza correspondiente.",
   "device.wallet.friendbot": "Solicitar XLM de prueba",
   "device.wallet.review": "Revisar transferencia",
   "device.wallet.token": "Activo",
@@ -1872,56 +2460,81 @@ const ES_CAMPAIGN: Dictionary = {
   "device.wallet.signing": "Confirma los detalles en tu billetera…",
   "device.wallet.submitting": "Enviando y esperando la confirmación de la red…",
   "device.wallet.accountHistory": "Ver el historial de la billetera",
-  "device.wallet.error.unavailable": "La red no devolvió los parámetros necesarios. Actualiza e inténtalo de nuevo.",
-  "device.wallet.error.amount": "Ingresa un monto positivo con hasta siete decimales.",
-  "device.wallet.error.address": "Ingresa una dirección de cuenta Stellar válida que empiece con G.",
-  "device.wallet.error.sameAddress": "La billetera de destino debe ser distinta de la tuya.",
-  "device.wallet.error.memo": "Revisa la nota: hasta 28 bytes de texto o un identificador numérico válido.",
-  "device.wallet.error.destinationMissing": "La cuenta de destino aún no está activa en testnet. Actívala antes de realizar la transferencia.",
-  "device.wallet.error.asset": "El activo no está disponible o no está autorizado en esta cuenta.",
-  "device.wallet.error.reserve": "El saldo XLM debe cubrir la reserva mínima y la tarifa de red.",
-  "device.wallet.error.balance": "La cantidad excede el saldo disponible del token.",
-  "device.wallet.error.trustline": "El destino no tiene una línea de confianza autorizada para este activo.",
-  "device.wallet.error.trustlineLimit": "El monto supera el límite de la línea de confianza del destino.",
-  "device.wallet.error.accountChanged": "La billetera cambió. Revisa la transferencia nuevamente.",
-  "device.wallet.error.changedTransaction": "La transacción firmada no coincide con la revisión. Se detuvo el envío.",
-  "device.wallet.error.expired": "Esta revisión venció. Prepara una nueva transferencia.",
-  "device.wallet.error.memoRequired": "La cuenta de destino requiere una nota. Confirma su contenido con el destinatario.",
-  "device.wallet.error.submissionUnconfirmed": "No se pudo confirmar el resultado del envío. Consulta el hash en el explorador antes de repetir la transferencia.",
-  "device.browser.invalid": "Ingresa una dirección HTTP/HTTPS o un término de búsqueda.",
+  "device.wallet.error.unavailable":
+    "La red no devolvió los parámetros necesarios. Actualiza e inténtalo de nuevo.",
+  "device.wallet.error.amount":
+    "Ingresa un monto positivo con hasta siete decimales.",
+  "device.wallet.error.address":
+    "Ingresa una dirección de cuenta Stellar válida que empiece con G.",
+  "device.wallet.error.sameAddress":
+    "La billetera de destino debe ser distinta de la tuya.",
+  "device.wallet.error.memo":
+    "Revisa la nota: hasta 28 bytes de texto o un identificador numérico válido.",
+  "device.wallet.error.destinationMissing":
+    "La cuenta de destino aún no está activa en testnet. Actívala antes de realizar la transferencia.",
+  "device.wallet.error.asset":
+    "El activo no está disponible o no está autorizado en esta cuenta.",
+  "device.wallet.error.reserve":
+    "El saldo XLM debe cubrir la reserva mínima y la tarifa de red.",
+  "device.wallet.error.balance":
+    "La cantidad excede el saldo disponible del token.",
+  "device.wallet.error.trustline":
+    "El destino no tiene una línea de confianza autorizada para este activo.",
+  "device.wallet.error.trustlineLimit":
+    "El monto supera el límite de la línea de confianza del destino.",
+  "device.wallet.error.accountChanged":
+    "La billetera cambió. Revisa la transferencia nuevamente.",
+  "device.wallet.error.changedTransaction":
+    "La transacción firmada no coincide con la revisión. Se detuvo el envío.",
+  "device.wallet.error.expired":
+    "Esta revisión venció. Prepara una nueva transferencia.",
+  "device.wallet.error.memoRequired":
+    "La cuenta de destino requiere una nota. Confirma su contenido con el destinatario.",
+  "device.wallet.error.submissionUnconfirmed":
+    "No se pudo confirmar el resultado del envío. Consulta el hash en el explorador antes de repetir la transferencia.",
+  "device.browser.invalid":
+    "Ingresa una dirección HTTP/HTTPS o un término de búsqueda.",
   "device.browser.placeholder": "Escribe una dirección web o busca…",
   "device.browser.go": "Ir",
   "device.browser.back": "Página anterior",
   "device.browser.forward": "Página siguiente",
   "device.browser.external": "Abrir pestaña",
-  "device.browser.blocked": "Este sitio puede impedir que se muestre dentro del teléfono. Usa Abrir pestaña para continuar.",
+  "device.browser.blocked":
+    "Este sitio puede impedir que se muestre dentro del teléfono. Usa Abrir pestaña para continuar.",
   "device.browser.loading": "Abriendo página…",
   "device.browser.page": "Página web",
   "device.browser.start": "Internet en tu dispositivo",
-  "device.browser.startBody": "Escribe una dirección o busca. Navega aquí y abre una pestaña externa cuando sea necesario.",
-  "device.browser.policy": "Algunos sitios se pueden mostrar aquí; otros requieren una pestaña aparte.",
+  "device.browser.startBody":
+    "Escribe una dirección o busca. Navega aquí y abre una pestaña externa cuando sea necesario.",
+  "device.browser.policy":
+    "Algunos sitios se pueden mostrar aquí; otros requieren una pestaña aparte.",
   "device.chat.conversations": "Conversaciones",
   "device.chat.conversationsBody": "Contactos y conversaciones de este caso.",
   "device.chat.availableReplies": "Mensajes disponibles",
   "device.chat.askStart": "¿Cómo empiezo la investigación?",
-  "device.chat.waitProgress": "La conversación continúa a medida que avanza la investigación.",
+  "device.chat.waitProgress":
+    "La conversación continúa a medida que avanza la investigación.",
   "device.chat.exhausted": "No hay mensajes nuevos para enviar.",
-  "device.chat.readOnly": "Este contacto solo transmite mensajes; no puedes responderle desde aquí.",
+  "device.chat.readOnly":
+    "Este contacto solo transmite mensajes; no puedes responderle desde aquí.",
   "device.chat.noMessages": "Aún no hay mensajes para este caso.",
   "device.chat.received": "Transmisiones recibidas en este caso.",
   "device.terminal.outcome.pending": "En curso",
   "device.terminal.outcome.accepted": "Completada",
-  "device.terminal.failure.rejected": "La instancia rechazó la llamada: revisa el estado y la secuencia.",
+  "device.terminal.failure.rejected":
+    "La instancia rechazó la llamada: revisa el estado y la secuencia.",
   "device.terminal.failure.cancelled": "La billetera no firmó la llamada.",
   "device.terminal.failure.unknown": "No se pudo completar.",
-  "device.app.investigation": "Expediente del caso",
-  "device.notesArchive.title": "Notas",
-  "device.notesArchive.progress": "Notas desbloqueadas con casos resueltos: {count}.",
-  "device.notesArchive.empty": "Resuelve un caso para guardar la primera nota.",
+  "device.app.investigation": "Notas",
+  "device.notesArchive.title": "Casos completados",
+  "device.notesArchive.progress":
+    "Casos completados: {count}.",
+  "device.notesArchive.empty": "Todavía no hay casos completados.",
   "device.app.news": "Noticias",
   "device.news.edition": "Meridian · Noticias de la red",
   "device.news.loading": "Cargando la edición…",
-  "device.news.empty": "No se pudo abrir esta edición. Cierra Noticias y vuelve a abrirla para intentarlo de nuevo.",
+  "device.news.empty":
+    "No se pudo abrir esta edición. Cierra Noticias y vuelve a abrirla para intentarlo de nuevo.",
   "device.news.ariaSections": "Secciones de noticias",
   "device.news.masthead": "MERIDIAN / CENTRAL DE INTELIGENCIA",
   "device.news.title": "NOTICIAS DE MERIDIAN",
@@ -1940,7 +2553,8 @@ const ES_CAMPAIGN: Dictionary = {
   "device.status.ready": "LISTO",
   "device.about.official": "SISTEMA OFICIAL DE CAMPO",
   "device.about.build": "VERSIÓN 01.10 · ACCESO PROVISIONAL",
-  "device.about.terminal": "Este terminal forma parte de la infraestructura oficial de investigación de Meridian."
+  "device.about.terminal":
+    "Este terminal forma parte de la infraestructura oficial de investigación de Meridian.",
 };
 
 export const TEXTS: Texts = {

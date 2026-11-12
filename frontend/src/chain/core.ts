@@ -26,7 +26,7 @@ export function coreClient(address: string, signer: Signer): Client {
     contractId: CORE_ID,
     networkPassphrase: PASSPHRASE,
     rpcUrl: RPC_URL,
-    publicKey: address,
+    publicKey: signer.transactionSource ?? address,
     ...callbacks(signer),
   });
 }
@@ -60,7 +60,7 @@ export async function instanceClient(
     contractId: instance,
     networkPassphrase: PASSPHRASE,
     rpcUrl: RPC_URL,
-    publicKey: address,
+    publicKey: signer.transactionSource ?? address,
     ...callbacks(signer),
   });
 
