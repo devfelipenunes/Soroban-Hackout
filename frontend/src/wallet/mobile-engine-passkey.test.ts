@@ -1,18 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const realConnect = vi.hoisted(() => vi.fn());
-const realDisconnect = vi.hoisted(() => vi.fn());
 const createPasskeyWallet = vi.hoisted(() => vi.fn());
 const connectPasskeyWallet = vi.hoisted(() => vi.fn());
 const disconnectPasskeyWallet = vi.hoisted(() => vi.fn());
-
-vi.mock("./real-engine.ts", () => ({
-  realEngine: {
-    detect: async () => ({ kind: "unchecked" }),
-    connect: realConnect,
-    disconnect: realDisconnect,
-  },
-}));
 
 vi.mock("./passkey-engine.ts", () => ({
   createPasskeyWallet,
@@ -21,15 +11,6 @@ vi.mock("./passkey-engine.ts", () => ({
 }));
 
 import { mobileWalletEngine } from "./mobile-engine.ts";
-
-const stellar = {
-  address: "GPLAYER",
-  rightNetwork: true,
-  signer: {
-    signTransaction: async () => "",
-    signAuthEntry: async () => "",
-  },
-};
 
 const passkey = {
   address: "CPLAYER",
@@ -44,7 +25,6 @@ const passkey = {
 beforeEach(async () => {
   await mobileWalletEngine.disconnect();
   vi.clearAllMocks();
-  realConnect.mockResolvedValue(stellar);
   createPasskeyWallet.mockResolvedValue(passkey);
   connectPasskeyWallet.mockResolvedValue(passkey);
 });
@@ -55,7 +35,6 @@ describe("mobile wallet engine routing", () => {
     await mobileWalletEngine.disconnect();
 
     expect(disconnectPasskeyWallet).toHaveBeenCalledOnce();
-    expect(realDisconnect).not.toHaveBeenCalled();
   });
 
   it("disconnects the passkey engine after an existing passkey connection", async () => {
@@ -63,14 +42,12 @@ describe("mobile wallet engine routing", () => {
     await mobileWalletEngine.disconnect();
 
     expect(disconnectPasskeyWallet).toHaveBeenCalledOnce();
-    expect(realDisconnect).not.toHaveBeenCalled();
   });
 
-  it("disconnects Stellar when the last connection was a Stellar wallet", async () => {
-    expect(await mobileWalletEngine.connect()).toBe(stellar);
+  it("uses a passkey for the default connection action", async () => {
+    expect(await mobileWalletEngine.connect()).toBe(passkey);
     await mobileWalletEngine.disconnect();
 
-    expect(realDisconnect).toHaveBeenCalledOnce();
-    expect(disconnectPasskeyWallet).not.toHaveBeenCalled();
+    expect(disconnectPasskeyWallet).toHaveBeenCalledOnce();
   });
 });

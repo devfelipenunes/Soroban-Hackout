@@ -7,7 +7,7 @@ import { Boundary } from "./components/Boundary.tsx";
 import { Broken } from "./pages/Broken.tsx";
 import { useWallet, WalletProvider } from "./wallet/context.tsx";
 import type { WalletEngine } from "./wallet/engine.ts";
-import { walletEngineForViewport } from "./wallet/mobile-engine.ts";
+import { mobileWalletEngine } from "./wallet/mobile-engine.ts";
 import { LanguageProvider } from "./i18n/language.tsx";
 import { ProgressProvider } from "./game/progress.tsx";
 import { migrateLegacyStorage } from "./game/storage.ts";
@@ -33,23 +33,27 @@ function AccountLayer({ children }: { children: ReactNode }) {
 }
 
 const LOCAL_TEST_ADDRESS = "GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWHF";
+const connectLocalTestWallet = async () => ({
+  address: LOCAL_TEST_ADDRESS,
+  rightNetwork: true,
+  walletKind: "passkey" as const,
+  signer: {
+    signTransaction: async () => { throw new Error("The local test wallet never signs transactions."); },
+    signAuthEntry: async () => { throw new Error("The local test wallet never signs auth entries."); },
+  },
+});
 const localTestEngine: WalletEngine = {
   testOnly: true,
   detect: async () => ({ kind: "available", wallet: "Local test wallet" }),
-  connect: async () => ({
-    address: LOCAL_TEST_ADDRESS,
-    rightNetwork: true,
-    signer: {
-      signTransaction: async () => { throw new Error("The local test wallet never signs transactions."); },
-      signAuthEntry: async () => { throw new Error("The local test wallet never signs auth entries."); },
-    },
-  }),
+  connect: connectLocalTestWallet,
+  createPasskey: connectLocalTestWallet,
+  connectPasskey: connectLocalTestWallet,
   disconnect: async () => {},
 };
 
 const useLocalTestWallet =
   import.meta.env.DEV && new URLSearchParams(window.location.search).get("breaker-test-wallet") === "1";
-const walletEngine = useLocalTestWallet ? localTestEngine : walletEngineForViewport();
+const walletEngine = useLocalTestWallet ? localTestEngine : mobileWalletEngine;
 
 const root = document.getElementById("root");
 if (!root) {

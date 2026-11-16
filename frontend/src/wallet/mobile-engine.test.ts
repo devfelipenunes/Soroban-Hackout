@@ -1,27 +1,14 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
-import { realEngine } from "./real-engine.ts";
-import { mobileWalletEngine, walletEngineForViewport } from "./mobile-engine.ts";
+import { mobileWalletEngine } from "./mobile-engine.ts";
 
-afterEach(() => vi.unstubAllGlobals());
-
-describe("viewport wallet engine", () => {
-  it("preserves the existing wallet engine on desktop", () => {
-    vi.stubGlobal("window", {
-      matchMedia: vi.fn().mockReturnValue({ matches: false }),
-    });
-
-    expect(walletEngineForViewport()).toBe(realEngine);
+describe("passkey wallet engine", () => {
+  it("does not claim a detected wallet before the player acts", async () => {
+    await expect(mobileWalletEngine.detect()).resolves.toEqual({ kind: "unchecked" });
   });
 
-  it("adds passkey actions only to the mobile wallet engine", () => {
-    vi.stubGlobal("window", {
-      matchMedia: vi.fn().mockReturnValue({ matches: true }),
-    });
-
-    const engine = walletEngineForViewport();
-    expect(engine).toBe(mobileWalletEngine);
-    expect(engine.createPasskey).toBeTypeOf("function");
-    expect(engine.connectPasskey).toBeTypeOf("function");
+  it("routes the default connection through the passkey action", () => {
+    expect(mobileWalletEngine.connect).toBe(mobileWalletEngine.connectPasskey);
+    expect(mobileWalletEngine.createPasskey).toBeTypeOf("function");
   });
 });

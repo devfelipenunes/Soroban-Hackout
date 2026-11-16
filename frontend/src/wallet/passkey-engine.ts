@@ -64,10 +64,10 @@ export async function assertPasskeyEnvironment(requirePlatformAuthenticator = tr
     throw new Error("Passkeys require a secure HTTPS connection (localhost is supported for development).");
   }
   if (window.location.hostname === "127.0.0.1") {
-    throw new Error("Use http://localhost for local passkey testing, or open BREAKER on an HTTPS domain on mobile.");
+    throw new Error("Use http://localhost for local passkey testing, or open BREAKER on an HTTPS domain.");
   }
   if (!navigator.credentials || typeof PublicKeyCredential === "undefined") {
-    throw new Error("This browser does not support passkeys. Connect a Stellar wallet to continue.");
+    throw new Error("This browser does not support passkeys. Use a supported browser to continue.");
   }
   const platformAuthenticatorAvailable =
     typeof PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable === "function" &&
@@ -76,7 +76,7 @@ export async function assertPasskeyEnvironment(requirePlatformAuthenticator = tr
     );
   if (requirePlatformAuthenticator && !platformAuthenticatorAvailable) {
     throw new Error(
-      "This browser did not find an on-device passkey for this site. Try a supported browser over HTTPS with a device screen lock, or connect a Stellar wallet.",
+      "This browser did not find a passkey authenticator. Set up a device screen lock or use a browser with passkey support.",
     );
   }
 }
@@ -321,7 +321,7 @@ export async function createPasskeyWallet(): Promise<Connected> {
   reportPasskeyStep("credential");
   const pending = (await activeKit.credentials.getPending()).find(
     (credential) =>
-      credential.nickname === "BREAKER Mobile" &&
+      (credential.nickname === "BREAKER" || credential.nickname === "BREAKER Mobile") &&
       (credential.deploymentStatus === "pending" || credential.deploymentStatus === "failed"),
   );
   const created = pending
@@ -330,7 +330,7 @@ export async function createPasskeyWallet(): Promise<Connected> {
         credentialId: pending.credentialId,
       }
     : await activeKit.createWallet("BREAKER", "Breaker Operator", {
-        nickname: "BREAKER Mobile",
+        nickname: "BREAKER",
         autoSubmit: false,
         authenticatorSelection: { authenticatorAttachment: "platform", residentKey: "required" },
       });

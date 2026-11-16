@@ -56,7 +56,9 @@ describe("passkey environment", () => {
       }),
     );
 
-    await expect(assertPasskeyEnvironment()).rejects.toThrow(/did not find an on-device passkey/);
+    await expect(assertPasskeyEnvironment()).rejects.toThrow(
+      /did not find a passkey authenticator/,
+    );
   });
 
   it("accepts an available platform authenticator", async () => {
