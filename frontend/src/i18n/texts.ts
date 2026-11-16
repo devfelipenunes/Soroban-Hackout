@@ -71,7 +71,7 @@ const BASE_TEXTS: Texts = {
     "final.subtitle":
       "A sequência final da Primeira Camada. Os casos “Reescrita” e “O Arquiteto” também são jogáveis nesta era.",
     "final.checking": "Lendo o seu progresso na cadeia…",
-    "final.noWallet": "Conecte a carteira para ler a sequência final.",
+    "final.noWallet": "Entre com sua passkey para ler a sequência final.",
     "final.noWalletHint":
       "A sequência é liberada quando os 13 casos estão resolvidos.",
     "final.howToPlay": "Como jogar",
@@ -89,41 +89,22 @@ const BASE_TEXTS: Texts = {
 
     "language.label": "Mudar idioma",
 
-    "wallet.title": "Carteira",
-    "wallet.connect": "Conectar carteira",
+    "wallet.title": "Passkey",
     "wallet.passkey.create": "Criar passkey",
-    "wallet.passkey.connect": "Já tenho uma passkey",
+    "wallet.passkey.connect": "Entrar com minha passkey",
     "wallet.passkey.account": "Sua identidade de jogo",
-    "device.wallet.passkeyOnly": "Sua passkey já é a carteira que assina os casos. Para consultar saldos ou transferir XLM e tokens, conecte uma carteira Stellar.",
-    "device.wallet.connectForTokens": "Conectar carteira Stellar para tokens",
-    "wallet.connecting": "Conectando…",
-    "wallet.checking": "Procurando carteira…",
+    "device.wallet.passkeyOnly": "Sua passkey é sua conta do jogo. Use-a para entrar e assinar ações na Testnet.",
+    "wallet.connecting": "Verificando passkey…",
+    "wallet.checking": "Verificando conta…",
     "wallet.tryAgain": "Tentar de novo",
-    "wallet.disconnect": "Desconectar",
-    "wallet.switched": "Trocar de conta",
+    "wallet.disconnect": "Sair da conta",
+    "wallet.switched": "Usar outra passkey",
 
-    "wallet.disconnected.title": "Conecte sua carteira",
+    "wallet.disconnected.title": "Entre com sua passkey",
     "wallet.disconnected.body":
-      "As transações do jogo são assinadas pela sua carteira na testnet do Stellar. Nenhuma é enviada sem a sua confirmação.",
+      "Crie uma passkey ou entre com uma que já usa. Ela será sua identidade para jogar.",
 
-    "wallet.noExtension.title": "Nenhuma carteira encontrada",
-    "wallet.noExtension.body":
-      "Nenhuma carteira compatível foi detectada. Você pode instalar o Freighter ou usar outra carteira compatível com o jogo.",
-    "wallet.noExtension.action": "Instalar o Freighter",
-    "wallet.noExtension.alreadyInstalled": "Já instalei — verificar novamente",
-
-    "wallet.incompatible.title": "{wallet} não é compatível com este jogo",
-    "wallet.incompatible.body":
-      "O {wallet} escolhe a rede por conta própria e não permite que o jogo a configure. Na testnet, a conexão pode falhar sem aviso, e uma transação assinada talvez não chegue à rede. Para jogar, use uma carteira compatível, como o Freighter.",
-
-    "wallet.wrongNetwork.title": "Sua carteira está na rede errada",
-    "wallet.wrongNetwork.body":
-      "O jogo usa a testnet do Stellar. Abra as configurações da sua carteira, selecione a rede Testnet e tente novamente.",
-    "wallet.networkUnverified.title": "Não foi possível confirmar a rede",
-    "wallet.networkUnverified.body":
-      "A carteira não informou em qual rede está. Confirme que ela está na Testnet e tente conectar novamente.",
-
-    "wallet.failed.title": "Não deu para conectar",
+    "wallet.failed.title": "Não foi possível usar a passkey",
 
     "wallet.connected": "Conectado à testnet",
     "device.wallet.connected": "Conectado",
@@ -137,7 +118,7 @@ const BASE_TEXTS: Texts = {
     "device.wallet.mainnetSoon": "Mainnet em breve",
     "collection.back": "Voltar à coleção",
     "collection.connect":
-      "Conecte sua carteira na tela inicial do dispositivo para consultar seu progresso.",
+      "Entre com sua passkey na tela inicial do dispositivo para consultar seu progresso.",
     "collection.loading": "Consultando seus casos na testnet…",
     "collection.error":
       "Não foi possível consultar seu progresso. Tente atualizar.",
@@ -162,10 +143,10 @@ const BASE_TEXTS: Texts = {
     "wallet.copied": "Copiado",
 
     "wallet.chip.checking": "Verificando…",
-    "wallet.chip.noExtension": "Sem carteira",
-    "wallet.chip.incompatible": "{wallet} não serve",
+    "wallet.chip.noExtension": "Passkey indisponível",
+    "wallet.chip.incompatible": "Passkey incompatível",
     "wallet.chip.wrongNetwork": "Rede errada",
-    "wallet.chip.networkUnverified": "Rede não verificada",
+    "wallet.chip.networkUnverified": "Rede não confirmada",
     "wallet.chip.failed": "Falhou",
 
     "account.checking": "Verificando sua conta na testnet…",
@@ -236,16 +217,11 @@ const BASE_TEXTS: Texts = {
     "level.diagnosticLoading": "Conferindo o que o validador ainda exige…",
     "level.diagnosticError":
       "Não foi possível ler o checklist de diagnóstico. Submeta de novo para tentar outra vez.",
-    "level.tutorial.title": "Como jogar este prólogo",
+    "level.tutorial.title": "Sua primeira operação",
     "level.tutorial.body":
-      "O terminal do jogo é o console do navegador. Abra-o, chame os métodos e submeta a instância.",
-    "level.tutorial.console":
-      "Abra o console do navegador (F12 → Console, ou Ctrl+Shift+J).",
-    "level.tutorial.instance": "Crie a instância com o botão abaixo.",
+      "O contador começa em zero. Use os comandos abaixo para levá-lo a um.",
     "level.tutorial.call":
-      "No console, leia o estado, chame increment e leia de novo.",
-    "level.tutorial.submit":
-      "Clique em Submeter; o núcleo registra a conclusão na rede.",
+      "Leia o contador, incremente uma vez e confira o novo valor.",
     "level.tutorial.desktop":
       "O desafio é jogado no console do desktop; o Breaker OS também oferece Operações, no desktop e no celular.",
     "ledger.current": "Ledger atual: {value}",
@@ -347,6 +323,7 @@ const BASE_TEXTS: Texts = {
       "O relatório de encerramento do caso está disponível.",
     "device.noNotifications": "Nenhuma notificação por enquanto.",
     "device.unlockFingerprint": "Desbloquear com digital",
+    "device.unlockHint": "Toque para desbloquear",
     "device.fingerprintReading": "Lendo digital…",
     "device.fingerprintAccepted": "Digital reconhecida",
     "device.lockPhone": "Bloquear celular",
@@ -408,6 +385,10 @@ const BASE_TEXTS: Texts = {
     "device.chooseCaseCta": "Escolher um caso",
     "device.investigation": "Investigação em andamento",
     "device.continueInvestigation": "Continuar investigação",
+    "device.caseWidget.instance": "Instância ativa",
+    "device.caseWidget.noInstance": "Sem instância",
+    "device.caseWidget.calls": "chamadas",
+    "device.caseWidget.evidence": "evidências",
     "device.caseStatus": "Situação da investigação",
     "device.caseStatus.dossier": "Dossiê",
     "device.caseStatus.evidence": "Última evidência",
@@ -452,9 +433,9 @@ const BASE_TEXTS: Texts = {
     "device.chat.connecting": "Sintonizando as transmissões deste caso…",
     "device.chat.askCity": "Como é Meridian?",
     "device.chat.askCases": "Como começo um caso?",
-    "device.app.wallet": "Carteira",
+    "device.app.wallet": "Conta",
     "device.wallet.connect":
-      "Conecte sua carteira para consultar, receber e enviar tokens.",
+      "Entre com sua passkey para acessar sua conta do jogo.",
     "device.wallet.balance": "Saldo",
     "device.wallet.send": "Enviar",
     "device.wallet.loadError":
@@ -539,16 +520,24 @@ const BASE_TEXTS: Texts = {
     "device.brand": "BREAKER OS",
     "device.close": "Fechar Breaker OS",
     "device.opening": "Abrindo Breaker OS…",
+    "device.boot": "Iniciando sistema",
     "device.home": "Início",
     "device.player": "OPERADOR",
     "device.network": "REDE",
     "device.today": "Caso atual",
     "device.mission.today": "Hoje",
+    "device.unreadOne": "{count} item novo",
     "device.unread": "{count} itens novos",
+    "device.app.unreadOne": "{app}, {count} item não lido",
+    "device.app.unreadMany": "{app}, {count} itens não lidos",
     "device.locked": "BLOQUEADO",
     "device.lockedStory": "Resolva o caso para abrir a história completa.",
     "device.empty.evidence": "Nenhuma evidência coletada ainda.",
-    "device.empty.terminal": "Nenhuma chamada ainda.",
+    "device.empty.terminal": "Nenhuma chamada neste caso.",
+    "device.empty.terminalHint":
+      "Execute uma chamada em Operações para vê-la aqui.",
+    "device.empty.terminalNoCaseHint":
+      "Volte à lista de casos para iniciar uma investigação.",
     "device.operations.noInstanceShort": "Crie uma instância para executar.",
     "device.operations.start": "Iniciar operação",
     "device.operations.starting": "Iniciando operação…",
@@ -757,7 +746,7 @@ const BASE_TEXTS: Texts = {
     "final.subtitle":
       "The last sequence of The First Layer. The story is read; Rewrite and The Architect are also playable in this era.",
     "final.checking": "Reading your progress from the chain…",
-    "final.noWallet": "Connect your wallet to read the final sequence.",
+    "final.noWallet": "Sign in with your passkey to read the final sequence.",
     "final.noWalletHint": "The sequence unlocks when all 13 cases are solved.",
     "final.howToPlay": "How to play",
     "final.locked": "Sequence locked.",
@@ -774,41 +763,22 @@ const BASE_TEXTS: Texts = {
 
     "language.label": "Switch language",
 
-    "wallet.title": "Wallet",
-    "wallet.connect": "Connect wallet",
+    "wallet.title": "Passkey",
     "wallet.passkey.create": "Create a passkey",
-    "wallet.passkey.connect": "I already have a passkey",
+    "wallet.passkey.connect": "Sign in with my passkey",
     "wallet.passkey.account": "Your game identity",
-    "device.wallet.passkeyOnly": "Your passkey is already the wallet that signs your cases. To view balances or transfer XLM and tokens, connect a Stellar wallet.",
-    "device.wallet.connectForTokens": "Connect Stellar wallet for tokens",
-    "wallet.connecting": "Connecting…",
-    "wallet.checking": "Looking for a wallet…",
+    "device.wallet.passkeyOnly": "Your passkey is your game account. Use it to sign in and authorize actions on Testnet.",
+    "wallet.connecting": "Checking passkey…",
+    "wallet.checking": "Checking account…",
     "wallet.tryAgain": "Try again",
-    "wallet.disconnect": "Disconnect",
-    "wallet.switched": "Switch account",
+    "wallet.disconnect": "Sign out",
+    "wallet.switched": "Use another passkey",
 
-    "wallet.disconnected.title": "Connect your wallet",
+    "wallet.disconnected.title": "Sign in with your passkey",
     "wallet.disconnected.body":
-      "The game signs Stellar testnet transactions through your wallet. Nothing leaves here without your confirmation.",
+      "Create a passkey or sign in with one you already use. It will be your game identity.",
 
-    "wallet.noExtension.title": "No wallet found",
-    "wallet.noExtension.body":
-      "No compatible wallet was detected. You can install Freighter or use another wallet supported by the game.",
-    "wallet.noExtension.action": "Install Freighter",
-    "wallet.noExtension.alreadyInstalled": "I installed it, check again",
-
-    "wallet.incompatible.title": "{wallet} does not work here",
-    "wallet.incompatible.body":
-      "{wallet} chooses its own network and does not let the game configure it. On testnet, the connection may fail silently, and a signed transaction may never reach the network. Use a compatible wallet, such as Freighter, to play.",
-
-    "wallet.wrongNetwork.title": "Your wallet is on the wrong network",
-    "wallet.wrongNetwork.body":
-      "The game runs on the Stellar testnet. Open your wallet settings, switch the network to Testnet, and try again.",
-    "wallet.networkUnverified.title": "Could not verify the network",
-    "wallet.networkUnverified.body":
-      "The wallet did not report its network. Confirm that it is set to Testnet, then try connecting again.",
-
-    "wallet.failed.title": "Could not connect",
+    "wallet.failed.title": "Could not use the passkey",
 
     "wallet.connected": "Connected to testnet",
     "device.wallet.connected": "Connected",
@@ -822,7 +792,7 @@ const BASE_TEXTS: Texts = {
     "device.wallet.mainnetSoon": "Mainnet coming soon",
     "collection.back": "Back to collection",
     "collection.connect":
-      "Connect your wallet from the device home to check your progress.",
+      "Sign in with your passkey from the device home to check your progress.",
     "collection.loading": "Checking your cases on testnet…",
     "collection.error": "Your progress could not be loaded. Try refreshing.",
     "collection.progress": "{count} of {total} cases solved",
@@ -846,10 +816,10 @@ const BASE_TEXTS: Texts = {
     "wallet.copied": "Copied",
 
     "wallet.chip.checking": "Checking…",
-    "wallet.chip.noExtension": "No wallet",
-    "wallet.chip.incompatible": "{wallet} won't work",
+    "wallet.chip.noExtension": "Passkey unavailable",
+    "wallet.chip.incompatible": "Passkey unsupported",
     "wallet.chip.wrongNetwork": "Wrong network",
-    "wallet.chip.networkUnverified": "Network unverified",
+    "wallet.chip.networkUnverified": "Network unconfirmed",
     "wallet.chip.failed": "Failed",
 
     "account.checking": "Checking your testnet account…",
@@ -919,15 +889,11 @@ const BASE_TEXTS: Texts = {
     "level.diagnosticLoading": "Checking what the validator still requires…",
     "level.diagnosticError":
       "Could not read the diagnostic checklist. Submit again to retry.",
-    "level.tutorial.title": "How to play this prologue",
+    "level.tutorial.title": "Your first operation",
     "level.tutorial.body":
-      "The game's terminal is the browser console. Open it, call the methods and submit the instance.",
-    "level.tutorial.console":
-      "Open the browser console (F12 → Console, or Ctrl+Shift+J).",
-    "level.tutorial.instance": "Create the instance with the button below.",
+      "The counter starts at zero. Use the commands below to bring it to one.",
     "level.tutorial.call":
-      "In the console, read the state, call increment and read again.",
-    "level.tutorial.submit": "Click Submit; the core confirms on the chain.",
+      "Read the counter, increment it once, then check the new value.",
     "level.tutorial.desktop":
       "The challenge runs in the desktop console; Breaker OS also offers Operations, on desktop and mobile.",
     "ledger.current": "Current ledger: {value}",
@@ -1027,6 +993,7 @@ const BASE_TEXTS: Texts = {
     "device.notification.story": "The case debrief is now available.",
     "device.noNotifications": "No notifications yet.",
     "device.unlockFingerprint": "Unlock with fingerprint",
+    "device.unlockHint": "Touch to unlock",
     "device.fingerprintReading": "Reading fingerprint…",
     "device.fingerprintAccepted": "Fingerprint recognized",
     "device.lockPhone": "Lock phone",
@@ -1088,6 +1055,10 @@ const BASE_TEXTS: Texts = {
     "device.chooseCaseCta": "Choose a case",
     "device.investigation": "Investigation in progress",
     "device.continueInvestigation": "Continue investigation",
+    "device.caseWidget.instance": "Instance live",
+    "device.caseWidget.noInstance": "No instance",
+    "device.caseWidget.calls": "calls",
+    "device.caseWidget.evidence": "evidence",
     "device.caseStatus": "Investigation status",
     "device.caseStatus.dossier": "Case file",
     "device.caseStatus.evidence": "Latest evidence",
@@ -1130,9 +1101,9 @@ const BASE_TEXTS: Texts = {
     "device.chat.connecting": "Tuning in to this case's transmissions…",
     "device.chat.askCity": "What is Meridian like?",
     "device.chat.askCases": "How do I start a case?",
-    "device.app.wallet": "Wallet",
+    "device.app.wallet": "Account",
     "device.wallet.connect":
-      "Connect your wallet to view, receive and send tokens.",
+      "Sign in with your passkey to open your game account.",
     "device.wallet.balance": "Balance",
     "device.wallet.send": "Send",
     "device.wallet.loadError":
@@ -1216,16 +1187,24 @@ const BASE_TEXTS: Texts = {
     "device.brand": "BREAKER OS",
     "device.close": "Close Breaker OS",
     "device.opening": "Opening Breaker OS…",
+    "device.boot": "Starting system",
     "device.home": "Home",
     "device.player": "OPERATOR",
     "device.network": "NETWORK",
     "device.today": "Current case",
     "device.mission.today": "Today",
+    "device.unreadOne": "{count} new item",
     "device.unread": "{count} new items",
+    "device.app.unreadOne": "{app}, {count} unread item",
+    "device.app.unreadMany": "{app}, {count} unread items",
     "device.locked": "LOCKED",
     "device.lockedStory": "Solve the case to open the full story.",
     "device.empty.evidence": "No evidence collected yet.",
-    "device.empty.terminal": "No calls yet.",
+    "device.empty.terminal": "No calls recorded for this case.",
+    "device.empty.terminalHint":
+      "Run a call in Operations to see it here.",
+    "device.empty.terminalNoCaseHint":
+      "Return to the case list to start an investigation.",
     "device.operations.noInstanceShort": "Create an instance to run code.",
     "device.operations.start": "Start operation",
     "device.operations.starting": "Starting operation…",
@@ -1411,7 +1390,7 @@ const BASE_TEXTS: Texts = {
     "final.subtitle":
       "La secuencia final de la Primera Capa. Los casos «Reescritura» y «El Arquitecto» también se pueden jugar en esta era.",
     "final.checking": "Consultando tu progreso en la cadena…",
-    "final.noWallet": "Conecta tu billetera para leer la secuencia final.",
+    "final.noWallet": "Entra con tu passkey para leer la secuencia final.",
     "final.noWalletHint":
       "La secuencia se desbloquea al resolver los 13 casos.",
     "final.howToPlay": "Cómo jugar",
@@ -1426,44 +1405,28 @@ const BASE_TEXTS: Texts = {
     "final.readNote":
       "Los casos «Reescritura» y «El Arquitecto» son jugables. La secuencia final reúne las consecuencias que ya demostraste en la cadena.",
     "language.label": "Cambiar idioma",
-    "wallet.title": "Billetera",
-    "wallet.connect": "Conectar billetera",
+    "wallet.title": "Passkey",
     "wallet.passkey.create": "Crear passkey",
-    "wallet.passkey.connect": "Ya tengo una passkey",
+    "wallet.passkey.connect": "Entrar con mi passkey",
     "wallet.passkey.account": "Tu identidad de juego",
-    "device.wallet.passkeyOnly": "Tu passkey ya es la billetera que firma tus casos. Para ver saldos o transferir XLM y tokens, conecta una billetera Stellar.",
-    "device.wallet.connectForTokens": "Conectar billetera Stellar para tokens",
-    "wallet.connecting": "Conectando…",
-    "wallet.checking": "Buscando una billetera…",
+    "device.wallet.passkeyOnly": "Tu passkey es tu cuenta de juego. Úsala para entrar y autorizar acciones en Testnet.",
+    "wallet.connecting": "Verificando passkey…",
+    "wallet.checking": "Verificando cuenta…",
     "wallet.tryAgain": "Inténtalo de nuevo",
-    "wallet.disconnect": "Desconectar",
-    "wallet.switched": "Cambiar de cuenta",
-    "wallet.disconnected.title": "Conecta tu billetera",
+    "wallet.disconnect": "Cerrar sesión",
+    "wallet.switched": "Usar otra passkey",
+    "wallet.disconnected.title": "Entra con tu passkey",
     "wallet.disconnected.body":
-      "El juego firma transacciones en Stellar Testnet con tu billetera. Ninguna se envía sin tu confirmación.",
-    "wallet.noExtension.title": "No se encontró ninguna billetera",
-    "wallet.noExtension.body":
-      "No se detectó ninguna billetera compatible. Puedes instalar Freighter o usar otra billetera compatible con el juego.",
-    "wallet.noExtension.action": "Instalar Freighter",
-    "wallet.noExtension.alreadyInstalled": "Lo instalé, verifica nuevamente",
-    "wallet.incompatible.title": "{wallet} no funciona aquí",
-    "wallet.incompatible.body":
-      "{wallet} elige la red por su cuenta y no permite que el juego la configure. En Testnet, la conexión puede fallar sin avisar y una transacción firmada podría no llegar a la red. Para jugar, usa una billetera compatible, como Freighter.",
-    "wallet.wrongNetwork.title": "Tu billetera está en la red equivocada",
-    "wallet.wrongNetwork.body":
-      "El juego funciona en Stellar Testnet. Abre la configuración de tu billetera, cambia la red a Testnet y vuelve a intentarlo.",
-    "wallet.networkUnverified.title": "No se pudo verificar la red",
-    "wallet.networkUnverified.body":
-      "La billetera no informó su red. Confirma que está en Testnet e intenta conectarte de nuevo.",
-    "wallet.failed.title": "No se pudo conectar",
+      "Crea una passkey o entra con una que ya uses. Será tu identidad para jugar.",
+    "wallet.failed.title": "No se pudo usar la passkey",
     "wallet.connected": "Conectado a testnet",
     "wallet.copy": "Copiar dirección",
     "wallet.copied": "Copiado",
     "wallet.chip.checking": "Comprobando…",
-    "wallet.chip.noExtension": "Sin billetera",
-    "wallet.chip.incompatible": "{wallet} no es compatible",
+    "wallet.chip.noExtension": "Passkey no disponible",
+    "wallet.chip.incompatible": "Passkey incompatible",
     "wallet.chip.wrongNetwork": "Red incorrecta",
-    "wallet.chip.networkUnverified": "Red no verificada",
+    "wallet.chip.networkUnverified": "Red no confirmada",
     "wallet.chip.failed": "Error",
     "account.checking": "Comprobando tu cuenta de Testnet…",
     "account.funding":
@@ -1553,17 +1516,25 @@ const BASE_TEXTS: Texts = {
     "device.brand": "BREAKER OS",
     "device.close": "Cerrar Breaker OS",
     "device.opening": "Abriendo Breaker OS…",
+    "device.boot": "Iniciando sistema",
     "device.home": "Inicio",
     "device.player": "JUGADOR",
     "device.network": "RED",
     "device.today": "Caso actual",
     "device.mission.today": "Hoy",
-    "device.unread": "Elementos sin leer: {count}",
+    "device.unreadOne": "{count} elemento sin leer",
+    "device.unread": "{count} elementos sin leer",
+    "device.app.unreadOne": "{app}, {count} elemento sin leer",
+    "device.app.unreadMany": "{app}, {count} elementos sin leer",
     "device.locked": "BLOQUEADO",
     "device.lockedStory":
       "Resuelve el caso para desbloquear la historia completa.",
     "device.empty.evidence": "Aún no has reunido pruebas.",
-    "device.empty.terminal": "Aún no hay llamadas.",
+    "device.empty.terminal": "Aún no hay llamadas para este caso.",
+    "device.empty.terminalHint":
+      "Ejecuta una llamada en Operaciones para verla aquí.",
+    "device.empty.terminalNoCaseHint":
+      "Vuelve a la lista de casos para iniciar una investigación.",
     "device.operations.noInstanceShort": "Crea una instancia para ejecutar.",
     "device.operations.start": "Iniciar operación",
     "device.operations.starting": "Iniciando operación…",
@@ -1687,8 +1658,8 @@ const ES_CAMPAIGN: Dictionary = {
   "device.wallet.network": "Red",
   "device.wallet.mainnetSoon": "Mainnet próximamente",
   "collection.back": "Volver a la colección",
-  "collection.connect":
-    "Conecta tu billetera desde la pantalla de inicio del dispositivo para consultar tu progreso.",
+    "collection.connect":
+    "Entra con tu passkey desde la pantalla de inicio del dispositivo para consultar tu progreso.",
   "collection.loading": "Consultando tus casos en testnet…",
   "collection.error":
     "No se pudo consultar tu progreso. Intenta actualizar la página.",
@@ -1747,16 +1718,11 @@ const ES_CAMPAIGN: Dictionary = {
   "level.diagnosticLoading": "Comprobando lo que aún exige el validador…",
   "level.diagnosticError":
     "No se pudo leer la lista de diagnóstico. Vuelve a enviar la solución para intentarlo de nuevo.",
-  "level.tutorial.title": "Cómo jugar este prólogo",
+  "level.tutorial.title": "Tu primera operación",
   "level.tutorial.body":
-    "La terminal del juego es la consola del navegador. Ábrela, llama a los métodos y envía la instancia.",
-  "level.tutorial.console":
-    "Abre la consola del navegador (F12 → Consola o Ctrl+Shift+J).",
-  "level.tutorial.instance": "Crea la instancia con el botón de abajo.",
+    "El contador empieza en cero. Usa los comandos siguientes para llevarlo a uno.",
   "level.tutorial.call":
-    "En la consola, consulta el estado, llama al método `increment` y vuelve a consultarlo.",
-  "level.tutorial.submit":
-    "Haz clic en Enviar; el núcleo confirma el resultado en la cadena.",
+    "Lee el contador, increméntalo una vez y comprueba el nuevo valor.",
   "level.tutorial.desktop":
     "El desafío se resuelve desde la consola del navegador en una computadora; Breaker OS también ofrece Operaciones, en el escritorio y en el celular.",
   "ledger.current": "Ledger actual: {value}",
@@ -1796,6 +1762,7 @@ const ES_CAMPAIGN: Dictionary = {
   "device.notification.story": "El informe del caso ya está disponible.",
   "device.noNotifications": "Aún no hay notificaciones.",
   "device.unlockFingerprint": "Desbloquear con huella digital",
+  "device.unlockHint": "Toca para desbloquear",
   "device.fingerprintReading": "Leyendo huella digital…",
   "device.fingerprintAccepted": "Huella digital reconocida",
   "device.lockPhone": "Bloquear teléfono",
@@ -1857,6 +1824,10 @@ const ES_CAMPAIGN: Dictionary = {
   "device.chooseCaseCta": "Elegir un caso",
   "device.investigation": "Investigación en curso",
   "device.continueInvestigation": "Continuar la investigación",
+  "device.caseWidget.instance": "Instancia activa",
+  "device.caseWidget.noInstance": "Sin instancia",
+  "device.caseWidget.calls": "llamadas",
+  "device.caseWidget.evidence": "pruebas",
   "device.caseStatus": "Estado de la investigación",
   "device.caseStatus.dossier": "Expediente del caso",
   "device.caseStatus.evidence": "Última evidencia",
@@ -1901,9 +1872,9 @@ const ES_CAMPAIGN: Dictionary = {
   "device.chat.connecting": "Sintonizando las transmisiones de este caso…",
   "device.chat.askCity": "¿Cómo es Meridian?",
   "device.chat.askCases": "¿Cómo inicio un caso?",
-  "device.app.wallet": "Billetera",
+  "device.app.wallet": "Cuenta",
   "device.wallet.connect":
-    "Conecta tu billetera para consultar, recibir y enviar activos.",
+    "Entra con tu passkey para acceder a tu cuenta de juego.",
   "device.wallet.balance": "Saldo",
   "device.wallet.send": "Enviar",
   "device.wallet.loadError":
