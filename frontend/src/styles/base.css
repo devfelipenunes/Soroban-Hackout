@@ -4877,16 +4877,13 @@ button {
   z-index: 2;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: min(100%, 68rem);
-  padding: calc(4rem + env(safe-area-inset-top)) 1.5rem 3rem;
+  min-height: 100svh;
+  box-sizing: border-box;
+  padding: max(env(safe-area-inset-top), 1rem) 1.5rem max(env(safe-area-inset-bottom), 1rem);
   text-align: center;
-}
-
-@media (min-width: 601px) and (any-pointer: fine) {
-  .login__inner {
-    top: -5rem;
-  }
 }
 
 .login__mark {
@@ -4965,6 +4962,93 @@ button {
   animation: login-rise 900ms cubic-bezier(0.22, 1, 0.36, 1) 1850ms both;
 }
 
+.login__passkey-actions {
+  display: grid;
+  justify-items: center;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.login__passkey-failed {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 0.45rem;
+  width: 100%;
+  min-height: 7.4rem;
+  text-align: center;
+}
+
+.login__passkey-failed p {
+  margin: 0;
+}
+
+.login__passkey-error-title {
+  color: var(--season-ivory);
+  font-weight: 600;
+}
+
+.login__passkey-error {
+  color: var(--season-ash);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.login__button--passkey {
+  width: 100%;
+  min-height: 3.75rem;
+  padding: 0.85rem 1.35rem;
+  border: 1px solid #f2c77f;
+  border-radius: 0.8rem;
+  background: #e1ad62;
+  color: #20170f;
+  box-shadow: 0 10px 26px rgb(0 0 0 / 28%), inset 0 1px rgb(255 255 255 / 28%);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.login__button--passkey:hover:not(:disabled) {
+  background: #efbd71;
+  box-shadow: 0 13px 30px rgb(0 0 0 / 34%), inset 0 1px rgb(255 255 255 / 32%);
+}
+
+.login__button--passkey:disabled,
+.login__passkey-return:disabled {
+  opacity: 0.58;
+  cursor: wait;
+}
+
+.login__passkey-return {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3.1rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.55rem;
+  background: transparent;
+  color: rgb(241 234 217 / 82%);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.login__passkey-return:hover:not(:disabled) {
+  color: var(--season-ivory);
+  background: rgb(5 8 13 / 34%);
+}
+
+.login__button--passkey:focus-visible,
+.login__passkey-return:focus-visible {
+  outline: 2px solid var(--season-amber);
+  outline-offset: 3px;
+}
+
 @keyframes login-rise {
   from {
     opacity: 0;
@@ -5004,19 +5088,6 @@ button {
   text-align: left;
 }
 
-.login__button--wallet {
-  width: 100%;
-  border: 1px solid rgb(222 175 104 / 72%);
-  background: rgb(44 33 21 / 78%);
-  color: var(--season-ivory);
-  font-weight: 600;
-  letter-spacing: .04em;
-  box-shadow: 0 10px 24px rgb(0 0 0 / 22%);
-  cursor: pointer;
-}
-.login__button--wallet:hover { border-color: #f0c984; background: rgb(72 51 28 / 90%); box-shadow: 0 14px 30px rgb(0 0 0 / 30%); }
-.login__button--wallet:disabled { opacity: .62; cursor: wait; }
-
 .login__divider {
   display: flex;
   align-items: center;
@@ -5051,10 +5122,10 @@ button {
 
 .login__enter {
   font-family: var(--source-mono);
-  font-size: var(--text-2xs);
-  letter-spacing: 0.42em;
+  font-size: var(--text-xs);
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(241, 234, 217, 0.32);
+  color: var(--season-ash);
   animation: login-fade 1200ms ease-out 2300ms both;
 }
 
@@ -5077,15 +5148,15 @@ button {
   top: 1.2rem;
   right: 1.2rem;
   z-index: 3;
-  height: 2rem;
-  min-width: 2.4rem;
+  height: 2.75rem;
+  min-width: 2.75rem;
   padding: 0 0.5rem;
   border: 1px solid var(--season-line);
   border-radius: 3px;
   background: rgba(5, 8, 13, 0.35);
   color: var(--season-ash);
   font-family: var(--source-mono);
-  font-size: var(--text-2xs);
+  font-size: var(--text-xs);
   letter-spacing: 0.12em;
 }
 
@@ -7021,8 +7092,9 @@ button {
 }
 
 .login__spinner {
-  width: 1.15rem;
-  height: 1.15rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-width: 3px;
   border-color: rgba(217, 160, 91, 0.3);
   border-top-color: var(--season-amber);
 }
@@ -7050,9 +7122,9 @@ button {
 
 .login__passkey-progress {
   display: grid;
-  justify-items: center;
-  gap: 0.35rem;
-  margin-top: 0.15rem;
+  place-items: center;
+  width: 100%;
+  height: 7.4rem;
   text-align: center;
 }
 

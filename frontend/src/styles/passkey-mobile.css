@@ -1,8 +1,20 @@
 @media (max-width: 1100px) and (any-pointer: coarse) {
+  .login {
+    position: fixed;
+    inset: 0;
+    align-items: start;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: none;
+  }
+
   .login__inner {
-    justify-content: center;
+    justify-content: safe center;
+    width: 100%;
+    height: auto;
     min-height: 100svh;
-    padding: max(4.5rem, env(safe-area-inset-top)) 1.25rem max(3rem, env(safe-area-inset-bottom));
+    padding: max(1rem, env(safe-area-inset-top)) 1.25rem max(1rem, env(safe-area-inset-bottom));
   }
 
   .login__mark {
@@ -208,21 +220,28 @@
   .login__passkey-actions {
     display: grid;
     justify-items: center;
-    gap: 0.8rem;
+    gap: 0.45rem;
     width: min(100%, 24rem);
     margin-bottom: 0;
+  }
+
+  .login__passkey-progress {
+    height: 7.35rem;
+  }
+
+  .login__passkey-failed {
+    min-height: 7.35rem;
   }
 
   .login__button--passkey {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
     width: 100%;
-    min-height: 3.75rem;
-    padding: 0.85rem 1.2rem;
+    min-height: 3.8rem;
+    padding: 0.85rem 1.35rem;
     border: 1px solid #f2c77f;
-    border-radius: 0.7rem;
+    border-radius: 0.8rem;
     background: #e1ad62;
     color: #20170f;
     box-shadow: 0 10px 26px rgb(0 0 0 / 28%), inset 0 1px rgb(255 255 255 / 28%);
@@ -248,33 +267,26 @@
     cursor: not-allowed;
   }
 
-  .login__passkey-icon {
-    display: block;
-    width: 1.65rem;
-    height: 1.65rem;
-    color: #20170f;
-    fill: currentColor;
-  }
-
   .login__passkey-return {
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    min-height: 3.25rem;
-    padding: 0.7rem 1rem;
-    border: 1px solid rgb(241 234 217 / 48%);
-    border-radius: 0.7rem;
-    background: rgb(9 12 16 / 46%);
-    color: var(--season-ivory);
-    font-size: 0.92rem;
-    font-weight: 600;
+    min-height: 3.1rem;
+    padding: 0.55rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.55rem;
+    background: transparent;
+    color: rgb(241 234 217 / 82%);
+    font-size: 0.9rem;
+    font-weight: 500;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
   }
 
   .login__passkey-return:hover:not(:disabled) {
-    border-color: rgb(241 234 217 / 78%);
-    background: rgb(36 34 30 / 76%);
+    color: var(--season-ivory);
+    background: rgb(5 8 13 / 34%);
   }
 
   .login__passkey-return:active:not(:disabled) {
@@ -284,7 +296,7 @@
 
   .login__button--passkey:focus-visible,
   .login__passkey-return:focus-visible {
-    outline: 2px solid var(--season-ivory);
+    outline: 2px solid var(--season-amber);
     outline-offset: 3px;
   }
 
@@ -309,12 +321,6 @@
   .login__divider,
   .login__enter {
     display: none;
-  }
-
-  .login__button--wallet {
-    min-height: 2.85rem;
-    padding-inline: 1rem;
-    font-size: 0.86rem;
   }
 
   .breaker-device-dialog {
