@@ -213,7 +213,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
     () => (testOnly || !address || !signer ? null : coreClient(address, signer)),
     [address, signer, testOnly],
   );
-  const reader = useMemo(() => coreReader(), [readAttempt]);
+  const reader = coreReader();
 
   useEffect(() => {
     let cancelled = false;
@@ -245,7 +245,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
       if (alive) setPreviousProof({ player: address, completed: false });
     });
     return () => { alive = false; };
-  }, [reader, address, previous]);
+  }, [reader, address, previous, readAttempt]);
 
   useEffect(() => {
     if (!address) {

@@ -6,10 +6,6 @@ import { CORE_ID, NETWORK } from "../chain/network.ts";
 import { LEVELS } from "../levels/index.ts";
 import { useWallet } from "../wallet/context.tsx";
 
-
-
-
-
 export type SeasonStatus = "cached" | "checking" | "no-wallet" | "ready" | "error";
 
 export function lockedLevelIds(
@@ -44,16 +40,11 @@ const accessCache = new Map<string, { accessible: boolean; at: number }>();
 const accessInflight = new Map<string, Promise<boolean>>();
 const cacheEpoch = new Map<string, number>();
 
-
 const cacheScope = `${NETWORK}:${CORE_ID}`;
 const cacheKey = (address: string): string => `${cacheScope}:${address}`;
 const storageKey = (address: string): string => `breaker.season.v2.${cacheKey(address)}`;
 const legacyStorageKey = (address: string): string => `breaker.season.v1.${NETWORK}:${address}`;
 const activeStorageKey = `breaker.season.v2.active.${cacheScope}`;
-
-
-
-
 
 export function activateSeasonCache(address: string): void {
   try {
@@ -80,8 +71,6 @@ function isCachedSeason(value: unknown): value is CachedSeason {
 
 export function loadStoredSeason(address: string, now = Date.now()): CachedSeason | null {
   try {
-
-
     const raw = window.localStorage.getItem(storageKey(address))
       ?? window.localStorage.getItem(legacyStorageKey(address));
     if (raw === null) return null;
@@ -212,13 +201,7 @@ export function useSeasonProgress(): SeasonProgress {
   const [loadedFor, setLoadedFor] = useState<string | null>(null);
   const [nonce, setNonce] = useState(0);
 
-  const client = useMemo(() => (address ? coreReader() : null), [address, nonce]);
-
-
-  const storedForAddress = useMemo(
-    () => (address ? loadStoredSeason(address) : null),
-    [address, nonce],
-  );
+  const client = useMemo(() => (address ? coreReader() : null), [address]);
 
   const reload = useCallback(() => {
     if (address) clearSeasonCache(address);
@@ -273,7 +256,7 @@ export function useSeasonProgress(): SeasonProgress {
   const pending = missing === -1 ? null : (LEVELS[missing]?.id ?? null);
 
   if (loadedFor !== address) {
-    const snapshot = address ? storedForAddress : null;
+    const snapshot = address ? loadStoredSeason(address) : null;
     const visibleCompleted = snapshot?.completed ?? LEVELS.map(() => false);
     const visibleSolved = visibleCompleted.filter(Boolean).length;
     const visibleMissing = visibleCompleted.findIndex((value) => !value);
