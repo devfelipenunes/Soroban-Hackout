@@ -1,9 +1,7 @@
-import { useCallback, useEffect, useRef, useState, type ReactElement } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactElement } from "react";
 
 import { useWallet, type Wallet, type WalletState } from "../wallet/context.tsx";
 import { useLanguage } from "../i18n/language.tsx";
-
-const FREIGHTER_ADDRESS = "https://www.freighter.app/";
 
 type Translator = ReturnType<typeof useLanguage>["t"];
 
@@ -19,7 +17,7 @@ export function walletLabel(state: WalletState, t: Translator): string {
     case "no-extension":
       return t("wallet.chip.noExtension");
     case "incompatible":
-      return t("wallet.chip.incompatible", { wallet: state.wallet });
+      return t("wallet.chip.incompatible");
     case "wrong-network":
       return t("wallet.chip.wrongNetwork");
     case "network-unverified":
@@ -27,7 +25,7 @@ export function walletLabel(state: WalletState, t: Translator): string {
     case "connected":
       return shorten(state.address);
     case "disconnected":
-      return t("wallet.connect");
+      return t("wallet.passkey.connect");
     case "failed":
       return t("wallet.chip.failed");
   }
@@ -74,7 +72,10 @@ export function Gate({ onClose }: { onClose: () => void }): ReactElement {
   const [busy, setBusy] = useState(false);
   const close = useRef(onClose);
   const dialog = useRef<HTMLDivElement>(null);
-  close.current = onClose;
+
+  useLayoutEffect(() => {
+    close.current = onClose;
+  }, [onClose]);
 
   useEffect(() => {
     const previous = document.activeElement;
@@ -168,6 +169,17 @@ function Body({
   withBusy: (action: () => Promise<void>) => Promise<void>;
 }): ReactElement {
   const { state } = wallet;
+  const createPasskey = wallet.createPasskey;
+  const [lastAction, setLastAction] = useState<"create" | "connect">("connect");
+  const retry =
+    lastAction === "create" && createPasskey
+      ? createPasskey
+      : (wallet.connectPasskey ?? wallet.connect);
+  const otherAction =
+    lastAction === "create"
+      ? (wallet.connectPasskey ?? wallet.connect)
+      : createPasskey;
+  const otherKind: "create" | "connect" = lastAction === "create" ? "connect" : "create";
 
   if (busy || state.phase === "checking") {
     return (
@@ -183,127 +195,71 @@ function Body({
 
   if (state.phase === "connected") return <p>{t("wallet.connected")}</p>;
 
+  if (state.phase === "failed") {
+    return (
+      <>
+        <Icon state={state} />
+        <h2 className="gate__title">{t("wallet.failed.title")}</h2>
+        <p className="gate__detail">{state.reason}</p>
+        <div className="gate__actions">
+          <button
+            type="button"
+            className="button"
+            onClick={() => void withBusy(retry)}
+          >
+            {t("wallet.tryAgain")}
+          </button>
+          {otherAction && (
+            <button
+              type="button"
+              className="button button--secondary"
+              onClick={() => {
+                setLastAction(otherKind);
+                void withBusy(otherAction);
+              }}
+            >
+              {t(
+                otherKind === "create"
+                  ? "wallet.passkey.create"
+                  : "wallet.passkey.connect",
+              )}
+            </button>
+          )}
+        </div>
+        <p className="gate__note">{t("footer.notice")}</p>
+      </>
+    );
+  }
+
   return (
     <>
       <Icon state={state} />
-
-      {state.phase === "disconnected" && (
-        <>
-          <h2 className="gate__title">{t("wallet.disconnected.title")}</h2>
-          <p className="gate__body">{t("wallet.disconnected.body")}</p>
-          <div className="gate__actions">
-            <button
-              type="button"
-              className="button"
-              onClick={() => void withBusy(wallet.connect)}
-            >
-              {t("wallet.connect")}
-            </button>
-          </div>
-        </>
-      )}
-
-      {state.phase === "no-extension" && (
-        <>
-          <h2 className="gate__title">{t("wallet.noExtension.title")}</h2>
-          <p className="gate__body">{t("wallet.noExtension.body")}</p>
-          <div className="gate__actions">
-            <a
-              className="button"
-              href={FREIGHTER_ADDRESS}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t("wallet.noExtension.action")}
-            </a>
-            <button
-              type="button"
-              className="button button--secondary"
-              onClick={() => void withBusy(wallet.reverify)}
-            >
-              {t("wallet.noExtension.alreadyInstalled")}
-            </button>
-          </div>
-        </>
-      )}
-
-      {state.phase === "incompatible" && (
-        <>
-          <h2 className="gate__title">
-            {t("wallet.incompatible.title", { wallet: state.wallet })}
-          </h2>
-          <p className="gate__body">
-            {t("wallet.incompatible.body", { wallet: state.wallet })}
-          </p>
-          <div className="gate__actions">
-            <a
-              className="button"
-              href={FREIGHTER_ADDRESS}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t("wallet.noExtension.action")}
-            </a>
-            <button
-              type="button"
-              className="button button--secondary"
-              onClick={() => void withBusy(wallet.reverify)}
-            >
-              {t("wallet.noExtension.alreadyInstalled")}
-            </button>
-          </div>
-        </>
-      )}
-
-      {state.phase === "wrong-network" && (
-        <>
-          <h2 className="gate__title">{t("wallet.wrongNetwork.title")}</h2>
-          <p className="gate__body">{t("wallet.wrongNetwork.body")}</p>
-          <p className="contract-id__value gate__field">{state.address}</p>
-          <div className="gate__actions">
-            <button
-              type="button"
-              className="button"
-              onClick={() => void withBusy(wallet.connect)}
-            >
-              {t("wallet.tryAgain")}
-            </button>
-          </div>
-        </>
-      )}
-
-      {state.phase === "network-unverified" && (
-        <>
-          <h2 className="gate__title">{t("wallet.networkUnverified.title")}</h2>
-          <p className="gate__body">{t("wallet.networkUnverified.body")}</p>
-          <p className="contract-id__value gate__field">{state.address}</p>
-          <div className="gate__actions">
-            <button
-              type="button"
-              className="button"
-              onClick={() => void withBusy(wallet.connect)}
-            >
-              {t("wallet.tryAgain")}
-            </button>
-          </div>
-        </>
-      )}
-
-      {state.phase === "failed" && (
-        <>
-          <h2 className="gate__title">{t("wallet.failed.title")}</h2>
-          <p className="gate__detail">{state.reason}</p>
-          <div className="gate__actions">
-            <button
-              type="button"
-              className="button"
-              onClick={() => void withBusy(wallet.reverify)}
-            >
-              {t("wallet.tryAgain")}
-            </button>
-          </div>
-        </>
-      )}
+      <h2 className="gate__title">{t("wallet.disconnected.title")}</h2>
+      <p className="gate__body">{t("wallet.disconnected.body")}</p>
+      <div className="gate__actions">
+        {createPasskey && (
+          <button
+            type="button"
+            className="button button--secondary"
+            onClick={() => {
+              setLastAction("create");
+              void withBusy(createPasskey);
+            }}
+          >
+            {t("wallet.passkey.create")}
+          </button>
+        )}
+        <button
+          type="button"
+          className="button"
+          onClick={() => {
+            setLastAction("connect");
+            void withBusy(wallet.connectPasskey ?? wallet.connect);
+          }}
+        >
+          {t("wallet.passkey.connect")}
+        </button>
+      </div>
 
       <p className="gate__note">{t("footer.notice")}</p>
     </>

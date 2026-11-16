@@ -7,7 +7,6 @@ import {
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { useWallet } from "../wallet/context.tsx";
-import { Gate } from "../components/Gate.tsx";
 
 import { Clouds } from "../components/Clouds.tsx";
 import { ResponsiveImage } from "../components/ResponsiveImage.tsx";
@@ -20,19 +19,29 @@ export function Login(): ReactElement {
   const mark = useRef<HTMLDivElement | null>(null);
   const wallet = useWallet();
   const navigate = useNavigate();
-  const [gate, setGate] = useState(false);
   const [passkeyFlow, setPasskeyFlow] = useState<"create" | "connect" | null>(null);
   const connecting = wallet.state.phase === "checking";
+  const failed = wallet.state.phase === "failed" ? wallet.state : null;
 
   useEffect(() => {
-    if (wallet.state.phase !== "checking") setPasskeyFlow(null);
+    if (wallet.state.phase === "disconnected" || wallet.state.phase === "connected") {
+      setPasskeyFlow(null);
+    }
   }, [wallet.state.phase]);
 
   const startPasskey = (flow: "create" | "connect"): void => {
     setPasskeyFlow(flow);
     if (flow === "create") void wallet.createPasskey?.();
-    else void wallet.connectPasskey?.();
+    else void (wallet.connectPasskey ?? wallet.connect)();
   };
+
+  const retryKind: "create" | "connect" =
+    passkeyFlow === "create" && wallet.createPasskey !== null ? "create" : "connect";
+  const otherKind: "create" | "connect" = retryKind === "create" ? "connect" : "create";
+  const otherPasskey =
+    otherKind === "create"
+      ? wallet.createPasskey
+      : (wallet.connectPasskey ?? wallet.connect);
 
   const preloadPasskey = (): void => {
     void import("../wallet/passkey-engine.ts").catch(() => {});
@@ -122,53 +131,72 @@ export function Login(): ReactElement {
           <span className="login__season">{t("home.eyebrow")}</span>
         </div>
         <div className="login__actions">
-          {wallet.createPasskey && (
-            <div
-              className="login__passkey-actions"
-              onPointerEnter={preloadPasskey}
-              onFocus={preloadPasskey}
-              onTouchStart={preloadPasskey}
-            >
-              <button
-                type="button"
-                className="login__button login__button--passkey"
-                disabled={connecting}
-                onClick={() => startPasskey("create")}
-              >
-                <svg className="login__passkey-icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M15 3a6 6 0 0 0-5.6 8.15L3 17.55V21h3.45l1.7-1.7v-1.8h1.8l1.55-1.55A6 6 0 1 0 15 3Zm2 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" />
-                </svg>
-                <span className="login__label">{t("wallet.passkey.create")}</span>
-              </button>
-              <button
-                type="button"
-                className="login__passkey-return"
-                disabled={connecting}
-                onClick={() => startPasskey("connect")}
-              >
-                {t("wallet.passkey.connect")}
-              </button>
-              {passkeyFlow !== null ? (
-                <div
-                  className="login__passkey-progress"
-                  role="status"
-                  aria-live="polite"
-                  aria-busy="true"
-                  aria-label={t("wallet.connecting")}
+          <div
+            className="login__passkey-actions"
+            onPointerEnter={preloadPasskey}
+            onFocus={preloadPasskey}
+            onTouchStart={preloadPasskey}
+          >
+            {failed !== null ? (
+              <div className="login__passkey-failed" role="alert">
+                <p className="login__passkey-error-title">{t("wallet.failed.title")}</p>
+                <p className="login__passkey-error">{failed.reason}</p>
+                <button
+                  type="button"
+                  className="login__button login__button--passkey login__passkey-retry"
+                  disabled={connecting}
+                  onClick={() => startPasskey(retryKind)}
                 >
-                  <span className="login__spinner" aria-hidden="true" />
-                </div>
-              ) : null}
-            </div>
-          )}
-          <button type="button" className="login__button login__button--wallet"
-            disabled={connecting}
-            onClick={() => {
-              if (wallet.state.phase === "no-extension" || wallet.state.phase === "incompatible") setGate(true);
-              else void wallet.connect();
-            }}>
-            <span className="login__label">{t("wallet.connect")}</span>
-          </button>
+                  {t("wallet.tryAgain")}
+                </button>
+                {otherPasskey && (
+                  <button
+                    type="button"
+                    className="login__passkey-return"
+                    disabled={connecting}
+                    onClick={() => startPasskey(otherKind)}
+                  >
+                    {t(
+                      otherKind === "create"
+                        ? "wallet.passkey.create"
+                        : "wallet.passkey.connect",
+                    )}
+                  </button>
+                )}
+              </div>
+            ) : passkeyFlow !== null ? (
+              <div
+                className="login__passkey-progress"
+                role="status"
+                aria-live="polite"
+                aria-busy="true"
+                aria-label={t("wallet.connecting")}
+              >
+                <span className="login__spinner" aria-hidden="true" />
+              </div>
+            ) : (
+              <>
+                {wallet.createPasskey && (
+                  <button
+                    type="button"
+                    className="login__button login__button--passkey"
+                    disabled={connecting}
+                    onClick={() => startPasskey("create")}
+                  >
+                    <span className="login__label">{t("wallet.passkey.create")}</span>
+                  </button>
+                )}
+                <button
+                  type="button"
+                  className="login__passkey-return"
+                  disabled={connecting}
+                  onClick={() => startPasskey("connect")}
+                >
+                  {t("wallet.passkey.connect")}
+                </button>
+              </>
+            )}
+          </div>
         </div>
 
         <div className="login__divider" aria-hidden="true">
@@ -177,7 +205,6 @@ export function Login(): ReactElement {
 
         <span className="login__enter">{t("login.enter")}</span>
       </div>
-      {gate && <Gate onClose={() => setGate(false)} />}
     </main>
   );
 }
