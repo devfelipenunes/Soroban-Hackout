@@ -688,12 +688,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
           <section className="tutorial">
             <h2 className="tutorial__title">{t("level.tutorial.title")}</h2>
             <p>{t("level.tutorial.body")}</p>
-            <ol className="tutorial__steps">
-              <li>{t("level.tutorial.console")}</li>
-              <li>{t("level.tutorial.instance")}</li>
-              <li>{t("level.tutorial.call")}</li>
-              <li>{t("level.tutorial.submit")}</li>
-            </ol>
+            <p>{t("level.tutorial.call")}</p>
             <div className="tutorial__commands">
               {[
                 "window.help()",
