@@ -117,7 +117,7 @@ const UTILITIES: readonly {
 }[] = [
   { id: "files", icon: "files" },
   { id: "browser", icon: "browser" },
-  { id: "map", icon: "files" },
+  { id: "map", icon: "map" },
   { id: "settings", icon: "settings" },
 ];
 
@@ -730,6 +730,7 @@ const OS_SYMBOLS = {
     "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiBmaWxsPSJjdXJyZW50Q29sb3IiPjxwYXRoIGQ9Ik0yMjguMjQsNTkuNzZsLTMyLTMyYTYsNiwwLDAsMC04LjQ4LDBsLTk2LDk2QTYsNiwwLDAsMCw5MCwxMjh2MzJhNiw2LDAsMCwwLDYsNmgzMmE2LDYsMCwwLDAsNC4yNC0xLjc2bDk2LTk2QTYsNiwwLDAsMCwyMjguMjQsNTkuNzZaTTEyNS41MSwxNTRIMTAyVjEzMC40OWw2Ni02NkwxOTEuNTEsODhaTTIwMCw3OS41MSwxNzYuNDksNTYsMTkyLDQwLjQ5LDIxNS41MSw2NFpNMjIyLDEyOHY4MGExNCwxNCwwLDAsMS0xNCwxNEg0OGExNCwxNCwwLDAsMS0xNC0xNFY0OEExNCwxNCwwLDAsMSw0OCwzNGg4MGE2LDYsMCwwLDEsMCwxMkg0OGEyLDIsMCwwLDAtMiwyVjIwOGEyLDIsMCwwLDAsMiwySDIwOGEyLDIsMCwwLDAsMi0yVjEyOGE2LDYsMCwwLDEsMTIsMFoiLz48L3N2Zz4=",
   files:
     "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiBmaWxsPSJjdXJyZW50Q29sb3IiPjxwYXRoIGQ9Ik0yMTYsNzRIMTMwLjQ5bC0yNy45LTI3LjlhMTMuOTQsMTMuOTQsMCwwLDAtOS45LTQuMUg0MEExNCwxNCwwLDAsMCwyNiw1NlYyMDAuNjJBMTMuMzksMTMuMzksMCwwLDAsMzkuMzgsMjE0SDIxNi44OUExMy4xMiwxMy4xMiwwLDAsMCwyMzAsMjAwLjg5Vjg4QTE0LDE0LDAsMCwwLDIxNiw3NFpNNDAsNTRIOTIuNjlhMiwyLDAsMCwxLDEuNDEuNTlMMTEzLjUxLDc0SDM4VjU2QTIsMiwwLDAsMSw0MCw1NFpNMjE4LDIwMC44OWExLjExLDEuMTEsMCwwLDEtMS4xMSwxLjExSDM5LjM4QTEuNCwxLjQsMCwwLDEsMzgsMjAwLjYyVjg2SDIxNmEyLDIsMCwwLDEsMiwyWiIvPjwvc3ZnPg==",
+  map: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' fill='currentColor'%3E%3Cpath d='m160 28 66 24v168l-72-26-72 26-52-19V33l58 21 72-26Zm-6 20-52 19v126l52-19V48Zm12 2v127l48 17V61l-48-11ZM42 51v136l48 17V68L42 51Z'/%3E%3C/svg%3E",
   browser:
     "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiBmaWxsPSJjdXJyZW50Q29sb3IiPjxwYXRoIGQ9Ik0xMjgsMjZBMTAyLDEwMiwwLDEsMCwyMzAsMTI4LDEwMi4xMiwxMDIuMTIsMCwwLDAsMTI4LDI2Wm04MS41Nyw2NEgxNjkuMTlhMTMyLjU4LDEzMi41OCwwLDAsMC0yNS43My01MC42N0E5MC4yOSw5MC4yOSwwLDAsMSwyMDkuNTcsOTBaTTIxOCwxMjhhODkuNyw4OS43LDAsMCwxLTMuODMsMjZIMTcxLjgxYTE1NS40MywxNTUuNDMsMCwwLDAsMC01Mmg0Mi4zNkE4OS43LDg5LjcsMCwwLDEsMjE4LDEyOFptLTkwLDg3LjgzYTExMCwxMTAsMCwwLDEtMTUuMTktMTkuNDVBMTI0LjI0LDEyNC4yNCwwLDAsMSw5OS4zNSwxNjZoNTcuM2ExMjQuMjQsMTI0LjI0LDAsMCwxLTEzLjQ2LDMwLjM4QTExMCwxMTAsMCwwLDEsMTI4LDIxNS44M1pNOTYuNDUsMTU0YTEzOS4xOCwxMzkuMTgsMCwwLDEsMC01Mmg2My4xYTEzOS4xOCwxMzkuMTgsMCwwLDEsMCw1MlpNMzgsMTI4YTg5LjcsODkuNywwLDAsMSwzLjgzLTI2SDg0LjE5YTE1NS40MywxNTUuNDMsMCwwLDAsMCw1Mkg0MS44M0E4OS43LDg5LjcsMCwwLDEsMzgsMTI4Wm05MC04Ny44M2ExMTAsMTEwLDAsMCwxLDE1LjE5LDE5LjQ1QTEyNC4yNCwxMjQuMjQsMCwwLDEsMTU2LjY1LDkwSDk5LjM1YTEyNC4yNCwxMjQuMjQsMCwwLDEsMTMuNDYtMzAuMzhBMTEwLDExMCwwLDAsMSwxMjgsNDAuMTdabS0xNS40Ni0uODRBMTMyLjU4LDEzMi41OCwwLDAsMCw4Ni44MSw5MEg0Ni40M0E5MC4yOSw5MC4yOSwwLDAsMSwxMTIuNTQsMzkuMzNaTTQ2LjQzLDE2Nkg4Ni44MWExMzIuNTgsMTMyLjU4LDAsMCwwLDI1LjczLDUwLjY3QTkwLjI5LDkwLjI5LDAsMCwxLDQ2LjQzLDE2NlptOTcsNTAuNjdBMTMyLjU4LDEzMi41OCwwLDAsMCwxNjkuMTksMTY2aDQwLjM4QTkwLjI5LDkwLjI5LDAsMCwxLDE0My40NiwyMTYuNjdaIi8+PC9zdmc+",
   wifi: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiBmaWxsPSJjdXJyZW50Q29sb3IiPjxwYXRoIGQ9Ik0xMzgsMjA0YTEwLDEwLDAsMSwxLTEwLTEwQTEwLDEwLDAsMCwxLDEzOCwyMDRaTTIzNS44MSw4OC41NWExNzAsMTcwLDAsMCwwLTIxNS42MiwwLDYsNiwwLDEsMCw3LjYyLDkuMjcsMTU4LDE1OCwwLDAsMSwyMDAuMzgsMCw2LDYsMCwxLDAsNy42Mi05LjI3Wm0tMzIuMDgsMzUuNzlhMTIyLDEyMiwwLDAsMC0xNTEuNDYsMCw2LDYsMCwwLDAsNy40Niw5LjQxLDExMCwxMTAsMCwwLDEsMTM2LjU0LDBBNiw2LDAsMCwwLDIwMCwxMzVhNiw2LDAsMCwwLDMuNzMtMTAuN1ptLTMyLjIsMzUuODFhNzQsNzQsMCwwLDAtODcuMDYsMCw2LDYsMCwwLDAsNy4wNiw5LjcsNjIsNjIsMCwwLDEsNzIuOTQsMCw2LDYsMCwwLDAsOC4zOC0xLjMyQTYsNiwwLDAsMCwxNzEuNTMsMTYwLjE1WiIvPjwvc3ZnPg==",
@@ -786,11 +787,13 @@ function SystemIcon({ id }: { id: SystemSymbol }): ReactElement {
 function DeviceBrand(): ReactElement {
   return (
     <div className="device__brandmark">
-      <ResponsiveImage
-        src="/images/brand/breaker-os-presentation.png"
+      <img
+        src="/images/brand/breaker-os-wordmark.webp"
         alt="BREAKER OS"
-        sizes="200px"
-        loading="lazy"
+        width={720}
+        height={122}
+        loading="eager"
+        decoding="async"
       />
     </div>
   );
@@ -1311,7 +1314,14 @@ export function BreakerDevice({
     hour12: false,
     minute: "2-digit",
   });
+  const lockDate = now.toLocaleDateString(language, {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  });
 
+  const selectedConversationCount =
+    level === null ? 1 : (conversations.get(chatContact)?.length ?? 0);
   const counts = {
     comms: level === null ? 1 : caseState.fired.length,
     evidence: caseState.revealed.size,
@@ -1362,20 +1372,22 @@ export function BreakerDevice({
 
     if (view === "comms") {
       if (!chatThreadOpen) return;
-      const current =
-        level === null ? 1 : (conversations.get(chatContact)?.length ?? 0);
       setSeen((previous) =>
-        previous.contacts?.[chatContact] === current
+        previous.contacts?.[chatContact] === selectedConversationCount
           ? previous
           : {
               ...previous,
-              comms: level === null ? current : previous.comms,
-              contacts: { ...previous.contacts, [chatContact]: current },
+              comms: level === null ? selectedConversationCount : previous.comms,
+              contacts: {
+                ...previous.contacts,
+                [chatContact]: selectedConversationCount,
+              },
             },
       );
       return;
     }
-    const current = counts[view];
+    const current =
+      view === "evidence" ? caseState.revealed.size : caseState.calls.length;
     setSeen((previous) =>
       previous[view] === current ? previous : { ...previous, [view]: current },
     );
@@ -1386,12 +1398,11 @@ export function BreakerDevice({
     view,
     chatThreadOpen,
     chatContact,
-    narrative,
+    selectedConversationCount,
     level,
     caseState.fired,
-    counts.comms,
-    counts.evidence,
-    counts.terminal,
+    caseState.revealed,
+    caseState.calls,
   ]);
 
   useEffect(() => {
@@ -1599,7 +1610,10 @@ export function BreakerDevice({
         {totalUnread > 0 && (
           <span
             className="os-toggle__count"
-            aria-label={t("device.unread", { count: totalUnread })}
+            aria-label={t(
+              totalUnread === 1 ? "device.unreadOne" : "device.unread",
+              { count: totalUnread },
+            )}
           >
             {totalUnread > 9 ? "9+" : totalUnread}
           </span>
@@ -1839,7 +1853,37 @@ export function BreakerDevice({
 
   const terminal = () => {
     if (caseState.calls.length === 0) {
-      return <p className="device__empty">{t("device.empty.terminal")}</p>;
+      return (
+        <div className="device__empty-state">
+          <span className="device__empty-prompt" aria-hidden="true">
+            &gt;_
+          </span>
+          <p className="device__empty">{t("device.empty.terminal")}</p>
+          <p className="device__note">
+            {t(
+              level === null
+                ? "device.empty.terminalNoCaseHint"
+                : "device.empty.terminalHint",
+            )}
+          </p>
+          <button
+            type="button"
+            className="device__empty-action"
+            onClick={() =>
+              level === null ? onToggle() : setView("operations")
+            }
+          >
+            <span>
+              {t(
+                level === null
+                  ? "device.chooseCaseCta"
+                  : "device.app.operations",
+              )}
+            </span>
+            <SystemIcon id="next" />
+          </button>
+        </div>
+      );
     }
 
     return (
@@ -2619,23 +2663,37 @@ export function BreakerDevice({
   );
   const appTiles = (entries: typeof APPS) => (
     <div className="device__grid">
-      {entries.map((entry) => (
-        <button
-          key={entry.id}
-          type="button"
-          className={`device__tile${locked(entry.id) ? " device__tile--locked" : ""}`}
-          onClick={() => navigateOS(entry.id)}
-          aria-label={t(entry.labelKey)}
-        >
-          <span className={`device__glyph device__glyph--${entry.accent}`}>
-            <DeviceIcon id={entry.id} />
-          </span>
-          <span className="device__label">{t(entry.labelKey)}</span>
-          {unread(entry.id) > 0 && (
-            <span className="device__badge">{unread(entry.id)}</span>
-          )}
-        </button>
-      ))}
+      {entries.map((entry) => {
+        const unreadCount = unread(entry.id);
+        const label = t(entry.labelKey);
+        const accessibleLabel =
+          unreadCount === 0
+            ? label
+            : t(
+                unreadCount === 1
+                  ? "device.app.unreadOne"
+                  : "device.app.unreadMany",
+                { app: label, count: unreadCount },
+              );
+
+        return (
+          <button
+            key={entry.id}
+            type="button"
+            className={`device__tile${locked(entry.id) ? " device__tile--locked" : ""}`}
+            onClick={() => navigateOS(entry.id)}
+            aria-label={accessibleLabel}
+          >
+            <span className={`device__glyph device__glyph--${entry.accent}`}>
+              <DeviceIcon id={entry.id} />
+            </span>
+            <span className="device__label">{label}</span>
+            {unreadCount > 0 && (
+              <span className="device__badge">{unreadCount}</span>
+            )}
+          </button>
+        );
+      })}
     </div>
   );
   const utilityTiles = (
@@ -3305,11 +3363,7 @@ export function BreakerDevice({
           <i />
         </button>
       </div>
-      <button
-        type="button"
-        className="device__mission"
-        onClick={() => navigateOS("investigation")}
-      >
+      <article className="device__mission">
         <span className="device__mission-meta">
           {level === null
             ? t("device.mission.today")
@@ -3320,24 +3374,90 @@ export function BreakerDevice({
             ? t("device.chooseCase")
             : choose(level.name, language)?.text}
         </strong>
-
         <span className="device__mission-state">
           {level === null
             ? t("device.noActiveCase")
             : t(solved ? "collection.solved" : "device.investigation")}
         </span>
         {level !== null && (
-          <span className="device__mission-meter">
-            <i style={{ width: solved ? "100%" : "0%" }} />
-          </span>
+          <>
+            <span className="device__mission-meter">
+              <i style={{ width: solved ? "100%" : "0%" }} />
+            </span>
+            <span className="device__mission-telemetry">
+              <span
+                className={`device__mission-live${instance ? " is-live" : ""}`}
+                aria-hidden="true"
+              />
+              <span>
+                {t(
+                  instance
+                    ? "device.caseWidget.instance"
+                    : "device.caseWidget.noInstance",
+                )}
+              </span>
+              <span>
+                <b>{caseState.calls.length}</b>{" "}
+                {t("device.caseWidget.calls")}
+              </span>
+              <span>
+                <b>{caseState.revealed.size}</b>{" "}
+                {t("device.caseWidget.evidence")}
+              </span>
+              {solved && (
+                <span className="device__mission-solved">
+                  {t("collection.solved")}
+                </span>
+              )}
+            </span>
+          </>
         )}
-        <span className="device__mission-cta">
-          {t(level === null ? "device.chooseCaseCta" : "device.continueInvestigation")}
-          <SystemIcon id="next" />
+        <span className="device__mission-actions">
+          <button
+            type="button"
+            className="device__mission-action"
+            onClick={() =>
+              level === null ? onToggle() : navigateOS("investigation")
+            }
+          >
+            <span>
+              {t(
+                level === null
+                  ? "device.chooseCaseCta"
+                  : "device.continueInvestigation",
+              )}
+            </span>
+            <SystemIcon id="next" />
+          </button>
+          {level !== null && (
+            <button
+              type="button"
+              className="device__mission-action device__mission-action--secondary"
+              onClick={() => navigateOS("operations")}
+            >
+              <span>{t("device.app.operations")}</span>
+              <SystemIcon id="next" />
+            </button>
+          )}
         </span>
-      </button>
+      </article>
       {appTiles(availableApps)}
     </div>
+  );
+
+  const homeStatus = (
+    <button
+      type="button"
+      className="device__home-status"
+      onClick={() => navigateOS("wallet")}
+    >
+      <span className="device__home-status-dot" aria-hidden="true" />
+      <span>{t("device.status.online")}</span>
+      <span className="device__home-status-network">TESTNET</span>
+      <span className="device__home-status-account">
+        {player ? short(player) : t("device.guest")}
+      </span>
+    </button>
   );
 
   const openNotification = (target: View): void => {
@@ -3597,19 +3717,25 @@ export function BreakerDevice({
                     <SystemIcon id="check" />
                   </span>
                 </button>
-                <span className="device__biometric-status" role="status">
+                <span
+                  className={`device__biometric-status${scanPhase === "idle" ? " is-idle" : ""}`}
+                  role="status"
+                >
                   {scanPhase === "reading"
                     ? t("device.fingerprintReading")
                     : scanPhase === "accepted"
                       ? t("device.fingerprintAccepted")
-                      : ""}
+                      : t("device.unlockHint")}
                 </span>
               </div>
             </div>
           ) : notificationsOpen ? (
             notifications
           ) : view === "home" ? (
-            home
+            <>
+              {home}
+              {homeStatus}
+            </>
           ) : (
             <div className="device__app">
               <div className="device__appbar">
@@ -3634,7 +3760,11 @@ export function BreakerDevice({
                   </svg>
                   <span>{t("device.back")}</span>
                 </button>
-                <span className="device__app-title">
+                <h2
+                  className="device__app-title"
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
                   {view === "settings"
                     ? settingsTitle
                     : view === "comms"
@@ -3644,7 +3774,7 @@ export function BreakerDevice({
                       : app === undefined
                         ? viewLabel(view)
                         : t(app.labelKey)}
-                </span>
+                </h2>
                 <span className="device__appbar-spacer" aria-hidden="true" />
               </div>
               <div
