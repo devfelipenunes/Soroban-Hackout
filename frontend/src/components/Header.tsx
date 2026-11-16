@@ -183,7 +183,7 @@ export function Header(): ReactElement {
               {unread > 0 && <span className="wallet-chip__badge" aria-hidden="true">{unread}</span>}
               {state.phase === "connected" && unread > 0 && (
                 <span className="visually-hidden">
-                  {t("device.unread", { count: unread })}
+                  {t(unread === 1 ? "device.unreadOne" : "device.unread", { count: unread })}
                 </span>
               )}
             </button>
