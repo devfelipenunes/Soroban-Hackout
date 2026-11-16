@@ -62,14 +62,15 @@ cd frontend && VITE_DEPLOYMENT_PROFILE=sandbox npm run dev  # sandbox, no progre
 ./scripts/keeper.sh --plan       # what the keeper would extend, without touching the network
 ```
 
-### Mobile
+### Any device
 
-On a phone or tablet, open the game over HTTPS (or `localhost` in development). The login offers a
-passkey (Testnet only, platform authenticator required) alongside a Stellar wallet. Once a case has
-an instance, open **Breaker OS → Operations** to write and run JavaScript against `window.contract`;
-the case page still creates the instance and submits the solution. `127.0.0.1` is rejected for
-passkeys — use `localhost` or an HTTPS host. The same Operations app is available inside Breaker
-OS on desktop; the browser console remains the primary desktop path.
+Open the game over HTTPS (or `localhost` in development). Sign-in uses a passkey on Testnet:
+creating one requires a platform authenticator (a device screen lock), while an existing passkey
+can be used from a compatible browser. Once a case has an instance, open **Breaker OS →
+Operations** to write and run JavaScript against `window.contract`; the case page still creates
+the instance and submits the solution. `127.0.0.1` is rejected for passkeys — use `localhost` or
+an HTTPS host. The same Operations app is available inside Breaker OS on desktop; the browser
+console remains the primary desktop path.
 
 **Build contracts with `./contracts/build.sh`**, which calls `stellar contract build`.
 Never call `cargo` directly: the two produce different bytes for the same source, and the
