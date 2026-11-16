@@ -193,7 +193,13 @@ export function Header(): ReactElement {
 
       {gate && <Gate onClose={() => setGate(false)} />}
       {!inCase && <dialog className="breaker-device-dialog" ref={deviceDialog} tabIndex={-1}
-        aria-label="Breaker OS" onCancel={() => setOsOpen(false)}
+        aria-label="Breaker OS" onCancel={(event) => {
+          if (!window.dispatchEvent(new CustomEvent("breaker:os-escape", { cancelable: true }))) {
+            event.preventDefault();
+            return;
+          }
+          setOsOpen(false);
+        }}
         onClick={(event) => {
           if (event.target !== event.currentTarget) return;
           const bounds = event.currentTarget.getBoundingClientRect();

@@ -2,12 +2,13 @@ import {
   Fragment,
   useEffect,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
   type ReactElement,
   type CSSProperties,
 } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useLanguage } from "../i18n/language.tsx";
 import { TEXTS } from "../i18n/texts.ts";
@@ -155,6 +156,7 @@ const APPS: readonly { id: OsAppId; labelKey: string; accent: Accent }[] = [
 ];
 
 const APP_IDS = new Set<string>(APPS.map((app) => app.id));
+let osBooted = false;
 
 function scrollContainerFor(target: EventTarget | null): HTMLElement | null {
   if (!(target instanceof Element)) return null;
@@ -983,6 +985,7 @@ export function BreakerDevice({
   creatingInstance?: boolean | undefined;
 }): ReactElement {
   const { t, language, toggleLanguage } = useLanguage();
+  const navigate = useNavigate();
 
   const levelId = level?.id ?? -1;
   const currentKey = `${player ?? "anon"}:${levelId}`;
@@ -1006,6 +1009,7 @@ export function BreakerDevice({
   const operationEditors = useRef<Record<string, HTMLTextAreaElement | null>>(
     {},
   );
+  const [booting, setBooting] = useState(false);
   const [screenLocked, setScreenLocked] = useState(true);
   const [scanPhase, setScanPhase] = useState<"idle" | "reading" | "accepted">(
     "idle",
@@ -1023,8 +1027,12 @@ export function BreakerDevice({
   const [archiveDocuments, setArchiveDocuments] = useState<
     readonly NarrativeDocument[]
   >([]);
-  const conversations = conversationBeats(narrative, caseState.fired);
+  const conversations = useMemo(
+    () => conversationBeats(narrative, caseState.fired),
+    [narrative, caseState.fired],
+  );
   const [query, setQuery] = useState("");
+  const [searchIndex, setSearchIndex] = useState(0);
   const [notificationFilter, setNotificationFilter] = useState<
     "all" | "comms" | "system" | "cases"
   >("all");
@@ -1058,6 +1066,8 @@ export function BreakerDevice({
   const bodyRef = useRef<HTMLDivElement | null>(null);
   const deviceRef = useRef<HTMLElement | null>(null);
   const appbarBackRef = useRef<HTMLButtonElement | null>(null);
+  const homePrimaryRef = useRef<HTMLButtonElement | null>(null);
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
   const touchStartY = useRef<number | null>(null);
   const touchStartScrollTop = useRef(0);
 
@@ -1231,6 +1241,25 @@ export function BreakerDevice({
   }, [view, open, screenLocked, notificationsOpen]);
 
   useEffect(() => {
+    if (
+      !open ||
+      booting ||
+      screenLocked ||
+      notificationsOpen ||
+      view !== "home"
+    )
+      return;
+    homePrimaryRef.current?.focus({ preventScroll: true });
+  }, [view, open, booting, screenLocked, notificationsOpen]);
+
+  useEffect(() => {
+    if (view !== "search" || screenLocked) return;
+    document
+      .getElementById(`device-search-option-${searchIndex}`)
+      ?.scrollIntoView?.({ block: "nearest" });
+  }, [view, searchIndex, screenLocked, query]);
+
+  useEffect(() => {
     if (!open || !screenLocked || scanPhase === "idle") return;
     const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -1265,16 +1294,95 @@ export function BreakerDevice({
       )
         onToggle();
     };
-    const escape = (event: KeyboardEvent): void => {
-      if (event.key === "Escape") onToggle();
+    const spotlight = (event: KeyboardEvent): void => {
+      if (!open || screenLocked) return;
+      const target = event.target;
+      if (
+        target instanceof HTMLElement &&
+        (target.isContentEditable ||
+          ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName))
+      )
+        return;
+      const command =
+        event.key === "/" ||
+        ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k");
+      if (!command) return;
+      event.preventDefault();
+      setNotificationsOpen(false);
+      setQuery("");
+      setSystemMessage("");
+      setView("search");
     };
     document.addEventListener("pointerdown", outside);
-    document.addEventListener("keydown", escape);
+    document.addEventListener("keydown", spotlight);
     return () => {
       document.removeEventListener("pointerdown", outside);
-      document.removeEventListener("keydown", escape);
+      document.removeEventListener("keydown", spotlight);
     };
-  }, [open, level, onToggle]);
+  }, [open, level, onToggle, screenLocked]);
+
+  useLayoutEffect(() => {
+    if (!open) {
+      setBooting(false);
+      return;
+    }
+    if (osBooted) {
+      setBooting(false);
+      return;
+    }
+    if (
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      osBooted = true;
+      return;
+    }
+    setBooting(true);
+    const timer = window.setTimeout(() => {
+      osBooted = true;
+      setBooting(false);
+    }, 800);
+    return () => window.clearTimeout(timer);
+  }, [open]);
+
+  useEffect(() => {
+    if (view === "search" && !screenLocked) searchInputRef.current?.focus();
+  }, [view, screenLocked]);
+
+  useEffect(() => {
+    const onEscape = (event: Event): void => {
+      if (!open || screenLocked) return;
+      if (notificationsOpen) {
+        event.preventDefault();
+        setNotificationsOpen(false);
+        return;
+      }
+      if (view === "settings" && settingSection !== "main") {
+        event.preventDefault();
+        setSettingSection("main");
+        setSystemMessage("");
+        return;
+      }
+      if (view === "comms" && chatThreadOpen) {
+        event.preventDefault();
+        setChatThreadOpen(false);
+        return;
+      }
+      if (view !== "home") {
+        event.preventDefault();
+        setView("home");
+      }
+    };
+    window.addEventListener("breaker:os-escape", onEscape);
+    return () => window.removeEventListener("breaker:os-escape", onEscape);
+  }, [
+    open,
+    screenLocked,
+    notificationsOpen,
+    view,
+    settingSection,
+    chatThreadOpen,
+  ]);
 
   useEffect(() => {
     if (level === null) return;
@@ -2612,6 +2720,7 @@ export function BreakerDevice({
   const navigateOS = (target: View): void => {
     setNotificationsOpen(false);
     setQuery("");
+    setSearchIndex(0);
     setSystemMessage("");
     setView(target);
   };
@@ -2713,30 +2822,32 @@ export function BreakerDevice({
       ))}
     </div>
   );
-  const searchBox = (
-    <label className="device__search-box">
-      <SystemIcon id="search" />
-      <input
-        type="search"
-        value={query}
-        onChange={(event) => setQuery(event.target.value)}
-        placeholder={t("device.searchPlaceholder")}
-        aria-label={t("device.search")}
-      />
-    </label>
-  );
   const availableApps =
-    level !== null ? APPS : APPS.filter((item) => item.id !== "operations");
-  const searchResults = () => {
+    level !== null
+      ? APPS.filter((item) => item.id !== "investigation")
+      : APPS.filter((item) => item.id !== "operations");
+  const searchEntries = (): {
+    key: string;
+    label: string;
+    icon: SystemSymbol;
+    group: "apps" | "cases" | "evidence";
+    activate: () => void;
+  }[] => {
     const needle = query.trim().toLocaleLowerCase(language);
     const apps = [
       ...availableApps.map((item) => ({
-        id: item.id as View,
+        key: `app:${item.id}`,
         label: t(item.labelKey),
+        icon: "apps" as SystemSymbol,
+        group: "apps" as const,
+        activate: () => navigateOS(item.id),
       })),
       ...UTILITIES.map((item) => ({
-        id: item.id as View,
+        key: `system:${item.id}`,
         label: t(SYSTEM_LABELS[item.id]),
+        icon: item.icon,
+        group: "apps" as const,
+        activate: () => navigateOS(item.id),
       })),
     ].filter((item) => item.label.toLocaleLowerCase(language).includes(needle));
     const cases =
@@ -2746,42 +2857,163 @@ export function BreakerDevice({
             (choose(item.name, language)?.text ?? "")
               .toLocaleLowerCase(language)
               .includes(needle),
-          );
-    const evidenceItems =
+          ).map((item) => ({
+            key: `case:${item.id}`,
+            label: choose(item.name, language)?.text ?? `#${item.id}`,
+            icon: "files" as SystemSymbol,
+            group: "cases" as const,
+            activate: () => {
+              onToggle();
+              navigate(`/level/${item.id}`);
+            },
+          }));
+    const evidence =
       needle.length === 0
         ? []
-        : (narrative?.evidence ?? []).filter(
-            (item) =>
-              caseState.revealed.has(item.id) &&
-              `${pick(item.label)} ${pick(item.value)}`
-                .toLocaleLowerCase(language)
-                .includes(needle),
-          );
+        : (narrative?.evidence ?? [])
+            .filter(
+              (item) =>
+                caseState.revealed.has(item.id) &&
+                `${pick(item.label)} ${pick(item.value)}`
+                  .toLocaleLowerCase(language)
+                  .includes(needle),
+            )
+            .map((item) => ({
+              key: `evidence:${item.id}`,
+              label: pick(item.label),
+              icon: "files" as SystemSymbol,
+              group: "evidence" as const,
+              activate: () => navigateOS("investigation"),
+            }));
+    return [...apps, ...cases, ...evidence];
+  };
+  const onSearchKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+  ): void => {
+    const entries = searchEntries();
+    if (entries.length === 0) return;
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setSearchIndex((current) => (current + 1) % entries.length);
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setSearchIndex(
+        (current) => (current - 1 + entries.length) % entries.length,
+      );
+    } else if (event.key === "Enter") {
+      event.preventDefault();
+      entries[Math.min(searchIndex, entries.length - 1)]?.activate();
+    } else if (event.key === "Escape") {
+      event.preventDefault();
+      setQuery("");
+      setSearchIndex(0);
+      setView("home");
+    }
+  };
+  const renderSearchBox = (combobox: boolean) => {
+    const entries = searchEntries();
+    const selectedIndex =
+      entries.length === 0 ? -1 : Math.min(searchIndex, entries.length - 1);
+    const active = combobox && selectedIndex >= 0;
+    return (
+      <label className="device__search-box">
+        <SystemIcon id="search" />
+        <input
+          ref={searchInputRef}
+          type="search"
+          value={query}
+          onChange={(event) => {
+            setQuery(event.target.value);
+            setSearchIndex(0);
+          }}
+          onKeyDown={combobox ? onSearchKeyDown : undefined}
+          placeholder={t("device.searchPlaceholder")}
+          aria-label={t("device.search")}
+          role={combobox ? "combobox" : undefined}
+          aria-autocomplete={combobox ? "list" : undefined}
+          aria-haspopup={combobox ? "listbox" : undefined}
+          aria-expanded={active ? true : undefined}
+          aria-controls={active ? "device-search-listbox" : undefined}
+          aria-activedescendant={
+            active ? `device-search-option-${selectedIndex}` : undefined
+          }
+        />
+      </label>
+    );
+  };
+  const searchBox = renderSearchBox(false);
+  const searchResults = () => {
+    const entries = searchEntries();
+    if (entries.length === 0) {
+      return (
+        <div className="device__stack">
+          {renderSearchBox(false)}
+          <p className="device__empty">{t("device.noResults")}</p>
+        </div>
+      );
+    }
+    const selectedIndex = Math.min(searchIndex, entries.length - 1);
+    const selectedKey = entries[selectedIndex]?.key;
+    let offset = 0;
+    const groups = [
+      {
+        key: "apps",
+        label: t("device.apps"),
+        items: entries.filter((entry) => entry.group === "apps"),
+      },
+      {
+        key: "cases",
+        label: t("home.cases"),
+        items: entries.filter((entry) => entry.group === "cases"),
+      },
+      {
+        key: "evidence",
+        label: t("device.activity.evidence"),
+        items: entries.filter((entry) => entry.group === "evidence"),
+      },
+    ]
+      .map((group) => {
+        const start = offset;
+        offset += group.items.length;
+        return { ...group, start };
+      })
+      .filter((group) => group.items.length > 0);
     return (
       <div className="device__stack">
-        {searchBox}
-        <h3 className="device__group-label">{t("device.apps")}</h3>
-        {apps.map((item) =>
-          systemRow("apps", item.label, () => navigateOS(item.id)),
-        )}
-        {cases.map((item) => (
-          <Link
-            className="device__system-row"
-            to={`/level/${item.id}`}
-            key={item.id}
-            onClick={onToggle}
-          >
-            <SystemIcon id="files" />
-            <span>{choose(item.name, language)?.text}</span>
-            <SystemIcon id="next" />
-          </Link>
-        ))}
-        {evidenceItems.map((item) =>
-          systemRow("files", pick(item.label), () => navigateOS("investigation")),
-        )}
-        {apps.length + cases.length + evidenceItems.length === 0 && (
-          <p className="device__empty">{t("device.noResults")}</p>
-        )}
+        {renderSearchBox(true)}
+        <div
+          id="device-search-listbox"
+          role="listbox"
+          aria-label={t("device.search")}
+        >
+          {groups.map((group) => (
+            <div role="group" aria-label={group.label} key={group.key}>
+              <h3 className="device__group-label" aria-hidden="true">
+                {group.label}
+              </h3>
+              {group.items.map((entry, itemIndex) => {
+                const index = group.start + itemIndex;
+                const selected = entry.key === selectedKey;
+                return (
+                  <button
+                    type="button"
+                    key={entry.key}
+                    id={`device-search-option-${index}`}
+                    role="option"
+                    aria-selected={selected}
+                    className={`device__system-row${selected ? " is-selected" : ""}`}
+                    onClick={entry.activate}
+                    onMouseEnter={() => setSearchIndex(index)}
+                  >
+                    <SystemIcon id={entry.icon} />
+                    <span>{entry.label}</span>
+                    <SystemIcon id="next" />
+                  </button>
+                );
+              })}
+            </div>
+          ))}
+        </div>
       </div>
     );
   };
@@ -3414,6 +3646,7 @@ export function BreakerDevice({
         )}
         <span className="device__mission-actions">
           <button
+            ref={homePrimaryRef}
             type="button"
             className="device__mission-action"
             onClick={() =>
@@ -3667,10 +3900,19 @@ export function BreakerDevice({
             } as CSSProperties
           }
         >
-          {screenLocked ? (
+          {booting ? (
+            <div className="device__boot" role="status" aria-live="polite">
+              <DeviceBrand />
+              <p className="device__boot-line">{t("device.boot")}</p>
+              <span className="device__boot-bar" aria-hidden="true">
+                <i />
+              </span>
+            </div>
+          ) : screenLocked ? (
             <div className="device__lockscreen">
               <div className="device__lockclock">
                 <DigitalClock time={time} />
+                <p className="device__lockdate">{lockDate}</p>
                 <DeviceBrand />
               </div>
               {notifications}
@@ -3823,7 +4065,9 @@ export function BreakerDevice({
           )}
         </div>
 
-        {!screenLocked && view === "home" && (
+        {!screenLocked &&
+          !booting &&
+          (view === "home" || view === "launcher" || view === "search") && (
           <nav
             className="device__phone-controls"
             aria-label={t("device.brand")}
@@ -3833,14 +4077,31 @@ export function BreakerDevice({
               className={
                 view === "home" && !notificationsOpen ? "is-active" : ""
               }
+              aria-current={
+                view === "home" && !notificationsOpen ? "page" : undefined
+              }
               onClick={() => navigateOS("home")}
             >
               <SystemIcon id="home" />
               <small>{t("device.home")}</small>
             </button>
-            <button type="button" onClick={() => navigateOS("launcher")}>
+            <button
+              type="button"
+              className={view === "launcher" ? "is-active" : ""}
+              aria-current={view === "launcher" ? "page" : undefined}
+              onClick={() => navigateOS("launcher")}
+            >
               <SystemIcon id="apps" />
               <small>{t("device.apps")}</small>
+            </button>
+            <button
+              type="button"
+              className={view === "search" ? "is-active" : ""}
+              aria-current={view === "search" ? "page" : undefined}
+              onClick={() => navigateOS("search")}
+            >
+              <SystemIcon id="search" />
+              <small>{t("device.search")}</small>
             </button>
             <button
               type="button"

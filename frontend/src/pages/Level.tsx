@@ -922,7 +922,13 @@ function Page({ level }: { level: LevelType }): ReactElement {
         ref={osDialog}
         tabIndex={-1}
         aria-label="Breaker OS"
-        onCancel={() => setOsOpen(false)}
+        onCancel={(event) => {
+          if (!window.dispatchEvent(new CustomEvent("breaker:os-escape", { cancelable: true }))) {
+            event.preventDefault();
+            return;
+          }
+          setOsOpen(false);
+        }}
         onClose={() => setOsOpen(false)}
         onClick={(event) => {
           if (event.target === event.currentTarget) setOsOpen(false);
