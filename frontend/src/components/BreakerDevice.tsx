@@ -1,6 +1,7 @@
 import {
   Fragment,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   type ReactElement,
@@ -3130,7 +3131,7 @@ export function BreakerDevice({
           </div>
         );
       case "wallet":
-        return <DeviceWallet onClose={onToggle} />;
+        return <DeviceWallet />;
       case "collection":
         return <DeviceCollection player={player} onClose={onToggle} />;
       case "cases":
@@ -3809,7 +3810,7 @@ function DeviceNews({ levelId }: { levelId: number }): ReactElement {
   );
 }
 
-function DeviceWallet({ onClose }: { onClose: () => void }): ReactElement {
+function DeviceWallet(): ReactElement {
   const wallet = useWallet();
   const { t } = useLanguage();
   const { copy } = useCopy();
@@ -3834,7 +3835,9 @@ function DeviceWallet({ onClose }: { onClose: () => void }): ReactElement {
   const [message, setMessage] = useState("");
   const [hash, setHash] = useState("");
   const addressRef = useRef(wallet.address);
-  addressRef.current = wallet.address;
+  useLayoutEffect(() => {
+    addressRef.current = wallet.address;
+  }, [wallet.address]);
   const alive = useRef(true);
   const sending = useRef(false);
   const busy =
@@ -3984,10 +3987,9 @@ function DeviceWallet({ onClose }: { onClose: () => void }): ReactElement {
         <button
           type="button"
           className="device__system-row"
-          onClick={() => void wallet.connect()}
+          onClick={() => void (wallet.connectPasskey?.() ?? wallet.connect())}
         >
-          <DeviceIcon id="wallet" />
-          {t("wallet.connect")}
+          {t("wallet.passkey.connect")}
         </button>
       </div>
     );
@@ -4014,17 +4016,6 @@ function DeviceWallet({ onClose }: { onClose: () => void }): ReactElement {
           </button>
         </section>
         <p className="device__note">{t("device.wallet.passkeyOnly")}</p>
-        <button
-          type="button"
-          className="device__system-row"
-          onClick={() => {
-            onClose();
-            void wallet.connect();
-          }}
-        >
-          <DeviceIcon id="wallet" />
-          {t("device.wallet.connectForTokens")}
-        </button>
         <button
           type="button"
           className="device__system-row"
@@ -4813,7 +4804,7 @@ function DeviceIdentity(): ReactElement {
             void (async () => {
               try {
                 if (wallet.address) await wallet.disconnect();
-                await wallet.connect();
+                await (wallet.connectPasskey?.() ?? wallet.connect());
                 window.requestAnimationFrame(() => requestBreakerOS());
               } finally {
                 setBusy(false);
@@ -4833,7 +4824,7 @@ function DeviceIdentity(): ReactElement {
                 ? "wallet.connecting"
                 : wallet.address
                   ? "wallet.switched"
-                  : "wallet.connect",
+                  : "wallet.passkey.connect",
             )}
           </span>
         </button>
