@@ -53,7 +53,7 @@ export default defineConfig({
             urlPattern: ({ url }) => url.pathname.startsWith("/images/"),
             handler: "StaleWhileRevalidate",
             options: {
-              cacheName: "breaker-images-v1",
+              cacheName: "breaker-images-v2",
               expiration: {
                 maxEntries: 200,
                 maxAgeSeconds: ONE_MONTH,
