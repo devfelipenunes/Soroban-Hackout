@@ -325,25 +325,29 @@ export function Home(): ReactElement {
 
         <footer className="season-credit">
           <span className="season-credit__label">{t("home.developedBy")}</span>
-          <img
-            className="season-credit__zolvency"
-            src="/images/brand/zolvency.webp"
-            alt="Zolvency"
-            loading="lazy"
-            decoding="async"
-            width={1707}
-            height={210}
-          />
+          <a href="https://zolvency.xyz" target="_blank" rel="noopener noreferrer">
+            <img
+              className="season-credit__zolvency"
+              src="/images/brand/zolvency.webp"
+              alt="Zolvency"
+              loading="lazy"
+              decoding="async"
+              width={1707}
+              height={210}
+            />
+          </a>
           <span className="season-credit__divider" aria-hidden="true" />
-          <img
-            className="season-credit__stellar"
-            src="/images/brand/stellar-white.webp"
-            alt="Stellar"
-            loading="lazy"
-            decoding="async"
-            width={800}
-            height={200}
-          />
+          <a href="https://stellar.org/" target="_blank" rel="noopener noreferrer">
+            <img
+              className="season-credit__stellar"
+              src="/images/brand/stellar-white.webp"
+              alt="Stellar"
+              loading="lazy"
+              decoding="async"
+              width={800}
+              height={200}
+            />
+          </a>
         </footer>
       </div>
     </main>
