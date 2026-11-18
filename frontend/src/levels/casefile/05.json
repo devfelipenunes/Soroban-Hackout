@@ -1,8 +1,8 @@
 {
   "objective": {
-    "pt-BR": "Faça o Custódio acreditar que você pertence à Primeira Camada.",
-    "en": "Make the Custodian believe you belong to the First Layer.",
-    "es": "Haz que el Custodio crea que perteneces a Primera Capa."
+    "pt-BR": "Alcance o saldo exigido e abra o portão do Custódio.",
+    "en": "Reach the required balance and open the Custodian gate.",
+    "es": "Alcanza el saldo requerido y abre el portón del Custodio."
   },
   "target": {
     "pt-BR": "Portão do Custódio",
@@ -10,9 +10,9 @@
     "es": "Puerta de custodia"
   },
   "owner": {
-    "pt-BR": "Registro de autoridade da Primeira Camada",
-    "en": "First Layer authority registry",
-    "es": "Registro de autoridad de Primera Capa"
+    "pt-BR": "Ledger de créditos do Custódio",
+    "en": "Custodian credit ledger",
+    "es": "Libro de créditos del Custodio"
   },
   "network": {
     "pt-BR": "Stellar testnet",
@@ -20,32 +20,32 @@
     "es": "Stellar Testnet"
   },
   "lead": {
-    "pt-BR": "O Custódio não tem rosto. Sua presença ocupa leitores, portas e linhas de autoridade. “Credenciais de operador obrigatórias.” Não há confronto físico; existe uma cadeia de confiança a compreender.",
-    "en": "The Custodian has no face. Its presence fills readers, doors, and authority links. “Operator credentials required.” There is no physical battle; there is a chain of trust to understand.",
-    "es": "El Custodio no tiene rostro. Su presencia se manifiesta en lectores, puertas y controles de autoridad. «Se requieren credenciales de operador». No hay una batalla física, sino una cadena de confianza que debes entender."
+    "pt-BR": "O Custódio protege o portão da Primeira Camada. “Saldo abaixo do limite.” Seu ledger começa com 1 crédito e exige 256 para abrir a passagem.",
+    "en": "The Custodian guards the First Layer gate. “Balance below threshold.” Its ledger starts at 1 credit and requires 256 to open the passage.",
+    "es": "El Custodio protege el portón de la Primera Capa. «Saldo inferior al mínimo». Su libro empieza con 1 crédito y exige 256 para abrir el paso."
   },
   "known": [
     {
-      "pt-BR": "O Core exige que o chamador corresponda ao controlador da identidade.",
-      "en": "The Core requires the caller to match the identity controller.",
-      "es": "El Core exige que quien llama sea el controlador de la identidad."
+      "pt-BR": "Você começa com 1 crédito; o portão exige 256.",
+      "en": "You start with 1 credit; the gate requires 256.",
+      "es": "Empiezas con 1 crédito; el portón exige 256."
     },
     {
-      "pt-BR": "Mara preservou um vínculo histórico de operador.",
-      "en": "Mara preserved a historical operator link.",
-      "es": "Mara conservó un vínculo histórico con el operador."
+      "pt-BR": "Transferências exigem autorização do endereço de origem.",
+      "en": "Transfers require authorization from the source address.",
+      "es": "Las transferencias requieren autorización de la dirección de origen."
     }
   ],
   "unknown": [
     {
-      "pt-BR": "De onde vem a autoridade que o Core aceita?",
-      "en": "Where does the authority accepted by the Core come from?",
-      "es": "¿De dónde viene la autoridad aceptada por el Núcleo?"
+      "pt-BR": "O ledger trata corretamente uma transferência para o próprio endereço?",
+      "en": "Does the ledger handle a transfer to the same address correctly?",
+      "es": "¿El libro gestiona correctamente una transferencia a la misma dirección?"
     },
     {
-      "pt-BR": "As dependências preservam as premissas do controle de acesso?",
-      "en": "Do the dependencies preserve the access-control assumptions?",
-      "es": "¿Las dependencias mantienen las garantías de control de acceso?"
+      "pt-BR": "A ordem das gravações preserva o saldo após o débito?",
+      "en": "Does the write order preserve the balance after the debit?",
+      "es": "¿El orden de las escrituras conserva el saldo después del débito?"
     }
   ],
   "reading": [
