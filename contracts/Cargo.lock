@@ -464,6 +464,7 @@ name = "breaker-tests"
 version = "0.1.0"
 dependencies = [
  "breaker-level-04-forgotten",
+ "soroban-env-host",
  "soroban-sdk",
 ]
 

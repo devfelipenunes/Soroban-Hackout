@@ -95,19 +95,19 @@
   ],
   "hints": [
     {
-      "pt-BR": "O instantâneo só responde quando o contador do arquivo atinge o limite.",
-      "en": "The snapshot only answers when the archive counter reaches the limit.",
-      "es": "La instantánea solo responde cuando el contador de archivos alcanza el límite."
+      "pt-BR": "O rebuild percorre todo o arquivo em uma única transação; o limite incide sobre essa leitura total.",
+      "en": "The rebuild scans the whole archive in one transaction; the limit applies to that full read.",
+      "es": "La reconstrucción recorre todo el archivo en una transacción; el límite se aplica a esa lectura completa."
     },
     {
-      "pt-BR": "Leia `threshold()`, `count()` e `stored()`; o contador soma cada entrada, mas o archive guarda só a primeira de cada registro.",
-      "en": "Read `threshold()`, `count()`, and `stored()`; the counter adds every entry, but the archive stores only the first of each record.",
-      "es": "Consulta `threshold()`, `count()` y `stored()`: el contador suma todas las entradas, pero el archivo solo conserva la primera de cada registro."
+      "pt-BR": "Leia `threshold()`, `count()` e `stored()`. Cada registro único cria chaves persistentes; envie-os em lotes pequenos.",
+      "en": "Read `threshold()`, `count()`, and `stored()`. Each unique record creates persistent keys; send them in small batches.",
+      "es": "Consulta `threshold()`, `count()` y `stored()`. Cada registro único crea claves persistentes; envíalos en lotes pequeños."
     },
     {
-      "pt-BR": "A falha é integridade: o contador mede volume, não registros únicos; o validador exige `stored()` abaixo do limite.",
-      "en": "The flaw is integrity: the counter measures volume, not unique records; the validator requires `stored()` below the limit.",
-      "es": "El defecto es la integridad: el contador mide el volumen, no los registros únicos; el validador requiere `stored()` por debajo del límite."
+      "pt-BR": "`rebuild()` lê todos os registros em uma chamada. Observe `rebuild_started()` e `rebuilt()` antes e depois.",
+      "en": "`rebuild()` reads every record in one call. Check `rebuild_started()` and `rebuilt()` before and after.",
+      "es": "`rebuild()` lee todos los registros en una llamada. Observa `rebuild_started()` y `rebuilt()` antes y después."
     }
   ],
   "replies": [],
