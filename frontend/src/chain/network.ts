@@ -43,5 +43,13 @@ export function auxId(level: Level): string | undefined {
   return contracts[key]?.id;
 }
 
+export function auxWasmHash(level: Level): string | undefined {
+  if (level.aux === undefined) return undefined;
+
+  const key = `breaker_level_${pad(level.id)}_${level.aux}`;
+  const contracts = selectedDeployments.contracts as Record<string, ContractRecord | undefined>;
+  return contracts[key]?.wasm_hash;
+}
+
 
 export const HORIZON_URL = "https://horizon-testnet.stellar.org";

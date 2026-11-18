@@ -1,6 +1,6 @@
 import { emit, type CallFailure } from "./events.ts";
 
-export const GLOBAL_NAMES = ["player", "instance", "contract", "aux", "help"] as const;
+export const GLOBAL_NAMES = ["player", "instance", "contract", "aux", "inject_decoder", "help"] as const;
 
 export type GlobalRegistry = Record<string, unknown>;
 
@@ -28,6 +28,7 @@ export type Options = {
   contract: object;
   spec: readonly Descriptor[];
   aux?: string | undefined;
+  injectDecoder?: (() => Promise<string>) | undefined;
   writes?: (text: string) => void;
 };
 
@@ -343,6 +344,12 @@ function helpBlock(writes: (t: string) => void): (o: Options) => void {
             `    window.aux         ${o.aux}`,
             "                       the level's auxiliary contract, when it has one",
           ]),
+      ...(o.injectDecoder === undefined
+        ? []
+        : [
+            "    window.inject_decoder() deploys your own decoder instance",
+            "                       returns its address for recover({ decoder, fragment })",
+          ]),
       "    window.help()      this message",
       "",
       "  How to call",
@@ -392,6 +399,7 @@ export function mountGlobals(target: GlobalRegistry, o: Options): () => void {
   target["instance"] = o.instance;
   target["contract"] = o.contract;
   target["aux"] = o.aux;
+  target["inject_decoder"] = o.injectDecoder;
   target["help"] = () => help(o);
 
   return () => {
@@ -409,6 +417,7 @@ export function mountWithoutInstance(
   target["instance"] = undefined;
   target["contract"] = undefined;
   target["aux"] = undefined;
+  target["inject_decoder"] = undefined;
   target["help"] = () =>
     print(
       [

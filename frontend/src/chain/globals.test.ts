@@ -98,6 +98,23 @@ describe("mountGlobals", () => {
     expect(String(otherWrites.mock.calls[0]?.[0])).not.toContain("window.aux");
   });
 
+  it("exposes the player decoder deployment only when configured", async () => {
+    const target: GlobalRegistry = {};
+    const writes = vi.fn();
+    mountGlobals(target, {
+      player: "GPLAYER",
+      instance: "CINSTANCE",
+      contract: {},
+      spec: [],
+      injectDecoder: async () => "CINJECTED",
+      writes,
+    });
+
+    expect(await (target["inject_decoder"] as () => Promise<string>)()).toBe("CINJECTED");
+    (target["help"] as () => void)();
+    expect(String(writes.mock.calls[0]?.[0])).toContain("window.inject_decoder()");
+  });
+
   it("builds help from the spec, not from a hardcoded list", () => {
     const target: GlobalRegistry = {};
     const writes = vi.fn();
