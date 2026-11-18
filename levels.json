@@ -42,7 +42,7 @@
       "slug": "deadman",
       "difficulty": 1,
       "author": "zolvency",
-      "revealCode": true,
+      "revealCode": false,
       "name": {
         "pt-BR": "A carteira do morto",
         "en": "The Dead Man's Wallet",
@@ -60,7 +60,7 @@
       "slug": "warehouse",
       "difficulty": 2,
       "author": "zolvency",
-      "revealCode": true,
+      "revealCode": false,
       "name": {
         "pt-BR": "Armazém 17",
         "en": "Warehouse 17",
@@ -96,7 +96,7 @@
       "slug": "custodian",
       "difficulty": 3,
       "author": "zolvency",
-      "revealCode": true,
+      "revealCode": false,
       "name": {
         "pt-BR": "O Custódio",
         "en": "The Custodian",
