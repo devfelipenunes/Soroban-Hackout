@@ -28,12 +28,15 @@ pub trait ForgottenInterface {
 
 fn ttl(c: &Scenario, instance: &Address) -> u32 {
     c.env.as_contract(instance, || {
-        c.env.storage().persistent().get_ttl(&DataKey::Floor(24u32))
+        c.env
+            .storage()
+            .persistent()
+            .get_ttl(&DataKey::Floor(1_000u32))
     })
 }
 
 fn exploit(c: &Scenario, instance: &Address) {
-    ForgottenClient::new(&c.env, instance).renew_floor(&23u32);
+    ForgottenClient::new(&c.env, instance).renew_floor(&999u32);
 }
 
 #[test]
@@ -42,9 +45,9 @@ fn the_objective_is_not_met_at_the_start() {
     let building = c.create_instance(&c.player, SPEC.id);
     let client = ForgottenClient::new(&c.env, &building);
 
-    assert!(!client.renewed(&24u32), "the floor is still forgotten");
+    assert!(!client.renewed(&1_000u32), "the floor is still forgotten");
     assert_eq!(
-        client.floor(&24u32),
+        client.floor(&1_000u32),
         Bytes::from_slice(&c.env, b"FIRST LAYER"),
         "the record exists; what is missing is the renewal"
     );
@@ -62,18 +65,10 @@ fn the_index_has_a_gap_where_the_floor_should_be() {
     let building = c.create_instance(&c.player, SPEC.id);
     let floors = ForgottenClient::new(&c.env, &building).floors();
 
-    assert_eq!(
-        floors,
-        SVec::from_slice(
-            &c.env,
-            &[
-                1u32, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-                23,
-            ]
-        )
-    );
+    assert_eq!(floors.len(), 999);
+    assert!(floors.iter().any(|floor| floor == 999));
     assert!(
-        !floors.iter().any(|floor| floor == 24),
+        !floors.iter().any(|floor| floor == 1_000),
         "the missing floor is the clue the elevator index carries"
     );
 }
@@ -93,9 +88,13 @@ fn the_exploit_renews_the_floor_and_the_ttl_really_moves() {
     );
 
     let client = ForgottenClient::new(&c.env, &building);
-    assert!(client.renewed(&24u32));
+    assert!(client.renewed(&1_000u32));
+    assert!(
+        client.floors().iter().any(|floor| floor == 1_000),
+        "renewal restores the secret floor in the elevator index"
+    );
     assert_eq!(
-        client.floor(&24u32),
+        client.floor(&1_000u32),
         Bytes::from_slice(&c.env, b"FIRST LAYER")
     );
 
@@ -110,11 +109,11 @@ fn renewing_the_forgotten_floor_directly_does_not_work() {
     let client = ForgottenClient::new(&c.env, &building);
 
     assert!(
-        client.try_renew_floor(&24u32).is_err(),
-        "renew_floor targets the next floor; a missing floor is refused by the host"
+        client.try_renew_floor(&1_000u32).is_err(),
+        "only floor 999 can renew the hidden successor"
     );
 
-    assert!(!client.renewed(&24u32));
+    assert!(!client.renewed(&1_000u32));
     assert_eq!(
         c.submit(&c.player, &building),
         Err(contract_error(errors::OBJECTIVE_NOT_MET)),
@@ -123,13 +122,14 @@ fn renewing_the_forgotten_floor_directly_does_not_work() {
 }
 
 #[test]
-fn renewing_a_visible_floor_does_not_expose_the_forgotten_one() {
+fn renewing_any_floor_other_than_999_is_rejected() {
     let c = Scenario::new();
     let building = c.create_instance(&c.player, SPEC.id);
+    let client = ForgottenClient::new(&c.env, &building);
 
-    ForgottenClient::new(&c.env, &building).renew_floor(&4u32);
+    assert!(client.try_renew_floor(&4u32).is_err());
 
-    assert!(!ForgottenClient::new(&c.env, &building).renewed(&24u32));
+    assert!(!client.renewed(&1_000u32));
     assert_eq!(
         c.submit(&c.player, &building),
         Err(contract_error(errors::OBJECTIVE_NOT_MET)),
@@ -156,7 +156,7 @@ fn an_instance_the_core_did_not_create_is_refused() {
     let foreign = crate::harness::register(&c.env, &SPEC.instance_wasm(), (c.player.clone(),));
 
     exploit(&c, &foreign);
-    assert!(ForgottenClient::new(&c.env, &foreign).renewed(&24u32));
+    assert!(ForgottenClient::new(&c.env, &foreign).renewed(&1_000u32));
 
     assert_eq!(
         c.submit(&c.player, &foreign),
