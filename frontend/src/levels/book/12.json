@@ -51,9 +51,9 @@
         "es": "Se cumplió el plazo. La carga útil ejecutada abrió una sesión forense para el Breaker en vez de realizar el diagnóstico original. El validador independiente comprobó las pruebas y el estado de la instancia."
       },
       {
-        "pt-BR": "A sessão separa a abertura da rota 17 da recuperação: AccessGate → RecoveryController; Vault → Meridian Recovery Escrow: 2.400.000. O dossiê só pode atribuir a operação a Voss se assinatura, vínculo institucional temporal, causalidade e política de saque do Escrow forem conferidos juntos.",
-        "en": "The session separates route 17 opening from recovery: AccessGate → RecoveryController; Vault → Meridian Recovery Escrow: 2,400,000. The dossier may attribute the operation to Voss only if signature, temporal institutional linkage, causality, and the Escrow withdrawal policy are verified together.",
-        "es": "La sesión distingue la apertura de la ruta 17 de la recuperación: AccessGate → RecoveryController; Vault → Meridian Recovery Escrow: 2.400.000. El expediente solo podrá atribuir la operación a Voss si se verifican en conjunto la firma, el vínculo institucional temporal, la causalidad y la política de retiro del Escrow."
+        "pt-BR": "A sessão separa a abertura da rota 17 da recuperação: AccessGate → RecoveryController; Vault → Meridian Recovery Escrow: 2.400.000 XLM. O dossiê só pode atribuir a operação a Voss se assinatura, vínculo institucional temporal, causalidade e política de saque do Escrow forem conferidos juntos.",
+        "en": "The session separates route 17 opening from recovery: AccessGate → RecoveryController; Vault → Meridian Recovery Escrow: 2,400,000 XLM. The dossier may attribute the operation to Voss only if signature, temporal institutional linkage, causality, and the Escrow withdrawal policy are verified together.",
+        "es": "La sesión distingue la apertura de la ruta 17 de la recuperación: AccessGate → RecoveryController; Vault → Meridian Recovery Escrow: 2.400.000 XLM. El expediente solo podrá atribuir la operación a Voss si se verifican en conjunto la firma, el vínculo institucional temporal, la causalidad y la política de retiro del Escrow."
       },
       {
         "pt-BR": "SOURCE: SEQUENCE OBSERVER. SUBJECT: QUALIFIED. STATUS: PROVISIONAL. A capacidade foi registrada, não uma absolvição. O recibo que Mara preservou retorna como sua suspensão; depois dos créditos, uma voz em Lumen diz: “Então ele encontrou outro.”",
