@@ -4,13 +4,21 @@ use soroban_sdk::{contractclient, Address, Env, Val, Vec as SVec};
 pub const SPEC: LevelSpec = LevelSpec {
     id: 0,
     slug: "counter",
-    interface: &["__constructor", "count", "increment", "owner", "player"],
+    interface: &[
+        "__constructor",
+        "count",
+        "increment",
+        "increment_by",
+        "owner",
+        "player",
+    ],
 };
 
 #[allow(dead_code)]
 #[contractclient(name = "CounterClient")]
 pub trait CounterInterface {
     fn increment(env: Env);
+    fn increment_by(env: Env, amount: u32);
     fn count(env: Env) -> u32;
     fn owner(env: Env) -> Address;
 }
