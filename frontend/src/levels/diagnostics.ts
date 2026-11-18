@@ -116,31 +116,31 @@ const DIAGNOSTICS: Readonly<Record<number, readonly Check[]>> = {
     {
       id: "renewed",
       method: "renewed",
-      args: () => ({ floor_id: 24 }),
+      args: () => ({ floor_id: 1_000 }),
       compare: "true",
-      label: { "pt-BR": "O andar 24 foi renovado", en: "Floor 24 was renewed", es: "Se renovó el piso 24" },
+      label: { "pt-BR": "O andar 1000 foi renovado", en: "Floor 1000 was renewed", es: "Se renovó el piso 1000" },
     },
     {
       id: "floor",
       method: "floor",
-      args: () => ({ floor_id: 24 }),
+      args: () => ({ floor_id: 1_000 }),
       compare: "eq",
       want: FIRST_LAYER,
       label: {
-        "pt-BR": "O registro do andar 24 é FIRST LAYER",
-        en: "The floor 24 record is FIRST LAYER",
-        es: "El registro del piso 24 es FIRST LAYER",
+        "pt-BR": "O registro do andar 1000 é FIRST LAYER",
+        en: "The floor 1000 record is FIRST LAYER",
+        es: "El registro del piso 1000 es FIRST LAYER",
       },
     },
   ],
   5: [
     {
-      id: "controller",
-      method: "controller",
-      args: () => ({ identity: 1 }),
-      compare: "eq",
-      want: (player: string) => player,
-      label: { "pt-BR": "A identidade 1 é sua", en: "Identity 1 is yours", es: "La identidad 1 es tuya" },
+      id: "balance",
+      method: "balance",
+      args: (player: string) => ({ owner: player }),
+      compare: "gte",
+      wantFrom: { method: "threshold" },
+      label: { "pt-BR": "Seu saldo alcança o limite", en: "Your balance meets the threshold", es: "Tu saldo alcanza el mínimo" },
     },
     {
       id: "gate",
@@ -486,7 +486,9 @@ export async function readDiagnostics(
         ? await call(callable, check.wantFrom.method, check.wantFrom.args?.(player))
         : typeof check.want === "function"
           ? check.want(player)
-          : check.want;
+          : check.want !== undefined
+            ? check.want
+            : expectedFor(check.compare);
 
       return {
         id: check.id,
@@ -499,7 +501,23 @@ export async function readDiagnostics(
   );
 }
 
+function expectedFor(compare: Compare): unknown {
+  switch (compare) {
+    case "true":
+      return true;
+    case "false":
+      return false;
+    case "defined":
+      return "defined value";
+    case "payloadOther":
+      return "payload owned by another player";
+    default:
+      return "<unavailable>";
+  }
+}
+
 export function displayValue(value: unknown): string {
+  if (value === undefined) return "—";
   if (value instanceof Uint8Array) {
     return Array.from(value)
       .map((byte) => byte.toString(16).padStart(2, "0"))

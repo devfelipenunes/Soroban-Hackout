@@ -128,17 +128,14 @@ fn the_decoder_exposes_only_its_declared_interface() {
 }
 
 #[test]
-fn submitting_twice_is_refused() {
+fn resubmitting_the_same_completed_instance_is_idempotent() {
     let c = Scenario::new();
     let archive = c.create_instance(&c.player, SPEC.id);
     let decoder = c.register_aux("breaker_level_06_decoder");
     exploit(&c, &archive, &decoder);
 
     assert_eq!(c.submit(&c.player, &archive), Ok(()));
-    assert_eq!(
-        c.submit(&c.player, &archive),
-        Err(contract_error(errors::ALREADY_COMPLETED))
-    );
+    assert_eq!(c.submit(&c.player, &archive), Ok(()));
 }
 
 #[test]

@@ -26,9 +26,9 @@ import {
   type CheckResult,
 } from "../levels/diagnostics.ts";
 import { useAccount } from "../chain/account.tsx";
-import { coreClient, coreReader, instanceClient } from "../chain/core.ts";
+import { coreClient, coreReader, deployAuxiliary, instanceClient } from "../chain/core.ts";
 import { emit } from "../chain/events.ts";
-import { auxId } from "../chain/network.ts";
+import { auxId, auxWasmHash } from "../chain/network.ts";
 import { clearSeasonCache } from "../game/season.ts";
 import { readAccess, readLevel, createInstanceGate } from "../chain/level.ts";
 import {
@@ -313,6 +313,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
         if (!alive) return;
 
         const spec = descriptorsFromSpec(contract.spec);
+        const decoderHash = level.id === 6 ? auxWasmHash(level) : undefined;
         const resolved = resolveCalls(contract, spec, (method, phase) => {
           console.info(`[breaker] ${method} — ${phase}`);
         });
@@ -323,6 +324,9 @@ function Page({ level }: { level: LevelType }): ReactElement {
           contract: resolved,
           spec,
           aux: auxId(level),
+          injectDecoder: decoderHash !== undefined
+            ? () => deployAuxiliary(decoderHash, address, signer)
+            : undefined,
         });
         setContractSpec(spec);
         setCallable(resolved as Callable);
@@ -565,7 +569,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
     }
   }, [client, instance, level.id, t, lock, markSolved, address, previous, refreshDiagnostics]);
 
-  const canSubmit = !submitting && !locked && !solved;
+  const canSubmit = !submitting && !locked;
   const codeHeader = solved && !level.revealCode;
 
   const kind =
@@ -693,7 +697,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
               {[
                 "window.help()",
                 "await window.contract.count()",
-                "await window.contract.increment()",
+                "await window.contract.increment_by({ amount: 1 })",
                 "await window.contract.count()",
               ].map((command, index) => (
                 <div className="tutorial__command" key={`${index}-${command}`}>
@@ -874,15 +878,35 @@ function Page({ level }: { level: LevelType }): ReactElement {
         <nav className="level-actions" aria-label={t("level.actions")}>
           <div className="level-actions__row">
             {solved ? (
-              next !== undefined ? (
-                <Link className="button level-actions__next" to={`/level/${next.id}`}>
-                  {t("level.next")}
-                </Link>
-              ) : (
-                <Link className="button level-actions__next" to="/final">
-                  {t("levelHero.continueStory")}
-                </Link>
-              )
+              <>
+                <button
+                  type="button"
+                  className="button button--secondary"
+                  onClick={() => void createInstance()}
+                  disabled={creating || accountBusy}
+                  aria-busy={creating}
+                >
+                  {creating ? t("level.creating") : t("level.newInstance")}
+                </button>
+                <button
+                  type="button"
+                  className="button"
+                  onClick={() => void submit()}
+                  disabled={!canSubmit || instance === null}
+                  aria-busy={submitting}
+                >
+                  {submitting ? t("level.submitting") : t("level.submit")}
+                </button>
+                {next !== undefined ? (
+                  <Link className="button level-actions__next" to={`/level/${next.id}`}>
+                    {t("level.next")}
+                  </Link>
+                ) : (
+                  <Link className="button level-actions__next" to="/final">
+                    {t("levelHero.continueStory")}
+                  </Link>
+                )}
+              </>
             ) : (
               <>
                 <button

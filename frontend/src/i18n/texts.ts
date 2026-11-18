@@ -61,7 +61,7 @@ const BASE_TEXTS: Texts = {
       "O Arquiteto não criou as falhas. Encontrou a cidade já quebrada e transformou o caminho em um filtro.",
     "home.final.teaser": "Uma arquitetura fora do mapa. Encontre-a.",
     "home.final.teaserBody":
-      "A sequência final abre depois que os 13 casos estiverem resolvidos.",
+      "A sequência final abre depois que os 12 casos estiverem resolvidos.",
     "home.final.ready": "Sequência pronta.",
     "home.final.locked": "O desfecho é narrado na sequência final.",
     "home.final.open": "Ler a sequência final",
@@ -73,7 +73,7 @@ const BASE_TEXTS: Texts = {
     "final.checking": "Lendo o seu progresso na cadeia…",
     "final.noWallet": "Entre com sua passkey para ler a sequência final.",
     "final.noWalletHint":
-      "A sequência é liberada quando os 13 casos estão resolvidos.",
+      "A sequência é liberada quando os 12 casos estão resolvidos.",
     "final.howToPlay": "Como jogar",
     "final.locked": "Sequência bloqueada.",
     "final.progress": "{solved} de {total} casos resolvidos.",
@@ -221,7 +221,7 @@ const BASE_TEXTS: Texts = {
     "level.tutorial.body":
       "O contador começa em zero. Use os comandos abaixo para levá-lo a um.",
     "level.tutorial.call":
-      "Leia o contador, incremente uma vez e confira o novo valor.",
+      "Leia o contador. Na escrita, passe o parâmetro amount em um objeto nomeado; depois confira o valor.",
     "level.tutorial.desktop":
       "O desafio é jogado no console do desktop; o Breaker OS também oferece Operações, no desktop e no celular.",
     "ledger.current": "Ledger atual: {value}",
@@ -379,6 +379,7 @@ const BASE_TEXTS: Texts = {
     "device.primary": "Principais",
     "device.system": "Sistema",
     "device.utilities": "Utilitários",
+    "device.tools": "Ferramentas",
     "device.guest": "VISITANTE",
     "device.chooseCase": "Escolha seu próximo caso",
     "device.noActiveCase": "Nenhum caso ativo",
@@ -530,6 +531,7 @@ const BASE_TEXTS: Texts = {
     "device.unread": "{count} itens novos",
     "device.app.unreadOne": "{app}, {count} item não lido",
     "device.app.unreadMany": "{app}, {count} itens não lidos",
+    "device.app.locked": "{app}, disponível depois de concluir o caso",
     "device.locked": "BLOQUEADO",
     "device.lockedStory": "Resolva o caso para abrir a história completa.",
     "device.empty.evidence": "Nenhuma evidência coletada ainda.",
@@ -582,7 +584,10 @@ const BASE_TEXTS: Texts = {
       "instância recusou — confira o estado e a sequência",
     "device.terminal.failure.cancelled": "carteira não assinou a chamada",
     "device.terminal.failure.unknown": "não foi possível concluir",
-    "device.app.cases": "Notas",
+    "device.app.cases": "Arquivo de casos",
+    "device.app.investigation": "Investigação",
+    "device.app.evidence": "Evidências",
+    "device.app.collection": "Coleção",
     "device.notesArchive.title": "Casos concluídos",
     "device.notesArchive.progress": "Casos concluídos: {count}.",
     "device.notesArchive.empty":
@@ -736,7 +741,7 @@ const BASE_TEXTS: Texts = {
       "The Architect did not create the flaws. He found the city already broken and turned the path into a filter.",
     "home.final.teaser": "An architecture off the map. Find it.",
     "home.final.teaserBody":
-      "The final sequence opens after all 13 cases are solved.",
+      "The final sequence opens after all 12 cases are solved.",
     "home.final.ready": "Sequence ready.",
     "home.final.locked": "The ending is told in the final sequence.",
     "home.final.open": "Read the final sequence",
@@ -747,7 +752,7 @@ const BASE_TEXTS: Texts = {
       "The last sequence of The First Layer. The story is read; Rewrite and The Architect are also playable in this era.",
     "final.checking": "Reading your progress from the chain…",
     "final.noWallet": "Sign in with your passkey to read the final sequence.",
-    "final.noWalletHint": "The sequence unlocks when all 13 cases are solved.",
+    "final.noWalletHint": "The sequence unlocks when all 12 cases are solved.",
     "final.howToPlay": "How to play",
     "final.locked": "Sequence locked.",
     "final.progress": "{solved} of {total} cases solved.",
@@ -893,7 +898,7 @@ const BASE_TEXTS: Texts = {
     "level.tutorial.body":
       "The counter starts at zero. Use the commands below to bring it to one.",
     "level.tutorial.call":
-      "Read the counter, increment it once, then check the new value.",
+      "Read the counter. For the write call, pass the amount parameter in a named object, then check the value.",
     "level.tutorial.desktop":
       "The challenge runs in the desktop console; Breaker OS also offers Operations, on desktop and mobile.",
     "ledger.current": "Current ledger: {value}",
@@ -1049,6 +1054,7 @@ const BASE_TEXTS: Texts = {
     "device.primary": "Primary",
     "device.system": "System",
     "device.utilities": "Utilities",
+    "device.tools": "Tools",
     "device.guest": "GUEST",
     "device.chooseCase": "Choose your next case",
     "device.noActiveCase": "No active case",
@@ -1197,6 +1203,7 @@ const BASE_TEXTS: Texts = {
     "device.unread": "{count} new items",
     "device.app.unreadOne": "{app}, {count} unread item",
     "device.app.unreadMany": "{app}, {count} unread items",
+    "device.app.locked": "{app}, available after completing the case",
     "device.locked": "LOCKED",
     "device.lockedStory": "Solve the case to open the full story.",
     "device.empty.evidence": "No evidence collected yet.",
@@ -1250,7 +1257,10 @@ const BASE_TEXTS: Texts = {
       "instance rejected it — check the state and sequence",
     "device.terminal.failure.cancelled": "wallet did not sign the call",
     "device.terminal.failure.unknown": "could not be completed",
-    "device.app.cases": "Notes",
+    "device.app.cases": "Case archive",
+    "device.app.investigation": "Investigation",
+    "device.app.evidence": "Evidence",
+    "device.app.collection": "Collection",
     "device.notesArchive.title": "Completed cases",
     "device.notesArchive.progress":
       "Completed cases: {count}.",
@@ -1381,7 +1391,7 @@ const BASE_TEXTS: Texts = {
       "El Arquitecto no creó las vulnerabilidades. Encontró la ciudad ya quebrada y convirtió el camino en un filtro.",
     "home.final.teaser": "Una arquitectura fuera del mapa. Encuéntrala.",
     "home.final.teaserBody":
-      "La secuencia final se desbloquea al resolver los 13 casos.",
+      "La secuencia final se desbloquea al resolver los 12 casos.",
     "home.final.ready": "Secuencia lista.",
     "home.final.locked": "El desenlace se cuenta en la secuencia final.",
     "home.final.open": "Leer la secuencia final",
@@ -1392,7 +1402,7 @@ const BASE_TEXTS: Texts = {
     "final.checking": "Consultando tu progreso en la cadena…",
     "final.noWallet": "Entra con tu passkey para leer la secuencia final.",
     "final.noWalletHint":
-      "La secuencia se desbloquea al resolver los 13 casos.",
+      "La secuencia se desbloquea al resolver los 12 casos.",
     "final.howToPlay": "Cómo jugar",
     "final.locked": "Secuencia bloqueada.",
     "final.progress": "{solved} de {total} casos resueltos.",
@@ -1526,6 +1536,7 @@ const BASE_TEXTS: Texts = {
     "device.unread": "{count} elementos sin leer",
     "device.app.unreadOne": "{app}, {count} elemento sin leer",
     "device.app.unreadMany": "{app}, {count} elementos sin leer",
+    "device.app.locked": "{app}, disponible después de completar el caso",
     "device.locked": "BLOQUEADO",
     "device.lockedStory":
       "Resuelve el caso para desbloquear la historia completa.",
@@ -1573,7 +1584,10 @@ const BASE_TEXTS: Texts = {
     "device.operations.token.quotes": '" "',
     "device.operations.token.return": "return",
     "device.operations.noReturn": "La ejecución terminó sin devolver un valor.",
-    "device.app.cases": "Notas",
+    "device.app.cases": "Archivo de casos",
+    "device.app.investigation": "Investigación",
+    "device.app.evidence": "Evidencias",
+    "device.app.collection": "Colección",
     "device.app.comms": "Comunicaciones",
     "device.app.operations": "Operaciones",
     "device.app.terminal": "Terminal",
@@ -1722,7 +1736,7 @@ const ES_CAMPAIGN: Dictionary = {
   "level.tutorial.body":
     "El contador empieza en cero. Usa los comandos siguientes para llevarlo a uno.",
   "level.tutorial.call":
-    "Lee el contador, increméntalo una vez y comprueba el nuevo valor.",
+    "Lee el contador. En la llamada de escritura, pasa el parámetro amount en un objeto con nombre y comprueba el valor.",
   "level.tutorial.desktop":
     "El desafío se resuelve desde la consola del navegador en una computadora; Breaker OS también ofrece Operaciones, en el escritorio y en el celular.",
   "ledger.current": "Ledger actual: {value}",
@@ -1818,6 +1832,7 @@ const ES_CAMPAIGN: Dictionary = {
   "device.primary": "Principal",
   "device.system": "Sistema",
   "device.utilities": "Utilidades",
+  "device.tools": "Herramientas",
   "device.guest": "INVITADO",
   "device.chooseCase": "Elige tu próximo caso",
   "device.noActiveCase": "Ningún caso activo",

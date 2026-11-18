@@ -1,10 +1,50 @@
 export function reasonOf(error: unknown): string {
-  if (error instanceof Error) return error.message;
+  const message = errorMessage(error, new Set());
+  return message ?? String(error);
+}
+
+function errorMessage(error: unknown, seen: Set<object>): string | undefined {
   if (typeof error === "string") return error;
-  if (error && typeof error === "object" && "message" in error) {
-    return String((error as { message: unknown }).message);
+  if (error === null || typeof error !== "object" || seen.has(error)) return undefined;
+  seen.add(error);
+
+  const record = error as unknown as Record<string, unknown>;
+  const candidates = [record.message, record.reason, record.panic, record.diagnosticEvents, record.events, record.cause];
+  for (const candidate of candidates) {
+    if (candidate === record.panic && typeof candidate === "string" && candidate.trim() !== "") {
+      return candidate;
+    }
+    if (candidate === record.message && typeof candidate === "string" && candidate.trim() !== "") {
+      const nested = candidates.slice(1).map((value) => diagnosticMessage(value, seen)).find(Boolean);
+      if (nested !== undefined) return nested;
+      return candidate;
+    }
+    const detail = diagnosticMessage(candidate, seen);
+    if (detail !== undefined) return detail;
   }
-  return String(error);
+  return undefined;
+}
+
+function diagnosticMessage(value: unknown, seen: Set<object>): string | undefined {
+  if (typeof value === "string") {
+    const panic = /(?:panic(?:\s+with\s+message)?|contract panic)[:\s"']+([^"'\n]+)["']?/i.exec(value);
+    return panic?.[1]?.trim() || undefined;
+  }
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      const detail = errorMessage(item, seen);
+      if (detail !== undefined) return detail;
+    }
+    return undefined;
+  }
+  if (value === null || typeof value !== "object" || seen.has(value)) return undefined;
+  seen.add(value);
+  const record = value as Record<string, unknown>;
+  for (const key of ["message", "reason", "panic", "value", "data", "events"]) {
+    const detail = diagnosticMessage(record[key], seen);
+    if (detail !== undefined) return detail;
+  }
+  return undefined;
 }
 
 export const ERR_LEVEL_NOT_FOUND = 1;

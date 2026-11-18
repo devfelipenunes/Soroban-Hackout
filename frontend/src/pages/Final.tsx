@@ -36,12 +36,11 @@ export function Final(): ReactElement {
   const [afterStep, setAfterStep] = useState(0);
 
   const address = wallet.address;
-  const solved = progress.solved;
   const pending = progress.pending;
   const reason = progress.reason;
   const status: Status =
     progress.status === "ready"
-      ? solved === LEVELS.length
+      ? progress.completed.length === LEVELS.length && progress.completed.every(Boolean)
         ? "ready"
         : "locked"
       : progress.status;
@@ -123,7 +122,7 @@ export function Final(): ReactElement {
           {status === "locked" && (
             <div className="final__locked">
               <h2>{t("final.locked")}</h2>
-              <p>{t("final.progress", { solved, total: LEVELS.length })}</p>
+              <p>{t("final.progress", { solved: progress.solved, total: LEVELS.length - 1 })}</p>
               {pending !== null && (
                 <Link className="button" to={`/level/${pending}`}>
                   {t("final.openCase")}
