@@ -41,7 +41,10 @@ impl Custodian {
         }
 
         let from_balance = Self::balance(env.clone(), from.clone());
-        if from_balance < amount {
+        // The same storage key is written twice below for a self-transfer. The
+        // broken balance check lets the second write replace the debit with a
+        // credit, which is the intended flaw in this level.
+        if from != to && from_balance < amount {
             panic!("insufficient balance");
         }
         let to_balance = Self::balance(env.clone(), to.clone());

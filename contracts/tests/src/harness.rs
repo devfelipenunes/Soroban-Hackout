@@ -275,10 +275,6 @@ pub fn wasm_imports(name: &str) -> Vec<String> {
     found
 }
 
-fn is_identifier_byte(byte: u8) -> bool {
-    byte.is_ascii_alphanumeric() || byte == b'_'
-}
-
 pub fn spec_identifiers(name: &str) -> Vec<String> {
     let wasm = read_wasm(name);
     let payload = spec_section(&wasm).unwrap_or_else(|| {
@@ -301,7 +297,11 @@ pub fn spec_identifiers(name: &str) -> Vec<String> {
             let candidate = &payload[i + 4..end];
             let starts = candidate[0].is_ascii_alphabetic() || candidate[0] == b'_';
 
-            if starts && candidate.iter().all(|byte| is_identifier_byte(*byte)) {
+            if starts
+                && candidate
+                    .iter()
+                    .all(|byte| byte.is_ascii_alphanumeric() || *byte == b'_')
+            {
                 found.push(String::from_utf8_lossy(candidate).into_owned());
                 i = end;
                 continue;

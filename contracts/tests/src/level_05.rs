@@ -136,16 +136,13 @@ fn the_gate_stays_closed_until_the_threshold_is_met() {
 }
 
 #[test]
-fn submitting_twice_is_refused() {
+fn resubmitting_the_same_completed_instance_is_idempotent() {
     let c = Scenario::new();
     let custodian = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &custodian, &c.player);
 
     assert_eq!(c.submit(&c.player, &custodian), Ok(()));
-    assert_eq!(
-        c.submit(&c.player, &custodian),
-        Err(contract_error(errors::ALREADY_COMPLETED))
-    );
+    assert_eq!(c.submit(&c.player, &custodian), Ok(()));
 }
 
 #[test]

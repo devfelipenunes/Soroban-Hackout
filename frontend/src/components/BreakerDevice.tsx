@@ -40,7 +40,7 @@ import {
 } from "../chain/account.tsx";
 import { reasonOf } from "../chain/errors.ts";
 import type { Descriptor, Entry } from "../chain/globals.ts";
-import { useMobileGameplay } from "../platform/viewport.ts";
+import { isMobileGameplayDevice, useMobileGameplay } from "../platform/viewport.ts";
 import { useCopy } from "./copy.ts";
 import { BreachRoom } from "./BreachRoom.tsx";
 import { ResponsiveImage } from "./ResponsiveImage.tsx";
@@ -122,6 +122,19 @@ const UTILITIES: readonly {
   { id: "settings", icon: "settings" },
 ];
 
+const HOME_TOOLS: readonly {
+  id: "controls" | "operator" | "search" | "notes" | "scanner" | "notifications";
+  icon: SystemSymbol;
+  labelKey: string;
+}[] = [
+  { id: "controls", icon: "controls", labelKey: "device.controls" },
+  { id: "operator", icon: "operator", labelKey: "device.operator" },
+  { id: "search", icon: "search", labelKey: "device.search" },
+  { id: "notifications", icon: "notifications", labelKey: "device.notifications" },
+  { id: "notes", icon: "notes", labelKey: "device.notes" },
+  { id: "scanner", icon: "qr", labelKey: "device.scanner" },
+];
+
 type Seen = {
   comms: number;
   evidence: number;
@@ -142,9 +155,17 @@ const SEEN_EMPTY: Seen = {
 };
 
 const APPS: readonly { id: OsAppId; labelKey: string; accent: Accent }[] = [
+  { id: "cases", labelKey: "device.app.cases", accent: "amber" },
   {
     id: "investigation",
-    labelKey: "device.app.cases",
+    labelKey: "device.app.investigation",
+    accent: "amber",
+  },
+  { id: "evidence", labelKey: "device.app.evidence", accent: "amber" },
+  { id: "story", labelKey: "device.app.story", accent: "ivory" },
+  {
+    id: "collection",
+    labelKey: "device.app.collection",
     accent: "amber",
   },
   { id: "operations", labelKey: "device.app.operations", accent: "cyan" },
@@ -863,14 +884,18 @@ function saveSeen(
   }
 }
 
-function loadView(player: string | undefined, levelId: number): View {
+function loadView(
+  player: string | undefined,
+  levelId: number,
+  fallback: View = "investigation",
+): View {
   try {
     const raw = window.localStorage.getItem(viewKey(player, levelId));
     return raw !== null && (raw === "home" || APP_IDS.has(raw))
       ? (raw as View)
-      : "investigation";
+      : fallback;
   } catch {
-    return "investigation";
+    return fallback;
   }
 }
 
@@ -990,9 +1015,12 @@ export function BreakerDevice({
   const levelId = level?.id ?? -1;
   const currentKey = `${player ?? "anon"}:${levelId}`;
   const mobileGameplay = useMobileGameplay();
-  const [view, setView] = useState<View>(() =>
-    level === null ? "home" : loadView(player, levelId),
-  );
+  const [view, setView] = useState<View>(() => {
+    const saved = level === null
+      ? "home"
+      : loadView(player, levelId, isMobileGameplayDevice() ? "home" : "investigation");
+    return mobileGameplay && saved === "launcher" ? "home" : saved;
+  });
   const [operationCells, setOperationCells] = useState(() =>
     loadOperationDraft(player, levelId),
   );
@@ -1437,7 +1465,10 @@ export function BreakerDevice({
   };
 
   useEffect(() => {
-    setView(level === null ? "home" : loadView(player, levelId));
+    const saved = level === null
+      ? "home"
+      : loadView(player, levelId, mobileGameplay ? "home" : "investigation");
+    setView(mobileGameplay && saved === "launcher" ? "home" : saved);
     setSeen(loadSeen(player, levelId));
     setLoadedKey(currentKey);
     setChat([]);
@@ -1447,7 +1478,11 @@ export function BreakerDevice({
     setSelectedDocument(null);
     setScreenLocked(true);
     setNotificationsOpen(false);
-  }, [currentKey, player, levelId, level]);
+  }, [currentKey, player, levelId, level, mobileGameplay]);
+
+  useEffect(() => {
+    if (mobileGameplay && view === "launcher") setView("home");
+  }, [mobileGameplay, view]);
 
   useEffect(() => {
     if (loadedKey === currentKey) saveView(player, levelId, view);
@@ -2363,20 +2398,19 @@ export function BreakerDevice({
     if (levelId === 1 && methodName === "open" && entry.name === "owner") {
       return "await window.contract.owner_of({ door_id: 17 })";
     }
-    if (levelId === 5 && methodName === "claim_identity" && entry.name === "current_controller") {
-      return "await window.contract.controller({ identity: await window.contract.operator_identity() })";
-    }
     if (normalized === "address") {
       return /decoder|auxiliary/i.test(entry.name)
         ? "window.aux"
         : "window.player";
     }
     if (/^[ui](8|16|32|64|128|256)$/.test(normalized)) {
+      if (levelId === 5 && methodName === "transfer" && entry.name === "amount") {
+        return "(await window.contract.threshold()) - (await window.contract.balance({ owner: window.player }))";
+      }
       if (levelId === 1 && entry.name === "door_id") return "17";
       if (levelId === 3 && entry.name === "item_id") return "17";
-      if (levelId === 4 && entry.name === "floor_id") return "24";
-      if (levelId === 5 && entry.name === "identity") {
-        return "await window.contract.operator_identity()";
+      if (levelId === 4 && entry.name === "floor_id") {
+        return methodName === "renew_floor" ? "999" : "1000";
       }
       if (levelId === 10 && entry.name === "op_id" && methodName === "execute") {
         return "1";
@@ -2681,8 +2715,26 @@ export function BreakerDevice({
   };
 
   const operations = () => {
+    if (level === null) {
+      return (
+        <div className="device__operation-start">
+          <span className="device__operation-start-eyebrow">
+            {t("device.app.operations")}
+          </span>
+          <p className="device__operation-start-note">
+            {t("device.noActiveCase")}
+          </p>
+          <button
+            type="button"
+            className="button device__operation-start-action"
+            onClick={onToggle}
+          >
+            {t("device.chooseCaseCta")}
+          </button>
+        </div>
+      );
+    }
     if (
-      level !== null &&
       instance === undefined &&
       onCreateInstance !== undefined
     ) {
@@ -2722,7 +2774,7 @@ export function BreakerDevice({
     setQuery("");
     setSearchIndex(0);
     setSystemMessage("");
-    setView(target);
+    setView(mobileGameplay && target === "launcher" ? "home" : target);
   };
   const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>): void => {
     if (screenLocked) {
@@ -2770,12 +2822,18 @@ export function BreakerDevice({
       <SystemIcon id="next" />
     </button>
   );
-  const appTiles = (entries: typeof APPS) => (
+  const appTiles = (
+    entries: typeof APPS,
+    systemGroup: "utilities" | "tools" | null = null,
+  ) => (
     <div className="device__grid">
       {entries.map((entry) => {
         const unreadCount = unread(entry.id);
         const label = t(entry.labelKey);
-        const accessibleLabel =
+        const isLocked = locked(entry.id);
+        const accessibleLabel = isLocked
+          ? t("device.app.locked", { app: label })
+          :
           unreadCount === 0
             ? label
             : t(
@@ -2789,7 +2847,8 @@ export function BreakerDevice({
           <button
             key={entry.id}
             type="button"
-            className={`device__tile${locked(entry.id) ? " device__tile--locked" : ""}`}
+            className={`device__tile${isLocked ? " device__tile--locked" : ""}`}
+            disabled={isLocked}
             onClick={() => navigateOS(entry.id)}
             aria-label={accessibleLabel}
           >
@@ -2803,6 +2862,41 @@ export function BreakerDevice({
           </button>
         );
       })}
+      {systemGroup === "utilities" && UTILITIES.map((entry) => (
+        <button
+          key={entry.id}
+          type="button"
+          className="device__tile"
+          onClick={() => navigateOS(entry.id)}
+        >
+          <span className="device__glyph device__glyph--cyan">
+            <SystemIcon id={entry.icon} />
+          </span>
+          <span className="device__label">{t(SYSTEM_LABELS[entry.id])}</span>
+        </button>
+      ))}
+      {systemGroup === "tools" && HOME_TOOLS.map((entry) => (
+        <button
+          key={entry.id}
+          type="button"
+          className="device__tile"
+          onClick={() => {
+            if (entry.id === "notifications") {
+              setNotificationsOpen(true);
+              setQuery("");
+              setSearchIndex(0);
+              setView("home");
+            } else {
+              navigateOS(entry.id);
+            }
+          }}
+        >
+          <span className="device__glyph device__glyph--cyan">
+            <SystemIcon id={entry.icon} />
+          </span>
+          <span className="device__label">{t(entry.labelKey)}</span>
+        </button>
+      ))}
     </div>
   );
   const utilityTiles = (
@@ -2822,14 +2916,12 @@ export function BreakerDevice({
       ))}
     </div>
   );
-  const availableApps =
-    level !== null
-      ? APPS.filter((item) => item.id !== "investigation")
-      : APPS.filter((item) => item.id !== "operations");
+  const availableApps = APPS;
   const searchEntries = (): {
     key: string;
     label: string;
     icon: SystemSymbol;
+    app?: OsAppId;
     group: "apps" | "cases" | "evidence";
     activate: () => void;
   }[] => {
@@ -2839,6 +2931,7 @@ export function BreakerDevice({
         key: `app:${item.id}`,
         label: t(item.labelKey),
         icon: "apps" as SystemSymbol,
+        app: item.id,
         group: "apps" as const,
         activate: () => navigateOS(item.id),
       })),
@@ -2848,6 +2941,22 @@ export function BreakerDevice({
         icon: item.icon,
         group: "apps" as const,
         activate: () => navigateOS(item.id),
+      })),
+      ...HOME_TOOLS.filter((item) => item.id !== "search").map((item) => ({
+        key: `system:${item.id}`,
+        label: t(item.labelKey),
+        icon: item.icon,
+        group: "apps" as const,
+        activate: () => {
+          if (item.id === "notifications") {
+            setNotificationsOpen(true);
+            setQuery("");
+            setSearchIndex(0);
+            setView("home");
+          } else {
+            navigateOS(item.id);
+          }
+        },
       })),
     ].filter((item) => item.label.toLocaleLowerCase(language).includes(needle));
     const cases =
@@ -3005,7 +3114,7 @@ export function BreakerDevice({
                     onClick={entry.activate}
                     onMouseEnter={() => setSearchIndex(index)}
                   >
-                    <SystemIcon id={entry.icon} />
+                    {entry.app ? <DeviceIcon id={entry.app} /> : <SystemIcon id={entry.icon} />}
                     <span>{entry.label}</span>
                     <SystemIcon id="next" />
                   </button>
@@ -3568,7 +3677,7 @@ export function BreakerDevice({
       case "evidence":
         return evidence();
       case "operations":
-        return level !== null ? operations() : null;
+        return operations();
       case "terminal":
         return terminal();
       case "story":
@@ -3584,17 +3693,6 @@ export function BreakerDevice({
 
   const home = (
     <div className="device__home">
-      <div className="device__dashboard-header">
-        <button
-          className="device__avatar"
-          type="button"
-          onClick={() => navigateOS("operator")}
-          aria-label={t("device.operator")}
-        >
-          <SystemIcon id="operator" />
-          <i />
-        </button>
-      </div>
       <article className="device__mission">
         <span className="device__mission-meta">
           {level === null
@@ -3612,37 +3710,27 @@ export function BreakerDevice({
             : t(solved ? "collection.solved" : "device.investigation")}
         </span>
         {level !== null && (
-          <>
-            <span className="device__mission-meter">
-              <i style={{ width: solved ? "100%" : "0%" }} />
-            </span>
-            <span className="device__mission-telemetry">
-              <span
-                className={`device__mission-live${instance ? " is-live" : ""}`}
-                aria-hidden="true"
-              />
-              <span>
-                {t(
-                  instance
-                    ? "device.caseWidget.instance"
-                    : "device.caseWidget.noInstance",
-                )}
-              </span>
-              <span>
-                <b>{caseState.calls.length}</b>{" "}
-                {t("device.caseWidget.calls")}
-              </span>
-              <span>
-                <b>{caseState.revealed.size}</b>{" "}
-                {t("device.caseWidget.evidence")}
-              </span>
-              {solved && (
-                <span className="device__mission-solved">
-                  {t("collection.solved")}
-                </span>
+          <span className="device__mission-telemetry">
+            <span
+              className={`device__mission-live${instance ? " is-live" : ""}`}
+              aria-hidden="true"
+            />
+            <span>
+              {t(
+                instance
+                  ? "device.caseWidget.instance"
+                  : "device.caseWidget.noInstance",
               )}
             </span>
-          </>
+            <span>
+              <b>{caseState.calls.length}</b>{" "}
+              {t("device.caseWidget.calls")}
+            </span>
+            <span>
+              <b>{caseState.revealed.size}</b>{" "}
+              {t("device.caseWidget.evidence")}
+            </span>
+          </span>
         )}
         <span className="device__mission-actions">
           <button
@@ -3662,19 +3750,18 @@ export function BreakerDevice({
             </span>
             <SystemIcon id="next" />
           </button>
-          {level !== null && (
-            <button
-              type="button"
-              className="device__mission-action device__mission-action--secondary"
-              onClick={() => navigateOS("operations")}
-            >
-              <span>{t("device.app.operations")}</span>
-              <SystemIcon id="next" />
-            </button>
-          )}
         </span>
       </article>
-      {appTiles(availableApps)}
+      {mobileGameplay ? (
+        <>
+          <h3 className="device__group-label">{t("device.apps")}</h3>
+          {appTiles(availableApps)}
+          <h3 className="device__group-label">{t("device.utilities")}</h3>
+          {appTiles([], "utilities")}
+          <h3 className="device__group-label">{t("device.tools")}</h3>
+          {appTiles([], "tools")}
+        </>
+      ) : appTiles(availableApps)}
     </div>
   );
 
@@ -3793,6 +3880,18 @@ export function BreakerDevice({
       {!screenLocked && (
         <>
           <div className="device__notification-heading">
+            <button
+              type="button"
+              className="device__notification-back"
+              onClick={() => {
+                setNotificationsOpen(false);
+                setView("home");
+              }}
+              aria-label={t("device.back")}
+            >
+              <SystemIcon id="back" />
+              <span>{t("device.back")}</span>
+            </button>
             <h2>{t("device.notifications")}</h2>
             <button type="button" onClick={clearNotifications}>
               {t("device.clearAll")}
@@ -4065,7 +4164,8 @@ export function BreakerDevice({
           )}
         </div>
 
-        {!screenLocked &&
+        {!mobileGameplay &&
+          !screenLocked &&
           !booting &&
           (view === "home" || view === "launcher" || view === "search") && (
           <nav
@@ -4085,15 +4185,17 @@ export function BreakerDevice({
               <SystemIcon id="home" />
               <small>{t("device.home")}</small>
             </button>
-            <button
-              type="button"
-              className={view === "launcher" ? "is-active" : ""}
-              aria-current={view === "launcher" ? "page" : undefined}
-              onClick={() => navigateOS("launcher")}
-            >
-              <SystemIcon id="apps" />
-              <small>{t("device.apps")}</small>
-            </button>
+            {!mobileGameplay && (
+              <button
+                type="button"
+                className={view === "launcher" ? "is-active" : ""}
+                aria-current={view === "launcher" ? "page" : undefined}
+                onClick={() => navigateOS("launcher")}
+              >
+                <SystemIcon id="apps" />
+                <small>{t("device.apps")}</small>
+              </button>
+            )}
             <button
               type="button"
               className={view === "search" ? "is-active" : ""}
@@ -4103,16 +4205,18 @@ export function BreakerDevice({
               <SystemIcon id="search" />
               <small>{t("device.search")}</small>
             </button>
-            <button
-              type="button"
-              onClick={() => {
-                setSettingSection("main");
-                navigateOS("settings");
-              }}
-            >
-              <SystemIcon id="settings" />
-              <small>{t("device.mobileSettings")}</small>
-            </button>
+            {!mobileGameplay && (
+              <button
+                type="button"
+                onClick={() => {
+                  setSettingSection("main");
+                  navigateOS("settings");
+                }}
+              >
+                <SystemIcon id="settings" />
+                <small>{t("device.mobileSettings")}</small>
+              </button>
+            )}
           </nav>
         )}
       </div>
@@ -5334,8 +5438,8 @@ function DeviceCollection({
               : status === "error"
                 ? t("collection.error")
                 : t("collection.progress", {
-                    count: completed.filter(Boolean).length,
-                    total: LEVELS.length,
+                    count: completed.filter((value, index) => value && LEVELS[index]?.id !== 0).length,
+                    total: LEVELS.length - 1,
                   })}
           </p>
           <button

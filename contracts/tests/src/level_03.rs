@@ -126,16 +126,13 @@ fn the_recipient_must_authorize_the_transfer() {
 }
 
 #[test]
-fn submitting_twice_is_refused() {
+fn resubmitting_the_same_completed_instance_is_idempotent() {
     let c = Scenario::new();
     let warehouse = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &warehouse, &c.player);
 
     assert_eq!(c.submit(&c.player, &warehouse), Ok(()));
-    assert_eq!(
-        c.submit(&c.player, &warehouse),
-        Err(contract_error(errors::ALREADY_COMPLETED))
-    );
+    assert_eq!(c.submit(&c.player, &warehouse), Ok(()));
 }
 
 #[test]

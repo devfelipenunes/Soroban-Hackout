@@ -5548,6 +5548,8 @@ button {
 .device__notification-heading { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: .75rem; }
 .device__notification-heading h2 { font-family: var(--season-sans); font-size: var(--text-xl); margin: 0; }
 .device__notification-heading button { min-height: 44px; background: transparent; color: var(--season-ivory); border: 0; }
+.device__notification-heading .device__notification-back { display: inline-flex; align-items: center; gap: .3rem; padding: 0; }
+.device__notification-back .device__symbol { width: 18px; height: 18px; }
 .device__notification {
   display: grid; grid-template-columns: 34px minmax(0, 1fr) 12px; gap: .65rem;
   align-items: center; width: 100%; padding: .9rem .75rem; margin-bottom: .55rem;
@@ -5833,13 +5835,11 @@ button {
 .device__avatar { position: relative; display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid #347b77; border-radius: 50%; background: #101b1d; color: #b9d3d2; cursor: pointer; }
 .device__avatar .device__symbol { width: 30px; height: 30px; }
 .device__avatar i { position: absolute; right: 0; bottom: 1px; width: 7px; height: 7px; background: var(--os-accent); border-radius: 50%; }
-.device__mission { display: block; width: 100%; min-height: 180px; padding: 1rem; margin: 0 0 1.5rem; border: 1px solid #35504f; border-radius: .85rem; background: #091113; color: var(--os-text); text-align: left; }
+.device__mission { display: block; width: 100%; min-height: 0; padding: 1rem; margin: 0 0 .5rem; border: 1px solid #35504f; border-radius: .85rem; background: #091113; color: var(--os-text); text-align: left; }
 .device__mission-meta { display: block; color: #b3c0c3; font: var(--text-2xs) var(--source-mono); letter-spacing: .08em; }
-.device__mission strong { display: block; margin: .6rem 0; max-width: 100%; font-size: 1.3rem; line-height: 1.25; font-weight: 500; text-transform: uppercase; letter-spacing: .03em; }
-.device__mission-state { display: block; margin-block: .7rem; color: #a7b4b9; font: var(--text-2xs) var(--source-mono); text-transform: uppercase; }
-.device__mission-meter { display: block; height: 3px; background: #243339; margin: .6rem 0 1rem; }
-.device__mission-meter i { display: block; height: 100%; background: #e8b45c; }
-.device__mission-telemetry { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem .75rem; margin: .7rem 0 1rem; color: #9fb7bb; font: var(--text-2xs) var(--source-mono); letter-spacing: .06em; text-transform: uppercase; }
+.device__mission strong { display: block; margin: .5rem 0; max-width: 100%; color: var(--os-text); font-size: 1.2rem; line-height: 1.3; font-weight: 500; letter-spacing: 0; }
+.device__mission-state { display: block; margin-block: .45rem .6rem; color: var(--os-muted); font: var(--text-xs) var(--source-mono); }
+.device__mission-telemetry { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .75rem; margin: .55rem 0 .85rem; color: var(--os-muted); font: var(--text-xs) var(--source-mono); }
 .device__mission-telemetry b { color: #eef8f6; font-weight: 600; }
 .device__mission-live { flex: none; width: 6px; height: 6px; border-radius: 50%; background: #6b7f83; }
 .device__mission-live.is-live { background: var(--os-accent); box-shadow: 0 0 0 3px rgb(0 230 173 / 12%); }
@@ -5853,14 +5853,14 @@ button {
 .device__mission-action .device__symbol { flex: none; width: 16px; height: 16px; }
 .device--panel .device__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem .45rem; width: 100%; margin: 0; }
 .device--panel .device__tile { position: relative; min-width: 0; min-height: 112px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: 0; border: 0; background: transparent; gap: .6rem; cursor: pointer; }
-.device--panel .device__glyph { width: 68px; height: 68px; border-radius: .9rem; border: 1px solid color-mix(in srgb, currentColor 35%, transparent); background: color-mix(in srgb, currentColor 6%, var(--os-ink)); display: grid; place-items: center; }
-.device--panel .device__glyph svg, .device--panel .device__glyph .device__symbol { width: 34px; height: 34px; }
+.device--panel .device__glyph { width: 62px; height: 62px; border-radius: .9rem; border: 1px solid color-mix(in srgb, currentColor 35%, transparent); background: color-mix(in srgb, currentColor 6%, var(--os-ink)); display: grid; place-items: center; }
+.device--panel .device__glyph svg, .device--panel .device__glyph .device__symbol { width: 30px; height: 30px; }
 .device--panel .device__glyph--amber { color: #edb755; }
 .device--panel .device__glyph--cyan { color: #00e0d4; }
 .device--panel .device__glyph--ivory { color: #73d5ef; }
 .device--panel .device__glyph--blood { color: #ef5569; }
 .device--panel .device__glyph--ash { color: #b9c7ce; }
-.device--panel .device__label { color: #e4ebed; font-size: var(--text-xs); letter-spacing: 0; line-height: 1.25; text-align: center; overflow-wrap: anywhere; }
+.device--panel .device__label { color: var(--os-text-soft); font-size: var(--text-xs); letter-spacing: 0; line-height: 1.25; text-align: center; overflow-wrap: anywhere; }
 .device--panel .device__badge { top: -4px; right: 0; min-width: 18px; height: 18px; padding-inline: 4px; background: #f3b752; color: #0a1013; border-radius: 50%; font-size: var(--text-2xs); }
 .device--panel .device__app { animation: none; }
 .device--panel .device__appbar { min-height: 52px; background: transparent; border-bottom: 0; padding: .25rem .8rem; }
@@ -5868,7 +5868,7 @@ button {
 .device--panel .device__back { color: #a5b4b8; }
 .device--panel .device__appbody { padding: .5rem .85rem 1rem; }
 .device--panel .device__stack { gap: .7rem; }
-.device__group-label { margin: 1rem 0 .4rem; color: #a4b6be; font: var(--text-xs) var(--source-mono); text-transform: uppercase; letter-spacing: .12em; }
+.device__group-label { margin: .85rem 0 .55rem; padding: 0 0 .45rem; border-bottom: 1px solid #22383b; color: var(--os-text-soft); font: 500 var(--text-sm) var(--season-sans); text-transform: none; letter-spacing: 0; }
 .device__search-box { display: flex; align-items: center; gap: .55rem; width: 100%; min-height: 44px; padding: .5rem .7rem; border: 1px solid #314347; border-radius: .5rem; color: #a1b2b7; }
 .device__search-box .device__symbol { width: 18px; height: 18px; }
 .device__search-box input { min-width: 0; width: 100%; padding: 0; border: 0; outline: 0; background: transparent; color: var(--os-text); font: var(--text-md) var(--season-sans); }
@@ -5903,6 +5903,7 @@ button {
 .device--panel .device__notification-heading { display: flex; gap: .5rem; margin-bottom: 1rem; }
 .device--panel .device__notification-heading h2 { font-size: 1.1rem; }
 .device--panel .device__notification-heading button { color: var(--os-accent); font-size: var(--text-xs); cursor: pointer; }
+.device--panel .device__notification-heading .device__notification-back { margin-right: auto; }
 .device--panel .device__notifications { padding: .65rem .85rem; }
 .device--panel .device__notification { min-height: 80px; grid-template-columns: 34px minmax(0, 1fr) auto; padding: .75rem .65rem; background: #0c1316; border: 1px solid #26363a; border-radius: .7rem; margin-bottom: .65rem; }
 .device--panel .device__notification strong { color: var(--os-text); font-size: var(--text-sm); font-weight: 500; }

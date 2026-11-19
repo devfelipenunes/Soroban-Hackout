@@ -123,6 +123,8 @@ export default defineConfig({
       provider: "v8",
       reporter: ["text", "html"],
       exclude: [
+        "**/dist/**",
+        "**/coverage/**",
         "src/contracts/**",
         "src/**/*.test.{ts,tsx}",
         "src/levels/casefile.ts",

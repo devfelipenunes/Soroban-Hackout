@@ -6,6 +6,7 @@ pub const SPEC: LevelSpec = LevelSpec {
     slug: "counter",
     interface: &[
         "__constructor",
+        "amount",
         "count",
         "increment",
         "increment_by",

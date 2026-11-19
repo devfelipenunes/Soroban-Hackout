@@ -225,16 +225,13 @@ fn a_product_that_does_not_wrap_is_not_the_exploit() {
 }
 
 #[test]
-fn submitting_twice_is_refused() {
+fn resubmitting_the_same_completed_instance_is_idempotent() {
     let c = Scenario::new();
     let account = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &account, &c.player);
 
     assert_eq!(c.submit(&c.player, &account), Ok(()));
-    assert_eq!(
-        c.submit(&c.player, &account),
-        Err(contract_error(errors::ALREADY_COMPLETED))
-    );
+    assert_eq!(c.submit(&c.player, &account), Ok(()));
 }
 
 #[test]

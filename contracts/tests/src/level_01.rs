@@ -100,17 +100,13 @@ fn the_player_can_read_the_owner_the_contract_believes() {
 }
 
 #[test]
-fn submitting_twice_is_refused() {
+fn resubmitting_the_same_completed_instance_is_idempotent() {
     let c = Scenario::new();
     let door = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &door, &c.player);
 
     assert_eq!(c.submit(&c.player, &door), Ok(()), "the first one passes");
-    assert_eq!(
-        c.submit(&c.player, &door),
-        Err(contract_error(errors::ALREADY_COMPLETED)),
-        "the second must hit ALREADY_COMPLETED, not OBJECTIVE_NOT_MET"
-    );
+    assert_eq!(c.submit(&c.player, &door), Ok(()));
 }
 
 #[test]

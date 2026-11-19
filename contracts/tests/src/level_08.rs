@@ -14,6 +14,8 @@ pub const SPEC: LevelSpec = LevelSpec {
         "add_records",
         "begin_rebuild",
         "count",
+        "player",
+        "records",
         "rebuilt",
         "rebuild",
         "rebuild_started",

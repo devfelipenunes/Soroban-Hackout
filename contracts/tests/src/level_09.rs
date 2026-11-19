@@ -182,16 +182,13 @@ fn revealing_without_a_prediction_is_refused() {
 }
 
 #[test]
-fn submitting_twice_is_refused() {
+fn resubmitting_the_same_completed_instance_is_idempotent() {
     let c = Scenario::new();
     let oracle = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &oracle, &c.player);
 
     assert_eq!(c.submit(&c.player, &oracle), Ok(()));
-    assert_eq!(
-        c.submit(&c.player, &oracle),
-        Err(contract_error(errors::ALREADY_COMPLETED))
-    );
+    assert_eq!(c.submit(&c.player, &oracle), Ok(()));
 }
 
 #[test]

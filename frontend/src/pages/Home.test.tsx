@@ -59,7 +59,7 @@ describe("home season progress", () => {
 
     const markup = home();
 
-    expect(markup).toContain("3/13 verificados na rede");
+    expect(markup).toContain("3/12 verificados na rede");
     expect(markup).not.toContain("no último acesso");
   });
 
