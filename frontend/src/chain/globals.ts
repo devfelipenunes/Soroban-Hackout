@@ -1,5 +1,5 @@
 import { emit, type CallFailure } from "./events.ts";
-import { contractReason } from "./errors.ts";
+import { contractReason, vmTrapReason } from "./errors.ts";
 
 export const GLOBAL_NAMES = ["player", "instance", "contract", "aux", "help", "protocolKey"] as const;
 
@@ -53,11 +53,12 @@ function playerError(method: string, error: unknown, spec?: unknown): Error {
   const detail = error instanceof Error ? error.message : String(error);
   const failure = failureOf(error);
   const reason = contractReason(spec, error);
+  const trap = vmTrapReason(error);
   const summary =
     reason !== null
       ? `BREAKER — ${method} was rejected by the instance: ${reason}.`
       : failure === "rejected"
-      ? `BREAKER — ${method} was rejected by the instance before a transaction could be signed. The current state does not allow this call; inspect it and try a different sequence.`
+      ? `BREAKER — ${method} was rejected by the instance before a transaction could be signed. The current state does not allow this call; inspect it and try a different sequence.${trap === null ? "" : ` Hint: ${trap}.`}`
       : failure === "cancelled"
         ? `BREAKER — ${method} was not signed by the wallet. Approve the request to continue.`
         : `BREAKER — ${method} could not be completed. Check the technical detail below and try again.`;

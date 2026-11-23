@@ -55,3 +55,11 @@ export function contractReason(spec: unknown, error: unknown): string | null {
     return null;
   }
 }
+
+// A trap of the VM (an overflow, a bad index, an unreachable path) names no contract error: the
+// host only reports `Error(WasmVm, InvalidAction)`.
+export function vmTrapReason(error: unknown): string | null {
+  return /WasmVm,\s*InvalidAction/.test(reasonOf(error))
+    ? "the VM aborted the call, as it does on an arithmetic overflow or an unwrap on nothing"
+    : null;
+}

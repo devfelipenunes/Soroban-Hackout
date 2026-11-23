@@ -75,11 +75,11 @@
       "id": "CBOZF5T5RM4E4IPX6RR6HOFLUMV2IEZNWEBRXOPSU5WQM4Y757ZBZXWH"
     },
     "breaker_level_08_sector": {
-      "wasm_hash": "3829a1a4fc39f5de6a3fdfb1220f1140a6091e1ef0391ec9a19d40fbcb7f7654"
+      "wasm_hash": "3de5880dfbe977d0270f7eba5997a41ac94508a3fc6c3d761181ced887245e1c"
     },
     "breaker_level_08_validator": {
-      "wasm_hash": "0508b4b9f40b1cd43542fb083766da292ddf04575c1ad3e3017bfa407f5ab209",
-      "id": "CCVQUWZI72WRCUM6YM35ASDMFUCCAIEVELOZBYXZI5IHFDDKDEQNJY2T"
+      "wasm_hash": "2e3e60b2e9b35b274e6a2569b01e4620c06155328871f333fd26b8f5ca87cf98",
+      "id": "CBNK755LOMS2DL6RXWXWEWIB6NKBXFXD5WQAEFMW33JOWZMI7SQMNXH5"
     },
     "breaker_level_09_oracle": {
       "wasm_hash": "7c6f2adf43cd641326d6e28a8d536600bf957859f5217daff057e7d2180b397d"
@@ -159,7 +159,7 @@
     "8": {
       "registered": "true",
       "core": "CBKNSXN4G33N7XUR3PORU6MLR45756ERYDX6BAVDMXCAY5PIVKCIDAPI",
-      "previous_wasm_hash": "52e18ae2ff29251f98c9a2935f44f32d556084b232a973e33cfa48e4307c541a"
+      "previous_wasm_hash": "3829a1a4fc39f5de6a3fdfb1220f1140a6091e1ef0391ec9a19d40fbcb7f7654"
     },
     "9": {
       "registered": "true",

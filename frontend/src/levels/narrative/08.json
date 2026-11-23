@@ -100,14 +100,14 @@
       "es": "La instantánea solo responde cuando el Archive está roto."
     },
     {
-      "pt-BR": "Leia `stored()` e `rebuild()`: a reconstrução percorre todos os registros. Compare o que `add_records` aceita com o que `rebuild` exige.",
-      "en": "Read `stored()` and `rebuild()`: the rebuild walks every record. Compare what `add_records` accepts with what `rebuild` requires.",
-      "es": "Consulta `stored()` y `rebuild()`: la reconstrucción recorre todos los registros. Compara lo que acepta `add_records` con lo que exige `rebuild`."
+      "pt-BR": "Leia `stored()` e `rebuild()`: a reconstrução percorre todos os registros. Compare o que `add_records` confere com o que `rebuild` faz com todos os pesos.",
+      "en": "Read `stored()` and `rebuild()`: the rebuild walks every record. Compare what `add_records` checks with what `rebuild` does with all the weights.",
+      "es": "Consulta `stored()` y `rebuild()`: la reconstrucción recorre todos los registros. Compara lo que comprueba `add_records` con lo que hace `rebuild` con todos los pesos."
     },
     {
-      "pt-BR": "A falha é integridade: a entrada confere pouco e a reconstrução confere tudo. O validador exige que `rebuild()` falhe e que o instantâneo tenha sido revelado.",
-      "en": "The flaw is integrity: the door checks little and the rebuild checks everything. The validator requires `rebuild()` to fail and the snapshot to have been revealed.",
-      "es": "El defecto es la integridad: la entrada comprueba poco y la reconstrucción lo comprueba todo. El validador exige que `rebuild()` falle y que la instantánea se haya revelado."
+      "pt-BR": "A falha é aritmética: a entrada confere cada peso e a reconstrução soma todos num `u32`. Dois pesos válidos podem estourar a soma. O validador exige que `rebuild()` aborte e que o instantâneo tenha sido revelado.",
+      "en": "The flaw is arithmetic: the door checks each weight and the rebuild adds them all into a `u32`. Two valid weights can overflow the sum. The validator requires `rebuild()` to abort and the snapshot to have been revealed.",
+      "es": "El defecto es aritmético: la entrada comprueba cada peso y la reconstrucción los suma todos en un `u32`. Dos pesos válidos pueden desbordar la suma. El validador exige que `rebuild()` aborte y que la instantánea se haya revelado."
     }
   ],
   "replies": [],

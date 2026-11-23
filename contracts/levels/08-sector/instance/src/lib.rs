@@ -5,24 +5,24 @@ use soroban_sdk::{
     Env, Vec,
 };
 
-const VERSION: u8 = 1;
-const RECORD_LEN: u32 = 33;
+/// A record's weight must fit an `i32`: it looks like a safe ceiling, and it is the only check
+/// the door makes.
+const MAX_WEIGHT: u32 = i32::MAX as u32;
+const SEED_WEIGHTS: [u32; 3] = [100, 200, 300];
 
 #[contracterror]
 #[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
 #[repr(u32)]
 pub enum Error {
-    /// archive intact: every record is well formed, so there is nothing to dump
+    /// archive intact: the maintenance pass still runs, so there is nothing to dump
     ArchiveIntact = 1,
-    /// empty record: a record needs at least one byte
-    EmptyRecord = 2,
-    /// corrupt record: a record must be 33 bytes, the first one being the version 1
-    CorruptRecord = 3,
+    /// weight too large: a record's weight must fit an i32 (at most 2147483647)
+    WeightTooLarge = 2,
 }
 
 #[contracttype]
 pub enum DataKey {
-    Records,
+    Weights,
     Revealed,
 }
 
@@ -34,46 +34,41 @@ impl Sector {
     pub fn __constructor(env: Env, player: Address) {
         let _ = player;
 
-        let mut records = Vec::<Bytes>::new(&env);
-        for id in 1u8..=3 {
-            let mut raw = [0u8; RECORD_LEN as usize];
-            raw[0] = VERSION;
-            raw[1] = id;
-            records.push_back(Bytes::from_array(&env, &raw));
+        let mut weights = Vec::<u32>::new(&env);
+        for weight in SEED_WEIGHTS {
+            weights.push_back(weight);
         }
 
-        env.storage().instance().set(&DataKey::Records, &records);
+        env.storage().instance().set(&DataKey::Weights, &weights);
         env.storage().instance().set(&DataKey::Revealed, &false);
     }
 
-    /// Appends records to the archive. A record is stored as long as it is not empty.
+    /// Appends one record per weight. Each weight is checked on its own, against the ceiling.
     /// Records are never removed.
-    pub fn add_records(env: Env, records: Vec<Bytes>) {
+    pub fn add_records(env: Env, weights: Vec<u32>) {
         let mut all = Self::load(&env);
 
-        for record in records.iter() {
-            if record.is_empty() {
-                panic_with_error!(&env, Error::EmptyRecord);
+        for weight in weights.iter() {
+            if weight > MAX_WEIGHT {
+                panic_with_error!(&env, Error::WeightTooLarge);
             }
-            all.push_back(record);
+            all.push_back(weight);
         }
 
-        env.storage().instance().set(&DataKey::Records, &all);
+        env.storage().instance().set(&DataKey::Weights, &all);
     }
 
-    /// The maintenance pass: reads every record and digests the archive. A record is
-    /// well formed when it has 33 bytes and the first byte is the version, 1. One
-    /// malformed record makes the whole pass fail.
+    /// The maintenance pass: totals the weight of every record and digests the archive.
     pub fn rebuild(env: Env) -> BytesN<32> {
+        let mut total: u32 = 0;
         let mut material = Bytes::new(&env);
 
-        for record in Self::load(&env).iter() {
-            if !Self::is_well_formed(&record) {
-                panic_with_error!(&env, Error::CorruptRecord);
-            }
-            material.append(&record);
+        for weight in Self::load(&env).iter() {
+            total += weight;
+            material.extend_from_array(&weight.to_be_bytes());
         }
 
+        material.extend_from_array(&total.to_be_bytes());
         env.crypto().sha256(&material).into()
     }
 
@@ -81,12 +76,12 @@ impl Sector {
         Self::load(&env).len()
     }
 
-    /// The raw dump of the archive. It only answers once the archive is broken.
+    /// The raw dump of the archive. It only answers once the maintenance pass is dead.
     pub fn snapshot(env: Env) -> Bytes {
-        let intact = Self::load(&env)
+        let total = Self::load(&env)
             .iter()
-            .all(|record| Self::is_well_formed(&record));
-        if intact {
+            .try_fold(0u32, |sum, weight| sum.checked_add(weight));
+        if total.is_some() {
             panic_with_error!(&env, Error::ArchiveIntact);
         }
 
@@ -104,14 +99,10 @@ impl Sector {
             .unwrap_or(false)
     }
 
-    fn load(env: &Env) -> Vec<Bytes> {
+    fn load(env: &Env) -> Vec<u32> {
         env.storage()
             .instance()
-            .get(&DataKey::Records)
+            .get(&DataKey::Weights)
             .unwrap_or(Vec::new(env))
-    }
-
-    fn is_well_formed(record: &Bytes) -> bool {
-        record.len() == RECORD_LEN && record.get(0) == Some(VERSION)
     }
 }

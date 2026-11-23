@@ -22,7 +22,7 @@ describe("the validator checklist", () => {
   it("asks the 08 archive to fail its rebuild", async () => {
     const failing: Callable = {
       rebuild: async () => {
-        throw new Error("BREAKER — rebuild was rejected by the instance: CorruptRecord — corrupt record");
+        throw new Error("BREAKER — rebuild was rejected by the instance: the VM aborted the call");
       },
       revealed: async () => true,
     };

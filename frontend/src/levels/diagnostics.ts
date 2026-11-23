@@ -185,9 +185,9 @@ const DIAGNOSTICS: Readonly<Record<number, readonly Check[]>> = {
       method: "rebuild",
       compare: "fails",
       label: {
-        "pt-BR": "A reconstrução do Archive falha (registro corrompido)",
-        en: "The Archive rebuild fails (corrupt record)",
-        es: "La reconstrucción del Archive falla (registro corrupto)",
+        "pt-BR": "A reconstrução do Archive aborta (a soma dos pesos estoura)",
+        en: "The Archive rebuild aborts (the weight sum overflows)",
+        es: "La reconstrucción del Archive aborta (la suma de pesos desborda)",
       },
     },
     {

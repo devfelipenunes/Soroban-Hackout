@@ -1,5 +1,6 @@
 use crate::harness::{contract_error, errors, LevelSpec, Scenario};
-use soroban_sdk::{contractclient, Address, Bytes, BytesN, Env, Vec};
+use soroban_sdk::xdr::{ScErrorCode, ScErrorType};
+use soroban_sdk::{contractclient, Address, Bytes, BytesN, Env, Error as HostError, Vec};
 
 pub const SPEC: LevelSpec = LevelSpec {
     id: 8,
@@ -7,49 +8,48 @@ pub const SPEC: LevelSpec = LevelSpec {
     interface: &[
         "Error",
         "ArchiveIntact",
-        "EmptyRecord",
-        "CorruptRecord",
+        "WeightTooLarge",
         "__constructor",
         "add_records",
         "player",
         "rebuild",
-        "records",
         "revealed",
         "snapshot",
         "stored",
+        "weights",
     ],
 };
 
 const ARCHIVE_INTACT: u32 = 1;
-const EMPTY_RECORD: u32 = 2;
-const CORRUPT_RECORD: u32 = 3;
+const WEIGHT_TOO_LARGE: u32 = 2;
+const CEILING: u32 = 2_147_483_647;
 
 #[allow(dead_code)]
 #[contractclient(name = "SectorClient")]
 pub trait SectorInterface {
-    fn add_records(env: Env, records: Vec<Bytes>);
+    fn add_records(env: Env, weights: Vec<u32>);
     fn rebuild(env: Env) -> BytesN<32>;
     fn stored(env: Env) -> u32;
     fn snapshot(env: Env) -> Bytes;
     fn revealed(env: Env) -> bool;
 }
 
-fn well_formed(env: &Env, id: u8) -> Bytes {
-    let mut raw = [0u8; 33];
-    raw[0] = 1;
-    raw[1] = id;
-    Bytes::from_array(env, &raw)
+// The unchecked sum traps the VM: a host error of type Context, not one the contract names.
+fn trap() -> HostError {
+    HostError::from_type_and_code(ScErrorType::Context, ScErrorCode::InvalidAction)
 }
 
-fn add(c: &Scenario, instance: &Address, record: Bytes) {
-    let mut records = Vec::<Bytes>::new(&c.env);
-    records.push_back(record);
-    SectorClient::new(&c.env, instance).add_records(&records);
+fn add(c: &Scenario, instance: &Address, weights: &[u32]) {
+    let mut list = Vec::<u32>::new(&c.env);
+    for weight in weights {
+        list.push_back(*weight);
+    }
+    SectorClient::new(&c.env, instance).add_records(&list);
 }
 
-// One malformed record is the whole attack: a single byte with the wrong version.
+// Two records, each one within the ceiling: only their sum overflows a u32.
 pub(crate) fn exploit(c: &Scenario, instance: &Address) {
-    add(c, instance, Bytes::from_array(&c.env, &[0u8]));
+    add(c, instance, &[CEILING, CEILING]);
     let _ = SectorClient::new(&c.env, instance).snapshot();
 }
 
@@ -74,27 +74,42 @@ fn the_objective_is_not_met_at_the_start() {
 }
 
 #[test]
-fn one_malformed_record_makes_the_rebuild_fail_for_good() {
+fn two_valid_records_make_the_rebuild_trap_for_good() {
     let c = Scenario::new();
     let archive = c.create_instance(&c.player, SPEC.id);
     let client = SectorClient::new(&c.env, &archive);
 
-    add(&c, &archive, Bytes::from_array(&c.env, &[0u8]));
+    add(&c, &archive, &[CEILING, CEILING]);
 
+    // Not a named error: the unchecked sum traps the VM.
     assert_eq!(
         client.try_rebuild(),
-        Err(Ok(contract_error(CORRUPT_RECORD))),
-        "the poisoned record denies the maintenance pass"
+        Err(Ok(trap())),
+        "the poisoned total denies the maintenance pass"
     );
 
-    // Adding good records does not repair it: nothing removes a record.
-    for id in 10..20u8 {
-        add(&c, &archive, well_formed(&c.env, id));
-    }
+    // Adding light records does not repair it: nothing removes a record.
+    add(&c, &archive, &[1, 1, 1]);
     assert_eq!(
         client.try_rebuild(),
-        Err(Ok(contract_error(CORRUPT_RECORD))),
+        Err(Ok(trap())),
         "the denial is permanent"
+    );
+}
+
+#[test]
+fn a_single_heavy_record_is_not_enough() {
+    let c = Scenario::new();
+    let archive = c.create_instance(&c.player, SPEC.id);
+    let client = SectorClient::new(&c.env, &archive);
+
+    add(&c, &archive, &[CEILING]);
+
+    // 600 + 2147483647 still fits a u32.
+    let _ = client.rebuild();
+    assert_eq!(
+        c.submit(&c.player, &archive),
+        Err(contract_error(errors::OBJECTIVE_NOT_MET))
     );
 }
 
@@ -115,7 +130,7 @@ fn a_broken_archive_that_was_never_dumped_does_not_pass() {
     let c = Scenario::new();
     let archive = c.create_instance(&c.player, SPEC.id);
 
-    add(&c, &archive, Bytes::from_array(&c.env, &[0u8]));
+    add(&c, &archive, &[CEILING, CEILING]);
 
     assert_eq!(
         c.submit(&c.player, &archive),
@@ -125,12 +140,12 @@ fn a_broken_archive_that_was_never_dumped_does_not_pass() {
 }
 
 #[test]
-fn many_well_formed_records_do_not_pass() {
+fn many_light_records_do_not_pass() {
     let c = Scenario::new();
     let archive = c.create_instance(&c.player, SPEC.id);
 
-    for id in 10..110u8 {
-        add(&c, &archive, well_formed(&c.env, id));
+    for _ in 0..100 {
+        add(&c, &archive, &[1_000_000]);
     }
 
     let client = SectorClient::new(&c.env, &archive);
@@ -139,20 +154,20 @@ fn many_well_formed_records_do_not_pass() {
     assert_eq!(
         c.submit(&c.player, &archive),
         Err(contract_error(errors::OBJECTIVE_NOT_MET)),
-        "volume is not the attack: validity is"
+        "volume is not the attack: the sum is"
     );
 }
 
 #[test]
-fn an_empty_record_is_refused_at_the_door() {
+fn a_weight_above_the_ceiling_is_refused_at_the_door() {
     let c = Scenario::new();
     let archive = c.create_instance(&c.player, SPEC.id);
 
-    let mut records = Vec::<Bytes>::new(&c.env);
-    records.push_back(Bytes::new(&c.env));
+    let mut list = Vec::<u32>::new(&c.env);
+    list.push_back(CEILING + 1);
     assert_eq!(
-        SectorClient::new(&c.env, &archive).try_add_records(&records),
-        Err(Ok(contract_error(EMPTY_RECORD)))
+        SectorClient::new(&c.env, &archive).try_add_records(&list),
+        Err(Ok(contract_error(WEIGHT_TOO_LARGE)))
     );
 }
 
@@ -172,7 +187,7 @@ fn the_snapshot_is_the_list_that_names_the_player() {
     let c = Scenario::new();
     let archive = c.create_instance(&c.player, SPEC.id);
 
-    add(&c, &archive, Bytes::from_array(&c.env, &[0u8]));
+    add(&c, &archive, &[CEILING, CEILING]);
 
     assert_eq!(
         SectorClient::new(&c.env, &archive).snapshot(),
