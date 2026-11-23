@@ -100,14 +100,14 @@
       "es": "El Custodio no está roto. Confía en alguien."
     },
     {
-      "pt-BR": "Leia `controller({ identity: 1 })` e `claim_identity`; depois chame `enter` com `identity: 1` e você como `caller`.",
-      "en": "Read `controller({ identity: 1 })` and `claim_identity`; then call `enter` with `identity: 1` and you as `caller`.",
-      "es": "Consulta `controller({ identity: 1 })` y `identity_claim`; luego llama a `enter` con `identity: 1` y tu dirección como `caller`."
+      "pt-BR": "Leia `parent_of`, `register_identity` e `enter`: o portão segue a cadeia de vínculos até a identidade do operador.",
+      "en": "Read `parent_of`, `register_identity` and `enter`: the gate follows the chain of links up to the operator identity.",
+      "es": "Consulta `parent_of`, `register_identity` y `enter`: el portón sigue la cadena de vínculos hasta la identidad del operador."
     },
     {
-      "pt-BR": "O auth é do novo controlador; o contrato confia no controlador antigo.",
-      "en": "The auth is the new controller's; the contract trusts the old controller.",
-      "es": "La autenticación es del nuevo controlador; el contrato confía en el antiguo controlador."
+      "pt-BR": "Quem se registra assina sozinho: ninguém confirma o vínculo com o pai.",
+      "en": "Whoever registers signs alone: nobody confirms the link to the parent.",
+      "es": "Quien se registra firma solo: nadie confirma el vínculo con el padre."
     }
   ],
   "replies": [],
@@ -126,9 +126,9 @@
       },
       "body": [
         {
-          "pt-BR": "O Core exige que a identidade apresentada seja de operador e que seu controlador corresponda ao chamador. A investigação deve examinar as dependências dessa afirmação.",
-          "en": "The Core requires an operator identity whose controller matches the caller. Investigation must examine the dependencies behind that assertion.",
-          "es": "El Core requiere una identidad de operador cuyo controlador coincida con la persona que llama. La investigación debe examinar las dependencias detrás de esa afirmación."
+          "pt-BR": "O Core exige que o controlador da identidade corresponda ao chamador e que a cadeia de vínculos da identidade chegue ao operador. A investigação deve examinar as dependências dessa afirmação.",
+          "en": "The Core requires the identity's controller to match the caller and the identity's chain of links to reach the operator. Investigation must examine the dependencies behind that assertion.",
+          "es": "El Core requiere que el controlador de la identidad coincida con quien llama y que la cadena de vínculos de la identidad llegue al operador. La investigación debe examinar las dependencias detrás de esa afirmación."
         }
       ],
       "reveal": "start"

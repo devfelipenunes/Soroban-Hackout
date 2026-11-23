@@ -136,19 +136,15 @@ const DIAGNOSTICS: Readonly<Record<number, readonly Check[]>> = {
   ],
   5: [
     {
-      id: "controller",
-      method: "controller",
-      args: () => ({ identity: 1 }),
-      compare: "eq",
-      want: (player: string) => player,
-      label: { "pt-BR": "A identidade 1 é sua", en: "Identity 1 is yours", es: "La identidad 1 es tuya" },
-    },
-    {
       id: "gate",
       method: "gate_open",
       args: (player: string) => ({ caller: player }),
       compare: "true",
-      label: { "pt-BR": "O portão abre para você", en: "The gate opens for you", es: "El portón se abre para ti" },
+      label: {
+        "pt-BR": "O portão abre para você (sua identidade chega ao operador)",
+        en: "The gate opens for you (your identity reaches the operator)",
+        es: "El portón se abre para ti (tu identidad llega al operador)",
+      },
     },
   ],
   6: [

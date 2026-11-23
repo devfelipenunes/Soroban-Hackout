@@ -50,11 +50,11 @@
       "id": "CB3E4I2VD45COFG7UEINM2MSEJTHHCP5P3WISRJEVVKWOCGCNV23PIF2"
     },
     "breaker_level_05_custodian": {
-      "wasm_hash": "a984b16df3da840d58d5c05684716fad7ed3a85ed7b166a1afe64778c4ed3626"
+      "wasm_hash": "fd44da10e596b124266f031f0e36b90bf96d5a0052a47fc3d155d5b8ba178362"
     },
     "breaker_level_05_validator": {
-      "wasm_hash": "e041084cf6cb890e632744c85bef594d6c91028797422df108bc1c825c584b6c",
-      "id": "CBFS5PTSERYBJJA5WMAGR2BGJ6NSXVEX5H5JFBVZCS6Z5VYZ7SOVYD4B"
+      "wasm_hash": "0196153009578e5f1c5480c891416c36a0dbaa29c1649fd4160ca311aa0aff12",
+      "id": "CCONAZ6FDOE6I6NTUFFZSJKUIOE32PMLRH5YRQ6USGQGKHVJGFAGR34F"
     },
     "breaker_level_06_investigator": {
       "wasm_hash": "2b0ed179aee1241a71e4d6ff3cce81e8b9b12f62d58d2dd67c34e6a24a18f01c"
@@ -146,7 +146,7 @@
     "5": {
       "registered": "true",
       "core": "CBKNSXN4G33N7XUR3PORU6MLR45756ERYDX6BAVDMXCAY5PIVKCIDAPI",
-      "previous_wasm_hash": "afe3f3aa913ddc28f16e110dd0f7fff1e322b6b43b5cf8f15b8e722ee0d85e3e"
+      "previous_wasm_hash": "a984b16df3da840d58d5c05684716fad7ed3a85ed7b166a1afe64778c4ed3626"
     },
     "6": {
       "registered": "true",

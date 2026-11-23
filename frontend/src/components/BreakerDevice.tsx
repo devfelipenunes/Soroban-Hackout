@@ -2363,9 +2363,6 @@ export function BreakerDevice({
     if (levelId === 1 && methodName === "open" && entry.name === "owner") {
       return "await window.contract.owner_of({ door_id: 17 })";
     }
-    if (levelId === 5 && methodName === "claim_identity" && entry.name === "current_controller") {
-      return "await window.contract.controller({ identity: await window.contract.operator_identity() })";
-    }
     if (normalized === "address") {
       return /decoder|auxiliary/i.test(entry.name)
         ? "window.aux"
@@ -2378,7 +2375,9 @@ export function BreakerDevice({
         return methodName === "renew_floor" ? "1" : "1000";
       }
       if (levelId === 5 && entry.name === "identity") {
-        return "await window.contract.operator_identity()";
+        return methodName === "register_identity" || methodName === "enter"
+          ? "2"
+          : "await window.contract.operator_identity()";
       }
       if (levelId === 10 && entry.name === "op_id" && methodName === "execute") {
         return "1";
