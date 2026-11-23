@@ -9,9 +9,9 @@
       },
       "paragraphs": [
         {
-          "pt-BR": "O Setor 13 parece um cemitério de dados que ainda recebe entregas. Registros únicos, identidades descartáveis e referências incompletas se acumulam. O painel avisa: ARCHIVE LOAD: CRITICAL.",
-          "en": "Sector 13 looks like a data cemetery still accepting deliveries. Unique records, disposable identities, and incomplete references accumulate. The panel warns: ARCHIVE LOAD: CRITICAL.",
-          "es": "El Sector 13 parece un cementerio de datos que aún recibe registros. Se acumulan entradas únicas, identidades descartables y referencias incompletas. El panel indica: ARCHIVE LOAD: CRITICAL."
+          "pt-BR": "O Setor 13 parece um cemitério de dados que ainda recebe entregas. Registros repetidos, identidades descartáveis e referências incompletas se acumulam. O painel avisa: ARCHIVE INTEGRITY: CRITICAL.",
+          "en": "Sector 13 looks like a data cemetery still accepting deliveries. Repeated records, disposable identities, and incomplete references accumulate. The panel warns: ARCHIVE INTEGRITY: CRITICAL.",
+          "es": "El Sector 13 parece un cementerio de datos que aún recibe registros. Se acumulan entradas duplicadas, identidades descartables y referencias incompletas. El panel indica: ARCHIVE INTEGRITY: CRITICAL."
         },
         {
           "pt-BR": "Voss deixou uma instrução: “Quebre o Archive.” Mara pergunta se ele quer destruir a instalação. O auditor precisa entender o que significa fazê-la falhar e quem depende dela.",

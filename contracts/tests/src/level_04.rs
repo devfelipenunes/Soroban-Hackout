@@ -7,6 +7,8 @@ pub const SPEC: LevelSpec = LevelSpec {
     id: 4,
     slug: "forgotten",
     interface: &[
+        "Error",
+        "UnknownFloor",
         "__constructor",
         "floor",
         "floor_id",
@@ -60,16 +62,24 @@ fn the_objective_is_not_met_at_the_start() {
 }
 
 #[test]
-fn the_index_has_a_gap_where_the_floor_should_be() {
+fn the_index_stops_at_the_last_public_floor() {
     let c = Scenario::new();
     let building = c.create_instance(&c.player, SPEC.id);
     let floors = ForgottenClient::new(&c.env, &building).floors();
 
-    assert_eq!(floors.len(), 999);
-    assert!(floors.iter().any(|floor| floor == 999));
+    assert_eq!(
+        floors,
+        SVec::from_slice(
+            &c.env,
+            &[
+                1u32, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+                23,
+            ]
+        )
+    );
     assert!(
         !floors.iter().any(|floor| floor == 1_000),
-        "the missing floor is the clue the elevator index carries"
+        "the forgotten floor is not in the elevator index"
     );
 }
 
@@ -89,10 +99,6 @@ fn the_exploit_renews_the_floor_and_the_ttl_really_moves() {
 
     let client = ForgottenClient::new(&c.env, &building);
     assert!(client.renewed(&1_000u32));
-    assert!(
-        client.floors().iter().any(|floor| floor == 1_000),
-        "renewal restores the secret floor in the elevator index"
-    );
     assert_eq!(
         client.floor(&1_000u32),
         Bytes::from_slice(&c.env, b"FIRST LAYER")
@@ -108,28 +114,65 @@ fn renewing_the_forgotten_floor_directly_does_not_work() {
     let building = c.create_instance(&c.player, SPEC.id);
     let client = ForgottenClient::new(&c.env, &building);
 
-    assert!(
-        client.try_renew_floor(&1_000u32).is_err(),
-        "only floor 999 can renew the hidden successor"
+    assert_eq!(
+        client.try_renew_floor(&1_000u32),
+        Err(Ok(contract_error(1))),
+        "1000 is translated to 1001, which has no record: UnknownFloor"
     );
 
     assert!(!client.renewed(&1_000u32));
     assert_eq!(
         c.submit(&c.player, &building),
         Err(contract_error(errors::OBJECTIVE_NOT_MET)),
-        "the direct argument renews the wrong floor"
+        "the direct argument does not reach the forgotten floor"
     );
 }
 
 #[test]
-fn renewing_any_floor_other_than_999_is_rejected() {
+fn a_floor_between_the_building_and_the_forgotten_one_does_not_exist() {
     let c = Scenario::new();
     let building = c.create_instance(&c.player, SPEC.id);
     let client = ForgottenClient::new(&c.env, &building);
 
-    assert!(client.try_renew_floor(&4u32).is_err());
+    assert_eq!(
+        client.try_renew_floor(&500u32),
+        Err(Ok(contract_error(1))),
+        "500 is translated to 501: UnknownFloor"
+    );
+    assert_eq!(
+        client.try_floor(&24u32),
+        Err(Ok(contract_error(1))),
+        "the old forgotten floor is gone"
+    );
+}
 
+#[test]
+fn the_last_public_floor_renews_itself_and_does_not_solve_the_level() {
+    let c = Scenario::new();
+    let building = c.create_instance(&c.player, SPEC.id);
+    let client = ForgottenClient::new(&c.env, &building);
+
+    client.renew_floor(&23u32);
+
+    assert!(
+        client.renewed(&23u32),
+        "floors up to 23 are renewed as given"
+    );
     assert!(!client.renewed(&1_000u32));
+    assert_eq!(
+        c.submit(&c.player, &building),
+        Err(contract_error(errors::OBJECTIVE_NOT_MET))
+    );
+}
+
+#[test]
+fn renewing_a_visible_floor_does_not_expose_the_forgotten_one() {
+    let c = Scenario::new();
+    let building = c.create_instance(&c.player, SPEC.id);
+
+    ForgottenClient::new(&c.env, &building).renew_floor(&4u32);
+
+    assert!(!ForgottenClient::new(&c.env, &building).renewed(&1_000u32));
     assert_eq!(
         c.submit(&c.player, &building),
         Err(contract_error(errors::OBJECTIVE_NOT_MET)),
@@ -138,7 +181,7 @@ fn renewing_any_floor_other_than_999_is_rejected() {
 }
 
 #[test]
-fn resubmitting_the_same_completed_instance_is_idempotent() {
+fn submitting_twice_is_accepted() {
     let c = Scenario::new();
     let building = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &building);

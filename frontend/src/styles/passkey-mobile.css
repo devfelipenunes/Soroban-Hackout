@@ -150,22 +150,6 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  .device--panel .device__home .device__grid {
-    gap: 0.45rem 0.3rem;
-    padding-top: 0.25rem;
-  }
-
-  .device--panel .device__home .device__tile {
-    min-height: 5.25rem;
-    gap: 0.4rem;
-  }
-
-  .device--panel .device__home .device__glyph {
-    width: 48px;
-    height: 48px;
-    border-radius: 0.85rem;
-  }
-
   .device__close-os svg {
     width: 19px;
     height: 19px;

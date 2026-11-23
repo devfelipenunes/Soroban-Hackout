@@ -1,8 +1,20 @@
 #![no_std]
 
-use soroban_sdk::{contract, contractimpl, contracttype, Address, Env};
+use soroban_sdk::{
+    contract, contracterror, contractimpl, contracttype, panic_with_error, Address, Env,
+};
 
 const GHOST_DEVICE: u32 = 17;
+
+#[contracterror]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
+#[repr(u32)]
+pub enum Error {
+    /// wrong owner: the item is not owned by the given owner
+    WrongOwner = 1,
+    /// unknown item: no item exists with this id
+    UnknownItem = 2,
+}
 
 #[contracttype]
 pub enum DataKey {
@@ -29,9 +41,9 @@ impl Warehouse {
             .storage()
             .instance()
             .get(&DataKey::Owner(item_id))
-            .unwrap();
+            .unwrap_or_else(|| panic_with_error!(&env, Error::UnknownItem));
         if current != owner {
-            panic!("wrong owner");
+            panic_with_error!(&env, Error::WrongOwner);
         }
 
         env.storage()
@@ -43,6 +55,6 @@ impl Warehouse {
         env.storage()
             .instance()
             .get(&DataKey::Owner(item_id))
-            .unwrap()
+            .unwrap_or_else(|| panic_with_error!(&env, Error::UnknownItem))
     }
 }

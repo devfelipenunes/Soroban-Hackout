@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { coreReader } from "../chain/core.ts";
 import { readAccess, readCompletion, type CoreReads } from "../chain/level.ts";
 import { CORE_ID, NETWORK } from "../chain/network.ts";
-import { CASE_LEVELS, LEVELS } from "../levels/index.ts";
+import { LEVELS } from "../levels/index.ts";
 import { useWallet } from "../wallet/context.tsx";
 
 export type SeasonStatus = "cached" | "checking" | "no-wallet" | "ready" | "error";
@@ -251,20 +251,14 @@ export function useSeasonProgress(): SeasonProgress {
     };
   }, [client, address, signer, nonce]);
 
-  const solved = CASE_LEVELS.reduce(
-    (count, level) => count + (completed[LEVELS.indexOf(level)] === true ? 1 : 0),
-    0,
-  );
+  const solved = completed.filter(Boolean).length;
   const missing = completed.findIndex((value) => !value);
   const pending = missing === -1 ? null : (LEVELS[missing]?.id ?? null);
 
   if (loadedFor !== address) {
     const snapshot = address ? loadStoredSeason(address) : null;
     const visibleCompleted = snapshot?.completed ?? LEVELS.map(() => false);
-    const visibleSolved = CASE_LEVELS.reduce(
-      (count, level) => count + (visibleCompleted[LEVELS.indexOf(level)] === true ? 1 : 0),
-      0,
-    );
+    const visibleSolved = visibleCompleted.filter(Boolean).length;
     const visibleMissing = visibleCompleted.findIndex((value) => !value);
     return {
       status: snapshot !== null ? "cached" : address ? (status === "error" ? "error" : "checking") : "no-wallet",

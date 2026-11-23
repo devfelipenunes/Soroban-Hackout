@@ -20,15 +20,15 @@
     "es": "Stellar Testnet"
   },
   "lead": {
-    "pt-BR": "O elevador apresenta 999 botões. A planta e o cadastro municipal concordam com ele. A Ghost Key documentada no Armazém aponta para o milésimo.",
-    "en": "The elevator has 999 buttons. The blueprint and municipal register agree. The Ghost Key documented at the Warehouse points to the thousandth floor.",
-    "es": "El ascensor tiene 999 botones. El plano coincide con el registro municipal. La Ghost Key hallada en el almacén apunta al piso 1000."
+    "pt-BR": "O elevador apresenta vinte e três botões. A planta e o cadastro municipal concordam com ele. A Ghost Key documentada no Armazém aponta para o andar 1000.",
+    "en": "The elevator has twenty-three buttons. The blueprint and municipal register agree. The Ghost Key documented at the Warehouse points to floor 1000.",
+    "es": "El ascensor tiene veintitrés botones. El plano coincide con el registro municipal. La Ghost Key hallada en el almacén apunta al piso 1000."
   },
   "known": [
     {
-      "pt-BR": "O índice do elevador reconhece 999 andares.",
-      "en": "The elevator index recognizes 999 floors.",
-      "es": "El índice del ascensor registra 999 pisos."
+      "pt-BR": "O índice do elevador reconhece 23 andares.",
+      "en": "The elevator index recognizes 23 floors.",
+      "es": "El índice del ascensor registra 23 pisos."
     },
     {
       "pt-BR": "A referência legada aponta para o 1000, e Mara não encontrou ordem de demolição.",

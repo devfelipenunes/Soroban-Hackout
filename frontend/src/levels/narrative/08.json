@@ -95,19 +95,19 @@
   ],
   "hints": [
     {
-      "pt-BR": "O rebuild percorre todo o arquivo em uma única transação; o limite incide sobre essa leitura total.",
-      "en": "The rebuild scans the whole archive in one transaction; the limit applies to that full read.",
-      "es": "La reconstrucción recorre todo el archivo en una transacción; el límite se aplica a esa lectura completa."
+      "pt-BR": "O instantâneo só responde quando o Archive está quebrado.",
+      "en": "The snapshot only answers when the Archive is broken.",
+      "es": "La instantánea solo responde cuando el Archive está roto."
     },
     {
-      "pt-BR": "Leia `threshold()`, `count()` e `stored()`. Cada registro único cria chaves persistentes; envie-os em lotes pequenos.",
-      "en": "Read `threshold()`, `count()`, and `stored()`. Each unique record creates persistent keys; send them in small batches.",
-      "es": "Consulta `threshold()`, `count()` y `stored()`. Cada registro único crea claves persistentes; envíalos en lotes pequeños."
+      "pt-BR": "Leia `stored()` e `rebuild()`: a reconstrução percorre todos os registros. Compare o que `add_records` confere com o que `rebuild` faz com todos os pesos.",
+      "en": "Read `stored()` and `rebuild()`: the rebuild walks every record. Compare what `add_records` checks with what `rebuild` does with all the weights.",
+      "es": "Consulta `stored()` y `rebuild()`: la reconstrucción recorre todos los registros. Compara lo que comprueba `add_records` con lo que hace `rebuild` con todos los pesos."
     },
     {
-      "pt-BR": "`rebuild()` lê todos os registros em uma chamada. Observe `rebuild_started()` e `rebuilt()` antes e depois.",
-      "en": "`rebuild()` reads every record in one call. Check `rebuild_started()` and `rebuilt()` before and after.",
-      "es": "`rebuild()` lee todos los registros en una llamada. Observa `rebuild_started()` y `rebuilt()` antes y después."
+      "pt-BR": "A falha é aritmética: a entrada confere cada peso e a reconstrução soma todos num `u32`. Dois pesos válidos podem estourar a soma. O validador exige que `rebuild()` aborte e que o instantâneo tenha sido revelado.",
+      "en": "The flaw is arithmetic: the door checks each weight and the rebuild adds them all into a `u32`. Two valid weights can overflow the sum. The validator requires `rebuild()` to abort and the snapshot to have been revealed.",
+      "es": "El defecto es aritmético: la entrada comprueba cada peso y la reconstrucción los suma todos en un `u32`. Dos pesos válidos pueden desbordar la suma. El validador exige que `rebuild()` aborte y que la instantánea se haya revelado."
     }
   ],
   "replies": [],

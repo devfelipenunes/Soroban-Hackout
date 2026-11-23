@@ -8,6 +8,10 @@ pub const SPEC: LevelSpec = LevelSpec {
     id: 7,
     slug: "impossible",
     interface: &[
+        "Error",
+        "OutOfRange",
+        "Overflow",
+        "Underflow",
         "__constructor",
         "accrue",
         "accrue_checked",
@@ -225,7 +229,7 @@ fn a_product_that_does_not_wrap_is_not_the_exploit() {
 }
 
 #[test]
-fn resubmitting_the_same_completed_instance_is_idempotent() {
+fn submitting_twice_is_accepted() {
     let c = Scenario::new();
     let account = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &account, &c.player);

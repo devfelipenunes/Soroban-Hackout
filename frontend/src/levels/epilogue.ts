@@ -43,9 +43,9 @@ export const FINAL_SCENES: readonly FinalScene[] = [
       {
         "speaker": "system",
         "text": {
-          "pt-BR": "A operação de diagnóstico amadureceu. O payload foi reescrito para uma sessão de outro dono; a falha da chamada interna ficou armada, e a sessão forense foi aberta para o Breaker. SEQUENCE OBSERVER / ATTESTATION: INDEPENDENT.",
-          "en": "The diagnostic operation matured. Its payload was rewritten into a session for another owner; the failed internal call stayed armed, and the forensic session was opened for the Breaker. SEQUENCE OBSERVER / ATTESTATION: INDEPENDENT.",
-          "es": "La operación de diagnóstico llegó a su plazo. Su payload se reescribió para abrir una sesión a nombre de otra persona; el fallo de la llamada interna quedó registrado y Breaker abrió su propia sesión forense. SEQUENCE OBSERVER / ATTESTATION: INDEPENDENT."
+          "pt-BR": "A operação de diagnóstico amadureceu. O payload foi reescrito para uma sessão do observador; a falha da chamada interna ficou armada, e a sessão forense foi aberta para o Breaker. SEQUENCE OBSERVER / ATTESTATION: INDEPENDENT.",
+          "en": "The diagnostic operation matured. Its payload was rewritten into a session for the observer; the failed internal call stayed armed, and the forensic session was opened for the Breaker. SEQUENCE OBSERVER / ATTESTATION: INDEPENDENT.",
+          "es": "La operación de diagnóstico llegó a su plazo. Su payload se reescribió para abrir una sesión a nombre del observador; el fallo de la llamada interna quedó registrado y Breaker abrió su propia sesión forense. SEQUENCE OBSERVER / ATTESTATION: INDEPENDENT."
         }
       }
     ],
@@ -130,17 +130,17 @@ export const FINAL_SCENES: readonly FinalScene[] = [
       {
         "speaker": "breaker",
         "text": {
-          "pt-BR": "Você encontrou Meridian quebrada e construiu a Sequence para controlá-la.",
-          "en": "You found Meridian broken and built the Sequence to control it.",
-          "es": "Encontraste Meridian rota y construiste la Sequence para controlarla."
+          "pt-BR": "Você construiu tudo isso.",
+          "en": "You built all of this.",
+          "es": "Tú construiste todo esto."
         }
       },
       {
         "speaker": "architect",
         "text": {
-          "pt-BR": "Eu não quebrei Meridian. Encontrei a cidade assim.",
-          "en": "I did not break Meridian. I found the city this way.",
-          "es": "Yo no rompí Meridian. Encontré la ciudad así."
+          "pt-BR": "Não. Eu não quebrei Meridian. Eu a encontrei quebrada.",
+          "en": "No. I did not break Meridian. I found it broken.",
+          "es": "No. Yo no rompí Meridian. La encontré rota."
         }
       },
       {
@@ -154,9 +154,9 @@ export const FINAL_SCENES: readonly FinalScene[] = [
       {
         "speaker": "architect",
         "text": {
-          "pt-BR": "Construí a Sequence depois. Voss aprendeu a atravessá-la. Então deixou uma trilha.",
-          "en": "I built the Sequence afterward. Voss learned to cross it. Then he left a trail.",
-          "es": "Construí la Sequence después. Voss aprendió a atravesarla. Entonces dejó un rastro."
+          "pt-BR": "Eu construí a Sequence. Voss aprendeu a atravessá-la. Depois ele deixou uma trilha.",
+          "en": "I built the Sequence. Voss learned to cross it. Then he left a trail.",
+          "es": "Yo construí la Sequence. Voss aprendió a atravesarla. Después dejó un rastro."
         }
       }
     ]
@@ -181,9 +181,9 @@ export const FINAL_SCENES: readonly FinalScene[] = [
       {
         "speaker": "system",
         "text": {
-          "pt-BR": "O dossiê confronta o ator autenticado, o registro institucional de Voss, a escrita da rota 17 e a leitura do RecoveryController. Só essa cadeia — assinatura, identidade temporal, causalidade e política do Escrow — pode liberar ATTRIBUTION VERIFIED. Elias continua sendo metadado de operador, não destinatário dos 2,4 milhões de XLM.",
-          "en": "The dossier confronts the authenticated actor, Voss’s institutional record, route 17’s write, and RecoveryController’s read. Only that chain — signature, temporal identity, causality, and Escrow policy — may release ATTRIBUTION VERIFIED. Elias remains operator metadata, not the recipient of the 2.4 million XLM.",
-          "es": "El expediente contrasta al actor autenticado, el registro institucional de Voss, la escritura de la ruta 17 y la lectura de RecoveryController. Solo esa cadena —firma, identidad temporal, causalidad y política del Escrow— puede habilitar ATTRIBUTION VERIFIED. Elias sigue siendo un dato del operador, no el destinatario de los 2,4 millones de XLM."
+          "pt-BR": "O dossiê confronta o ator autenticado, o registro institucional de Voss, a escrita da rota 17 e a leitura do RecoveryController. Só essa cadeia — assinatura, identidade temporal, causalidade e política do Escrow — pode liberar ATTRIBUTION VERIFIED. Elias continua sendo metadado de operador, não destinatário dos 2,4 milhões.",
+          "en": "The dossier confronts the authenticated actor, Voss’s institutional record, route 17’s write, and RecoveryController’s read. Only that chain — signature, temporal identity, causality, and Escrow policy — may release ATTRIBUTION VERIFIED. Elias remains operator metadata, not the recipient of the 2.4 million.",
+          "es": "El expediente contrasta al actor autenticado, el registro institucional de Voss, la escritura de la ruta 17 y la lectura de RecoveryController. Solo esa cadena —firma, identidad temporal, causalidad y política del Escrow— puede habilitar ATTRIBUTION VERIFIED. Elias sigue siendo un dato del operador, no el destinatario de los 2,4 millones."
         }
       },
       {
@@ -293,8 +293,8 @@ export const FINAL_AFTER: readonly FinalScene[] = [
     ],
     "terminal": [
       "SEQUENCE 01 COMPLETE",
-      "12 CONTRATOS QUEBRADOS // 13 CASOS ENCERRADOS",
-      "12 CONTRACTS BROKEN // 13 CASES CLOSED",
+      "12 CONTRATOS QUEBRADOS // 12 CASOS ENCERRADOS",
+      "12 CONTRACTS BROKEN // 12 CASES CLOSED",
       "SUBJECT: QUALIFIED",
       "STATUS: PROVISIONAL",
       "ACCESS GRANTED: LAYER II"

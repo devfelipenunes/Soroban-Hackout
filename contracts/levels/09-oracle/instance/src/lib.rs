@@ -1,9 +1,27 @@
 #![no_std]
 
-use soroban_sdk::{contract, contractimpl, contracttype, Address, Env, Vec};
+use soroban_sdk::{
+    contract, contracterror, contractimpl, contracttype, panic_with_error, Address, Env, Vec,
+};
 
 const CHOICES: u32 = 4;
 const REQUIRED_HITS: u32 = 3;
+
+#[contracterror]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
+#[repr(u32)]
+pub enum Error {
+    /// exactly three targets and choices are required
+    WrongCount = 1,
+    /// choice out of range: each choice must be below 4
+    ChoiceOutOfRange = 2,
+    /// the target must be ahead of the current ledger
+    TargetNotAhead = 3,
+    /// the last target ledger has not arrived yet
+    LastTargetPending = 4,
+    /// no prediction: this player has not predicted (or already revealed)
+    NoPrediction = 5,
+}
 
 #[contracttype]
 pub struct Prediction {
@@ -31,7 +49,7 @@ impl Oracle {
         player.require_auth();
 
         if targets.len() != REQUIRED_HITS || choices.len() != REQUIRED_HITS {
-            panic!("exactly three targets and choices");
+            panic_with_error!(&env, Error::WrongCount);
         }
 
         let now = env.ledger().sequence();
@@ -39,10 +57,10 @@ impl Oracle {
             let target = targets.get(index).unwrap();
             let choice = choices.get(index).unwrap();
             if choice >= CHOICES {
-                panic!("choice out of range");
+                panic_with_error!(&env, Error::ChoiceOutOfRange);
             }
             if target <= now {
-                panic!("the target must be ahead");
+                panic_with_error!(&env, Error::TargetNotAhead);
             }
         }
 
@@ -59,7 +77,7 @@ impl Oracle {
             .storage()
             .instance()
             .get(&DataKey::Prediction(player.clone()))
-            .unwrap();
+            .unwrap_or_else(|| panic_with_error!(&env, Error::NoPrediction));
 
         let now = env.ledger().sequence();
         let mut last = 0u32;
@@ -70,7 +88,7 @@ impl Oracle {
             }
         }
         if now < last {
-            panic!("the last target has not arrived");
+            panic_with_error!(&env, Error::LastTargetPending);
         }
 
         env.storage()

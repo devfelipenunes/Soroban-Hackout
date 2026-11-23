@@ -1,10 +1,28 @@
 #![no_std]
 
-use soroban_sdk::{contract, contractimpl, contracttype, Address, Env};
+use soroban_sdk::{
+    contract, contracterror, contractimpl, contracttype, panic_with_error, Address, Env,
+};
 
 const TIMELOCK: u32 = 5;
 const HATCH: u32 = 0;
 const ROTATE: u32 = 1;
+
+#[contracterror]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
+#[repr(u32)]
+pub enum Error {
+    /// operation already executed
+    AlreadyExecuted = 1,
+    /// timelock not ready: wait for the operation ETA ledger
+    TimelockNotReady = 2,
+    /// predecessor not executed: run the predecessor operation first
+    PredecessorPending = 3,
+    /// payload not approved for this operation
+    PayloadNotApproved = 4,
+    /// unknown operation
+    UnknownOperation = 5,
+}
 
 #[contracttype]
 #[derive(Clone, PartialEq, Eq)]
@@ -134,7 +152,7 @@ impl Steal {
     pub fn rewrite_payload(env: Env, op_id: u32, payload: Payload) {
         Self::require_operation(&env, op_id);
         if Self::executed(env.clone(), op_id) {
-            panic!("operation already executed");
+            panic_with_error!(&env, Error::AlreadyExecuted);
         }
 
         env.storage()
@@ -146,15 +164,15 @@ impl Steal {
     pub fn execute(env: Env, op_id: u32) {
         Self::require_operation(&env, op_id);
         if Self::executed(env.clone(), op_id) {
-            panic!("operation already executed");
+            panic_with_error!(&env, Error::AlreadyExecuted);
         }
         if env.ledger().sequence() < Self::eta(env.clone(), op_id) {
-            panic!("timelock not ready");
+            panic_with_error!(&env, Error::TimelockNotReady);
         }
 
         if let Some(predecessor) = Self::predecessor(env.clone(), op_id) {
             if !Self::executed(env.clone(), predecessor) {
-                panic!("predecessor not executed");
+                panic_with_error!(&env, Error::PredecessorPending);
             }
         }
 
@@ -169,7 +187,7 @@ impl Steal {
             }
             Payload::GrantSpireAccess(who) => {
                 if Self::original(env.clone(), op_id) != Payload::OpenMaintenanceHatch {
-                    panic!("payload not approved for this operation");
+                    panic_with_error!(&env, Error::PayloadNotApproved);
                 }
                 env.storage().instance().set(&DataKey::Access(who), &true);
             }
@@ -182,7 +200,7 @@ impl Steal {
 
     fn require_operation(env: &Env, op_id: u32) {
         if !env.storage().instance().has(&DataKey::Eta(op_id)) {
-            panic!("unknown operation");
+            panic_with_error!(env, Error::UnknownOperation);
         }
     }
 }

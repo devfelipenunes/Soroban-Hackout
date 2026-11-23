@@ -1,8 +1,22 @@
 #![no_std]
 
-use soroban_sdk::{contract, contractimpl, contracttype, Address, Bytes, Env};
+use soroban_sdk::{
+    contract, contracterror, contractimpl, contracttype, panic_with_error, Address, Bytes, Env,
+};
 
 const VAULT_BALANCE: i128 = 1_000;
+
+#[contracterror]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
+#[repr(u32)]
+pub enum Error {
+    /// not admin: the caller is not the stored admin
+    NotAdmin = 1,
+    /// already released: the vault was already released
+    AlreadyReleased = 2,
+    /// empty vault: there is nothing left to release
+    EmptyVault = 3,
+}
 
 #[contracttype]
 pub enum DataKey {
@@ -46,7 +60,7 @@ impl Deadman {
 
         let stored: Address = env.storage().instance().get(&DataKey::Admin).unwrap();
         if stored != admin {
-            panic!("not admin");
+            panic_with_error!(&env, Error::NotAdmin);
         }
 
         env.storage().instance().set(&DataKey::Revealed, &true);
@@ -58,7 +72,7 @@ impl Deadman {
 
         let stored: Address = env.storage().instance().get(&DataKey::Admin).unwrap();
         if stored != admin {
-            panic!("not admin");
+            panic_with_error!(&env, Error::NotAdmin);
         }
 
         let released: bool = env
@@ -67,7 +81,7 @@ impl Deadman {
             .get(&DataKey::Released)
             .unwrap_or(false);
         if released {
-            panic!("already released");
+            panic_with_error!(&env, Error::AlreadyReleased);
         }
 
         let vault = env.current_contract_address();
@@ -77,7 +91,7 @@ impl Deadman {
             .get(&DataKey::Balance(vault.clone()))
             .unwrap_or(0);
         if amount <= 0 {
-            panic!("empty vault");
+            panic_with_error!(&env, Error::EmptyVault);
         }
 
         env.storage()

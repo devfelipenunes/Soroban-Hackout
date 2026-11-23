@@ -15,6 +15,7 @@ export type Compare =
   | "gt"
   | "gte"
   | "lt"
+  | "fails"
   | "payloadOther";
 
 export type Check = {
@@ -116,14 +117,14 @@ const DIAGNOSTICS: Readonly<Record<number, readonly Check[]>> = {
     {
       id: "renewed",
       method: "renewed",
-      args: () => ({ floor_id: 1_000 }),
+      args: () => ({ floor_id: 1000 }),
       compare: "true",
       label: { "pt-BR": "O andar 1000 foi renovado", en: "Floor 1000 was renewed", es: "Se renovó el piso 1000" },
     },
     {
       id: "floor",
       method: "floor",
-      args: () => ({ floor_id: 1_000 }),
+      args: () => ({ floor_id: 1000 }),
       compare: "eq",
       want: FIRST_LAYER,
       label: {
@@ -135,19 +136,15 @@ const DIAGNOSTICS: Readonly<Record<number, readonly Check[]>> = {
   ],
   5: [
     {
-      id: "balance",
-      method: "balance",
-      args: (player: string) => ({ owner: player }),
-      compare: "gte",
-      wantFrom: { method: "threshold" },
-      label: { "pt-BR": "Seu saldo alcança o limite", en: "Your balance meets the threshold", es: "Tu saldo alcanza el mínimo" },
-    },
-    {
       id: "gate",
       method: "gate_open",
       args: (player: string) => ({ caller: player }),
       compare: "true",
-      label: { "pt-BR": "O portão abre para você", en: "The gate opens for you", es: "El portón se abre para ti" },
+      label: {
+        "pt-BR": "O portão abre para você (sua identidade chega ao operador)",
+        en: "The gate opens for you (your identity reaches the operator)",
+        es: "El portón se abre para ti (tu identidad llega al operador)",
+      },
     },
   ],
   6: [
@@ -180,25 +177,13 @@ const DIAGNOSTICS: Readonly<Record<number, readonly Check[]>> = {
   ],
   8: [
     {
-      id: "count",
-      method: "count",
-      wantFrom: { method: "threshold" },
-      compare: "gte",
+      id: "rebuild",
+      method: "rebuild",
+      compare: "fails",
       label: {
-        "pt-BR": "O contador alcançou o limite",
-        en: "The counter reached the limit",
-        es: "El contador alcanzó el límite",
-      },
-    },
-    {
-      id: "stored",
-      method: "stored",
-      wantFrom: { method: "threshold" },
-      compare: "lt",
-      label: {
-        "pt-BR": "O arquivo guarda menos que o limite",
-        en: "The archive stores less than the limit",
-        es: "El archivo guarda menos que el límite",
+        "pt-BR": "A reconstrução do Archive aborta (a soma dos pesos estoura)",
+        en: "The Archive rebuild aborts (the weight sum overflows)",
+        es: "La reconstrucción del Archive aborta (la suma de pesos desborda)",
       },
     },
     {
@@ -358,9 +343,9 @@ const DIAGNOSTICS: Readonly<Record<number, readonly Check[]>> = {
       method: "executed_payload",
       compare: "payloadOther",
       label: {
-        "pt-BR": "O payload executado é de outro dono",
-        en: "The executed payload belongs to another owner",
-        es: "La carga útil ejecutada pertenece a otro titular",
+        "pt-BR": "O payload executado é de outro dono — se já executou sem cumprir isso, crie outra instância",
+        en: "The executed payload belongs to another owner — if it already ran without this, create another instance",
+        es: "La carga útil ejecutada pertenece a otro titular — si ya se ejecutó sin esto, crea otra instancia",
       },
     },
   ],
@@ -424,7 +409,10 @@ function sameValue(left: unknown, right: unknown): boolean {
 }
 
 function isOtherPayload(value: unknown, player: string): boolean {
-  const shape = normalizeUnion(value) as { tag?: unknown; values?: unknown };
+  const normalized = normalizeUnion(value);
+  // `executed_payload()` is empty (undefined/null) until `execute` runs, and a failed read is a string.
+  if (normalized === null || typeof normalized !== "object") return false;
+  const shape = normalized as { tag?: unknown; values?: unknown };
   if (shape.tag !== "OpenForensicSession") return false;
   const who = Array.isArray(shape.values) ? shape.values[0] : undefined;
   return typeof who === "string" && who !== player;
@@ -467,10 +455,15 @@ function compare(kind: Compare, current: unknown, expected: unknown, player: str
       const right = numeric(expected);
       return left !== null && right !== null && left < right;
     }
+    case "fails":
+      return typeof current === "string" && current.startsWith("error: ");
     case "payloadOther":
       return isOtherPayload(current, player);
   }
 }
+
+// Checks without a `want` still know what they expect: `true` and `false` imply it.
+const IMPLIED: Partial<Record<Compare, boolean>> = { true: true, false: false };
 
 export async function readDiagnostics(
   callable: Callable,
@@ -482,13 +475,12 @@ export async function readDiagnostics(
   return Promise.all(
     checks.map(async (check) => {
       const current = await call(callable, check.method, check.args?.(player));
-      const expected = check.wantFrom
+      const wanted = check.wantFrom
         ? await call(callable, check.wantFrom.method, check.wantFrom.args?.(player))
         : typeof check.want === "function"
           ? check.want(player)
-          : check.want !== undefined
-            ? check.want
-            : expectedFor(check.compare);
+          : check.want;
+      const expected = wanted ?? IMPLIED[check.compare];
 
       return {
         id: check.id,
@@ -501,23 +493,8 @@ export async function readDiagnostics(
   );
 }
 
-function expectedFor(compare: Compare): unknown {
-  switch (compare) {
-    case "true":
-      return true;
-    case "false":
-      return false;
-    case "defined":
-      return "defined value";
-    case "payloadOther":
-      return "payload owned by another player";
-    default:
-      return "<unavailable>";
-  }
-}
-
 export function displayValue(value: unknown): string {
-  if (value === undefined) return "—";
+  if (value === undefined || value === null) return "—";
   if (value instanceof Uint8Array) {
     return Array.from(value)
       .map((byte) => byte.toString(16).padStart(2, "0"))

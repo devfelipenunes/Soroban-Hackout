@@ -17,6 +17,12 @@ pub const SPEC: LevelSpec = LevelSpec {
     id: 10,
     slug: "steal",
     interface: &[
+        "Error",
+        "AlreadyExecuted",
+        "TimelockNotReady",
+        "PredecessorPending",
+        "PayloadNotApproved",
+        "UnknownOperation",
         "GrantSpireAccess",
         "OpenMaintenanceHatch",
         "Payload",
@@ -186,7 +192,7 @@ fn executing_before_the_timelock_is_refused() {
 }
 
 #[test]
-fn resubmitting_the_same_completed_instance_is_idempotent() {
+fn submitting_twice_is_accepted() {
     let c = Scenario::new();
     let spire = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &spire, &c.player);

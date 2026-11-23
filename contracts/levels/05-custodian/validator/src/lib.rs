@@ -4,8 +4,6 @@ use soroban_sdk::{contract, contractclient, contractimpl, Address, Env};
 
 #[contractclient(name = "CustodianClient")]
 pub trait CustodianInterface {
-    fn balance(env: Env, owner: Address) -> i128;
-    fn threshold(env: Env) -> i128;
     fn gate_open(env: Env, caller: Address) -> bool;
 }
 
@@ -14,8 +12,9 @@ pub struct CustodianValidator;
 
 #[contractimpl]
 impl CustodianValidator {
+    // Only `enter` opens the gate, and it checks the chain of parents on the way: the validator
+    // reads what the instance decided.
     pub fn validate(env: Env, instance: Address, player: Address) -> bool {
-        let custodian = CustodianClient::new(&env, &instance);
-        custodian.balance(&player) >= custodian.threshold() && custodian.gate_open(&player)
+        CustodianClient::new(&env, &instance).gate_open(&player)
     }
 }

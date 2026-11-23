@@ -3,8 +3,8 @@
 **Breaker** is a capture-the-flag game for **Stellar/Soroban**. Each level is a deliberately
 vulnerable contract that the player has to exploit to move forward.
 
-> **Status:** 13 levels are live on testnet in the playable era `CDUVH22U…`, with on-chain
-> progression from 0 to 12. The sandbox era `CDWHNWW6…` carries the same cases without
+> **Status:** 13 levels are live on testnet in the playable era `CA5VQHGY…`, with on-chain
+> progression from 0 to 12. The sandbox era `CBKNSXN4…` carries the same cases without
 > prerequisites, for development and demos. Both are testnet.
 
 ## What it is
@@ -44,7 +44,7 @@ All requirements are user-local; no `sudo`.
 |---|---|
 | Node 22 LTS | 22.23.2 |
 | Rust + `wasm32v1-none` target | 1.98.1 |
-| `stellar-cli` | 28.0.0, pinned |
+| `stellar-cli` | 28.1.0, pinned (the Decoder hash pinned in level 11 depends on the toolchain) |
 | Funded testnet account | use a `stellar keys` identity |
 
 ## Running

@@ -104,6 +104,12 @@ describe("Breaker OS", () => {
     act(() => vi.advanceTimersByTime(800));
     unlock();
 
+    expect(
+      [...document.querySelectorAll(".device__tile .device__label")].map(
+        (item) => item.textContent,
+      ),
+    ).toContain("Notas");
+
     const input = openSearch();
     expect(document.activeElement).toBe(input);
     expect(input.getAttribute("role")).toBe("combobox");
@@ -201,7 +207,11 @@ describe("Breaker OS", () => {
     ).not.toContain("Notas");
 
     const actions = [...(mission?.querySelectorAll(".device__mission-action") ?? [])];
-    expect(actions).toHaveLength(1);
+    expect(actions).toHaveLength(2);
     expect(actions[0]?.textContent).toContain("Continuar investigação");
+    expect(actions[1]?.textContent).toContain("Operações");
+
+    fireEvent.click(actions[1] as Element);
+    expect(document.querySelector(".device__app-title")?.textContent).toBe("Operações");
   });
 });

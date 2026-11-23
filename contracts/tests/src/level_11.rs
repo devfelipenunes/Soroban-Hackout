@@ -1,9 +1,14 @@
-use crate::harness::{contract_error, errors, spec_identifiers, LevelSpec, Scenario};
+use crate::harness::{contract_error, errors, read_wasm, spec_identifiers, LevelSpec, Scenario};
 use soroban_sdk::{contractclient, Address, Bytes, BytesN, Env};
 pub const SPEC: LevelSpec = LevelSpec {
     id: 11,
     slug: "rewrite",
     interface: &[
+        "Error",
+        "InvalidFragment",
+        "MalformedFragment",
+        "EvidenceNotReconstructed",
+        "UnknownEvidenceRef",
         "__constructor",
         "commitment",
         "context_verified",
@@ -354,5 +359,19 @@ fn the_decoder_exposes_only_its_declared_interface() {
         built, declared,
         "the auxiliary decoder is a second contract of this level; the rule 5 whitelist must \
          cover it too, or an upgrade path there would pass unnoticed"
+    );
+}
+
+#[test]
+fn the_pinned_decoder_hash_matches_the_built_decoder() {
+    let env = Env::default();
+    let wasm = read_wasm("breaker_level_11_decoder");
+    let built: BytesN<32> = env.crypto().sha256(&Bytes::from_slice(&env, &wasm)).into();
+
+    assert_eq!(
+        built.to_array(),
+        breaker_level_11_rewrite::DECODER_WASM_HASH,
+        "the Decoder pinned in `recover_proof` is not the Decoder this tree builds: the level \
+         cannot be solved until DECODER_WASM_HASH is updated"
     );
 }

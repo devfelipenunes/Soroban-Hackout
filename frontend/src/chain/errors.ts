@@ -1,50 +1,10 @@
 export function reasonOf(error: unknown): string {
-  const message = errorMessage(error, new Set());
-  return message ?? String(error);
-}
-
-function errorMessage(error: unknown, seen: Set<object>): string | undefined {
+  if (error instanceof Error) return error.message;
   if (typeof error === "string") return error;
-  if (error === null || typeof error !== "object" || seen.has(error)) return undefined;
-  seen.add(error);
-
-  const record = error as unknown as Record<string, unknown>;
-  const candidates = [record.message, record.reason, record.panic, record.diagnosticEvents, record.events, record.cause];
-  for (const candidate of candidates) {
-    if (candidate === record.panic && typeof candidate === "string" && candidate.trim() !== "") {
-      return candidate;
-    }
-    if (candidate === record.message && typeof candidate === "string" && candidate.trim() !== "") {
-      const nested = candidates.slice(1).map((value) => diagnosticMessage(value, seen)).find(Boolean);
-      if (nested !== undefined) return nested;
-      return candidate;
-    }
-    const detail = diagnosticMessage(candidate, seen);
-    if (detail !== undefined) return detail;
+  if (error && typeof error === "object" && "message" in error) {
+    return String((error as { message: unknown }).message);
   }
-  return undefined;
-}
-
-function diagnosticMessage(value: unknown, seen: Set<object>): string | undefined {
-  if (typeof value === "string") {
-    const panic = /(?:panic(?:\s+with\s+message)?|contract panic)[:\s"']+([^"'\n]+)["']?/i.exec(value);
-    return panic?.[1]?.trim() || undefined;
-  }
-  if (Array.isArray(value)) {
-    for (const item of value) {
-      const detail = errorMessage(item, seen);
-      if (detail !== undefined) return detail;
-    }
-    return undefined;
-  }
-  if (value === null || typeof value !== "object" || seen.has(value)) return undefined;
-  seen.add(value);
-  const record = value as Record<string, unknown>;
-  for (const key of ["message", "reason", "panic", "value", "data", "events"]) {
-    const detail = diagnosticMessage(record[key], seen);
-    if (detail !== undefined) return detail;
-  }
-  return undefined;
+  return String(error);
 }
 
 export const ERR_LEVEL_NOT_FOUND = 1;
@@ -73,4 +33,33 @@ export function errorKey(code: number | null): string | null {
 export function contractErrorCode(error: unknown): number | null {
   const found = /Contract,\s*#(\d+)/.exec(reasonOf(error));
   return found?.[1] ? Number(found[1]) : null;
+}
+
+// The SDK exposes these as properties; the text fields are XDR strings, so String() reads them.
+type ErrorCase = { name: unknown; doc: unknown; value: unknown };
+type WithErrorCases = { errorCases?: () => ErrorCase[] };
+
+// The deployed WASM carries no panic text: only `Error(Contract, #N)` reaches the player.
+// The meaning of N is read from the contract's own spec (its `#[contracterror]` enum).
+export function contractReason(spec: unknown, error: unknown): string | null {
+  const code = contractErrorCode(error);
+  const cases = (spec as WithErrorCases | null | undefined)?.errorCases;
+  if (code === null || typeof cases !== "function") return null;
+
+  try {
+    const found = cases.call(spec).find((entry) => Number(entry.value) === code);
+    if (!found) return null;
+    const doc = String(found.doc);
+    return `${String(found.name)} — ${doc === "" ? "no description" : doc}`;
+  } catch {
+    return null;
+  }
+}
+
+// A trap of the VM (an overflow, a bad index, an unreachable path) names no contract error: the
+// host only reports `Error(WasmVm, InvalidAction)`.
+export function vmTrapReason(error: unknown): string | null {
+  return /WasmVm,\s*InvalidAction/.test(reasonOf(error))
+    ? "the VM aborted the call, as it does on an arithmetic overflow or an unwrap on nothing"
+    : null;
 }

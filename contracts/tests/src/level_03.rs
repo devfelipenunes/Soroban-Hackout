@@ -5,6 +5,9 @@ pub const SPEC: LevelSpec = LevelSpec {
     id: 3,
     slug: "warehouse",
     interface: &[
+        "UnknownItem",
+        "Error",
+        "WrongOwner",
         "__constructor",
         "item_id",
         "owner",
@@ -126,7 +129,7 @@ fn the_recipient_must_authorize_the_transfer() {
 }
 
 #[test]
-fn resubmitting_the_same_completed_instance_is_idempotent() {
+fn submitting_twice_is_accepted() {
     let c = Scenario::new();
     let warehouse = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &warehouse, &c.player);

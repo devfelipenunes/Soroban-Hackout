@@ -107,7 +107,7 @@ if [ "$MODE" = plan ]; then
     exit 0
 fi
 
-need stellar "install stellar-cli 28.0.0 (see the README prerequisites)"
+need stellar "install stellar-cli 28.1.0 (see the README prerequisites)"
 
 RESULTS=""
 RESULTS="$(mktemp)" || RESULTS=""

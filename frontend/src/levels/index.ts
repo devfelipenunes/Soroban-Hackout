@@ -130,8 +130,6 @@ export const LEVELS: readonly Level[] = manifest.levels.map((entry) => ({
   aux: "aux" in entry ? entry.aux : undefined,
 }));
 
-export const CASE_LEVELS = LEVELS.filter((level) => level.id !== 0);
-
 async function read(
   files: Record<string, Loader>,
   path: string,

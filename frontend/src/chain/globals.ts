@@ -1,6 +1,7 @@
 import { emit, type CallFailure } from "./events.ts";
+import { contractReason, vmTrapReason } from "./errors.ts";
 
-export const GLOBAL_NAMES = ["player", "instance", "contract", "aux", "inject_decoder", "help"] as const;
+export const GLOBAL_NAMES = ["player", "instance", "contract", "aux", "help", "protocolKey"] as const;
 
 export type GlobalRegistry = Record<string, unknown>;
 
@@ -28,7 +29,8 @@ export type Options = {
   contract: object;
   spec: readonly Descriptor[];
   aux?: string | undefined;
-  injectDecoder?: (() => Promise<string>) | undefined;
+  // Levels whose contract derives the unlock key with `protocol::key` get `window.protocolKey()`.
+  protocolKey?: boolean;
   writes?: (text: string) => void;
 };
 
@@ -47,12 +49,16 @@ function failureOf(error: unknown): CallFailure {
   return "unknown";
 }
 
-function playerError(method: string, error: unknown): Error {
+function playerError(method: string, error: unknown, spec?: unknown): Error {
   const detail = error instanceof Error ? error.message : String(error);
   const failure = failureOf(error);
+  const reason = contractReason(spec, error);
+  const trap = vmTrapReason(error);
   const summary =
-    failure === "rejected"
-      ? `BREAKER — ${method} was rejected by the instance before a transaction could be signed. The current state does not allow this call; inspect it and try a different sequence.`
+    reason !== null
+      ? `BREAKER — ${method} was rejected by the instance: ${reason}.`
+      : failure === "rejected"
+      ? `BREAKER — ${method} was rejected by the instance before a transaction could be signed. The current state does not allow this call; inspect it and try a different sequence.${trap === null ? "" : ` Hint: ${trap}.`}`
       : failure === "cancelled"
         ? `BREAKER — ${method} was not signed by the wallet. Approve the request to continue.`
         : `BREAKER — ${method} could not be completed. Check the technical detail below and try again.`;
@@ -274,7 +280,7 @@ export function resolveCalls(
       } catch (error) {
         emit({ type: "call", id, method: name, kind: "call", outcome: "failed", failure: failureOf(error), at: Date.now() });
         tell(name, "failed");
-        throw playerError(name, error);
+        throw playerError(name, error, source.spec);
       }
 
       if (tx === null || typeof tx !== "object") {
@@ -284,10 +290,21 @@ export function resolveCalls(
       }
 
       const call = tx as Transaction;
-      if (call.isReadCall === true) {
+      // `isReadCall` and `result` read the simulation, and throw when it failed.
+      let isRead: boolean;
+      let read: unknown;
+      try {
+        isRead = call.isReadCall === true;
+        if (isRead) read = call.result;
+      } catch (error) {
+        emit({ type: "call", id, method: name, kind: "call", outcome: "failed", failure: failureOf(error), at: Date.now() });
+        tell(name, "failed");
+        throw playerError(name, error, source.spec);
+      }
+      if (isRead) {
         emit({ type: "call", id, method: name, kind: "read", outcome: "accepted", at: Date.now() });
         tell(name, "done");
-        return call.result;
+        return read;
       }
       if (typeof call.signAndSend !== "function") {
         emit({ type: "call", id, method: name, kind: "call", outcome: "accepted", at: Date.now() });
@@ -306,13 +323,19 @@ export function resolveCalls(
       } catch (error) {
         emit({ type: "call", id, method: name, kind: "write", outcome: "failed", failure: failureOf(error), at: Date.now() });
         tell(name, "failed");
-        throw playerError(name, error);
+        throw playerError(name, error, source.spec);
       }
     };
   }
 
   return wrapped;
 }
+
+// The short form of `protocol::key` (contracts/levels/11-rewrite/protocol.rs); the rest is in the contract.
+export const PROTOCOL_KEY_ALGORITHM = [
+  "protocol::key = share(0) ^ share(1) ^ share(2)",
+  "share(i)      = await window.contract.evidence_share({ index: i })",
+].join("\n");
 
 function signature(d: Descriptor): string {
   const args = d.entries.map((e) => `${e.name}: ${e.kind}`).join(", ");
@@ -344,18 +367,18 @@ function helpBlock(writes: (t: string) => void): (o: Options) => void {
             `    window.aux         ${o.aux}`,
             "                       the level's auxiliary contract, when it has one",
           ]),
-      ...(o.injectDecoder === undefined
-        ? []
-        : [
-            "    window.inject_decoder() deploys your own decoder instance",
-            "                       returns its address for recover({ decoder, fragment })",
-          ]),
+      ...(o.protocolKey === true
+        ? [
+            "    window.protocolKey()",
+            "                       the algorithm behind protocol::key (this level only)",
+          ]
+        : []),
       "    window.help()      this message",
       "",
       "  How to call",
       "",
       "    await window.contract.count()      // read — answers with the value",
-      "    await window.contract.increment()  // write — sent when you call it",
+      "    await window.contract.increment({ amount: 1 })  // write — sent when you call it",
       "",
       ...(sample === undefined
         ? []
@@ -399,8 +422,13 @@ export function mountGlobals(target: GlobalRegistry, o: Options): () => void {
   target["instance"] = o.instance;
   target["contract"] = o.contract;
   target["aux"] = o.aux;
-  target["inject_decoder"] = o.injectDecoder;
   target["help"] = () => help(o);
+  if (o.protocolKey === true) {
+    target["protocolKey"] = () => {
+      writes(`\n${PROTOCOL_KEY_ALGORITHM}\n`);
+      return PROTOCOL_KEY_ALGORITHM;
+    };
+  }
 
   return () => {
     for (const name of GLOBAL_NAMES) delete target[name];
@@ -417,7 +445,7 @@ export function mountWithoutInstance(
   target["instance"] = undefined;
   target["contract"] = undefined;
   target["aux"] = undefined;
-  target["inject_decoder"] = undefined;
+  target["protocolKey"] = undefined;
   target["help"] = () =>
     print(
       [

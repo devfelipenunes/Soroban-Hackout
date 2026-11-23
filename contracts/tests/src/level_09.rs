@@ -6,6 +6,12 @@ pub const SPEC: LevelSpec = LevelSpec {
     id: 9,
     slug: "oracle",
     interface: &[
+        "NoPrediction",
+        "Error",
+        "WrongCount",
+        "ChoiceOutOfRange",
+        "TargetNotAhead",
+        "LastTargetPending",
         "__constructor",
         "choices",
         "current_sequence",
@@ -182,7 +188,7 @@ fn revealing_without_a_prediction_is_refused() {
 }
 
 #[test]
-fn resubmitting_the_same_completed_instance_is_idempotent() {
+fn submitting_twice_is_accepted() {
     let c = Scenario::new();
     let oracle = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &oracle, &c.player);
@@ -203,4 +209,44 @@ fn an_instance_the_core_did_not_create_is_refused() {
         c.submit(&c.player, &foreign),
         Err(contract_error(errors::UNKNOWN_INSTANCE))
     );
+}
+
+#[test]
+fn a_rejected_prediction_reports_a_typed_error_instead_of_a_silent_trap() {
+    let c = Scenario::new();
+    let oracle = c.create_instance(&c.player, SPEC.id);
+    let now = c.env.ledger().sequence();
+    let (t, h) = vectors(&c, &[now + 10, now + 20, now + 30], &[0, 1, 4]);
+
+    let result = OracleClient::new(&c.env, &oracle)
+        .mock_auths(&[auth(
+            &c.player,
+            &oracle,
+            "predict",
+            (c.player.clone(), t.clone(), h.clone()).into_val(&c.env),
+        )])
+        .try_predict(&c.player, &t, &h);
+
+    assert_eq!(
+        result,
+        Err(Ok(contract_error(2))),
+        "choice 4 must surface as Error(Contract, #2) ChoiceOutOfRange"
+    );
+}
+
+#[test]
+fn revealing_without_a_prediction_reports_a_typed_error() {
+    let c = Scenario::new();
+    let oracle = c.create_instance(&c.player, SPEC.id);
+
+    let result = OracleClient::new(&c.env, &oracle)
+        .mock_auths(&[auth(
+            &c.player,
+            &oracle,
+            "reveal",
+            (c.player.clone(),).into_val(&c.env),
+        )])
+        .try_reveal(&c.player);
+
+    assert_eq!(result, Err(Ok(contract_error(5))), "NoPrediction");
 }

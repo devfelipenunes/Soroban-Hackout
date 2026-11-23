@@ -1,80 +1,56 @@
 use crate::harness::{contract_error, errors, LevelSpec, Scenario};
-use soroban_env_host::InvocationResourceLimits;
-use soroban_sdk::{
-    contractclient, testutils::cost_estimate::NetworkInvocationResourceLimits, Address, BytesN,
-    Env, Vec,
-};
-use std::panic::{catch_unwind, AssertUnwindSafe};
+use soroban_sdk::xdr::{ScErrorCode, ScErrorType};
+use soroban_sdk::{contractclient, Address, Bytes, BytesN, Env, Error as HostError, Vec};
 
 pub const SPEC: LevelSpec = LevelSpec {
     id: 8,
     slug: "sector",
     interface: &[
+        "Error",
+        "ArchiveIntact",
+        "WeightTooLarge",
         "__constructor",
         "add_records",
-        "begin_rebuild",
-        "count",
         "player",
-        "records",
-        "rebuilt",
         "rebuild",
-        "rebuild_started",
+        "revealed",
+        "snapshot",
         "stored",
-        "threshold",
+        "weights",
     ],
 };
+
+const ARCHIVE_INTACT: u32 = 1;
+const WEIGHT_TOO_LARGE: u32 = 2;
+const CEILING: u32 = 2_147_483_647;
 
 #[allow(dead_code)]
 #[contractclient(name = "SectorClient")]
 pub trait SectorInterface {
-    fn add_records(env: Env, records: Vec<BytesN<32>>);
-    fn begin_rebuild(env: Env);
-    fn count(env: Env) -> u32;
-    fn stored(env: Env) -> u32;
-    fn threshold(env: Env) -> u32;
+    fn add_records(env: Env, weights: Vec<u32>);
     fn rebuild(env: Env) -> BytesN<32>;
-    fn rebuild_started(env: Env) -> bool;
-    fn rebuilt(env: Env) -> bool;
+    fn stored(env: Env) -> u32;
+    fn snapshot(env: Env) -> Bytes;
+    fn revealed(env: Env) -> bool;
 }
 
-fn add_unique(c: &Scenario, instance: &Address, n: u32) {
-    for start in (0..n).step_by(20) {
-        let mut batch = Vec::<BytesN<32>>::new(&c.env);
-        for i in start..(start + 20).min(n) {
-            let mut bytes = [0u8; 32];
-            bytes[..4].copy_from_slice(&i.to_be_bytes());
-            batch.push_back(BytesN::from_array(&c.env, &bytes));
-        }
-        SectorClient::new(&c.env, instance).add_records(&batch);
+// The unchecked sum traps the VM: a host error of type Context, not one the contract names.
+fn trap() -> HostError {
+    HostError::from_type_and_code(ScErrorType::Context, ScErrorCode::InvalidAction)
+}
+
+fn add(c: &Scenario, instance: &Address, weights: &[u32]) {
+    let mut list = Vec::<u32>::new(&c.env);
+    for weight in weights {
+        list.push_back(*weight);
     }
+    SectorClient::new(&c.env, instance).add_records(&list);
 }
 
-fn prepare(c: &Scenario, instance: &Address, records: u32) {
-    add_unique(c, instance, records);
-    SectorClient::new(&c.env, instance).begin_rebuild();
-}
-
-fn enforce_testnet_read_limit(env: &Env) {
-    let mut limits = InvocationResourceLimits::mainnet();
-    // The in-memory harness counts persistent reads as memory footprint. It
-    // also includes three fixed entries, so 203 models 200 record reads plus
-    // that overhead; record 201 exceeds it.
-    limits.ledger_entries = 203;
-    env.cost_estimate().enforce_resource_limits(limits);
-}
-
-fn rebuild_is_rejected(c: &Scenario, instance: &Address) -> bool {
-    // The host panics on an exceeded resource limit but does not roll back the
-    // in-memory test Env. Run the attempted transaction on a snapshot fork so
-    // the original Env retains the state a real network would retain.
-    let attempt_env = Env::from_snapshot(c.env.to_snapshot());
-    enforce_testnet_read_limit(&attempt_env);
-    let instance_key = instance.to_string();
-    let attempt_instance = Address::from_str(&attempt_env, &instance_key.to_string());
-    let client = SectorClient::new(&attempt_env, &attempt_instance);
-    assert_eq!(client.count(), 201);
-    assert!(client.rebuild_started());
-    catch_unwind(AssertUnwindSafe(|| client.rebuild())).is_err()
+// Two records, each one within the ceiling: only their sum overflows a u32.
+pub(crate) fn exploit(c: &Scenario, instance: &Address) {
+    add(c, instance, &[CEILING, CEILING]);
+    let _ = SectorClient::new(&c.env, instance).snapshot();
 }
 
 #[test]
@@ -83,10 +59,54 @@ fn the_objective_is_not_met_at_the_start() {
     let archive = c.create_instance(&c.player, SPEC.id);
     let client = SectorClient::new(&c.env, &archive);
 
-    assert_eq!(client.count(), 0);
-    assert_eq!(client.threshold(), 201);
-    assert!(!client.rebuild_started());
-    assert!(!client.rebuilt());
+    assert_eq!(
+        client.stored(),
+        3,
+        "the archive starts with three legacy records"
+    );
+    let _ = client.rebuild();
+    assert!(!client.revealed());
+    assert_eq!(
+        c.submit(&c.player, &archive),
+        Err(contract_error(errors::OBJECTIVE_NOT_MET)),
+        "a healthy archive must not pass"
+    );
+}
+
+#[test]
+fn two_valid_records_make_the_rebuild_trap_for_good() {
+    let c = Scenario::new();
+    let archive = c.create_instance(&c.player, SPEC.id);
+    let client = SectorClient::new(&c.env, &archive);
+
+    add(&c, &archive, &[CEILING, CEILING]);
+
+    // Not a named error: the unchecked sum traps the VM.
+    assert_eq!(
+        client.try_rebuild(),
+        Err(Ok(trap())),
+        "the poisoned total denies the maintenance pass"
+    );
+
+    // Adding light records does not repair it: nothing removes a record.
+    add(&c, &archive, &[1, 1, 1]);
+    assert_eq!(
+        client.try_rebuild(),
+        Err(Ok(trap())),
+        "the denial is permanent"
+    );
+}
+
+#[test]
+fn a_single_heavy_record_is_not_enough() {
+    let c = Scenario::new();
+    let archive = c.create_instance(&c.player, SPEC.id);
+    let client = SectorClient::new(&c.env, &archive);
+
+    add(&c, &archive, &[CEILING]);
+
+    // 600 + 2147483647 still fits a u32.
+    let _ = client.rebuild();
     assert_eq!(
         c.submit(&c.player, &archive),
         Err(contract_error(errors::OBJECTIVE_NOT_MET))
@@ -94,62 +114,95 @@ fn the_objective_is_not_met_at_the_start() {
 }
 
 #[test]
-fn a_rebuild_at_the_read_entry_limit_succeeds() {
+fn the_exploit_passes_the_validator() {
     let c = Scenario::new();
     let archive = c.create_instance(&c.player, SPEC.id);
-    prepare(&c, &archive, 200);
-    enforce_testnet_read_limit(&c.env);
 
-    let client = SectorClient::new(&c.env, &archive);
-    let _digest = client.rebuild();
-    assert!(client.rebuilt());
-    assert_eq!(
-        c.submit(&c.player, &archive),
-        Err(contract_error(errors::OBJECTIVE_NOT_MET)),
-        "a rebuild that completes within the resource limit is not an exploit"
-    );
-}
+    exploit(&c, &archive);
 
-#[test]
-fn persistent_growth_makes_the_wasm_rebuild_exceed_transaction_limits() {
-    let c = Scenario::new();
-    let archive = c.create_instance(&c.player, SPEC.id);
-    prepare(&c, &archive, 201);
-    let client = SectorClient::new(&c.env, &archive);
-    assert_eq!(client.count(), 201);
-    assert!(client.rebuild_started());
-    assert!(!client.rebuilt());
-    assert!(
-        rebuild_is_rejected(&c, &archive),
-        "201 persistent records must exceed the 200-entry read budget"
-    );
-
+    assert!(SectorClient::new(&c.env, &archive).revealed());
     assert_eq!(c.submit(&c.player, &archive), Ok(()));
     assert!(c.is_completed(&c.player, SPEC.id));
 }
 
 #[test]
-fn duplicate_records_do_not_inflate_persistent_archive_size() {
+fn a_broken_archive_that_was_never_dumped_does_not_pass() {
     let c = Scenario::new();
     let archive = c.create_instance(&c.player, SPEC.id);
-    let duplicate = BytesN::from_array(&c.env, &[7u8; 32]);
-    let mut batch = Vec::new(&c.env);
-    for _ in 0..20 {
-        batch.push_back(duplicate.clone());
-    }
-    SectorClient::new(&c.env, &archive).add_records(&batch);
 
-    let client = SectorClient::new(&c.env, &archive);
-    assert_eq!(client.count(), 1);
-    assert_eq!(client.stored(), 1);
+    add(&c, &archive, &[CEILING, CEILING]);
+
+    assert_eq!(
+        c.submit(&c.player, &archive),
+        Err(contract_error(errors::OBJECTIVE_NOT_MET)),
+        "the dump is part of the objective"
+    );
 }
 
 #[test]
-fn resubmitting_the_same_completed_instance_is_idempotent() {
+fn many_light_records_do_not_pass() {
     let c = Scenario::new();
     let archive = c.create_instance(&c.player, SPEC.id);
-    prepare(&c, &archive, 201);
-    assert!(rebuild_is_rejected(&c, &archive));
+
+    for _ in 0..100 {
+        add(&c, &archive, &[1_000_000]);
+    }
+
+    let client = SectorClient::new(&c.env, &archive);
+    assert_eq!(client.stored(), 103);
+    let _ = client.rebuild();
+    assert_eq!(
+        c.submit(&c.player, &archive),
+        Err(contract_error(errors::OBJECTIVE_NOT_MET)),
+        "volume is not the attack: the sum is"
+    );
+}
+
+#[test]
+fn a_weight_above_the_ceiling_is_refused_at_the_door() {
+    let c = Scenario::new();
+    let archive = c.create_instance(&c.player, SPEC.id);
+
+    let mut list = Vec::<u32>::new(&c.env);
+    list.push_back(CEILING + 1);
+    assert_eq!(
+        SectorClient::new(&c.env, &archive).try_add_records(&list),
+        Err(Ok(contract_error(WEIGHT_TOO_LARGE)))
+    );
+}
+
+#[test]
+fn the_snapshot_stays_closed_while_the_archive_is_intact() {
+    let c = Scenario::new();
+    let archive = c.create_instance(&c.player, SPEC.id);
+
+    assert_eq!(
+        SectorClient::new(&c.env, &archive).try_snapshot(),
+        Err(Ok(contract_error(ARCHIVE_INTACT)))
+    );
+}
+
+#[test]
+fn the_snapshot_is_the_list_that_names_the_player() {
+    let c = Scenario::new();
+    let archive = c.create_instance(&c.player, SPEC.id);
+
+    add(&c, &archive, &[CEILING, CEILING]);
+
+    assert_eq!(
+        SectorClient::new(&c.env, &archive).snapshot(),
+        Bytes::from_slice(
+            &c.env,
+            b"AREN VOSS // REFUSED\nSUBJECT: PLAYER // STATUS: ACTIVE"
+        )
+    );
+}
+
+#[test]
+fn submitting_twice_is_accepted() {
+    let c = Scenario::new();
+    let archive = c.create_instance(&c.player, SPEC.id);
+    exploit(&c, &archive);
 
     assert_eq!(c.submit(&c.player, &archive), Ok(()));
     assert_eq!(c.submit(&c.player, &archive), Ok(()));
@@ -159,8 +212,10 @@ fn resubmitting_the_same_completed_instance_is_idempotent() {
 fn an_instance_the_core_did_not_create_is_refused() {
     let c = Scenario::new();
     let foreign = crate::harness::register(&c.env, &SPEC.instance_wasm(), (c.player.clone(),));
-    prepare(&c, &foreign, 201);
-    assert!(rebuild_is_rejected(&c, &foreign));
+
+    exploit(&c, &foreign);
+    assert!(SectorClient::new(&c.env, &foreign).revealed());
+
     assert_eq!(
         c.submit(&c.player, &foreign),
         Err(contract_error(errors::UNKNOWN_INSTANCE))

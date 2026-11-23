@@ -128,7 +128,7 @@ fn the_decoder_exposes_only_its_declared_interface() {
 }
 
 #[test]
-fn resubmitting_the_same_completed_instance_is_idempotent() {
+fn submitting_twice_is_accepted() {
     let c = Scenario::new();
     let archive = c.create_instance(&c.player, SPEC.id);
     let decoder = c.register_aux("breaker_level_06_decoder");

@@ -19,7 +19,7 @@
     "noEmit": true,
     "skipLibCheck": true,
 
-    "types": ["vite/client", "node"]
+    "types": ["vite/client"]
   },
   "include": ["src", "vite.config.ts"]
 }

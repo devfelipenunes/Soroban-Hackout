@@ -1,5 +1,5 @@
 use crate::harness::{auth, contract_error, errors, LevelSpec, Scenario};
-use soroban_sdk::{contractclient, Address, Env, Val, Vec as SVec};
+use soroban_sdk::{contractclient, Address, Env, IntoVal};
 
 pub const SPEC: LevelSpec = LevelSpec {
     id: 0,
@@ -9,7 +9,6 @@ pub const SPEC: LevelSpec = LevelSpec {
         "amount",
         "count",
         "increment",
-        "increment_by",
         "owner",
         "player",
     ],
@@ -18,8 +17,7 @@ pub const SPEC: LevelSpec = LevelSpec {
 #[allow(dead_code)]
 #[contractclient(name = "CounterClient")]
 pub trait CounterInterface {
-    fn increment(env: Env);
-    fn increment_by(env: Env, amount: u32);
+    fn increment(env: Env, amount: u32);
     fn count(env: Env) -> u32;
     fn owner(env: Env) -> Address;
 }
@@ -44,9 +42,9 @@ fn the_trivial_action_solves_the_level() {
         &c.player,
         &counter,
         "increment",
-        SVec::<Val>::new(&c.env),
+        (1u32,).into_val(&c.env),
     )])
-    .increment();
+    .increment(&1);
     assert_eq!(v.count(), 1);
 
     assert_eq!(c.submit(&c.player, &counter), Ok(()));
@@ -60,7 +58,7 @@ fn increment_requires_the_owner_authorization() {
 
     let v = CounterClient::new(&c.env, &counter);
     assert!(
-        v.try_increment().is_err(),
+        v.try_increment(&1).is_err(),
         "anyone could increment someone else's counter — the require_auth is gone"
     );
     assert_eq!(v.count(), 0, "and the state must not have changed");
@@ -70,9 +68,9 @@ fn increment_requires_the_owner_authorization() {
             &c.other,
             &counter,
             "increment",
-            SVec::<Val>::new(&c.env)
+            (1u32,).into_val(&c.env)
         )])
-        .try_increment()
+        .try_increment(&1)
         .is_err(),
         "the authorization must be the owner's, not just any address's"
     );
@@ -96,9 +94,9 @@ fn level_0_is_an_instance_validator_pair_like_the_others() {
         &c.player,
         &counter,
         "increment",
-        SVec::<Val>::new(&c.env),
+        (1u32,).into_val(&c.env),
     )])
-    .increment();
+    .increment(&1);
     assert_eq!(c.submit(&c.player, &counter), Ok(()));
 
     assert!(c.is_completed(&c.player, SPEC.id));
@@ -106,4 +104,22 @@ fn level_0_is_an_instance_validator_pair_like_the_others() {
         !c.is_completed(&c.player, crate::level_01::SPEC.id),
         "solving level 0 must not solve level 1"
     );
+}
+
+#[test]
+fn the_amount_is_what_the_counter_adds() {
+    let c = Scenario::new();
+    let counter = c.create_instance(&c.player, SPEC.id);
+    let v = CounterClient::new(&c.env, &counter);
+
+    v.mock_auths(&[auth(
+        &c.player,
+        &counter,
+        "increment",
+        (5u32,).into_val(&c.env),
+    )])
+    .increment(&5);
+
+    assert_eq!(v.count(), 5);
+    assert_eq!(c.submit(&c.player, &counter), Ok(()));
 }

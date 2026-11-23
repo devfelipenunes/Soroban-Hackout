@@ -210,7 +210,7 @@ const BASE_TEXTS: Texts = {
     "level.previousCase": "Ir ao caso {code}",
     "level.retry": "Tentar de novo",
     "level.operation":
-      "Operação de disponibilidade: os testes do contrato demonstram a renovação real do TTL. O validador consulta a renovação do andar 24.",
+      "Operação de disponibilidade: os testes do contrato demonstram a renovação real do TTL. O validador consulta a renovação do andar 1000.",
     "level.diagnostics": "O que o validador ainda exige",
     "level.diagnosticNow": "agora: {value}",
     "level.diagnosticExpected": "esperado: {value}",
@@ -221,7 +221,7 @@ const BASE_TEXTS: Texts = {
     "level.tutorial.body":
       "O contador começa em zero. Use os comandos abaixo para levá-lo a um.",
     "level.tutorial.call":
-      "Leia o contador. Na escrita, passe o parâmetro amount em um objeto nomeado; depois confira o valor.",
+      "Leia o contador, incremente uma vez e confira o novo valor.",
     "level.tutorial.desktop":
       "O desafio é jogado no console do desktop; o Breaker OS também oferece Operações, no desktop e no celular.",
     "ledger.current": "Ledger atual: {value}",
@@ -265,6 +265,8 @@ const BASE_TEXTS: Texts = {
     "level.operation.title": "Objetivo da operação",
     "level.operation.discovery":
       "Inspecione a interface real com `window.help()`, formule uma hipótese e só então execute. A prova é verificada na rede quando você submete a solução.",
+    "level.operation.protocolKey":
+      "Neste caso, `window.protocolKey()` (com parênteses) mostra, em resumo, como `protocol::key` é montada; o resto está no contrato.",
     "level.operation.discovery.mobile":
       "No app Operações, consulte Métodos e insira uma chamada em uma célula. Execute a célula e submeta para verificar a solução na rede.",
 
@@ -379,7 +381,6 @@ const BASE_TEXTS: Texts = {
     "device.primary": "Principais",
     "device.system": "Sistema",
     "device.utilities": "Utilitários",
-    "device.tools": "Ferramentas",
     "device.guest": "VISITANTE",
     "device.chooseCase": "Escolha seu próximo caso",
     "device.noActiveCase": "Nenhum caso ativo",
@@ -531,7 +532,6 @@ const BASE_TEXTS: Texts = {
     "device.unread": "{count} itens novos",
     "device.app.unreadOne": "{app}, {count} item não lido",
     "device.app.unreadMany": "{app}, {count} itens não lidos",
-    "device.app.locked": "{app}, disponível depois de concluir o caso",
     "device.locked": "BLOQUEADO",
     "device.lockedStory": "Resolva o caso para abrir a história completa.",
     "device.empty.evidence": "Nenhuma evidência coletada ainda.",
@@ -584,10 +584,7 @@ const BASE_TEXTS: Texts = {
       "instância recusou — confira o estado e a sequência",
     "device.terminal.failure.cancelled": "carteira não assinou a chamada",
     "device.terminal.failure.unknown": "não foi possível concluir",
-    "device.app.cases": "Arquivo de casos",
-    "device.app.investigation": "Investigação",
-    "device.app.evidence": "Evidências",
-    "device.app.collection": "Coleção",
+    "device.app.cases": "Notas",
     "device.notesArchive.title": "Casos concluídos",
     "device.notesArchive.progress": "Casos concluídos: {count}.",
     "device.notesArchive.empty":
@@ -887,7 +884,7 @@ const BASE_TEXTS: Texts = {
     "level.previousCase": "Go to case {code}",
     "level.retry": "Try again",
     "level.operation":
-      "Availability operation: the real TTL is proven in the contract tests; the validator reads floor 24's renewal.",
+      "Availability operation: the real TTL is proven in the contract tests; the validator reads floor 1000's renewal.",
     "level.diagnostics": "What the validator still requires",
     "level.diagnosticNow": "now: {value}",
     "level.diagnosticExpected": "expected: {value}",
@@ -898,7 +895,7 @@ const BASE_TEXTS: Texts = {
     "level.tutorial.body":
       "The counter starts at zero. Use the commands below to bring it to one.",
     "level.tutorial.call":
-      "Read the counter. For the write call, pass the amount parameter in a named object, then check the value.",
+      "Read the counter, increment it once, then check the new value.",
     "level.tutorial.desktop":
       "The challenge runs in the desktop console; Breaker OS also offers Operations, on desktop and mobile.",
     "ledger.current": "Current ledger: {value}",
@@ -943,6 +940,8 @@ const BASE_TEXTS: Texts = {
     "level.operation.title": "Operation objective",
     "level.operation.discovery":
       "Inspect the live interface with `window.help()`, form a hypothesis, and only then execute. The proof is checked on-chain when you submit.",
+    "level.operation.protocolKey":
+      "In this case, `window.protocolKey()` (with parentheses) prints a short form of how `protocol::key` is built; the rest is in the contract.",
     "level.operation.discovery.mobile":
       "In Operations, open Methods and insert a call into a cell. Run the cell, then submit to verify the solution on-chain.",
 
@@ -1054,7 +1053,6 @@ const BASE_TEXTS: Texts = {
     "device.primary": "Primary",
     "device.system": "System",
     "device.utilities": "Utilities",
-    "device.tools": "Tools",
     "device.guest": "GUEST",
     "device.chooseCase": "Choose your next case",
     "device.noActiveCase": "No active case",
@@ -1203,7 +1201,6 @@ const BASE_TEXTS: Texts = {
     "device.unread": "{count} new items",
     "device.app.unreadOne": "{app}, {count} unread item",
     "device.app.unreadMany": "{app}, {count} unread items",
-    "device.app.locked": "{app}, available after completing the case",
     "device.locked": "LOCKED",
     "device.lockedStory": "Solve the case to open the full story.",
     "device.empty.evidence": "No evidence collected yet.",
@@ -1257,10 +1254,7 @@ const BASE_TEXTS: Texts = {
       "instance rejected it — check the state and sequence",
     "device.terminal.failure.cancelled": "wallet did not sign the call",
     "device.terminal.failure.unknown": "could not be completed",
-    "device.app.cases": "Case archive",
-    "device.app.investigation": "Investigation",
-    "device.app.evidence": "Evidence",
-    "device.app.collection": "Collection",
+    "device.app.cases": "Notes",
     "device.notesArchive.title": "Completed cases",
     "device.notesArchive.progress":
       "Completed cases: {count}.",
@@ -1536,7 +1530,6 @@ const BASE_TEXTS: Texts = {
     "device.unread": "{count} elementos sin leer",
     "device.app.unreadOne": "{app}, {count} elemento sin leer",
     "device.app.unreadMany": "{app}, {count} elementos sin leer",
-    "device.app.locked": "{app}, disponible después de completar el caso",
     "device.locked": "BLOQUEADO",
     "device.lockedStory":
       "Resuelve el caso para desbloquear la historia completa.",
@@ -1584,10 +1577,7 @@ const BASE_TEXTS: Texts = {
     "device.operations.token.quotes": '" "',
     "device.operations.token.return": "return",
     "device.operations.noReturn": "La ejecución terminó sin devolver un valor.",
-    "device.app.cases": "Archivo de casos",
-    "device.app.investigation": "Investigación",
-    "device.app.evidence": "Evidencias",
-    "device.app.collection": "Colección",
+    "device.app.cases": "Notas",
     "device.app.comms": "Comunicaciones",
     "device.app.operations": "Operaciones",
     "device.app.terminal": "Terminal",
@@ -1725,7 +1715,7 @@ const ES_CAMPAIGN: Dictionary = {
   "level.previousCase": "Ir al caso {code}",
   "level.retry": "Intentar otra vez",
   "level.operation":
-    "Operación de disponibilidad: las pruebas del contrato verifican el TTL real; el validador comprueba la renovación del piso 24.",
+    "Operación de disponibilidad: las pruebas del contrato verifican el TTL real; el validador comprueba la renovación del piso 1000.",
   "level.diagnostics": "Lo que aún requiere el validador",
   "level.diagnosticNow": "ahora: {value}",
   "level.diagnosticExpected": "esperado: {value}",
@@ -1736,7 +1726,7 @@ const ES_CAMPAIGN: Dictionary = {
   "level.tutorial.body":
     "El contador empieza en cero. Usa los comandos siguientes para llevarlo a uno.",
   "level.tutorial.call":
-    "Lee el contador. En la llamada de escritura, pasa el parámetro amount en un objeto con nombre y comprueba el valor.",
+    "Lee el contador, increméntalo una vez y comprueba el nuevo valor.",
   "level.tutorial.desktop":
     "El desafío se resuelve desde la consola del navegador en una computadora; Breaker OS también ofrece Operaciones, en el escritorio y en el celular.",
   "ledger.current": "Ledger actual: {value}",
@@ -1762,6 +1752,8 @@ const ES_CAMPAIGN: Dictionary = {
   "level.operation.title": "Objetivo de la operación",
   "level.operation.discovery":
     "Inspecciona la interfaz real con `window.help()`, plantea una hipótesis y luego ejecútala. Al enviar la solución, el núcleo la verifica en la cadena.",
+  "level.operation.protocolKey":
+    "En este caso, `window.protocolKey()` (con paréntesis) muestra, en resumen, cómo se arma `protocol::key`; el resto está en el contrato.",
   "level.operation.discovery.mobile":
     "En Operaciones, abre Métodos e inserta una llamada en una celda. Ejecútala y luego envía para verificar la solución en la cadena.",
   "device.notifications": "Notificaciones",
@@ -1832,7 +1824,6 @@ const ES_CAMPAIGN: Dictionary = {
   "device.primary": "Principal",
   "device.system": "Sistema",
   "device.utilities": "Utilidades",
-  "device.tools": "Herramientas",
   "device.guest": "INVITADO",
   "device.chooseCase": "Elige tu próximo caso",
   "device.noActiveCase": "Ningún caso activo",

@@ -3,8 +3,8 @@
 mod protocol;
 use soroban_sdk::xdr::ToXdr;
 use soroban_sdk::{
-    contract, contracterror, contractimpl, contracttype, symbol_short, Address, Bytes, BytesN, Env,
-    Vec,
+    contract, contracterror, contractimpl, contracttype, panic_with_error, symbol_short, Address,
+    Bytes, BytesN, Env, Vec,
 };
 #[contracterror]
 #[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
@@ -12,6 +12,10 @@ use soroban_sdk::{
 pub enum Error {
     InvalidFragment = 1,
     MalformedFragment = 2,
+    /// evidence not reconstructed: unlock the evidence before verifying it
+    EvidenceNotReconstructed = 3,
+    /// unknown evidence reference: the index must be 0, 1 or 2
+    UnknownEvidenceRef = 4,
 }
 #[contracttype]
 pub enum DataKey {
@@ -24,6 +28,13 @@ pub enum DataKey {
     DecoderFailed,
 }
 const MANIFEST: &[u8] = b"VOSS/SEQUENCE/01/DIAGNOSE";
+/// sha256 of the official Decoder WASM (`breaker_level_11_decoder.wasm`). The build is reproducible
+/// for a given toolchain; update it when the Decoder or the toolchain changes — the test
+/// `the_pinned_decoder_hash_matches_the_built_decoder` fails until it is.
+pub const DECODER_WASM_HASH: [u8; 32] = [
+    100, 122, 240, 223, 52, 221, 37, 171, 221, 38, 238, 144, 135, 151, 37, 123, 174, 109, 24, 244,
+    252, 184, 38, 133, 219, 236, 154, 143, 194, 234, 141, 14,
+];
 #[contract]
 pub struct Rewrite;
 #[contractimpl]
@@ -56,6 +67,9 @@ impl Rewrite {
         protocol::commitment(&env, &context, &protocol::key(&env, &context))
     }
     pub fn evidence_share(env: Env, index: u32) -> BytesN<32> {
+        if index > 2 {
+            panic_with_error!(&env, Error::UnknownEvidenceRef);
+        }
         protocol::share(&env, &Self::manifest(env.clone()), index)
     }
     pub fn unlock_evidence(env: Env, key: BytesN<32>) -> bool {
@@ -83,7 +97,7 @@ impl Rewrite {
             .get(&DataKey::Unlocked)
             .unwrap_or(false);
         if !unlocked {
-            panic!("evidence not reconstructed");
+            panic_with_error!(&env, Error::EvidenceNotReconstructed);
         }
         protocol::verify(&env, &signature);
         env.storage()
@@ -131,13 +145,7 @@ impl Rewrite {
                 accepted.to_val(),
             ],
         );
-        let hash = BytesN::from_array(
-            &env,
-            &[
-                115, 204, 27, 161, 237, 14, 187, 67, 208, 194, 126, 65, 3, 124, 168, 237, 201, 248,
-                197, 143, 87, 143, 225, 19, 189, 192, 180, 198, 30, 85, 11, 137,
-            ],
-        );
+        let hash = BytesN::from_array(&env, &DECODER_WASM_HASH);
         if decoder.executable() != Some(soroban_sdk::Executable::Wasm(hash)) {
             return false;
         }

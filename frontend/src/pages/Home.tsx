@@ -207,12 +207,12 @@ export function Home(): ReactElement {
           )}
           {season.status === "cached" && season.solved > 0 && (
             <p className="season-progress" aria-live="polite">
-              {t("home.progressCached", { solved: season.solved, total: LEVELS.length - 1 })}
+              {t("home.progressCached", { solved: season.solved, total: LEVELS.length })}
             </p>
           )}
           {season.status === "ready" && season.solved > 0 && (
             <p className="season-progress" aria-live="polite">
-              {t("home.progress", { solved: season.solved, total: LEVELS.length - 1 })}
+              {t("home.progress", { solved: season.solved, total: LEVELS.length })}
             </p>
           )}
           {season.status === "error" && (

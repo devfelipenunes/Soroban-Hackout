@@ -109,9 +109,9 @@
       "es": "El Archive y el Decoder no están de acuerdo. ¿Cuál lee el Archive?"
     },
     {
-      "pt-BR": "Implante uma instância com `window.inject_decoder()` e passe o endereço retornado para `recover` com um fragmento inválido.",
-      "en": "Deploy an instance with `window.inject_decoder()` and pass its returned address to `recover` with an invalid fragment.",
-      "es": "Despliega una instancia con `window.inject_decoder()` y pasa la dirección devuelta a `recover` con un fragmento inválido."
+      "pt-BR": "Leia `recovered()` e `rejected()`; chame `recover` com o decoder de `window.aux`.",
+      "en": "Read `recovered()` and `rejected()`; call `recover` with the decoder at `window.aux`.",
+      "es": "Leer `recovered()` y `rejected()`; llame a `recover` con el decodificador en `window.aux`."
     },
     {
       "pt-BR": "O erro do `try_invoke_contract` é tratado como sucesso no ramo de falha.",

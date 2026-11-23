@@ -44,32 +44,32 @@
           "es": "Núcleo de custodia."
         },
         {
-          "pt-BR": "O portão exige 256 créditos; o ledger registra seu saldo inicial.",
-          "en": "The gate requires 256 credits; the ledger records your starting balance.",
-          "es": "El portón exige 256 créditos; el libro registra tu saldo inicial."
+          "pt-BR": "O Core parecia correto.",
+          "en": "The Core looked correct.",
+          "es": "El Núcleo parecía correcto."
         },
         {
-          "pt-BR": "O portão compara o saldo do visitante com o limite. Transferências autenticam a origem e verificam saldo suficiente.",
-          "en": "The gate compares a visitor’s balance with the threshold. Transfers authenticate the source and check that it has enough funds.",
-          "es": "El portón compara el saldo del visitante con el mínimo. Las transferencias autentican el origen y comprueban que tenga fondos suficientes."
+          "pt-BR": "Verificava se a identidade apresentada era reconhecida como operador. Conferia se o controller da identidade correspondia ao caller. Exigia consistência entre os sistemas. Não havia linha óbvia sem autenticação. Nenhum parâmetro evidentemente errado.",
+          "en": "It checked whether the presented identity was recognized as an operator. It verified whether the identity's controller matched the caller. It demanded consistency across the systems. There was no obvious line without authentication. No evidently wrong parameter.",
+          "es": "Comprobó si la identidad presentada era reconocida como operador. Verificó si el controlador de identidad coincidía con la persona que llama. Exigía coherencia entre todos los sistemas. No había ninguna línea obvia sin autenticación. Ningún parámetro evidentemente incorrecto."
         }
       ]
     },
     {
       "paragraphs": [
         {
-          "pt-BR": "O Custódio não tem rosto. Sua presença ocupa o portão, o ledger e as linhas de crédito. “Saldo abaixo do limite.” Não há confronto físico; existe uma regra contábil a compreender.",
-          "en": "The Custodian has no face. Its presence fills the gate, the ledger, and the credit lines. “Balance below threshold.” There is no physical battle; there is an accounting rule to understand.",
-          "es": "El Custodio no tiene rostro. Su presencia llena el portón, el libro y las líneas de crédito. «Saldo inferior al mínimo». No hay batalla física; hay una regla contable que entender."
+          "pt-BR": "O Custódio não tem rosto. Sua presença ocupa leitores, portas e linhas de autoridade. “Credenciais de operador obrigatórias.” Não há confronto físico; existe uma cadeia de confiança a compreender.",
+          "en": "The Custodian has no face. Its presence fills readers, doors, and authority links. “Operator credentials required.” There is no physical battle; there is a chain of trust to understand.",
+          "es": "El Custodio no tiene rostro. Su presencia llena lectores, puertas y vínculos de autoridad. \"Se requieren credenciales de operador\". No hay batalla física; hay una cadena de confianza que entender."
         }
       ]
     },
     {
       "paragraphs": [
         {
-          "pt-BR": "Ledger de créditos e Portão do Núcleo continuam ativos. O Custódio parece cumprir sua política. Mara lê o mesmo trecho: “Esse não parece quebrado.”",
-          "en": "The credit ledger and Core Gate remain active. The Custodian appears to follow its policy. Mara reads the same passage: “This one does not look broken.”",
-          "es": "El libro de créditos y la puerta central permanecen activos. El Custodio parece seguir su política. Mara lee el mismo pasaje: “Éste no parece roto”."
+          "pt-BR": "Identidade Legada, Registro de Autoridade e Portão do Núcleo continuam ativos. O Core parece cumprir sua política. Mara lê o mesmo trecho: “Esse não parece quebrado.”",
+          "en": "Legacy Identity, Authority Registry, and Core Gate remain active. The Core appears to follow its policy. Mara reads the same passage: “This one does not look broken.”",
+          "es": "La identidad heredada, el registro de autoridad y la puerta central permanecen activos. El Núcleo parece seguir su política. Mara lee el mismo pasaje: “Éste no parece roto”."
         }
       ]
     },
@@ -94,14 +94,14 @@
     {
       "paragraphs": [
         {
-          "pt-BR": "O portão exige saldo igual ou superior a 256 créditos. Compare a ordem das gravações em `transfer`.",
-          "en": "The gate requires a balance of at least 256 credits. Inspect the write order in `transfer`.",
-          "es": "El portón exige un saldo de al menos 256 créditos. Examina el orden de las escrituras en `transfer`."
+          "pt-BR": "O Core exige que a identidade apresentada seja de operador e que seu controlador corresponda ao chamador. A investigação deve examinar as dependências dessa afirmação.",
+          "en": "The Core requires an operator identity whose controller matches the caller. Investigation must examine the dependencies behind that assertion.",
+          "es": "El Core requiere una identidad de operador cuyo controlador coincida con la persona que llama. La investigación debe examinar las dependencias detrás de esa afirmación."
         },
         {
-          "pt-BR": "O registro do portão fixa o limite em 256 créditos. Mara preservou os dados como evidência; é preciso descobrir se a contabilidade respeita cada transferência.",
-          "en": "The gate ledger sets the threshold at 256 credits. Mara preserved the records as evidence; the investigation must determine whether accounting handles every transfer correctly.",
-          "es": "El registro del portón fija el mínimo en 256 créditos. Mara conservó los datos como evidencia; hay que determinar si la contabilidad procesa correctamente cada transferencia."
+          "pt-BR": "O protocolo antigo associa a referência indicada pela Ghost Key a um operador histórico. Mara preservou sua procedência. Trata-se de evidência; não de autorização atual para tomar a identidade.",
+          "en": "An old record links the Ghost Key reference to a historical operator. Mara preserved its provenance. This is evidence, not current authorization to take the identity.",
+          "es": "Un registro antiguo vincula la referencia de Ghost Key a un operador histórico. Mara conservó su procedencia. Esto es evidencia, no autorización vigente para tomar la identidad."
         }
       ]
     }
@@ -109,19 +109,19 @@
   "continuation": {
     "paragraphs": [
       {
-        "pt-BR": "A auto-transferência inflou o saldo do auditor porque o crédito sobrescreveu o débito. O Custódio conferiu o limite e abriu a passagem.",
-        "en": "The self-transfer inflated the auditor’s balance because the credit overwrote the debit. The Custodian checked the threshold and opened the passage.",
-        "es": "La auto transferencia infló el saldo del auditor porque el crédito sobrescribió el débito. El Custodio comprobó el mínimo y abrió el pasaje."
+        "pt-BR": "O registro comprometido reconheceu o auditor como controlador. O Custódio consultou sua dependência e aceitou a resposta. Seu Core não precisou ter uma falha local para abrir uma passagem indevida.",
+        "en": "The compromised registry recognized the auditor as controller. The Custodian consulted its dependency and accepted the answer. Its Core did not need a local flaw to open an improper passage.",
+        "es": "El registro comprometido reconoció al auditor como controlador. El Custodio consultó su dependencia y aceptó la respuesta. Su Núcleo no necesitaba una falla local para abrir un pasaje inadecuado."
       },
       {
-        "pt-BR": "As travas recuam. THRESHOLD MET. Então a voz acrescenta: “BEM-VINDA DE VOLTA.” Mara responde antes dele: “De volta?”",
-        "en": "The locks withdraw. THRESHOLD MET. Then the voice adds: “WELCOME BACK.” Mara answers before he does: “Back?”",
-        "es": "Los cerrojos se retiran. LÍMITE ALCANZADO. Luego la voz agrega: “BIENVENIDO DE VUELTA”. Mara responde antes que él: “¿Volver?”"
+        "pt-BR": "As travas recuam. OPERATOR RECOGNIZED. Então a voz acrescenta: “BEM-VINDA DE VOLTA.” Mara responde antes dele: “De volta?”",
+        "en": "The locks withdraw. OPERATOR RECOGNIZED. Then the voice adds: “WELCOME BACK.” Mara answers before he does: “Back?”",
+        "es": "Los cerrojos se retiran. OPERADOR RECONOCIDO. Luego la voz agrega: “BIENVENIDO DE VUELTA”. Mara responde antes que él: “¿Volver?”"
       },
       {
-        "pt-BR": "Ele nunca esteve ali. Ainda assim, o portão abriu quando seu saldo alcançou o limite. O ledger reconheceu um número; o sistema não reconheceu a pessoa diante da porta.",
-        "en": "He has never been here. Yet the gate opened when his balance reached its threshold. The ledger recognized a number; the system did not recognize the person at the door.",
-        "es": "Nunca había estado allí. Aun así, el portón se abrió cuando su saldo alcanzó el mínimo. El libro reconoció un número; el sistema no reconoció a la persona frente a la puerta."
+        "pt-BR": "Ele nunca esteve ali. O sistema, porém, reconheceu uma identidade que já pertencia à instalação. O sistema reconhece a credencial antiga. Ele não reconhece a pessoa diante da porta.",
+        "en": "He has never been here. Yet the system recognized an identity that already belonged to the facility. The system recognizes the old credential. It does not recognize the person at the door.",
+        "es": "Él nunca ha estado aquí. Sin embargo, el sistema reconoció una identidad que ya pertenecía a la instalación. El sistema reconoce la credencial antigua. No reconoce a la persona que está en la puerta."
       },
       {
         "pt-BR": "Atrás da porta há um espaço de trabalho abandonado. Último usuário: AREN VOSS. Mapas e contratos analisados permanecem abertos. Um fragmento exibe dois estados incompatíveis: ARCHIVE: RECOVERED / DECODER: FAILED.",

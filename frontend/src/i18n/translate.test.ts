@@ -157,3 +157,15 @@ describe("the dictionary and its callers", () => {
     expect(wrong).toEqual([]);
   });
 });
+
+describe("the final sequence copy", () => {
+  it("counts the 12 cases before the last one, in every language", () => {
+    for (const language of LANGUAGES) {
+      for (const key of ["home.final.teaserBody", "final.noWalletHint"]) {
+        const text = GAME_TEXTS[language]?.[key] ?? "";
+        expect(text).toMatch(/\b12\b/);
+        expect(text).not.toMatch(/\b13\b/);
+      }
+    }
+  });
+});

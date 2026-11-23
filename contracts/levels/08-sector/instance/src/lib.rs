@@ -1,20 +1,29 @@
 #![no_std]
 
-use soroban_sdk::{contract, contractimpl, contracttype, Bytes, BytesN, Env};
+use soroban_sdk::{
+    contract, contracterror, contractimpl, contracttype, panic_with_error, Address, Bytes, BytesN,
+    Env, Vec,
+};
 
-// Testnet currently permits 200 persistent ledger entries to be read by one
-// transaction. A rebuild over 201 unique records necessarily exceeds that cap.
-const THRESHOLD: u32 = 201;
-const MAX_BATCH: u32 = 20;
+/// A record's weight must fit an `i32`: it looks like a safe ceiling, and it is the only check
+/// the door makes.
+const MAX_WEIGHT: u32 = i32::MAX as u32;
+const SEED_WEIGHTS: [u32; 3] = [100, 200, 300];
+
+#[contracterror]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
+#[repr(u32)]
+pub enum Error {
+    /// archive intact: the maintenance pass still runs, so there is nothing to dump
+    ArchiveIntact = 1,
+    /// weight too large: a record's weight must fit an i32 (at most 2147483647)
+    WeightTooLarge = 2,
+}
 
 #[contracttype]
-#[derive(Clone)]
 pub enum DataKey {
-    Count,
-    RecordAt(u32),
-    Seen(BytesN<32>),
-    RebuildStarted,
-    Rebuilt,
+    Weights,
+    Revealed,
 }
 
 #[contract]
@@ -22,88 +31,78 @@ pub struct Sector;
 
 #[contractimpl]
 impl Sector {
-    pub fn __constructor(_env: Env, _player: soroban_sdk::Address) {}
+    pub fn __constructor(env: Env, player: Address) {
+        let _ = player;
 
-    /// Anyone can add unique records. Small batches keep each write operation
-    /// affordable while allowing the persistent archive to grow without a cap.
-    pub fn add_records(env: Env, records: soroban_sdk::Vec<BytesN<32>>) {
-        if records.len() > MAX_BATCH {
-            panic!("batch too large");
+        let mut weights = Vec::<u32>::new(&env);
+        for weight in SEED_WEIGHTS {
+            weights.push_back(weight);
         }
 
-        let mut count: u32 = env.storage().instance().get(&DataKey::Count).unwrap_or(0);
-
-        for record in records.iter() {
-            let seen_key = DataKey::Seen(record.clone());
-            if !env.storage().persistent().has(&seen_key) {
-                env.storage().persistent().set(&seen_key, &true);
-                env.storage()
-                    .persistent()
-                    .set(&DataKey::RecordAt(count), &record);
-                count = count.saturating_add(1);
-            }
-        }
-
-        env.storage().instance().set(&DataKey::Count, &count);
+        env.storage().instance().set(&DataKey::Weights, &weights);
+        env.storage().instance().set(&DataKey::Revealed, &false);
     }
 
-    pub fn count(env: Env) -> u32 {
-        env.storage().instance().get(&DataKey::Count).unwrap_or(0)
+    /// Appends one record per weight. Each weight is checked on its own, against the ceiling.
+    /// Records are never removed.
+    pub fn add_records(env: Env, weights: Vec<u32>) {
+        let mut all = Self::load(&env);
+
+        for weight in weights.iter() {
+            if weight > MAX_WEIGHT {
+                panic_with_error!(&env, Error::WeightTooLarge);
+            }
+            all.push_back(weight);
+        }
+
+        env.storage().instance().set(&DataKey::Weights, &all);
+    }
+
+    /// The maintenance pass: totals the weight of every record and digests the archive.
+    pub fn rebuild(env: Env) -> BytesN<32> {
+        let mut total: u32 = 0;
+        let mut material = Bytes::new(&env);
+
+        for weight in Self::load(&env).iter() {
+            total += weight;
+            material.extend_from_array(&weight.to_be_bytes());
+        }
+
+        material.extend_from_array(&total.to_be_bytes());
+        env.crypto().sha256(&material).into()
     }
 
     pub fn stored(env: Env) -> u32 {
-        Self::count(env)
+        Self::load(&env).len()
     }
 
-    pub fn threshold(_env: Env) -> u32 {
-        THRESHOLD
-    }
-
-    pub fn begin_rebuild(env: Env) {
-        env.storage()
-            .instance()
-            .set(&DataKey::RebuildStarted, &true);
-    }
-
-    /// Rebuild the index by loading every persistent record. Once the archive
-    /// exceeds the transaction read-entry budget, the host rejects this call.
-    pub fn rebuild(env: Env) -> BytesN<32> {
-        if !env
-            .storage()
-            .instance()
-            .get(&DataKey::RebuildStarted)
-            .unwrap_or(false)
-        {
-            panic!("rebuild not started");
+    /// The raw dump of the archive. It only answers once the maintenance pass is dead.
+    pub fn snapshot(env: Env) -> Bytes {
+        let total = Self::load(&env)
+            .iter()
+            .try_fold(0u32, |sum, weight| sum.checked_add(weight));
+        if total.is_some() {
+            panic_with_error!(&env, Error::ArchiveIntact);
         }
 
-        let count = Self::count(env.clone());
-        let mut material = Bytes::new(&env);
-        for index in 0..count {
-            let record: BytesN<32> = env
-                .storage()
-                .persistent()
-                .get(&DataKey::RecordAt(index))
-                .unwrap_or_else(|| panic!("archive record missing"));
-            material.append(&Bytes::from_slice(&env, &record.to_array()));
-        }
-
-        let digest = env.crypto().sha256(&material);
-        env.storage().instance().set(&DataKey::Rebuilt, &true);
-        digest.into()
+        env.storage().instance().set(&DataKey::Revealed, &true);
+        Bytes::from_slice(
+            &env,
+            b"AREN VOSS // REFUSED\nSUBJECT: PLAYER // STATUS: ACTIVE",
+        )
     }
 
-    pub fn rebuild_started(env: Env) -> bool {
+    pub fn revealed(env: Env) -> bool {
         env.storage()
             .instance()
-            .get(&DataKey::RebuildStarted)
+            .get(&DataKey::Revealed)
             .unwrap_or(false)
     }
 
-    pub fn rebuilt(env: Env) -> bool {
+    fn load(env: &Env) -> Vec<u32> {
         env.storage()
             .instance()
-            .get(&DataKey::Rebuilt)
-            .unwrap_or(false)
+            .get(&DataKey::Weights)
+            .unwrap_or(Vec::new(env))
     }
 }

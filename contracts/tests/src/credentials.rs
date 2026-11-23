@@ -56,8 +56,13 @@ fn claim_auth<'a>(c: &'a Scenario, address: &'a Address) -> soroban_sdk::testuti
 fn complete_tutorial(c: &Scenario) {
     let instance = c.create_instance(&c.player, crate::level_00::SPEC.id);
     CounterClient::new(&c.env, &instance)
-        .mock_auths(&[auth(&c.player, &instance, "increment", Vec::new(&c.env))])
-        .increment();
+        .mock_auths(&[auth(
+            &c.player,
+            &instance,
+            "increment",
+            (1u32,).into_val(&c.env),
+        )])
+        .increment(&1);
     assert_eq!(c.submit(&c.player, &instance), Ok(()));
 }
 

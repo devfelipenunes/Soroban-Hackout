@@ -26,9 +26,9 @@ import {
   type CheckResult,
 } from "../levels/diagnostics.ts";
 import { useAccount } from "../chain/account.tsx";
-import { coreClient, coreReader, deployAuxiliary, instanceClient } from "../chain/core.ts";
+import { coreClient, coreReader, instanceClient } from "../chain/core.ts";
 import { emit } from "../chain/events.ts";
-import { auxId, auxWasmHash } from "../chain/network.ts";
+import { auxId } from "../chain/network.ts";
 import { clearSeasonCache } from "../game/season.ts";
 import { readAccess, readLevel, createInstanceGate } from "../chain/level.ts";
 import {
@@ -313,7 +313,6 @@ function Page({ level }: { level: LevelType }): ReactElement {
         if (!alive) return;
 
         const spec = descriptorsFromSpec(contract.spec);
-        const decoderHash = level.id === 6 ? auxWasmHash(level) : undefined;
         const resolved = resolveCalls(contract, spec, (method, phase) => {
           console.info(`[breaker] ${method} — ${phase}`);
         });
@@ -324,9 +323,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
           contract: resolved,
           spec,
           aux: auxId(level),
-          injectDecoder: decoderHash !== undefined
-            ? () => deployAuxiliary(decoderHash, address, signer)
-            : undefined,
+          protocolKey: level.id === 11 || level.id === 12,
         });
         setContractSpec(spec);
         setCallable(resolved as Callable);
@@ -473,6 +470,9 @@ function Page({ level }: { level: LevelType }): ReactElement {
       const sent = await tx.signAndSend();
       instanceGate.current.bump();
       setInstance(sent.result);
+      // A new instance restarts the level: it is judged on its own, even if the case was already solved.
+      setConfirmed(false);
+      rejections.current = 0;
       emit({ type: "instance", at: Date.now() });
     } catch (error) {
       const code = contractErrorCode(error);
@@ -663,6 +663,9 @@ function Page({ level }: { level: LevelType }): ReactElement {
               <h3>{t("level.operation.title")}</h3>
               <p>{caseFile.objective[language]}</p>
               <p>{t(mobileGameplay ? "level.operation.discovery.mobile" : "level.operation.discovery")}</p>
+              {!mobileGameplay && (level.id === 11 || level.id === 12) && (
+                <p>{t("level.operation.protocolKey")}</p>
+              )}
               <p className="level-operation__question">{caseFile.unknown[0]?.[language]}</p>
             </div>
           )}
@@ -697,7 +700,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
               {[
                 "window.help()",
                 "await window.contract.count()",
-                "await window.contract.increment_by({ amount: 1 })",
+                "await window.contract.increment({ amount: 1 })",
                 "await window.contract.count()",
               ].map((command, index) => (
                 <div className="tutorial__command" key={`${index}-${command}`}>
@@ -816,11 +819,16 @@ function Page({ level }: { level: LevelType }): ReactElement {
                     <span className="diagnostics__value">
                       {t("level.diagnosticNow", {
                         value: displayValue(item.current),
-                      })}{" "}
-                      ·{" "}
-                      {t("level.diagnosticExpected", {
-                        value: displayValue(item.expected),
                       })}
+                      {item.expected !== undefined && item.expected !== null && (
+                        <>
+                          {" "}
+                          ·{" "}
+                          {t("level.diagnosticExpected", {
+                            value: displayValue(item.expected),
+                          })}
+                        </>
+                      )}
                     </span>
                   )}
                 </li>
@@ -878,35 +886,15 @@ function Page({ level }: { level: LevelType }): ReactElement {
         <nav className="level-actions" aria-label={t("level.actions")}>
           <div className="level-actions__row">
             {solved ? (
-              <>
-                <button
-                  type="button"
-                  className="button button--secondary"
-                  onClick={() => void createInstance()}
-                  disabled={creating || accountBusy}
-                  aria-busy={creating}
-                >
-                  {creating ? t("level.creating") : t("level.newInstance")}
-                </button>
-                <button
-                  type="button"
-                  className="button"
-                  onClick={() => void submit()}
-                  disabled={!canSubmit || instance === null}
-                  aria-busy={submitting}
-                >
-                  {submitting ? t("level.submitting") : t("level.submit")}
-                </button>
-                {next !== undefined ? (
-                  <Link className="button level-actions__next" to={`/level/${next.id}`}>
-                    {t("level.next")}
-                  </Link>
-                ) : (
-                  <Link className="button level-actions__next" to="/final">
-                    {t("levelHero.continueStory")}
-                  </Link>
-                )}
-              </>
+              next !== undefined ? (
+                <Link className="button level-actions__next" to={`/level/${next.id}`}>
+                  {t("level.next")}
+                </Link>
+              ) : (
+                <Link className="button level-actions__next" to="/final">
+                  {t("levelHero.continueStory")}
+                </Link>
+              )
             ) : (
               <>
                 <button

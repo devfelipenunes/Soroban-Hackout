@@ -9,24 +9,24 @@
     {
       "paragraphs": [
         {
-          "pt-BR": "O elevador mostrava 999 botões.",
-          "en": "The elevator showed 999 buttons.",
-          "es": "El ascensor mostraba 999 botones."
+          "pt-BR": "O elevador mostrava vinte e três botões.",
+          "en": "The elevator showed twenty-three buttons.",
+          "es": "El ascensor mostraba veintitrés botones."
         },
         {
-          "pt-BR": "Os blueprints mostravam 999 andares.",
-          "en": "The blueprints showed 999 floors.",
-          "es": "Los planos mostraban 999 pisos."
+          "pt-BR": "Os blueprints mostravam vinte e três andares.",
+          "en": "The blueprints showed twenty-three floors.",
+          "es": "Los planos mostraban veintitrés pisos."
         },
         {
-          "pt-BR": "Os registros de construção, inspeção e manutenção mostravam 999 andares.",
-          "en": "The construction, inspection, and maintenance records showed 999 floors.",
-          "es": "Los registros de construcción, inspección y mantenimiento mostraban 999 pisos."
+          "pt-BR": "Os registros de construção, inspeção e manutenção mostravam vinte e três andares.",
+          "en": "The construction, inspection, and maintenance records showed twenty-three floors.",
+          "es": "Los registros de construcción, inspección y mantenimiento mostraban veintitrés pisos."
         },
         {
-          "pt-BR": "A Ghost Key insistia em vinte e quatro.",
-          "en": "The Ghost Key insisted on one thousand.",
-          "es": "La Llave Fantasma insistió en 1000."
+          "pt-BR": "A Ghost Key insistia no andar 1000.",
+          "en": "The Ghost Key insisted on floor 1000.",
+          "es": "La Llave Fantasma insistió en el piso 1000."
         },
         {
           "pt-BR": "O Breaker ficou sozinho diante do painel enquanto Mara consultava arquivos da Autoridade. O prédio era antigo, mas ainda utilizado. Empresas ocupavam os andares superiores; os inferiores haviam sido convertidos em infraestrutura pública décadas antes.",
@@ -44,18 +44,18 @@
           "es": "No hubo ninguna renovación que pudiera explicar la falta de un piso."
         },
         {
-          "pt-BR": "— As plantas confirmam 999 andares — disse Mara.",
-          "en": "— Blueprints confirm 999 floors — Mara said.",
-          "es": "— Los planos confirman 999 pisos — dijo Mara."
+          "pt-BR": "— As plantas confirmam vinte e três andares — disse Mara.",
+          "en": "— Blueprints confirm twenty-three floors — Mara said.",
+          "es": "— Los planos confirman veintitrés pisos — dijo Mara."
         }
       ]
     },
     {
       "paragraphs": [
         {
-          "pt-BR": "O elevador apresenta 999 botões. A planta e o cadastro municipal concordam com ele. A Ghost Key documentada no Armazém aponta para o milésimo.",
-          "en": "The elevator has 999 buttons. The blueprint and municipal register agree. The Ghost Key documented at the Warehouse points to the thousandth floor.",
-          "es": "El ascensor tiene 999 botones. El plano y el padrón municipal coinciden. La Llave Fantasma documentada en el Almacén apunta a el piso 1000."
+          "pt-BR": "O elevador apresenta vinte e três botões. A planta e o cadastro municipal concordam com ele. A Ghost Key documentada no Armazém aponta para o andar 1000.",
+          "en": "The elevator has twenty-three buttons. The blueprint and municipal register agree. The Ghost Key documented at the Warehouse points to floor 1000.",
+          "es": "El ascensor tiene veintitrés botones. El plano y el padrón municipal coinciden. La Llave Fantasma documentada en el Almacén apunta al piso 1000."
         }
       ]
     },
@@ -89,9 +89,9 @@
     {
       "paragraphs": [
         {
-          "pt-BR": "Andares reconhecidos: 01–999. A referência externa ao 1000 contradiz o índice moderno. O mapa não prova demolição.",
-          "en": "Recognized floors: 01–999. An external reference to 1000 contradicts the modern index. The map does not prove demolition.",
-          "es": "Pisos reconocidos: 01–999. Una referencia externa al 1000 contradice el índice moderno. El mapa no prueba la demolición."
+          "pt-BR": "Andares reconhecidos: 01–23. A referência externa ao 1000 contradiz o índice moderno. O mapa não prova demolição.",
+          "en": "Recognized floors: 01–23. An external reference to 1000 contradicts the modern index. The map does not prove demolition.",
+          "es": "Pisos reconocidos: 01–23. Una referencia externa al 1000 contradice el índice moderno. El mapa no prueba la demolición."
         },
         {
           "pt-BR": "Nenhuma ordem de remoção ou demolição encontrada para o local indicado. O arquivo histórico deve ser comparado com o estado ativo, sem confundir Persistent arquivado com Temporary excluído.",
