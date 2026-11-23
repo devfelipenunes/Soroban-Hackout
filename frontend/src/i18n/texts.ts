@@ -265,6 +265,8 @@ const BASE_TEXTS: Texts = {
     "level.operation.title": "Objetivo da operação",
     "level.operation.discovery":
       "Inspecione a interface real com `window.help()`, formule uma hipótese e só então execute. A prova é verificada na rede quando você submete a solução.",
+    "level.operation.protocolKey":
+      "Neste caso, `window.protocolKey()` (com parênteses) mostra, em resumo, como `protocol::key` é montada; o resto está no contrato.",
     "level.operation.discovery.mobile":
       "No app Operações, consulte Métodos e insira uma chamada em uma célula. Execute a célula e submeta para verificar a solução na rede.",
 
@@ -938,6 +940,8 @@ const BASE_TEXTS: Texts = {
     "level.operation.title": "Operation objective",
     "level.operation.discovery":
       "Inspect the live interface with `window.help()`, form a hypothesis, and only then execute. The proof is checked on-chain when you submit.",
+    "level.operation.protocolKey":
+      "In this case, `window.protocolKey()` (with parentheses) prints a short form of how `protocol::key` is built; the rest is in the contract.",
     "level.operation.discovery.mobile":
       "In Operations, open Methods and insert a call into a cell. Run the cell, then submit to verify the solution on-chain.",
 
@@ -1748,6 +1752,8 @@ const ES_CAMPAIGN: Dictionary = {
   "level.operation.title": "Objetivo de la operación",
   "level.operation.discovery":
     "Inspecciona la interfaz real con `window.help()`, plantea una hipótesis y luego ejecútala. Al enviar la solución, el núcleo la verifica en la cadena.",
+  "level.operation.protocolKey":
+    "En este caso, `window.protocolKey()` (con paréntesis) muestra, en resumen, cómo se arma `protocol::key`; el resto está en el contrato.",
   "level.operation.discovery.mobile":
     "En Operaciones, abre Métodos e inserta una llamada en una celda. Ejecútala y luego envía para verificar la solución en la cadena.",
   "device.notifications": "Notificaciones",

@@ -50,6 +50,37 @@ describe("mountWithoutInstance", () => {
   });
 });
 
+describe("window.protocolKey", () => {
+  const base = { player: "GPLAYER", instance: "CINSTANCE", contract: {}, spec: SPEC };
+
+  it("exists only on the levels that ask for it, and prints and returns the algorithm", () => {
+    const writes = vi.fn();
+    const plain: GlobalRegistry = {};
+    mountGlobals(plain, { ...base, writes: () => {} });
+    expect(plain["protocolKey"]).toBeUndefined();
+
+    const target: GlobalRegistry = {};
+    const unmount = mountGlobals(target, { ...base, protocolKey: true, writes });
+    const text = (target["protocolKey"] as () => string)();
+
+    expect(text).toContain("share(0) ^ share(1) ^ share(2)");
+    expect(text).toContain("evidence_share");
+    expect(text.split("\n")).toHaveLength(2);
+    expect(writes).toHaveBeenCalledWith(expect.stringContaining("protocol::key"));
+
+    unmount();
+    expect(target["protocolKey"]).toBeUndefined();
+  });
+
+  it("is listed by help() when present", () => {
+    const writes = vi.fn();
+    const target: GlobalRegistry = {};
+    mountGlobals(target, { ...base, protocolKey: true, writes });
+    (target["help"] as () => void)();
+    expect(writes.mock.calls[0]?.[0]).toContain("window.protocolKey()");
+  });
+});
+
 describe("mountGlobals", () => {
   it("exposes the globals, and the contract is an object — never a string", () => {
     const target: GlobalRegistry = {};

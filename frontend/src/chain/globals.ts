@@ -1,7 +1,7 @@
 import { emit, type CallFailure } from "./events.ts";
 import { contractReason } from "./errors.ts";
 
-export const GLOBAL_NAMES = ["player", "instance", "contract", "aux", "help"] as const;
+export const GLOBAL_NAMES = ["player", "instance", "contract", "aux", "help", "protocolKey"] as const;
 
 export type GlobalRegistry = Record<string, unknown>;
 
@@ -29,6 +29,8 @@ export type Options = {
   contract: object;
   spec: readonly Descriptor[];
   aux?: string | undefined;
+  // Levels whose contract derives the unlock key with `protocol::key` get `window.protocolKey()`.
+  protocolKey?: boolean;
   writes?: (text: string) => void;
 };
 
@@ -328,6 +330,12 @@ export function resolveCalls(
   return wrapped;
 }
 
+// The short form of `protocol::key` (contracts/levels/11-rewrite/protocol.rs); the rest is in the contract.
+export const PROTOCOL_KEY_ALGORITHM = [
+  "protocol::key = share(0) ^ share(1) ^ share(2)",
+  "share(i)      = await window.contract.evidence_share({ index: i })",
+].join("\n");
+
 function signature(d: Descriptor): string {
   const args = d.entries.map((e) => `${e.name}: ${e.kind}`).join(", ");
   const returns = d.outputs.length > 0 ? `: ${d.outputs.join(" | ")}` : "";
@@ -358,6 +366,12 @@ function helpBlock(writes: (t: string) => void): (o: Options) => void {
             `    window.aux         ${o.aux}`,
             "                       the level's auxiliary contract, when it has one",
           ]),
+      ...(o.protocolKey === true
+        ? [
+            "    window.protocolKey()",
+            "                       the algorithm behind protocol::key (this level only)",
+          ]
+        : []),
       "    window.help()      this message",
       "",
       "  How to call",
@@ -408,6 +422,12 @@ export function mountGlobals(target: GlobalRegistry, o: Options): () => void {
   target["contract"] = o.contract;
   target["aux"] = o.aux;
   target["help"] = () => help(o);
+  if (o.protocolKey === true) {
+    target["protocolKey"] = () => {
+      writes(`\n${PROTOCOL_KEY_ALGORITHM}\n`);
+      return PROTOCOL_KEY_ALGORITHM;
+    };
+  }
 
   return () => {
     for (const name of GLOBAL_NAMES) delete target[name];
@@ -424,6 +444,7 @@ export function mountWithoutInstance(
   target["instance"] = undefined;
   target["contract"] = undefined;
   target["aux"] = undefined;
+  target["protocolKey"] = undefined;
   target["help"] = () =>
     print(
       [

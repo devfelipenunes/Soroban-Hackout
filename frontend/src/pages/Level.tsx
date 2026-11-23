@@ -323,6 +323,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
           contract: resolved,
           spec,
           aux: auxId(level),
+          protocolKey: level.id === 11 || level.id === 12,
         });
         setContractSpec(spec);
         setCallable(resolved as Callable);
@@ -662,6 +663,9 @@ function Page({ level }: { level: LevelType }): ReactElement {
               <h3>{t("level.operation.title")}</h3>
               <p>{caseFile.objective[language]}</p>
               <p>{t(mobileGameplay ? "level.operation.discovery.mobile" : "level.operation.discovery")}</p>
+              {!mobileGameplay && (level.id === 11 || level.id === 12) && (
+                <p>{t("level.operation.protocolKey")}</p>
+              )}
               <p className="level-operation__question">{caseFile.unknown[0]?.[language]}</p>
             </div>
           )}
