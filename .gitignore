@@ -52,3 +52,4 @@ Thumbs.db
 npm-debug.log*
 .playwright-mcp/
 .playwright-cli/
+docs/
