@@ -5,6 +5,8 @@ pub const SPEC: LevelSpec = LevelSpec {
     id: 8,
     slug: "sector",
     interface: &[
+        "Error",
+        "ArchiveIntact",
         "__constructor",
         "add_records",
         "count",
@@ -154,16 +156,13 @@ fn the_snapshot_is_the_list_that_names_the_player() {
 }
 
 #[test]
-fn submitting_twice_is_refused() {
+fn submitting_twice_is_accepted() {
     let c = Scenario::new();
     let archive = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &archive);
 
     assert_eq!(c.submit(&c.player, &archive), Ok(()));
-    assert_eq!(
-        c.submit(&c.player, &archive),
-        Err(contract_error(errors::ALREADY_COMPLETED))
-    );
+    assert_eq!(c.submit(&c.player, &archive), Ok(()));
 }
 
 #[test]

@@ -3,8 +3,8 @@
 mod protocol;
 use soroban_sdk::xdr::ToXdr;
 use soroban_sdk::{
-    contract, contracterror, contractimpl, contracttype, symbol_short, Address, Bytes, BytesN, Env,
-    Vec,
+    contract, contracterror, contractimpl, contracttype, panic_with_error, symbol_short, Address,
+    Bytes, BytesN, Env, Vec,
 };
 #[contracterror]
 #[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
@@ -12,6 +12,10 @@ use soroban_sdk::{
 pub enum Error {
     InvalidFragment = 1,
     MalformedFragment = 2,
+    /// evidence not reconstructed: unlock the evidence before verifying it
+    EvidenceNotReconstructed = 3,
+    /// unknown evidence reference: the index must be 0, 1 or 2
+    UnknownEvidenceRef = 4,
 }
 #[contracttype]
 pub enum DataKey {
@@ -56,6 +60,9 @@ impl Rewrite {
         protocol::commitment(&env, &context, &protocol::key(&env, &context))
     }
     pub fn evidence_share(env: Env, index: u32) -> BytesN<32> {
+        if index > 2 {
+            panic_with_error!(&env, Error::UnknownEvidenceRef);
+        }
         protocol::share(&env, &Self::manifest(env.clone()), index)
     }
     pub fn unlock_evidence(env: Env, key: BytesN<32>) -> bool {
@@ -83,7 +90,7 @@ impl Rewrite {
             .get(&DataKey::Unlocked)
             .unwrap_or(false);
         if !unlocked {
-            panic!("evidence not reconstructed");
+            panic_with_error!(&env, Error::EvidenceNotReconstructed);
         }
         protocol::verify(&env, &signature);
         env.storage()

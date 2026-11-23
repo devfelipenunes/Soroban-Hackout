@@ -4,6 +4,7 @@ import {
   ERR_ACCESS_LOCKED,
   ERR_OBJECTIVE_NOT_MET,
   contractErrorCode,
+  contractReason,
   errorKey,
   reasonOf,
 } from "./errors.ts";
@@ -24,5 +25,19 @@ describe("contract errors", () => {
 
   it("keeps the reason of an object error", () => {
     expect(reasonOf({ message: "boom" })).toBe("boom");
+  });
+
+  it("names a contract error from the spec instead of hiding it", () => {
+    const spec = {
+      errorCases: () => [
+        { name: "ChoiceOutOfRange", doc: "each choice must be below 4", value: 2 },
+      ],
+    };
+    const failure = new Error('HostError: Error(Contract, #2)\n\nEvent log (newest first):');
+
+    expect(contractReason(spec, failure)).toBe("ChoiceOutOfRange — each choice must be below 4");
+    expect(contractReason(spec, new Error("Error(Contract, #9)"))).toBeNull();
+    expect(contractReason(spec, new Error("network"))).toBeNull();
+    expect(contractReason(undefined, failure)).toBeNull();
   });
 });

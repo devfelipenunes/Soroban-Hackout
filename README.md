@@ -3,8 +3,8 @@
 **Breaker** is a capture-the-flag game for **Stellar/Soroban**. Each level is a deliberately
 vulnerable contract that the player has to exploit to move forward.
 
-> **Status:** 13 levels are live on testnet in the playable era `CDUVH22U…`, with on-chain
-> progression from 0 to 12. The sandbox era `CDWHNWW6…` carries the same cases without
+> **Status:** 13 levels are live on testnet in the playable era `CA5VQHGY…`, with on-chain
+> progression from 0 to 12. The sandbox era `CBKNSXN4…` carries the same cases without
 > prerequisites, for development and demos. Both are testnet.
 
 ## What it is

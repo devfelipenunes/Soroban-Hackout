@@ -5,6 +5,10 @@ pub const SPEC: LevelSpec = LevelSpec {
     id: 5,
     slug: "custodian",
     interface: &[
+        "UnknownIdentity",
+        "Error",
+        "InvalidIdentity",
+        "OperatorNotRecognized",
         "__constructor",
         "caller",
         "claim_identity",
@@ -146,16 +150,13 @@ fn the_gate_only_opens_for_the_controller() {
 }
 
 #[test]
-fn submitting_twice_is_refused() {
+fn submitting_twice_is_accepted() {
     let c = Scenario::new();
     let custodian = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &custodian, &c.player);
 
     assert_eq!(c.submit(&c.player, &custodian), Ok(()));
-    assert_eq!(
-        c.submit(&c.player, &custodian),
-        Err(contract_error(errors::ALREADY_COMPLETED))
-    );
+    assert_eq!(c.submit(&c.player, &custodian), Ok(()));
 }
 
 #[test]

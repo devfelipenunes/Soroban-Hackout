@@ -7,6 +7,8 @@ pub const SPEC: LevelSpec = LevelSpec {
     id: 4,
     slug: "forgotten",
     interface: &[
+        "Error",
+        "UnknownFloor",
         "__constructor",
         "floor",
         "floor_id",
@@ -138,16 +140,13 @@ fn renewing_a_visible_floor_does_not_expose_the_forgotten_one() {
 }
 
 #[test]
-fn submitting_twice_is_refused() {
+fn submitting_twice_is_accepted() {
     let c = Scenario::new();
     let building = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &building);
 
     assert_eq!(c.submit(&c.player, &building), Ok(()));
-    assert_eq!(
-        c.submit(&c.player, &building),
-        Err(contract_error(errors::ALREADY_COMPLETED))
-    );
+    assert_eq!(c.submit(&c.player, &building), Ok(()));
 }
 
 #[test]

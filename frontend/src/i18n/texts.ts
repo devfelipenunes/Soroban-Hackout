@@ -61,7 +61,7 @@ const BASE_TEXTS: Texts = {
       "O Arquiteto não criou as falhas. Encontrou a cidade já quebrada e transformou o caminho em um filtro.",
     "home.final.teaser": "Uma arquitetura fora do mapa. Encontre-a.",
     "home.final.teaserBody":
-      "A sequência final abre depois que os 13 casos estiverem resolvidos.",
+      "A sequência final abre depois que os 12 casos estiverem resolvidos.",
     "home.final.ready": "Sequência pronta.",
     "home.final.locked": "O desfecho é narrado na sequência final.",
     "home.final.open": "Ler a sequência final",
@@ -73,7 +73,7 @@ const BASE_TEXTS: Texts = {
     "final.checking": "Lendo o seu progresso na cadeia…",
     "final.noWallet": "Entre com sua passkey para ler a sequência final.",
     "final.noWalletHint":
-      "A sequência é liberada quando os 13 casos estão resolvidos.",
+      "A sequência é liberada quando os 12 casos estão resolvidos.",
     "final.howToPlay": "Como jogar",
     "final.locked": "Sequência bloqueada.",
     "final.progress": "{solved} de {total} casos resolvidos.",
@@ -736,7 +736,7 @@ const BASE_TEXTS: Texts = {
       "The Architect did not create the flaws. He found the city already broken and turned the path into a filter.",
     "home.final.teaser": "An architecture off the map. Find it.",
     "home.final.teaserBody":
-      "The final sequence opens after all 13 cases are solved.",
+      "The final sequence opens after all 12 cases are solved.",
     "home.final.ready": "Sequence ready.",
     "home.final.locked": "The ending is told in the final sequence.",
     "home.final.open": "Read the final sequence",
@@ -747,7 +747,7 @@ const BASE_TEXTS: Texts = {
       "The last sequence of The First Layer. The story is read; Rewrite and The Architect are also playable in this era.",
     "final.checking": "Reading your progress from the chain…",
     "final.noWallet": "Sign in with your passkey to read the final sequence.",
-    "final.noWalletHint": "The sequence unlocks when all 13 cases are solved.",
+    "final.noWalletHint": "The sequence unlocks when all 12 cases are solved.",
     "final.howToPlay": "How to play",
     "final.locked": "Sequence locked.",
     "final.progress": "{solved} of {total} cases solved.",
@@ -1381,7 +1381,7 @@ const BASE_TEXTS: Texts = {
       "El Arquitecto no creó las vulnerabilidades. Encontró la ciudad ya quebrada y convirtió el camino en un filtro.",
     "home.final.teaser": "Una arquitectura fuera del mapa. Encuéntrala.",
     "home.final.teaserBody":
-      "La secuencia final se desbloquea al resolver los 13 casos.",
+      "La secuencia final se desbloquea al resolver los 12 casos.",
     "home.final.ready": "Secuencia lista.",
     "home.final.locked": "El desenlace se cuenta en la secuencia final.",
     "home.final.open": "Leer la secuencia final",
@@ -1392,7 +1392,7 @@ const BASE_TEXTS: Texts = {
     "final.checking": "Consultando tu progreso en la cadena…",
     "final.noWallet": "Entra con tu passkey para leer la secuencia final.",
     "final.noWalletHint":
-      "La secuencia se desbloquea al resolver los 13 casos.",
+      "La secuencia se desbloquea al resolver los 12 casos.",
     "final.howToPlay": "Cómo jugar",
     "final.locked": "Secuencia bloqueada.",
     "final.progress": "{solved} de {total} casos resueltos.",

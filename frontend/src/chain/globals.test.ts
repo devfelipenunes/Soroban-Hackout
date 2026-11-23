@@ -248,6 +248,51 @@ describe("resolveCalls", () => {
 
     await expect(wrapped["levels"]?.()).resolves.toBe(odd);
   });
+
+  it("names the contract error when the simulation fails on the transaction itself", async () => {
+    const failed = {
+      get isReadCall(): boolean {
+        throw new Error('Transaction simulation failed: "HostError: Error(Contract, #1)"');
+      },
+    };
+    const wrapped = resolveCalls(
+      {
+        spec: {
+          errorCases: () => [
+            { name: "WrongOwner", doc: "wrong owner: not the stored owner", value: 1 },
+          ],
+        },
+        levels: async () => failed,
+        create_instance: async () => ({}),
+      },
+      SPEC,
+    ) as Methods;
+
+    await expect(wrapped["levels"]?.()).rejects.toThrow(
+      /rejected by the instance: WrongOwner — wrong owner: not the stored owner/,
+    );
+  });
+
+  it("tells the player which contract error rejected the call", async () => {
+    const wrapped = resolveCalls(
+      {
+        spec: {
+          errorCases: () => [
+            { name: "NotAdmin", doc: "not admin: the caller is not the stored admin", value: 1 },
+          ],
+        },
+        levels: async () => {
+          throw new Error("Simulation failed: HostError: Error(Contract, #1)");
+        },
+        create_instance: async () => ({}),
+      },
+      SPEC,
+    ) as Methods;
+
+    await expect(wrapped["levels"]?.()).rejects.toThrow(
+      /rejected by the instance: NotAdmin — not admin: the caller is not the stored admin/,
+    );
+  });
 });
 
 describe("the Breaker OS call events", () => {

@@ -1,11 +1,25 @@
 #![no_std]
 
 use soroban_sdk::xdr::ToXdr;
-use soroban_sdk::{contract, contractimpl, contracttype, Address, Env};
+use soroban_sdk::{
+    contract, contracterror, contractimpl, contracttype, panic_with_error, Address, Env,
+};
 
 const MIN_INPUT: u32 = 10_000;
 const FACTOR: u32 = 100_020_001;
 const BASE_ELAPSED: u32 = 2_735_411_053;
+
+#[contracterror]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
+#[repr(u32)]
+pub enum Error {
+    /// out of range: stake and rate must be at least 10000 and elapsed above zero
+    OutOfRange = 1,
+    /// overflow: the checked arithmetic exceeded u32
+    Overflow = 2,
+    /// underflow: the amount is larger than the credit
+    Underflow = 3,
+}
 
 #[contracttype]
 pub enum DataKey {
@@ -44,7 +58,7 @@ impl Impossible {
         player.require_auth();
 
         if stake < MIN_INPUT || rate < MIN_INPUT || elapsed == 0 {
-            panic!("out of range");
+            panic_with_error!(&env, Error::OutOfRange);
         }
 
         let reward = stake.wrapping_mul(rate).wrapping_mul(elapsed);
@@ -55,13 +69,13 @@ impl Impossible {
         player.require_auth();
 
         if stake < MIN_INPUT || rate < MIN_INPUT || elapsed == 0 {
-            panic!("out of range");
+            panic_with_error!(&env, Error::OutOfRange);
         }
 
         let reward = stake
             .checked_mul(rate)
             .and_then(|value| value.checked_mul(elapsed))
-            .expect("overflow");
+            .unwrap_or_else(|| panic_with_error!(&env, Error::Overflow));
         let current: u32 = env
             .storage()
             .instance()
@@ -69,7 +83,9 @@ impl Impossible {
             .unwrap_or(0);
         env.storage().instance().set(
             &DataKey::Credit(player),
-            &current.checked_add(reward).expect("overflow"),
+            &current
+                .checked_add(reward)
+                .unwrap_or_else(|| panic_with_error!(&env, Error::Overflow)),
         );
     }
 
@@ -94,7 +110,9 @@ impl Impossible {
             .unwrap_or(0);
         env.storage().instance().set(
             &DataKey::Credit(player),
-            &current.checked_sub(amount).expect("underflow"),
+            &current
+                .checked_sub(amount)
+                .unwrap_or_else(|| panic_with_error!(&env, Error::Underflow)),
         );
     }
 

@@ -469,6 +469,9 @@ function Page({ level }: { level: LevelType }): ReactElement {
       const sent = await tx.signAndSend();
       instanceGate.current.bump();
       setInstance(sent.result);
+      // A new instance restarts the level: it is judged on its own, even if the case was already solved.
+      setConfirmed(false);
+      rejections.current = 0;
       emit({ type: "instance", at: Date.now() });
     } catch (error) {
       const code = contractErrorCode(error);
@@ -565,7 +568,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
     }
   }, [client, instance, level.id, t, lock, markSolved, address, previous, refreshDiagnostics]);
 
-  const canSubmit = !submitting && !locked && !solved;
+  const canSubmit = !submitting && !locked;
   const codeHeader = solved && !level.revealCode;
 
   const kind =
@@ -812,11 +815,16 @@ function Page({ level }: { level: LevelType }): ReactElement {
                     <span className="diagnostics__value">
                       {t("level.diagnosticNow", {
                         value: displayValue(item.current),
-                      })}{" "}
-                      ·{" "}
-                      {t("level.diagnosticExpected", {
-                        value: displayValue(item.expected),
                       })}
+                      {item.expected !== undefined && item.expected !== null && (
+                        <>
+                          {" "}
+                          ·{" "}
+                          {t("level.diagnosticExpected", {
+                            value: displayValue(item.expected),
+                          })}
+                        </>
+                      )}
                     </span>
                   )}
                 </li>

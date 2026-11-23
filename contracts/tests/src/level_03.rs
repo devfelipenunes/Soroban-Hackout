@@ -5,6 +5,9 @@ pub const SPEC: LevelSpec = LevelSpec {
     id: 3,
     slug: "warehouse",
     interface: &[
+        "UnknownItem",
+        "Error",
+        "WrongOwner",
         "__constructor",
         "item_id",
         "owner",
@@ -126,16 +129,13 @@ fn the_recipient_must_authorize_the_transfer() {
 }
 
 #[test]
-fn submitting_twice_is_refused() {
+fn submitting_twice_is_accepted() {
     let c = Scenario::new();
     let warehouse = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &warehouse, &c.player);
 
     assert_eq!(c.submit(&c.player, &warehouse), Ok(()));
-    assert_eq!(
-        c.submit(&c.player, &warehouse),
-        Err(contract_error(errors::ALREADY_COMPLETED))
-    );
+    assert_eq!(c.submit(&c.player, &warehouse), Ok(()));
 }
 
 #[test]

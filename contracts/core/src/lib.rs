@@ -221,10 +221,6 @@ impl BreakerCore {
             panic_with_error!(&env, Error::AccessLocked);
         }
 
-        if Self::is_completed(env.clone(), player.clone(), level_id) {
-            panic_with_error!(&env, Error::AlreadyCompleted);
-        }
-
         let info = Self::read_level_info(&env, level_id);
         let validator = ValidatorClient::new(&env, &info.validator);
         if !validator.validate(&instance, &player) {

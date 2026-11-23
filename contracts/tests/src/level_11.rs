@@ -4,6 +4,11 @@ pub const SPEC: LevelSpec = LevelSpec {
     id: 11,
     slug: "rewrite",
     interface: &[
+        "Error",
+        "InvalidFragment",
+        "MalformedFragment",
+        "EvidenceNotReconstructed",
+        "UnknownEvidenceRef",
         "__constructor",
         "commitment",
         "context_verified",

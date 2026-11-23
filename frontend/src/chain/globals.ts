@@ -1,4 +1,5 @@
 import { emit, type CallFailure } from "./events.ts";
+import { contractReason } from "./errors.ts";
 
 export const GLOBAL_NAMES = ["player", "instance", "contract", "aux", "help"] as const;
 
@@ -46,11 +47,14 @@ function failureOf(error: unknown): CallFailure {
   return "unknown";
 }
 
-function playerError(method: string, error: unknown): Error {
+function playerError(method: string, error: unknown, spec?: unknown): Error {
   const detail = error instanceof Error ? error.message : String(error);
   const failure = failureOf(error);
+  const reason = contractReason(spec, error);
   const summary =
-    failure === "rejected"
+    reason !== null
+      ? `BREAKER — ${method} was rejected by the instance: ${reason}.`
+      : failure === "rejected"
       ? `BREAKER — ${method} was rejected by the instance before a transaction could be signed. The current state does not allow this call; inspect it and try a different sequence.`
       : failure === "cancelled"
         ? `BREAKER — ${method} was not signed by the wallet. Approve the request to continue.`
@@ -273,7 +277,7 @@ export function resolveCalls(
       } catch (error) {
         emit({ type: "call", id, method: name, kind: "call", outcome: "failed", failure: failureOf(error), at: Date.now() });
         tell(name, "failed");
-        throw playerError(name, error);
+        throw playerError(name, error, source.spec);
       }
 
       if (tx === null || typeof tx !== "object") {
@@ -283,10 +287,21 @@ export function resolveCalls(
       }
 
       const call = tx as Transaction;
-      if (call.isReadCall === true) {
+      // `isReadCall` and `result` read the simulation, and throw when it failed.
+      let isRead: boolean;
+      let read: unknown;
+      try {
+        isRead = call.isReadCall === true;
+        if (isRead) read = call.result;
+      } catch (error) {
+        emit({ type: "call", id, method: name, kind: "call", outcome: "failed", failure: failureOf(error), at: Date.now() });
+        tell(name, "failed");
+        throw playerError(name, error, source.spec);
+      }
+      if (isRead) {
         emit({ type: "call", id, method: name, kind: "read", outcome: "accepted", at: Date.now() });
         tell(name, "done");
-        return call.result;
+        return read;
       }
       if (typeof call.signAndSend !== "function") {
         emit({ type: "call", id, method: name, kind: "call", outcome: "accepted", at: Date.now() });
@@ -305,7 +320,7 @@ export function resolveCalls(
       } catch (error) {
         emit({ type: "call", id, method: name, kind: "write", outcome: "failed", failure: failureOf(error), at: Date.now() });
         tell(name, "failed");
-        throw playerError(name, error);
+        throw playerError(name, error, source.spec);
       }
     };
   }

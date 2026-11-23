@@ -472,6 +472,9 @@ function compare(kind: Compare, current: unknown, expected: unknown, player: str
   }
 }
 
+// Checks without a `want` still know what they expect: `true` and `false` imply it.
+const IMPLIED: Partial<Record<Compare, boolean>> = { true: true, false: false };
+
 export async function readDiagnostics(
   callable: Callable,
   levelId: number,
@@ -482,11 +485,12 @@ export async function readDiagnostics(
   return Promise.all(
     checks.map(async (check) => {
       const current = await call(callable, check.method, check.args?.(player));
-      const expected = check.wantFrom
+      const wanted = check.wantFrom
         ? await call(callable, check.wantFrom.method, check.wantFrom.args?.(player))
         : typeof check.want === "function"
           ? check.want(player)
           : check.want;
+      const expected = wanted ?? IMPLIED[check.compare];
 
       return {
         id: check.id,
@@ -500,6 +504,7 @@ export async function readDiagnostics(
 }
 
 export function displayValue(value: unknown): string {
+  if (value === undefined || value === null) return "—";
   if (value instanceof Uint8Array) {
     return Array.from(value)
       .map((byte) => byte.toString(16).padStart(2, "0"))

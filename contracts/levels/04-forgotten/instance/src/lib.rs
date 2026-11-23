@@ -1,10 +1,20 @@
 #![no_std]
 
-use soroban_sdk::{contract, contractimpl, contracttype, Address, Bytes, Env, Vec};
+use soroban_sdk::{
+    contract, contracterror, contractimpl, contracttype, panic_with_error, Address, Bytes, Env, Vec,
+};
 
 const FORGOTTEN_FLOOR: u32 = 24;
 const TTL_THRESHOLD: u32 = 300_000;
 const TTL_EXTEND_TO: u32 = 518_400;
+
+#[contracterror]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
+#[repr(u32)]
+pub enum Error {
+    /// unknown floor: this floor has no record
+    UnknownFloor = 1,
+}
 
 #[contracttype]
 pub enum DataKey {
@@ -56,7 +66,7 @@ impl Forgotten {
         env.storage()
             .persistent()
             .get(&DataKey::Floor(floor_id))
-            .unwrap()
+            .unwrap_or_else(|| panic_with_error!(&env, Error::UnknownFloor))
     }
 
     pub fn renewed(env: Env, floor_id: u32) -> bool {

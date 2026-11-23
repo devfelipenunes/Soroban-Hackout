@@ -299,3 +299,26 @@ fn a_prerequisite_must_be_an_earlier_unique_level() {
         .unwrap();
     assert_eq!(err, contract_error(errors::INVALID_PREREQUISITE));
 }
+
+#[test]
+fn a_completed_level_accepts_a_new_solved_instance_and_refuses_an_unsolved_one() {
+    let c = Scenario::new();
+
+    let first = c.create_instance(&c.player, NOENTRY.id);
+    exploit(&c, &first, &c.player);
+    assert_eq!(c.submit(&c.player, &first), Ok(()));
+
+    let second = c.create_instance(&c.player, NOENTRY.id);
+    assert_eq!(
+        c.submit(&c.player, &second),
+        Err(contract_error(errors::OBJECTIVE_NOT_MET)),
+        "a fresh instance must be judged on its own, even after the level was completed"
+    );
+    assert!(
+        c.is_completed(&c.player, NOENTRY.id),
+        "a refused submission never takes the progress back"
+    );
+
+    exploit(&c, &second, &c.player);
+    assert_eq!(c.submit(&c.player, &second), Ok(()));
+}

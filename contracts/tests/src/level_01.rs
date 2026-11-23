@@ -5,6 +5,9 @@ pub const SPEC: LevelSpec = LevelSpec {
     id: 1,
     slug: "noentry",
     interface: &[
+        "UnknownDoor",
+        "Error",
+        "WrongOwner",
         "__constructor",
         "door_id",
         "is_open",
@@ -100,7 +103,7 @@ fn the_player_can_read_the_owner_the_contract_believes() {
 }
 
 #[test]
-fn submitting_twice_is_refused() {
+fn submitting_twice_is_accepted() {
     let c = Scenario::new();
     let door = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &door, &c.player);
@@ -108,8 +111,8 @@ fn submitting_twice_is_refused() {
     assert_eq!(c.submit(&c.player, &door), Ok(()), "the first one passes");
     assert_eq!(
         c.submit(&c.player, &door),
-        Err(contract_error(errors::ALREADY_COMPLETED)),
-        "the second must hit ALREADY_COMPLETED, not OBJECTIVE_NOT_MET"
+        Ok(()),
+        "resubmitting a completed level is idempotent"
     );
 }
 
@@ -151,4 +154,16 @@ fn submitting_another_players_instance_gives_no_credit() {
     assert!(result.is_err(), "the core demands the owner's auth");
     assert!(!c.is_completed(&c.other, SPEC.id));
     assert!(!c.is_completed(&c.player, SPEC.id));
+}
+
+#[test]
+fn an_unknown_door_reports_a_typed_error() {
+    let c = Scenario::new();
+    let door = c.create_instance(&c.player, SPEC.id);
+
+    assert_eq!(
+        NoentryClient::new(&c.env, &door).try_open(&door, &18u32),
+        Err(Ok(contract_error(2))),
+        "door 18 does not exist: UnknownDoor, not a silent trap"
+    );
 }

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { readDiagnostics, type Callable } from "./diagnostics.ts";
+import { displayValue, readDiagnostics, type Callable } from "./diagnostics.ts";
 
 const callable = (methods: Record<string, unknown>): Callable =>
   Object.fromEntries(
@@ -174,5 +174,25 @@ describe("the validator checklist", () => {
     );
 
     expect(results.find((item) => item.id === "owner")?.ok).toBe(false);
+  });
+});
+
+describe("the expected value shown to the player", () => {
+  it("never renders undefined or null, at any level", async () => {
+    const failing = {};
+    for (let level = 0; level <= 12; level += 1) {
+      const results = await readDiagnostics(callable(failing), level, "GAAA");
+      for (const item of results) {
+        expect(displayValue(item.expected)).not.toMatch(/undefined|null/);
+        expect(displayValue(item.current)).not.toMatch(/^undefined$|^null$/);
+      }
+    }
+  });
+
+  it("implies true and false from the comparison", async () => {
+    const results = await readDiagnostics(callable({ is_open: false, owner_of: "GBBB" }), 1, "GAAA");
+    expect(results.find((item) => item.id === "open")?.expected).toBe(true);
+    expect(displayValue(undefined)).toBe("—");
+    expect(displayValue(null)).toBe("—");
   });
 });

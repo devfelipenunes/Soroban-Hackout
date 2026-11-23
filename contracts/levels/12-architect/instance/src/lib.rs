@@ -3,10 +3,31 @@
 mod protocol;
 use soroban_sdk::xdr::ToXdr;
 use soroban_sdk::{
-    contract, contractimpl, contracttype, Address, Bytes, Env, IntoVal, Symbol, Vec,
+    contract, contracterror, contractimpl, contracttype, panic_with_error, Address, Bytes, Env,
+    IntoVal, Symbol, Vec,
 };
 const TIMELOCK: u32 = 5;
 const MANIFEST: &[u8] = b"VOSS/SEQUENCE/01/DIAGNOSE";
+#[contracterror]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
+#[repr(u32)]
+pub enum Error {
+    /// evidence not reconstructed
+    EvidenceNotReconstructed = 1,
+    /// operation already executed
+    AlreadyExecuted = 2,
+    /// operation unavailable: the evidence is not verified or it already ran
+    OperationUnavailable = 3,
+    /// timelock not ready: wait for the ETA ledger
+    TimelockNotReady = 4,
+    /// wrong session owner
+    WrongSessionOwner = 5,
+    /// not authorized by timelock: only the timelocked execution opens a session
+    NotAuthorizedByTimelock = 6,
+    /// unknown evidence reference: the index must be 0, 1 or 2
+    UnknownEvidenceRef = 7,
+}
+
 #[contracttype]
 #[derive(Clone, PartialEq, Eq)]
 pub enum Payload {
@@ -78,6 +99,9 @@ impl Architect {
         valid
     }
     pub fn evidence_share(env: Env, index: u32) -> soroban_sdk::BytesN<32> {
+        if index > 2 {
+            panic_with_error!(&env, Error::UnknownEvidenceRef);
+        }
         protocol::share(&env, &Self::manifest(env.clone()), index)
     }
     pub fn unlock_evidence(env: Env, key: soroban_sdk::BytesN<32>) -> bool {
@@ -106,7 +130,7 @@ impl Architect {
             .get(&DataKey::Unlocked)
             .unwrap_or(false);
         if !unlocked {
-            panic!("evidence not reconstructed");
+            panic_with_error!(&env, Error::EvidenceNotReconstructed);
         }
         protocol::verify(&env, &signature);
         env.storage().instance().set(&DataKey::History, &true);
@@ -150,7 +174,7 @@ impl Architect {
             .get(&DataKey::Executed)
             .unwrap_or(false);
         if executed {
-            panic!("operation already executed");
+            panic_with_error!(&env, Error::AlreadyExecuted);
         }
         env.storage().instance().set(&DataKey::Payload, &payload);
         let changed = payload != Self::original(env.clone());
@@ -165,10 +189,10 @@ impl Architect {
             .get(&DataKey::Executed)
             .unwrap_or(false);
         if executed || !Self::evidence_verified(env.clone()) {
-            panic!("operation unavailable");
+            panic_with_error!(&env, Error::OperationUnavailable);
         }
         if env.ledger().sequence() < Self::eta(env.clone()) {
-            panic!("timelock not ready");
+            panic_with_error!(&env, Error::TimelockNotReady);
         }
         let p = Self::payload(env.clone());
         env.storage().instance().set(&DataKey::ExecutedPayload, &p);
@@ -186,7 +210,7 @@ impl Architect {
     pub fn open_forensic_session(env: Env, player: Address) {
         let owner: Address = env.storage().instance().get(&DataKey::Player).unwrap();
         if player != owner {
-            panic!("wrong session owner");
+            panic_with_error!(&env, Error::WrongSessionOwner);
         }
         let executing: bool = env
             .storage()
@@ -194,7 +218,7 @@ impl Architect {
             .get(&DataKey::Executing)
             .unwrap_or(false);
         if !executing {
-            panic!("not authorized by timelock");
+            panic_with_error!(&env, Error::NotAuthorizedByTimelock);
         }
         env.storage()
             .instance()

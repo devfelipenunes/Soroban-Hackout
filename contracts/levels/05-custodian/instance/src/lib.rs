@@ -1,8 +1,22 @@
 #![no_std]
 
-use soroban_sdk::{contract, contractimpl, contracttype, Address, Env};
+use soroban_sdk::{
+    contract, contracterror, contractimpl, contracttype, panic_with_error, Address, Env,
+};
 
 const OPERATOR_IDENTITY: u32 = 1;
+
+#[contracterror]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
+#[repr(u32)]
+pub enum Error {
+    /// invalid identity: the given controller does not control this identity
+    InvalidIdentity = 1,
+    /// operator not recognized: the caller does not control this identity
+    OperatorNotRecognized = 2,
+    /// unknown identity: no identity exists with this id
+    UnknownIdentity = 3,
+}
 
 #[contracttype]
 pub enum DataKey {
@@ -31,7 +45,7 @@ impl Custodian {
         env.storage()
             .instance()
             .get(&DataKey::Controller(identity))
-            .unwrap()
+            .unwrap_or_else(|| panic_with_error!(&env, Error::UnknownIdentity))
     }
 
     pub fn claim_identity(
@@ -46,9 +60,9 @@ impl Custodian {
             .storage()
             .instance()
             .get(&DataKey::Controller(identity))
-            .unwrap();
+            .unwrap_or_else(|| panic_with_error!(&env, Error::UnknownIdentity));
         if stored != current_controller {
-            panic!("invalid identity");
+            panic_with_error!(&env, Error::InvalidIdentity);
         }
 
         env.storage()
@@ -63,9 +77,9 @@ impl Custodian {
             .storage()
             .instance()
             .get(&DataKey::Controller(identity))
-            .unwrap();
+            .unwrap_or_else(|| panic_with_error!(&env, Error::UnknownIdentity));
         if stored != caller {
-            panic!("operator not recognized");
+            panic_with_error!(&env, Error::OperatorNotRecognized);
         }
 
         env.storage()

@@ -5,6 +5,10 @@ pub const SPEC: LevelSpec = LevelSpec {
     id: 2,
     slug: "deadman",
     interface: &[
+        "Error",
+        "NotAdmin",
+        "AlreadyReleased",
+        "EmptyVault",
         "__constructor",
         "admin",
         "balance",
@@ -205,16 +209,13 @@ fn the_record_is_the_clue_and_it_is_not_empty() {
 }
 
 #[test]
-fn submitting_twice_is_refused() {
+fn submitting_twice_is_accepted() {
     let c = Scenario::new();
     let registry = c.create_instance(&c.player, SPEC.id);
     exploit(&c, &registry, &c.player);
 
     assert_eq!(c.submit(&c.player, &registry), Ok(()));
-    assert_eq!(
-        c.submit(&c.player, &registry),
-        Err(contract_error(errors::ALREADY_COMPLETED))
-    );
+    assert_eq!(c.submit(&c.player, &registry), Ok(()));
 }
 
 #[test]

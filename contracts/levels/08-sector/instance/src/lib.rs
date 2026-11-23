@@ -1,8 +1,19 @@
 #![no_std]
 
-use soroban_sdk::{contract, contractimpl, contracttype, Address, Bytes, BytesN, Env, Map, Vec};
+use soroban_sdk::{
+    contract, contracterror, contractimpl, contracttype, panic_with_error, Address, Bytes, BytesN,
+    Env, Map, Vec,
+};
 
 const THRESHOLD: u32 = 500;
+
+#[contracterror]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
+#[repr(u32)]
+pub enum Error {
+    /// archive intact: the archive has not reached the threshold yet
+    ArchiveIntact = 1,
+}
 
 #[contracttype]
 pub enum DataKey {
@@ -74,7 +85,7 @@ impl Sector {
 
     pub fn snapshot(env: Env) -> Bytes {
         if Self::count(env.clone()) < THRESHOLD {
-            panic!("archive intact");
+            panic_with_error!(&env, Error::ArchiveIntact);
         }
 
         env.storage().instance().set(&DataKey::Revealed, &true);
