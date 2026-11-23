@@ -44,7 +44,7 @@ All requirements are user-local; no `sudo`.
 |---|---|
 | Node 22 LTS | 22.23.2 |
 | Rust + `wasm32v1-none` target | 1.98.1 |
-| `stellar-cli` | 28.0.0, pinned |
+| `stellar-cli` | 28.1.0, pinned (the Decoder hash pinned in level 11 depends on the toolchain) |
 | Funded testnet account | use a `stellar keys` identity |
 
 ## Running
