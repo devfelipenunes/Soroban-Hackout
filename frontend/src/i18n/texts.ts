@@ -210,7 +210,7 @@ const BASE_TEXTS: Texts = {
     "level.previousCase": "Ir ao caso {code}",
     "level.retry": "Tentar de novo",
     "level.operation":
-      "Operação de disponibilidade: os testes do contrato demonstram a renovação real do TTL. O validador consulta a renovação do andar 24.",
+      "Operação de disponibilidade: os testes do contrato demonstram a renovação real do TTL. O validador consulta a renovação do andar 1000.",
     "level.diagnostics": "O que o validador ainda exige",
     "level.diagnosticNow": "agora: {value}",
     "level.diagnosticExpected": "esperado: {value}",
@@ -884,7 +884,7 @@ const BASE_TEXTS: Texts = {
     "level.previousCase": "Go to case {code}",
     "level.retry": "Try again",
     "level.operation":
-      "Availability operation: the real TTL is proven in the contract tests; the validator reads floor 24's renewal.",
+      "Availability operation: the real TTL is proven in the contract tests; the validator reads floor 1000's renewal.",
     "level.diagnostics": "What the validator still requires",
     "level.diagnosticNow": "now: {value}",
     "level.diagnosticExpected": "expected: {value}",
@@ -1715,7 +1715,7 @@ const ES_CAMPAIGN: Dictionary = {
   "level.previousCase": "Ir al caso {code}",
   "level.retry": "Intentar otra vez",
   "level.operation":
-    "Operación de disponibilidad: las pruebas del contrato verifican el TTL real; el validador comprueba la renovación del piso 24.",
+    "Operación de disponibilidad: las pruebas del contrato verifican el TTL real; el validador comprueba la renovación del piso 1000.",
   "level.diagnostics": "Lo que aún requiere el validador",
   "level.diagnosticNow": "ahora: {value}",
   "level.diagnosticExpected": "esperado: {value}",

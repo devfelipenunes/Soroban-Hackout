@@ -18,10 +18,12 @@ impl Counter {
         env.storage().instance().set(&DataKey::Count, &0u32);
     }
 
-    pub fn increment(env: Env) {
+    pub fn increment(env: Env, amount: u32) {
         read_owner(&env).require_auth();
         let count: u32 = env.storage().instance().get(&DataKey::Count).unwrap_or(0);
-        env.storage().instance().set(&DataKey::Count, &(count + 1));
+        env.storage()
+            .instance()
+            .set(&DataKey::Count, &(count + amount));
     }
 
     pub fn count(env: Env) -> u32 {

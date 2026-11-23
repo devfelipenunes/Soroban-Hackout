@@ -39,9 +39,9 @@
       },
       "paragraphs": [
         {
-          "pt-BR": "O prazo foi respeitado. A carga útil executada pediu uma sessão para outro dono; a chamada interna falhou, mas deixou Executing armado. O Breaker abriu a própria sessão depois, e o validador independente conferiu a evidência e o estado da instância.",
-          "en": "The delay was respected. The executed payload requested a session for another owner; the internal call failed but left Executing armed. The Breaker then opened its own session, and the independent validator checked the evidence and instance state.",
-          "es": "Se respetó el retraso. La carga útil ejecutada solicitó una sesión para otro propietario; la llamada interna falló pero salió armada en Ejecución. Luego, el Breaker abrió su propia sesión y el validador independiente verificó la evidencia y el estado de la instancia."
+          "pt-BR": "O prazo foi respeitado. A carga útil executada pediu uma sessão para o observador; a chamada interna falhou, mas deixou Executing armado. O Breaker abriu a própria sessão depois, e o validador independente conferiu a evidência e o estado da instância.",
+          "en": "The delay was respected. The executed payload requested a session for the observer; the internal call failed but left Executing armed. The Breaker then opened its own session, and the independent validator checked the evidence and instance state.",
+          "es": "Se respetó el retraso. La carga útil ejecutada solicitó una sesión para el observador; la llamada interna falló pero salió armada en Ejecución. Luego, el Breaker abrió su propia sesión y el validador independiente verificó la evidencia y el estado de la instancia."
         }
       ]
     },

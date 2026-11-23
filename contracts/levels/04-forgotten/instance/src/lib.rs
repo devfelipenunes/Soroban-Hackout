@@ -4,7 +4,8 @@ use soroban_sdk::{
     contract, contracterror, contractimpl, contracttype, panic_with_error, Address, Bytes, Env, Vec,
 };
 
-const FORGOTTEN_FLOOR: u32 = 24;
+const LAST_FLOOR: u32 = 23;
+const FORGOTTEN_FLOOR: u32 = 1_000;
 const TTL_THRESHOLD: u32 = 300_000;
 const TTL_EXTEND_TO: u32 = 518_400;
 
@@ -77,8 +78,15 @@ impl Forgotten {
     }
 
     pub fn renew_floor(env: Env, floor_id: u32) {
-        let target = floor_id.saturating_add(1);
+        let target = if floor_id > LAST_FLOOR {
+            floor_id.saturating_add(1)
+        } else {
+            floor_id
+        };
         let key = DataKey::Floor(target);
+        if !env.storage().persistent().has(&key) {
+            panic_with_error!(&env, Error::UnknownFloor);
+        }
         env.storage()
             .persistent()
             .extend_ttl(&key, TTL_THRESHOLD, TTL_EXTEND_TO);

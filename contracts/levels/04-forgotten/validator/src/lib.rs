@@ -2,7 +2,7 @@
 
 use soroban_sdk::{contract, contractclient, contractimpl, Address, Bytes, Env};
 
-const FORGOTTEN_FLOOR: u32 = 24;
+const FORGOTTEN_FLOOR: u32 = 1_000;
 
 #[contractclient(name = "ForgottenClient")]
 pub trait ForgottenInterface {

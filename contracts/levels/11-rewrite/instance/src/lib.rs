@@ -28,6 +28,13 @@ pub enum DataKey {
     DecoderFailed,
 }
 const MANIFEST: &[u8] = b"VOSS/SEQUENCE/01/DIAGNOSE";
+/// sha256 of the official Decoder WASM (`breaker_level_11_decoder.wasm`). The build is reproducible
+/// for a given toolchain; update it when the Decoder or the toolchain changes — the test
+/// `the_pinned_decoder_hash_matches_the_built_decoder` fails until it is.
+pub const DECODER_WASM_HASH: [u8; 32] = [
+    100, 122, 240, 223, 52, 221, 37, 171, 221, 38, 238, 144, 135, 151, 37, 123, 174, 109, 24, 244,
+    252, 184, 38, 133, 219, 236, 154, 143, 194, 234, 141, 14,
+];
 #[contract]
 pub struct Rewrite;
 #[contractimpl]
@@ -138,13 +145,7 @@ impl Rewrite {
                 accepted.to_val(),
             ],
         );
-        let hash = BytesN::from_array(
-            &env,
-            &[
-                115, 204, 27, 161, 237, 14, 187, 67, 208, 194, 126, 65, 3, 124, 168, 237, 201, 248,
-                197, 143, 87, 143, 225, 19, 189, 192, 180, 198, 30, 85, 11, 137,
-            ],
-        );
+        let hash = BytesN::from_array(&env, &DECODER_WASM_HASH);
         if decoder.executable() != Some(soroban_sdk::Executable::Wasm(hash)) {
             return false;
         }

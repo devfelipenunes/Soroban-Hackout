@@ -15,3 +15,4 @@ soroban-sdk = { workspace = true, features = ["testutils"] }
 
 [dev-dependencies]
 breaker-level-04-forgotten = { path = "../levels/04-forgotten/instance" }
+breaker-level-11-rewrite = { path = "../levels/11-rewrite/instance" }

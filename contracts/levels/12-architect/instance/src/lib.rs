@@ -8,6 +8,8 @@ use soroban_sdk::{
 };
 const TIMELOCK: u32 = 5;
 const MANIFEST: &[u8] = b"VOSS/SEQUENCE/01/DIAGNOSE";
+// The independent observer: a fixed account nobody controls (its key was discarded).
+const OBSERVER: &str = "GDATI7IOVLBYNRTJDUPWAK2VSDD34ZMN7UITLJ4EITH2YNRIU72H2WC5";
 #[contracterror]
 #[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
 #[repr(u32)]
@@ -26,6 +28,10 @@ pub enum Error {
     NotAuthorizedByTimelock = 6,
     /// unknown evidence reference: the index must be 0, 1 or 2
     UnknownEvidenceRef = 7,
+    /// beneficiary is not the observer: a forensic session may only be granted to the observer
+    BeneficiaryNotObserver = 8,
+    /// payload not rewritten: there is nothing to execute until the approved payload changes
+    PayloadNotRewritten = 9,
 }
 
 #[contracttype]
@@ -165,6 +171,9 @@ impl Architect {
             .get(&DataKey::Session(player))
             .unwrap_or(false)
     }
+    pub fn observer(env: Env) -> Address {
+        Address::from_str(&env, OBSERVER)
+    }
     pub fn rewrite_payload(env: Env, payload: Payload) {
         let player: Address = env.storage().instance().get(&DataKey::Player).unwrap();
         player.require_auth();
@@ -176,9 +185,18 @@ impl Architect {
         if executed {
             panic_with_error!(&env, Error::AlreadyExecuted);
         }
+        if let Payload::OpenForensicSession(who) = &payload {
+            if *who != Self::observer(env.clone()) {
+                panic_with_error!(&env, Error::BeneficiaryNotObserver);
+            }
+        }
         env.storage().instance().set(&DataKey::Payload, &payload);
         let changed = payload != Self::original(env.clone());
         env.storage().instance().set(&DataKey::Rewritten, &changed);
+        // Changing a queued operation restarts its delay.
+        env.storage()
+            .instance()
+            .set(&DataKey::Eta, &(env.ledger().sequence() + TIMELOCK));
     }
     pub fn execute(env: Env) {
         let player: Address = env.storage().instance().get(&DataKey::Player).unwrap();
@@ -188,6 +206,9 @@ impl Architect {
             .instance()
             .get(&DataKey::Executed)
             .unwrap_or(false);
+        if Self::payload(env.clone()) == Self::original(env.clone()) {
+            panic_with_error!(&env, Error::PayloadNotRewritten);
+        }
         if executed || !Self::evidence_verified(env.clone()) {
             panic_with_error!(&env, Error::OperationUnavailable);
         }

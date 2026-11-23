@@ -700,7 +700,7 @@ function Page({ level }: { level: LevelType }): ReactElement {
               {[
                 "window.help()",
                 "await window.contract.count()",
-                "await window.contract.increment()",
+                "await window.contract.increment({ amount: 1 })",
                 "await window.contract.count()",
               ].map((command, index) => (
                 <div className="tutorial__command" key={`${index}-${command}`}>

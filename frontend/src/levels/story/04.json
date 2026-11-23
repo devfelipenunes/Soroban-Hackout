@@ -9,9 +9,9 @@
       },
       "paragraphs": [
         {
-          "pt-BR": "O elevador apresenta vinte e três botões. A planta e o cadastro municipal concordam com ele. A Ghost Key documentada no Armazém aponta para o vigésimo quarto.",
-          "en": "The elevator has twenty-three buttons. The blueprint and municipal register agree. The Ghost Key documented at the Warehouse points to a twenty-fourth.",
-          "es": "El ascensor tiene veintitrés botones. El plano y el padrón municipal coinciden. La Llave Fantasma documentada en el Almacén apunta a una número veinticuatro."
+          "pt-BR": "O elevador apresenta vinte e três botões. A planta e o cadastro municipal concordam com ele. A Ghost Key documentada no Armazém aponta para o andar 1000.",
+          "en": "The elevator has twenty-three buttons. The blueprint and municipal register agree. The Ghost Key documented at the Warehouse points to floor 1000.",
+          "es": "El ascensor tiene veintitrés botones. El plano y el padrón municipal coinciden. La Llave Fantasma documentada en el Almacén apunta al piso 1000."
         },
         {
           "pt-BR": "Mara procura uma ordem de demolição. Não encontra. A ausência no índice moderno não basta para concluir que um andar foi destruído.",
@@ -49,9 +49,9 @@
       },
       "paragraphs": [
         {
-          "pt-BR": "O registro voltou a ser reconhecido e sua vida útil foi renovada. A recuperação torna a rota novamente disponível ao elevador. O painel apaga por um instante e retorna com um botão novo: 24.",
-          "en": "The record was recognized again and its lifetime renewed. Recovery makes the route available to the elevator again. The panel briefly goes dark, then returns with a new button: 24.",
-          "es": "El disco fue reconocido nuevamente y su vida renovada. La recuperación vuelve a poner la ruta a disposición del ascensor. El panel se oscurece brevemente y luego regresa con un nuevo botón: 24."
+          "pt-BR": "O registro voltou a ser reconhecido e sua vida útil foi renovada. A recuperação torna a rota novamente disponível ao elevador. O painel apaga por um instante e retorna com um botão novo: 1000.",
+          "en": "The record was recognized again and its lifetime renewed. Recovery makes the route available to the elevator again. The panel briefly goes dark, then returns with a new button: 1000.",
+          "es": "El disco fue reconocido nuevamente y su vida renovada. La recuperación vuelve a poner la ruta a disposición del ascensor. El panel se oscurece brevemente y luego regresa con un nuevo botón: 1000."
         },
         {
           "pt-BR": "A cidade não demoliu o andar. Deixou de manter sua referência na camada ativa. Estado arquivado e infraestrutura destruída eram hipóteses diferentes.",
@@ -74,9 +74,9 @@
           "es": "El ascensor desciende más allá del mapa conocido. Sus puertas se abren a pasillos mucho más antiguos que los acabados de la ciudad. En la pared: I // PRIMERA CAPA."
         },
         {
-          "pt-BR": "O registro FLOOR 24 aponta para um andar, não para a infraestrutura inteira. Ao fundo, um sistema desperta: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED.",
-          "en": "Floor 24 is an entrance, not the entire infrastructure. Ahead, a system awakens: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED.",
-          "es": "El piso 24 es una entrada, no toda la infraestructura. Más adelante, se despierta un sistema: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED."
+          "pt-BR": "O registro FLOOR 1000 aponta para um andar, não para a infraestrutura inteira. Ao fundo, um sistema desperta: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED.",
+          "en": "Floor 1000 is an entrance, not the entire infrastructure. Ahead, a system awakens: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED.",
+          "es": "El piso 1000 es una entrada, no toda la infraestructura. Más adelante, se despierta un sistema: CUSTODIAN ONLINE / IDENTITY UNKNOWN / ACCESS DENIED."
         }
       ]
     }

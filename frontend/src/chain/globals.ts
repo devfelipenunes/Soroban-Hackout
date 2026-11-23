@@ -377,7 +377,7 @@ function helpBlock(writes: (t: string) => void): (o: Options) => void {
       "  How to call",
       "",
       "    await window.contract.count()      // read — answers with the value",
-      "    await window.contract.increment()  // write — sent when you call it",
+      "    await window.contract.increment({ amount: 1 })  // write — sent when you call it",
       "",
       ...(sample === undefined
         ? []

@@ -19,20 +19,18 @@ describe("the validator checklist", () => {
     expect(results[0]?.ok).toBe(true);
   });
 
-  it("requires stored below threshold in the 08", async () => {
-    const good = await readDiagnostics(
-      callable({ count: 500, stored: 1, threshold: 500, revealed: true }),
-      8,
-      "GAAA",
-    );
+  it("asks the 08 archive to fail its rebuild", async () => {
+    const failing: Callable = {
+      rebuild: async () => {
+        throw new Error("BREAKER — rebuild was rejected by the instance: CorruptRecord — corrupt record");
+      },
+      revealed: async () => true,
+    };
+    const good = await readDiagnostics(failing, 8, "GAAA");
     expect(good.every((item) => item.ok)).toBe(true);
 
-    const bad = await readDiagnostics(
-      callable({ count: 500, stored: 500, threshold: 500, revealed: true }),
-      8,
-      "GAAA",
-    );
-    expect(bad.find((item) => item.id === "stored")?.ok).toBe(false);
+    const healthy = await readDiagnostics(callable({ rebuild: "ab12", revealed: true }), 8, "GAAA");
+    expect(healthy.find((item) => item.id === "rebuild")?.ok).toBe(false);
   });
 
   it("matches the 10 payload and the original operation", async () => {
@@ -122,6 +120,34 @@ describe("the validator checklist", () => {
     expect(missing.find((item) => item.id === "accepted")?.ok).toBe(false);
   });
 
+  it("still shows the 12 checklist before the operation was executed", async () => {
+    const results = await readDiagnostics(
+      callable({
+        evidence_verified: true,
+        rewritten: true,
+        session: false,
+        original: { tag: "DiagnoseCore", values: [] },
+        executed_payload: undefined,
+      }),
+      12,
+      "GAAA",
+    );
+
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.find((item) => item.id === "executed")?.ok).toBe(false);
+    expect(results.find((item) => item.id === "evidence")?.ok).toBe(true);
+  });
+
+  it("does not break the checklist when a read fails", async () => {
+    const results = await readDiagnostics(
+      { executed_payload: async () => { throw new Error("rpc down"); } },
+      12,
+      "GAAA",
+    );
+
+    expect(results.find((item) => item.id === "executed")?.ok).toBe(false);
+  });
+
   it("requires the 12 executed payload to belong to another owner", async () => {
     const base = {
       evidence_verified: true,
@@ -174,6 +200,27 @@ describe("the validator checklist", () => {
     );
 
     expect(results.find((item) => item.id === "owner")?.ok).toBe(false);
+  });
+});
+
+describe("the checklist never breaks", () => {
+  it("reads every level even when every method answers empty, null or with an error", async () => {
+    const shapes: unknown[] = [undefined, null, "", 0, false, {}, [], "error: boom"];
+    const everyMethod = new Proxy(
+      {},
+      { get: () => undefined },
+    ) as Record<string, unknown>;
+
+    for (const shape of shapes) {
+      const reads: Callable = new Proxy(everyMethod, {
+        get: () => async () => shape,
+        has: () => true,
+      }) as unknown as Callable;
+      for (let level = 0; level <= 12; level += 1) {
+        const results = await readDiagnostics(reads, level, "GAAA");
+        for (const item of results) expect(typeof item.ok).toBe("boolean");
+      }
+    }
   });
 });
 

@@ -76,9 +76,9 @@
       "es": "No hay ningún error aquí. Lo que falta es una llamada."
     },
     {
-      "pt-BR": "Leia `count`, chame `increment` e leia de novo.",
-      "en": "Read `count`, call `increment`, read again.",
-      "es": "Lee `count`, llama a `increment` y vuelve a leer."
+      "pt-BR": "Leia `count`, chame `increment({ amount: 1 })` e leia de novo.",
+      "en": "Read `count`, call `increment({ amount: 1 })`, read again.",
+      "es": "Lee `count`, llama a `increment({ amount: 1 })` y vuelve a leer."
     },
     {
       "pt-BR": "O validador lê `count`. O objetivo é `count >= 1`.",

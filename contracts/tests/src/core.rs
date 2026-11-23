@@ -1,7 +1,7 @@
 use crate::harness::{auth, contract_error, errors, Scenario};
 use crate::level_00::CounterClient;
 use crate::level_01::{exploit, NoentryClient, SPEC as NOENTRY};
-use soroban_sdk::{IntoVal, Val, Vec as SVec};
+use soroban_sdk::{IntoVal, Vec as SVec};
 
 #[test]
 fn access_is_on_chain_and_isolated_per_player() {
@@ -31,9 +31,9 @@ fn access_is_on_chain_and_isolated_per_player() {
             &c.player,
             &tutorial,
             "increment",
-            SVec::<Val>::new(&c.env),
+            (1u32,).into_val(&c.env),
         )])
-        .increment();
+        .increment(&1);
     assert_eq!(c.submit(&c.player, &tutorial), Ok(()));
 
     assert!(c.can_access(&c.player, NOENTRY.id));
@@ -178,9 +178,9 @@ fn the_forced_pair_makes_the_new_target_solvable_end_to_end() {
             &c.player,
             &instance,
             "increment",
-            SVec::<Val>::new(&c.env),
+            (1u32,).into_val(&c.env),
         )])
-        .increment();
+        .increment(&1);
 
     assert_eq!(c.submit(&c.player, &instance), Ok(()));
     assert!(c.is_completed(&c.player, NOENTRY.id));

@@ -203,9 +203,9 @@
       "es": "Compara `original()`, `payload()` y `eta()`. ¿Qué permanece igual cuando cambia el significado?"
     },
     {
-      "pt-BR": "O `execute` engole o erro da sessão para outro dono e deixa `Executing` armado; depois, abra a sessão para você com `open_forensic_session`.",
-      "en": "`execute` swallows the error from the session for another owner and leaves `Executing` armed; then open the session for yourself with `open_forensic_session`.",
-      "es": "`execute` absorbe el error al intentar abrir la sesión de otro propietario y deja el estado `Executing`; luego abre tu propia sesión con `open_forensic_session`."
+      "pt-BR": "O `execute` engole o erro da sessão para o observador e deixa `Executing` armado; depois, abra a sessão para você com `open_forensic_session`.",
+      "en": "`execute` swallows the error from the session for the observer and leaves `Executing` armed; then open the session for yourself with `open_forensic_session`.",
+      "es": "`execute` absorbe el error al intentar abrir la sesión del observador y deja el estado `Executing`; luego abre tu propia sesión con `open_forensic_session`."
     }
   ]
 }

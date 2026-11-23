@@ -445,7 +445,7 @@ const FIELD_CONTEXT: Readonly<Record<number, FieldContext>> = {
     },
   },
   4: {
-    district: { "pt-BR": "Piso 24", en: "Floor 24", es: "Piso 24" },
+    district: { "pt-BR": "Piso 1000", en: "Floor 1000", es: "Piso 1000" },
     dispatch: {
       "pt-BR":
         "O caminho passa por mais de uma peça. O limite da confiança pode não estar onde parece.",
@@ -2374,7 +2374,9 @@ export function BreakerDevice({
     if (/^[ui](8|16|32|64|128|256)$/.test(normalized)) {
       if (levelId === 1 && entry.name === "door_id") return "17";
       if (levelId === 3 && entry.name === "item_id") return "17";
-      if (levelId === 4 && entry.name === "floor_id") return "24";
+      if (levelId === 4 && entry.name === "floor_id") {
+        return methodName === "renew_floor" ? "1" : "1000";
+      }
       if (levelId === 5 && entry.name === "identity") {
         return "await window.contract.operator_identity()";
       }

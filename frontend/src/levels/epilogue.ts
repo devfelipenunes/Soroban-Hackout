@@ -43,9 +43,9 @@ export const FINAL_SCENES: readonly FinalScene[] = [
       {
         "speaker": "system",
         "text": {
-          "pt-BR": "A operação de diagnóstico amadureceu. O payload foi reescrito para uma sessão de outro dono; a falha da chamada interna ficou armada, e a sessão forense foi aberta para o Breaker. SEQUENCE OBSERVER / ATTESTATION: INDEPENDENT.",
-          "en": "The diagnostic operation matured. Its payload was rewritten into a session for another owner; the failed internal call stayed armed, and the forensic session was opened for the Breaker. SEQUENCE OBSERVER / ATTESTATION: INDEPENDENT.",
-          "es": "La operación de diagnóstico llegó a su plazo. Su payload se reescribió para abrir una sesión a nombre de otra persona; el fallo de la llamada interna quedó registrado y Breaker abrió su propia sesión forense. SEQUENCE OBSERVER / ATTESTATION: INDEPENDENT."
+          "pt-BR": "A operação de diagnóstico amadureceu. O payload foi reescrito para uma sessão do observador; a falha da chamada interna ficou armada, e a sessão forense foi aberta para o Breaker. SEQUENCE OBSERVER / ATTESTATION: INDEPENDENT.",
+          "en": "The diagnostic operation matured. Its payload was rewritten into a session for the observer; the failed internal call stayed armed, and the forensic session was opened for the Breaker. SEQUENCE OBSERVER / ATTESTATION: INDEPENDENT.",
+          "es": "La operación de diagnóstico llegó a su plazo. Su payload se reescribió para abrir una sesión a nombre del observador; el fallo de la llamada interna quedó registrado y Breaker abrió su propia sesión forense. SEQUENCE OBSERVER / ATTESTATION: INDEPENDENT."
         }
       }
     ],

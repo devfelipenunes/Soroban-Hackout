@@ -15,6 +15,7 @@ export type Compare =
   | "gt"
   | "gte"
   | "lt"
+  | "fails"
   | "payloadOther";
 
 export type Check = {
@@ -116,20 +117,20 @@ const DIAGNOSTICS: Readonly<Record<number, readonly Check[]>> = {
     {
       id: "renewed",
       method: "renewed",
-      args: () => ({ floor_id: 24 }),
+      args: () => ({ floor_id: 1000 }),
       compare: "true",
-      label: { "pt-BR": "O andar 24 foi renovado", en: "Floor 24 was renewed", es: "Se renovó el piso 24" },
+      label: { "pt-BR": "O andar 1000 foi renovado", en: "Floor 1000 was renewed", es: "Se renovó el piso 1000" },
     },
     {
       id: "floor",
       method: "floor",
-      args: () => ({ floor_id: 24 }),
+      args: () => ({ floor_id: 1000 }),
       compare: "eq",
       want: FIRST_LAYER,
       label: {
-        "pt-BR": "O registro do andar 24 é FIRST LAYER",
-        en: "The floor 24 record is FIRST LAYER",
-        es: "El registro del piso 24 es FIRST LAYER",
+        "pt-BR": "O registro do andar 1000 é FIRST LAYER",
+        en: "The floor 1000 record is FIRST LAYER",
+        es: "El registro del piso 1000 es FIRST LAYER",
       },
     },
   ],
@@ -180,25 +181,13 @@ const DIAGNOSTICS: Readonly<Record<number, readonly Check[]>> = {
   ],
   8: [
     {
-      id: "count",
-      method: "count",
-      wantFrom: { method: "threshold" },
-      compare: "gte",
+      id: "rebuild",
+      method: "rebuild",
+      compare: "fails",
       label: {
-        "pt-BR": "O contador alcançou o limite",
-        en: "The counter reached the limit",
-        es: "El contador alcanzó el límite",
-      },
-    },
-    {
-      id: "stored",
-      method: "stored",
-      wantFrom: { method: "threshold" },
-      compare: "lt",
-      label: {
-        "pt-BR": "O arquivo guarda menos que o limite",
-        en: "The archive stores less than the limit",
-        es: "El archivo guarda menos que el límite",
+        "pt-BR": "A reconstrução do Archive falha (registro corrompido)",
+        en: "The Archive rebuild fails (corrupt record)",
+        es: "La reconstrucción del Archive falla (registro corrupto)",
       },
     },
     {
@@ -358,9 +347,9 @@ const DIAGNOSTICS: Readonly<Record<number, readonly Check[]>> = {
       method: "executed_payload",
       compare: "payloadOther",
       label: {
-        "pt-BR": "O payload executado é de outro dono",
-        en: "The executed payload belongs to another owner",
-        es: "La carga útil ejecutada pertenece a otro titular",
+        "pt-BR": "O payload executado é de outro dono — se já executou sem cumprir isso, crie outra instância",
+        en: "The executed payload belongs to another owner — if it already ran without this, create another instance",
+        es: "La carga útil ejecutada pertenece a otro titular — si ya se ejecutó sin esto, crea otra instancia",
       },
     },
   ],
@@ -424,7 +413,10 @@ function sameValue(left: unknown, right: unknown): boolean {
 }
 
 function isOtherPayload(value: unknown, player: string): boolean {
-  const shape = normalizeUnion(value) as { tag?: unknown; values?: unknown };
+  const normalized = normalizeUnion(value);
+  // `executed_payload()` is empty (undefined/null) until `execute` runs, and a failed read is a string.
+  if (normalized === null || typeof normalized !== "object") return false;
+  const shape = normalized as { tag?: unknown; values?: unknown };
   if (shape.tag !== "OpenForensicSession") return false;
   const who = Array.isArray(shape.values) ? shape.values[0] : undefined;
   return typeof who === "string" && who !== player;
@@ -467,6 +459,8 @@ function compare(kind: Compare, current: unknown, expected: unknown, player: str
       const right = numeric(expected);
       return left !== null && right !== null && left < right;
     }
+    case "fails":
+      return typeof current === "string" && current.startsWith("error: ");
     case "payloadOther":
       return isOtherPayload(current, player);
   }

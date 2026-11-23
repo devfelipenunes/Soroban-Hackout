@@ -34,9 +34,9 @@
           "es": "En el panel central, pulsó una advertencia."
         },
         {
-          "pt-BR": "`ARCHIVE LOAD: CRITICAL`",
-          "en": "`ARCHIVE LOAD: CRITICAL`",
-          "es": "`ARCHIVE LOAD: CRITICAL`"
+          "pt-BR": "`ARCHIVE INTEGRITY: CRITICAL`",
+          "en": "`ARCHIVE INTEGRITY: CRITICAL`",
+          "es": "`ARCHIVE INTEGRITY: CRITICAL`"
         },
         {
           "pt-BR": "Entre os arquivos de Voss havia uma instrução curta.",
@@ -68,9 +68,9 @@
     {
       "paragraphs": [
         {
-          "pt-BR": "O Setor 13 parece um cemitério de dados que ainda recebe entregas. Registros repetidos, identidades descartáveis e referências incompletas se acumulam. O painel avisa: ARCHIVE LOAD: CRITICAL.",
-          "en": "Sector 13 looks like a data cemetery still accepting deliveries. Repeated records, disposable identities, and incomplete references accumulate. The panel warns: ARCHIVE LOAD: CRITICAL.",
-          "es": "El Sector 13 parece un cementerio de datos que aún recibe registros. Se acumulan entradas duplicadas, identidades descartables y referencias incompletas. El panel indica: ARCHIVE LOAD: CRITICAL."
+          "pt-BR": "O Setor 13 parece um cemitério de dados que ainda recebe entregas. Registros repetidos, identidades descartáveis e referências incompletas se acumulam. O painel avisa: ARCHIVE INTEGRITY: CRITICAL.",
+          "en": "Sector 13 looks like a data cemetery still accepting deliveries. Repeated records, disposable identities, and incomplete references accumulate. The panel warns: ARCHIVE INTEGRITY: CRITICAL.",
+          "es": "El Sector 13 parece un cementerio de datos que aún recibe registros. Se acumulan entradas duplicadas, identidades descartables y referencias incompletas. El panel indica: ARCHIVE INTEGRITY: CRITICAL."
         }
       ]
     },
